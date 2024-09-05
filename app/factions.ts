@@ -1,3 +1,27 @@
+export type Faction = {
+    id: string;
+    name: string;
+    battleTraits: BattleTrait[];
+    regimentAbilities: RegimentAbilitiy[];
+    units: string[];
+  }
+  
+  export type BattleTrait = {
+    id: string;
+    name: string;
+    effect: string;
+    once: boolean;
+    phase: string;
+  }
+  
+  export type RegimentAbilitiy = {
+    id: string;
+    name: string;
+    effect: string;
+    once: boolean;
+    phase: string;
+  }
+
 export const Factions = {
     "factions": [
     {
@@ -43,18 +67,11 @@ export const Factions = {
         "name": "Skaven",
         "battleTraits": [
         {
-                "id": "shieldOfAzyr",
-                "name": "Shield of Azyr",
-                "effect": "Pick a friendly Unit, that unit has Ward 5+",
+                "id": "lurkingVermintide",
+                "name": "The Lurking Vermintide",
+                "effect": "Pick an undeployed friendly unit, set them up in the tunnels below.  On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
                 "once": true,
-                "phase": "Hero"
-        },
-        {
-                "id": "stormCharge",
-                "name": "Storm Charge",
-                "effect": "Pick a friendly unit that is not in combat, that unit can charge this turn even if a run was used",
-                "once": true,
-                "phase": "Charge"
+                "phase": "Movement"
         }
         ],
         "regimentAbilities": [

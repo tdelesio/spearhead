@@ -1,12 +1,12 @@
 "use client"
 import { Factions } from "./factions";
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Link from "next/link"
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
+import { navigateToTactics } from "./redirect";
 import { z } from "zod"
 import {
   Form,
@@ -50,29 +50,6 @@ const profileFormSchema = z.object({
   //   .optional(),
 })
 
-type Faction = {
-  id: string;
-  name: string;
-  battleTraits: BattleTrait[];
-  regimentAbilities: RegimentAbilitiy[];
-  units: string[];
-}
-
-type BattleTrait = {
-  id: string;
-  name: string;
-  effect: string;
-  once: boolean;
-  phase: string;
-}
-
-type RegimentAbilitiy = {
-  id: string;
-  name: string;
-  effect: string;
-  once: boolean;
-  phase: string;
-}
 
 // type Data = {
 //   factions: Faction[];
@@ -120,25 +97,7 @@ export default function SelectFactionForm() {
   // })
 
   
-function onSubmit(data: ProfileFormValues) {
-  const factionName = JSON.stringify(data, null, 2);
-  console.log(factionName);
 
-  sessionStorage.setItem('faction', factionName);
- 
-  const router = useRouter();
-  router.push('/faction');
-
- 
-  // toast({
-  //   title: "You submitted the following values:",
-  //   description: (
-  //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-  //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-  //     </pre>
-  //   ),
-  // })
-}
 
 // export function Home() {
   return (
@@ -170,7 +129,7 @@ function onSubmit(data: ProfileFormValues) {
 
       {/* <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]"> */}
       <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form  className="space-y-8" action={navigateToTactics}>
 
       <FormField
           control={form.control}
@@ -178,7 +137,7 @@ function onSubmit(data: ProfileFormValues) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Faction</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} defaultValue={field.value} name="faction">
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a verified faction to display" />

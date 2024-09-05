@@ -1,15 +1,27 @@
-import SelectFactionForm from "./select-faction-form";
+"use client"
 
-export default function SettingsProfilePage() {
+import SelectFactionForm from "./select-faction-form";
+import SelectFactionTacticsForm from "./select-tactics";
+import { useSearchParams } from 'next/navigation'
+
+export default function HomePage() {
+  const  faction  = useSearchParams().get('faction');
+
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-medium">Profile</h3>
-        <p className="text-sm text-muted-foreground">
-          This is how others will see you on the site.
-        </p>
+  
+        {      
+   faction ? (
+        <SelectFactionTacticsForm />
+    ) : (
+        <SelectFactionForm />
+    )
+        }
+ 
       </div>
-      <SelectFactionForm />
+
+       
     </div>
   )
 }
