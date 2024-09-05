@@ -3,6 +3,7 @@ export type Faction = {
     name: string;
     battleTraits: BattleTrait[];
     regimentAbilities: RegimentAbilitiy[];
+    enchancments: Enchancment[];
     units: string[];
   }
   
@@ -15,6 +16,14 @@ export type Faction = {
   }
   
   export type RegimentAbilitiy = {
+    id: string;
+    name: string;
+    effect: string;
+    once: boolean;
+    phase: string;
+  }
+
+  export type Enchancment = {
     id: string;
     name: string;
     effect: string;
@@ -59,6 +68,36 @@ export const Factions = {
                 "phase": "Combat"
             }
         ],
+        "enchancements": [
+            {
+                    "id": "hallowedScrolls",
+                    "name": "Hallowed Scrolls",
+                    "effect": "Ward 5+",
+                    "once": false,
+                    "phase": "Passive",
+                },
+                {
+                    "id": "morrdaTalon",
+                    "name": "Morrda's Talon",
+                    "effect": "Hallowed Greataxe has Crit (Mortal)",
+                    "once": false,
+                    "phase": "Passive",
+                },
+                {
+                    "id": "quickSilverDraught",
+                    "name": "Quicksilver Draught",
+                    "effect": "Your general has Strike-First this phase",
+                    "once": true,
+                    "phase": "Combat",
+                },
+                {
+                    "id": "nullPendant",
+                    "name": "Null Pendant",
+                    "effect": "Roll a dice for each enemy unit contesting the same objective, on a 2+, subtract the roll from the control score of that enemy unit this turn",
+                    "once": true,
+                    "phase": "End",
+                },
+            ],
         "units": ["LordVigilant", "LordVertiant", "Procecutors", "Liberators"]
         
     },

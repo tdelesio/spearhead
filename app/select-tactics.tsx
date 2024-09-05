@@ -36,6 +36,10 @@ const profileFormSchema = z.object({
       .string({
         required_error: "Please select a regiment ability.",
       }),
+      enchancments: z
+      .string({
+        required_error: "Please select a enchancment.",
+      }),
 
   })
 
@@ -56,12 +60,19 @@ export default function SelectFactionTacticsForm() {
     const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
     
     const faction = Factions.factions.find(faction => faction.id === selectedFaction);
+    
     const battleTraits = faction?.battleTraits || [];
-    const regimentAbilities = faction?.regimentAbilities || [];
     const selectedBattleTraitId = form.watch('battleTraits');
     const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId);
+ 
+    const enchancments = faction?.enchancements || [];
+    const selectedEnchancmentId = form.watch('enchancments');
+    const selectedEnchancment = enchancments.find(enchancment => enchancment.id === selectedEnchancmentId);
+
+    const regimentAbilities = faction?.regimentAbilities || [];
     const selectedRegimentAbilityId = form.watch('regimentAbilities');
     const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === selectedRegimentAbilityId);
+    
 
     // const handleBattleTraitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     //     setSelectedId(Number(e.target.value));
@@ -160,6 +171,42 @@ export default function SelectFactionTacticsForm() {
             <div>Effect: {selectedRegimentAbility?.effect}</div>
             <div>Phase: {selectedRegimentAbility?.phase}</div>
             <div>{selectedRegimentAbility?.once ? "Once Per Battle" : ""}</div>
+        </div>
+
+        <FormField
+          control={form.control}
+          name="enchancments"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Enchancments</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value} name="enchancments">
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a Hero Enchancment" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {
+                  enchancments.map((enchancment, index) => (
+                    <SelectItem key={index} value={enchancment.id}>{enchancment.name}</SelectItem>
+                  ))}
+                
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                {/* You can manage verified email addresses in your{" "}
+                <Link href="/examples/forms">email settings</Link>. */}
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div>
+            <div>Name: {selectedEnchancment?.name}</div>
+            <div>Effect: {selectedEnchancment?.effect}</div>
+            <div>Phase: {selectedEnchancment?.phase}</div>
+            <div>{selectedEnchancment?.once ? "Once Per Battle" : ""}</div>
         </div>
 
       <Button type="submit">Set Tactics</Button>
