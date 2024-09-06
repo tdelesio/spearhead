@@ -58,7 +58,7 @@ export const Factions = {
                 "name": "Strike Where Needed",
                 "effect": "Free Retreat",
                 "once": true,
-                "phase": "Combat"
+                "phase": "Movement"
             },
             {
                 "id": "blazeOfGlory",
@@ -74,7 +74,7 @@ export const Factions = {
                     "name": "Hallowed Scrolls",
                     "effect": "Ward 5+",
                     "once": false,
-                    "phase": "Passive",
+                    "phase": "Combat",
                 },
                 {
                     "id": "morrdaTalon",
@@ -98,7 +98,7 @@ export const Factions = {
                     "phase": "End",
                 },
             ],
-        "units": ["LordVigilant", "LordVertiant", "Procecutors", "Liberators"]
+        "units": ["LordVigilant (Hero)", "LordVertiant (1)", "Procecutors (5)", "Liberators (5)"]
         
     },
     {

@@ -1,216 +1,79 @@
-Units: {
-    LordVigilant: {
-        Move: 12,
-        Control: 2,
-        Health: 8, 
-        Save: 3, 
-        Melee: {
-            HallowedGreataxe: {
-                Attacks: 5,
-                Hit: 3,
-                Wound: 3,
-                Rend: 2,
-                Damage: 2,
-                Ability: "" 
-            },
-            GryphStalkerBeakAndTalons: {
-                Attacks: 3,
-                Hit: 4,
-                Wound: 3,
-                Rend: 1,
-                Damage: 2,
-                Ability: "Companion" 
-            },
-        },
-        Range: {
-        },
-        Ward: 0,
-        Enhancements: {
-            HallowedScrolls: {
-                Name: "Hallowed Scrolls",
-                Effect: "Ward 5+",
-                Once: false,
-                Phase: "Passive",
-            },
-            MorrdaTalon: {
-                Name: "Morrda's Talon",
-                Effect: "Hallowed Greataxe has Crit (Mortal)",
-                Once: false,
-                Phase: "Passive",
-            },
-            QuickSilverDraught: {
-                Name: "Quicksilver Draught",
-                Effect: "Your general has Strike-First this phase",
-                Once: true,
-                Phase: "Combat",
-            },
-            NullPendant: {
-                Name: "Null Pendant",
-                Effect: "Roll a dice for each enemy unit contesting the same objective, on a 2+, subtract the roll from the control score of that enemy unit this turn",
-                Once: true,
-                Phase: "End",
-            },
-        },
-        Abilities: {
-            Hero: {
-                PlanTheAttack: {
-                    Name: "Plan the Attack",
-                    Declare: "Pick an Objective you do not control",
-                    Effect: "For the rest of the turn, add 1 to hit rolls for combat attacks made by friendly units that target enemy units contesting the objective" ,
-                    Once: false
-                },
-            },
-            Combat: {
-                DeliverJudgement: {
-                    Name: "Deliver Judgement",
-                    Declare: " Pick a friendly, non-hero, wholly within 12 inches of this unit to be the target",
-                    Effect: "The target can use 2 Fight abilities this phase. After the first is used, however, the target has Strike-last for the rest of the phase",
-                    Once: true
-                },
-            }
-        },
-        Keywords: "Hero, Cavalery",
+{
+
+    "id": "",
+    "name": "",
+    "move": ,
+    "control": ,
+    "health": ,
+    "save": ,
+    "ward": ,
+    "Passive": {
+        "abilities": []
     },
-    LordVertiant: {
-        Move: 5,
-        Control: 2,
-        Health: 6, 
-        Save: 3, 
-        Melee: {
-            StaffOfAbjuration : {
-                Attacks: 1,
-                Hit: 3,
-                Wound: 3,
-                Rend: 1,
-                Damage: 3,
-                Ability: "" 
-            },
-            JudgementBlade: {
-                Attacks: 3,
-                Hit: 3,
-                Wound: 3,
-                Rend: 1,
-                Damage: "D3",
-                Ability: "Anit-Wizard/Priest, +1 Rend" 
-            },
-        },
-        Range: {
-        },
-        Ward: 0,
-        Passive: {
-            SenseUnholySorcery: {
-                Name: "Sense Unholy Sorcery",
-                Effect: "Gryph-crow is a token that grants Ward +5.  If you roll a 1 on ward roll, token is destroyed",
-                Destroyable: true
-            }
-        },
-        Abilities: {
-            Hero: {
-                CleaningFires: {
-                    Name: "Cleaning Fires",
-                    Declare: "Pick a Visible enemy unit within 12 inches to be target, make a chanting roll of D6",
-                    Effect: "On a 3+, roll a dice for each model in the garget unit.  For each 5+ inflict 1 mortal damage on the target unit." ,
-                    Once: false
-                },
-            },
-        },
-        Keywords: "Hero, Priest, Infantry",
+    "Start":
+    {
+        "abilities": []
     },
-    Procecutors: {
-        Move: 12,
-        Control: 1,
-        Health: 2, 
-        Save: 3, 
-        Melee: {
-            StormcallJavelin : {
-                Attacks: 3,
-                Hit: 3,
-                Wound: 3,
-                Rend: 1,
-                Damage: 1,
-                Ability: "" 
-            },
-        },
-        Range: {
-            JudgemStormcallJavelin: {
-                Range: 10,
-                Attacks: 1,
-                Hit: 3,
-                Wound: 3,
-                Rend: 1,
-                Damage: "D3",
-                Ability: "" 
-            },
-        },
-        Ward: 0,
-        Passive: {
-            Skirmisher: {
-                Name: "Skirmisher",
-                Effect: "This unit has a coherency range of 2 inches",
-                Destroyable: false
-            },
-            HeraldsOfRighteousness: {
-                Name: "Heralds of Righteousness",
-                Effect: "When you make a charge roll for this unit, roll 1 additional dice"
-            }
-        },
-        Abilities: {
-            Charge: {
-                CleaningFires: {
-                    Name: "Heralds of Righteousness",
-                    Declare: "This Unit",
-                    Effect: "Roll an Additional Dice" ,
-                    Once: false
-                },
-            },
-        },
-        Keywords: "Infantry, Fly, Reinforcements",
+    "Hero": {
+        "abilities": [{
+            "id": "",
+            "name": "",
+            "effect": "",
+            "once": true,
+        }]
     },
-    Liberators: {
-        Move: 5,
-        Control: 1,
-        Health: 2, 
-        Save: 3, 
-        Melee: {
-            Warhammer : {
-                Attacks: 2,
-                Hit: 3,
-                Wound: 3,
-                Rend: 1,
-                Damage: 1,
-                Ability: "Crit (Mortal)" 
+    "Movement": {
+        "abilities": []
+    },
+    "Shooting": {
+        "attacks": [
+            {
+                "id": "",
+                "range": ,
+                "attacks": ,
+                "hit": ,
+                "wound": ,
+                "rend": ,
+                "damage": ,
+                "ability": ""
+            }
+        ],
+        "abilities": []
+    },
+    "Charge": {
+        "abilities": []
+    },
+    "Combat":
+    {
+        "attacks": [
+            {
+                "id": "",
+                "attacks": ,
+                "hit": ,
+                "wound": ,
+                "rend": ,
+                "damage": ,
+                "ability": ""
             },
-            Grandhammer: {
-                Attacks: 2,
-                Hit: 3,
-                Wound: 3,
-                Rend: 1,
-                Damage: 2,
-                Ability: "Crit (Mortal)" 
-            },
-        },
-        Range: {
-           
-        },
-        Ward: 0,
-        Passive: {
-            StalwartDefenders: {
-                Name: "Stalwart Defenders",
-                Effect: "Add 3 to this unit's control score while it contests an objective wholy within friendly territory",
-                Destroyable: false
-            },
-           
-        },
-        Abilities: {
-            End: {
-                StalwartDefenders: {
-                    Name: "Stalwart Defenders",
-                    Declare: "Contested Objective in Friendly territory",
-                    Effect: "Add 3 to this unit's control score while it contests an objective wholy within friendly territory",
-                    Once: false
-                },
-            },
-        },
-        Keywords: "Infantry, Reinforcements",
+            {
+                "id": "",
+                "attacks": ,
+                "hit": ,
+                "wound": ,
+                "rend": ,
+                "damage": ,
+                "ability": ""
+            }
+        ],
+        "abilities": [{
+            "id": "",
+            "name": "",
+            "effect": "",
+            "once": true,
+        }],
+    },
+    "End": {
+        "abilities": []
     }
-},    
+
+}
