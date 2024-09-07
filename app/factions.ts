@@ -3,7 +3,7 @@ export type Faction = {
     name: string;
     battleTraits: BattleTrait[];
     regimentAbilities: RegimentAbilitiy[];
-    enchancments: Enchancment[];
+    enhancments: Enchancment[];
     units: string[];
   }
   
@@ -40,16 +40,16 @@ export const Factions = {
         {
                 "id": "shieldOfAzyr",
                 "name": "Shield of Azyr",
-                "effect": "Pick a friendly Unit, that unit has Ward 5+",
+                "effect": "Pick a friendly Unit.  Unit the start of your next turn, that unit has Ward 5+",
                 "once": true,
-                "phase": "Hero"
+                "phase": "hero"
         },
         {
                 "id": "stormCharge",
                 "name": "Storm Charge",
                 "effect": "Pick a friendly unit that is not in combat, that unit can charge this turn even if a run was used",
                 "once": true,
-                "phase": "Charge"
+                "phase": "charge"
         }
         ],
         "regimentAbilities": [
@@ -58,44 +58,44 @@ export const Factions = {
                 "name": "Strike Where Needed",
                 "effect": "Free Retreat",
                 "once": true,
-                "phase": "Movement"
+                "phase": "movement"
             },
             {
                 "id": "blazeOfGlory",
                 "name": "Blaze of Glory",
                 "effect": "Pick a friendly unit that is in combat, each time a model is slain, make a vengance roll of D6.  On 4+ inflict 1 mortal damage",
                 "once": false,
-                "phase": "Combat"
+                "phase": "combat"
             }
         ],
-        "enchancements": [
+        "enhancements": [
             {
                     "id": "hallowedScrolls",
                     "name": "Hallowed Scrolls",
                     "effect": "Ward 5+",
                     "once": false,
-                    "phase": "Combat",
+                    "phase": "combat",
                 },
                 {
                     "id": "morrdaTalon",
                     "name": "Morrda's Talon",
                     "effect": "Hallowed Greataxe has Crit (Mortal)",
                     "once": false,
-                    "phase": "Passive",
+                    "phase": "passive",
                 },
                 {
                     "id": "quickSilverDraught",
                     "name": "Quicksilver Draught",
                     "effect": "Your general has Strike-First this phase",
                     "once": true,
-                    "phase": "Combat",
+                    "phase": "combat",
                 },
                 {
                     "id": "nullPendant",
                     "name": "Null Pendant",
                     "effect": "Roll a dice for each enemy unit contesting the same objective, on a 2+, subtract the roll from the control score of that enemy unit this turn",
                     "once": true,
-                    "phase": "End",
+                    "phase": "end",
                 },
             ],
         "units": ["LordVigilant (Hero)", "LordVertiant (1)", "Procecutors (5)", "Liberators (5)"]
@@ -110,26 +110,55 @@ export const Factions = {
                 "name": "The Lurking Vermintide",
                 "effect": "Pick an undeployed friendly unit, set them up in the tunnels below.  On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
                 "once": true,
-                "phase": "Movement"
+                "phase": "movement"
         }
         ],
         "regimentAbilities": [
             {
-                "id": "strikeWhereNeeded",
-                "name": "Strike Where Needed",
-                "effect": "Free Retreat",
+                "id": "warpstoneLacedBullets",
+                "name": "Warpstone Laced Bullets",
+                "effect": "Pick a ranged weapon on a friendly unit.  The weapon has Crit (Mortal) this phase.",
                 "once": true,
-                "phase": "Combat"
+                "phase": "shooting"
             },
             {
-                "id": "blazeOfGlory",
-                "name": "Blaze of Glory",
-                "effect": "Pick a friendly unit that is in combat, each time a model is slain, make a vengance roll of D6.  On 4+ inflict 1 mortal damage",
+            "id": "toQuickToHit",
+                "name": "To Quick to Hit",
+                "effect": "No mortal damaged is inflicted when they use Retreat.",
                 "once": false,
-                "phase": "Combat"
+                "phase": "movement"
             }
         ],
-        "units": ["LordVigilant", "LordVertiant", "Procecutors", "Liberators"]
+        "enhancements": [
+            {
+                    "id": "leadTheSeethingHorde",
+                    "name": "Lead the Seething Horde",
+                    "effect": "Instead of using the setup instructions in the Call for Reinforcements ability, the replacement unit can be set up wholly within 13\" of this unit and not in combat",
+                    "once": false,
+                    "phase": "movement",
+                },
+                {
+                    "id": "skryreConnections",
+                    "name": "Skryre Connections",
+                    "effect": "Your generals Ratling Pistol has an Attack characteristic of of 2D6 instead of D6.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "warpstoneCharm",
+                    "name": "Warpstone Charm",
+                    "effect": "Subtract 1 from save rolls for enemy unit in combat with your general",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "cloakOfStitchedVictories",
+                    "name": "Cloak of Stitched Victories",
+                    "effect": "Your general has Ward 5+",
+                    "once": false,
+                    "phase": "passive",
+                },],
+        "units": ["Clawlord on Gnaw-beast (Hero)", "Grey Seer (1)", "Warlock Engineer (1)", "Clanrats (10)", "Clanrats (10)", "Rat Orges (3)"]
         
     }
 ]

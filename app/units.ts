@@ -11,6 +11,7 @@ export type Unit = {
     health: number;
     save: number;
     ward: number;
+    hero: boolean;
     Passive: {
         attacks: Attack[];
         abilities: Ability[];
@@ -68,6 +69,17 @@ export function getAbilityForRound (unit: Unit, phase: string): Ability[] {
     }
 }
 
+export function getAttacksForRound (unit: Unit, phase: string): Attack[] {
+    switch (phase) {
+        case "shooting":
+            return unit.Shooting.attacks;
+        case "combat":
+            return unit.Combat.attacks;
+        default:
+            return [];
+    }
+}
+
 export type Ability = {
     id: string;
     name: string;
@@ -77,8 +89,9 @@ export type Ability = {
 
 export type Attack = {
     id: string;
+    name: string;
     range: number;
-    attacks: number;
+    attacks: string;
     hit: number;
     wound: number;
     rend: number;
@@ -100,6 +113,7 @@ export const Units = {
                     "health": 8,
                     "save": 3,
                     "ward": 0,
+                    "hero": true,
                     "Passive": {
                         "attacks": [],
                         "abilities": []
@@ -135,6 +149,7 @@ export const Units = {
                         "attacks": [
                             {
                                 "id": "HallowedGreataxe",
+                                "name": "Hallowed Greataxe",
                                 "range": 0,
                                 "attacks": 5,
                                 "hit": 3,
@@ -145,6 +160,7 @@ export const Units = {
                             },
                             {
                                 "id": "GryphStalkerBeakAndTalons",
+                                "name": "Gryph-Stalker Beak and Talons",
                                 "range": 0,
                                 "attacks": 3,
                                 "hit": 4,
@@ -176,6 +192,7 @@ export const Units = {
                     "health": 6,
                     "save": 3,
                     "ward": 0,
+                    "hero": false,
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -216,6 +233,7 @@ export const Units = {
                         "attacks": [
                             {
                                 "id": "StaffOfAbjuration",
+                                "name": "Staff Of Abjuration",
                                 "attacks": 1,
                                 "hit": 3,
                                 "wound": 3,
@@ -226,6 +244,7 @@ export const Units = {
                             },
                             {
                                 "id": "JudgementBlade",
+                                "name": "Judgement Blade",
                                 "attacks": 3,
                                 "hit": 3,
                                 "wound": 3,
@@ -252,6 +271,7 @@ export const Units = {
                     "health": 2,
                     "save": 3,
                     "ward": 0,
+                    "hero": false,
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -279,6 +299,7 @@ export const Units = {
                         "attacks": [
                             {
                                 "id": "StormcaalJavelin",
+                                "name": "Stormcast Javelin",
                                 "range": 10,
                                 "attacks": 1,
                                 "hit": 3,
@@ -306,6 +327,7 @@ export const Units = {
                         "attacks": [
                             {
                                 "id": "StormcastJavelin",
+                                "name": "Stormcast Javelin",
                                 "attacks": 3,
                                 "hit": 3,
                                 "wound": 3,
@@ -332,6 +354,7 @@ export const Units = {
                     "health": 2,
                     "save": 3,
                     "ward": 0,
+                    "hero": false,
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -367,6 +390,7 @@ export const Units = {
                         "attacks": [
                             {
                                 "id": "Warhammer",
+                                "name": "Warhammer",
                                 "attacks": 2,
                                 "hit": 3,
                                 "wound": 3,
@@ -377,6 +401,7 @@ export const Units = {
                             },
                             {
                                 "id": "Grandhammer",
+                                "name": "Grandhammer",
                                 "attacks": 2,
                                 "hit": 3,
                                 "wound": 3,
@@ -398,9 +423,392 @@ export const Units = {
                         }]
                     }
                 
-                }]
+                }],
+                
+                
 
 
+        },
+        {
+            "id": "skaven",
+            "units": [
+                
+                    {
+                        "id": "clawLordOnGnawBeast",
+                        "name": "Clawlord on Gnaw-beast",
+                        "move": 9,
+                        "control": 2,
+                        "health": 7,
+                        "save": 4,
+                        "ward": 6,
+                        "hero": true,
+                        "Passive": {
+                            "attacks": [],
+                            "abilities": [{
+                                "id": "corneredRat",
+                                "name": "Cornered Rat",
+                                "effect": "When this unit is damaged, add 3 to the Attacks characteristic of its Warpforged Halbred.",
+                                "once": false,
+                            }]
+                        },
+                        "Start":
+                        {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Hero": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Movement": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Shooting": {
+                            "attacks": [
+                                {
+                                    "id": "ratlingPistol",
+                                    "name": "Ratling Pistol",
+                                    "range": 10,
+                                    "attacks": "D6",
+                                    "hit": 3,
+                                    "wound": 3,
+                                    "rend": 1,
+                                    "damage": "1",
+                                    "ability": "Crit (Auto-wound), Shoot in Combat"
+                                }
+                            ],
+                            "abilities": []
+                        },
+                        "Charge": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Combat":
+                        {
+                            "attacks": [
+                                {
+                                    "id": "WarforgedHalbred",
+                                    "name": "Warforged Halbred",
+                                    "range": 0,
+                                    "attacks": 5,
+                                    "hit": 3,
+                                    "wound": 4,
+                                    "rend": 1,
+                                    "damage": "2",
+                                    "ability": ""
+                                },
+                                {
+                                    "id": "Gnaw-beast Chised Fangs",
+                                    "name": "Gnaw-beast Chised Fangs",
+                                    "range": 0,
+                                    "attacks": 4,
+                                    "hit": 4,
+                                    "wound": 3,
+                                    "rend": 1,
+                                    "damage": "D3",
+                                    "ability": "Companion"
+                                },
+                                
+                            ],
+                            "abilities": [],
+                        },
+                        "End": {
+                            "attacks": [],
+                            "abilities": []
+                        }
+    
+                    },
+                    {
+                        "id": "greySeer",
+                        "name": "Grey Seer",
+                        "move": 6,
+                        "control": 2,
+                        "health": 5,
+                        "save": 6,
+                        "ward": 0,
+                        "hero": false,
+                        "Passive": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Start":
+                        {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Hero": {
+                            "attacks": [],
+                            "abilities": [{
+                                "id": "willOfTheHornedRat",
+                                "name": "Will Of The Horned Rat",
+                                "effect": "Pick a friendly unit wholly within 13\" then roll a dice.  On a 3+, add the roll to the targets control score until the start of your next turn.",
+                                "once": false,
+                            },
+                            {
+                                "id": "wither",
+                                "name": "Wither",
+                                "effect": "Pick a visable enemy unit within 13\" of this unit to be the target, then making a casting rolling 2D6.  On a 6+, inflict D3 mortal damage on the target.",
+                                "once": false,
+                            }]
+                        },
+                        "Movement": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Shooting": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Charge": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Combat":
+                        {
+                            "attacks": [
+                                {
+                                    "id": "warpstoneStaff",
+                                    "name": "Warpstone Staff",
+                                    "range": 0,
+                                    "attacks": 3,
+                                    "hit": 4,
+                                    "wound": 4,
+                                    "rend": 1,
+                                    "damage": "D3",
+                                    "ability": ""
+                                },
+                               
+                            ],
+                            "abilities": [],
+                        },
+                        "End": {
+                            "attacks": [],
+                            "abilities": []
+                        }
+    
+                    },
+                    {
+                        "id": "warlockEngineer",
+                        "name": "Warlock Engineer",
+                        "move": 6,
+                        "control": 2,
+                        "health": 5,
+                        "save": 5,
+                        "ward": 0,
+                        "hero": false,
+                        "Passive": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Start":
+                        {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Hero": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Movement": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Shooting": {
+                            "attacks": [
+                                {
+                                    "id": "warplockMusket",
+                                    "name": "Warplock Musket",
+                                    "range": 24,
+                                    "attacks": 2,
+                                    "hit": 3,
+                                    "wound": 3,
+                                    "rend": 2,
+                                    "damage": "D3",
+                                    "ability": "Crit (Auto-wound)"
+                                }
+                            ],
+                            "abilities": [
+                                {
+                                    "id": "more-moreWarpEnergy",
+                                    "name": "More More Warp Energy",
+                                    "effect": "When delcaring shoot and it has not used move ability this turn.  Roll a dice.  On a 2+, set the Damage characteristic of the Warplock Musket to 3 this phase.  On a 1, inflict D3 mortal damage to this unit.",
+                                    "once": false,
+                                }
+                            ]
+                        },
+                        "Charge": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Combat":
+                        {
+                            "attacks": [
+                                {
+                                    "id": "warpforgedDagger",
+                                    "name": "Warpforged Dagger",
+                                    "range": 0,
+                                    "attacks": 3,
+                                    "hit": 4,
+                                    "wound": 4,
+                                    "rend": 0,
+                                    "damage": "2",
+                                    "ability": ""
+                                },
+                            
+                            ],
+                            "abilities": [],
+                        },
+                        "End": {
+                            "attacks": [],
+                            "abilities": []
+                        }
+    
+                    },
+                    {
+                        "id": "clanrats",
+                        "name": "Clanrats",
+                        "move": 6,
+                        "control": 1,
+                        "health": 1,
+                        "save": 5,
+                        "ward": 0,
+                        "hero": false,
+                        "Passive": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Start":
+                        {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Hero": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Movement": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Shooting": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Charge": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Combat":
+                        {
+                            "attacks": [
+                                {
+                                    "id": "rustyBlade",
+                                    "name": "Rusty Blade",
+                                    "range": 0,
+                                    "attacks": 2,
+                                    "hit": 4,
+                                    "wound": 5,
+                                    "rend": 0,
+                                    "damage": "1",
+                                    "ability": ""
+                                }
+                            ],
+                            "abilities": [],
+                        },
+                        "End": {
+                            "attacks": [],
+                            "abilities": [{
+                                "id": "seetingSwarm",
+                                "name": "Seeting Swarm",
+                                "effect": "You can return D3 slain models to this unit.",
+                                "once": false,
+                            }]
+                        }
+    
+                    },
+                    {
+                        "id": "ratOgors",
+                        "name": "Rat Ogres",
+                        "move": 6,
+                        "control": 1,
+                        "health": 4,
+                        "save": 5,
+                        "ward": 0,
+                        "hero": false,
+                        "Passive": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Start":
+                        {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Hero": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Movement": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Shooting": {
+                            "attacks": [
+                                {
+                                    "id": "warpfireGun",
+                                    "name": "Warpfire Gun",
+                                    "range": 10,
+                                    "attacks": "2D6",
+                                    "hit": 2,
+                                    "wound": 4,
+                                    "rend": 2,
+                                    "damage": "1",
+                                    "ability": "Shoot in Combat"
+                                }
+                            ],
+                            "abilities": []
+                        },
+                        "Charge": {
+                            "attacks": [],
+                            "abilities": []
+                        },
+                        "Combat":
+                        {
+                            "attacks": [
+                                {
+                                    "id": "clawsBladesAndFangs",
+                                    "name": "Claws Blades And Fangs",
+                                    "range": 0,
+                                    "attacks": 5,
+                                    "hit": 4,
+                                    "wound": 3,
+                                    "rend": 1,
+                                    "damage": "2",
+                                    "ability": ""
+                                },
+                                
+                            ],
+                            "abilities": [{
+                                "id": "unleashedWarpFury",
+                                "name": "Unleashed Warp Fury",
+                                "effect": "Inflict D3 mortal damage on this uniit.  Then add 1 to the attacks characteristic of its melee weapons this phase.",
+                                "once": true,
+                            }],
+                        },
+                        "End": {
+                            "attacks": [],
+                            "abilities": []
+                        }
+    
+                    },
+                
+            ]
         }
     ]
 }
+
+
+
+
+

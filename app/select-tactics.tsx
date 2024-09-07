@@ -38,9 +38,9 @@ const profileFormSchema = z.object({
     .string({
       required_error: "Please select a regiment ability.",
     }),
-  enchancments: z
+    enhancments: z
     .string({
-      required_error: "Please select a enchancment.",
+      required_error: "Please select a enhancment.",
     }),
 
 })
@@ -67,9 +67,9 @@ export default function SelectFactionTacticsForm() {
   const selectedBattleTraitId = form.watch('battleTraits');
   const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId);
 
-  const enchancments = faction?.enchancements || [];
-  const selectedEnchancmentId = form.watch('enchancments');
-  const selectedEnchancment = enchancments.find(enchancment => enchancment.id === selectedEnchancmentId);
+  const enhancments = faction?.enhancements || [];
+  const selectedEnhancmentId = form.watch('enhancments');
+  const selectedEnhancment = enhancments.find(enhancment => enhancment.id === selectedEnhancmentId);
 
   const regimentAbilities = faction?.regimentAbilities || [];
   const selectedRegimentAbilityId = form.watch('regimentAbilities');
@@ -105,7 +105,7 @@ export default function SelectFactionTacticsForm() {
           <Card>
             <CardHeader>
               <CardTitle>Select your Battle Tractics</CardTitle>
-              <CardDescription>Choose a Battle Trait, Regiment Ability and Enchancment</CardDescription>
+              <CardDescription>Choose a Battle Trait, Regiment Ability and Enhancment</CardDescription>
             </CardHeader>
             <CardContent>
               
@@ -192,20 +192,20 @@ export default function SelectFactionTacticsForm() {
                   <div className="space-y-2">
                     <FormField
                       control={form.control}
-                      name="enchancments"
+                      name="enhancments"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-medium">Enchancments</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value} name="enchancments">
+                          <FormLabel className="text-sm font-medium">Enhancements</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value} name="enhancments">
                             <FormControl>
                               <SelectTrigger>
-                                <SelectValue placeholder="Select a Hero Enchancment" />
+                                <SelectValue placeholder="Select a Hero Enhancement" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
                               {
-                                enchancments.map((enchancment, index) => (
-                                  <SelectItem key={index} value={enchancment.id}>{enchancment.name}</SelectItem>
+                                enhancments.map((enhancments, index) => (
+                                  <SelectItem key={index} value={enhancments.id}>{enhancments.name}</SelectItem>
                                 ))}
 
                             </SelectContent>
@@ -220,10 +220,10 @@ export default function SelectFactionTacticsForm() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <div>Name: {selectedEnchancment?.name}</div>
-                    <div>Effect: {selectedEnchancment?.effect}</div>
-                    <div>Phase: {selectedEnchancment?.phase}</div>
-                    <div>{selectedEnchancment?.once ? "Once Per Battle" : ""}</div>
+                    <div>Name: {selectedEnhancment?.name}</div>
+                    <div>Effect: {selectedEnhancment?.effect}</div>
+                    <div>Phase: {selectedEnhancment?.phase}</div>
+                    <div>{selectedEnhancment?.once ? "Once Per Battle" : ""}</div>
 
                   </div>
 
