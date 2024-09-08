@@ -1,6 +1,6 @@
 "use client"
 import { useSearchParams } from "next/navigation";
-import { getAbilityForRound, getAttacksForRound, Units } from "../units";
+import { getAbilityForRound, getAttacksForRound, Unit, Units } from "../units";
 import { Factions } from "@/app/factions";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -197,7 +197,7 @@ function StartOfRoundPage() {
                     <CardTitle>{unit.name} </CardTitle>
                     <CardDescription>Health: {unit.health} Save: {unit.save} Ward: {unit.ward}</CardDescription>
                   </CardHeader>
-                  {getAttacksForRound(unit, selectedPhase || '').length > 0 ? (
+                  {getAttacksForRound(unit as Unit, selectedPhase || '').length > 0 ? (
                     <CardContent>
                       <div className="grid grid-cols-9 gap-2 text-sm font-medium">
                         <div>Name</div>
@@ -211,7 +211,7 @@ function StartOfRoundPage() {
                         <div>Damage</div>
                         <div>Ability</div>
                       </div>
-                      {getAttacksForRound(unit, selectedPhase || '').map((attr) => (
+                      {getAttacksForRound(unit as Unit, selectedPhase || '').map((attr) => (
                         <div key={attr.id} className="grid grid-cols-9 gap-2 text-sm mt-2">
                           <div>{attr.name}</div>
                           {selectedPhase === 'shooting' ? (
@@ -247,7 +247,7 @@ function StartOfRoundPage() {
       <h2 className="text-2xl font-semibold mb-2">{phase?.name} Abilities</h2> <h3>Once per battle items are marked. Click on a card to toggle if you have used that ability this round.</h3>
       <div className="w-full space-y-4 p-4">
         {factionUnits?.units.flatMap(unit =>
-          (getAbilityForRound(unit, phase?.id || '')).map(ability => {
+          (getAbilityForRound(unit as Unit, phase?.id || '')).map(ability => {
             const isUsed = usedAbilities.has(unit.id)
             return (
               <Card
