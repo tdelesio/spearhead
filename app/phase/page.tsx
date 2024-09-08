@@ -124,7 +124,7 @@ export default function StartOfRoundPage() {
           <div className="space-y-4">
             {factionUnits?.units.flatMap(unit =>
               getAbilityForRound(unit as Unit, phase?.id || '').map(ability => 
-                renderAbilityCard(unit, ability, usedAbilities, handleCardClick)
+                renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
               )
             )}
           </div>
@@ -137,7 +137,7 @@ export default function StartOfRoundPage() {
           <div className="space-y-4">
             {factionUnits?.units.flatMap(unit =>
               unit.Passive.abilities.map(ability => 
-                renderAbilityCard(unit, ability, usedAbilities, handleCardClick)
+                renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
               )
             )}
           </div>
