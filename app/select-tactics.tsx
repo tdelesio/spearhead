@@ -1,13 +1,13 @@
 "use client"
+
 import { useSearchParams } from 'next/navigation'
-import { BattleTrait, Factions } from "./factions";
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from "next/image";
-import { Button } from "@/components/ui/button"
+import { useState } from 'react'
+import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useFieldArray, useForm } from "react-hook-form"
 import { z } from "zod"
+import { Factions } from "./factions"
+import { navigateToStart } from './redirect'
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Form,
@@ -25,233 +25,225 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { navigateToStart } from './redirect';
-import { Input } from '@/components/ui/input';
+import { Input } from '@/components/ui/input'
+import { ScrollArea } from "@/components/ui/scroll-area"
+
+// const profileFormSchema = z.object({
+//   faction: z.string().optional(),
+//   battleTraits: z.string().optional(),
+//   regimentAbilities: z.string().optional(),
+//   enhancements: z.string().optional(),
+// }).refine((data) => {
+//   return data.faction || data.battleTraits || data.regimentAbilities || data.enhancements;
+// }, {
+//   message: "At least one selection is required",
+//   path: ["battleTraits"], // This will show the error on the battleTraits field, but you can change it if needed
+// });
 
 const profileFormSchema = z.object({
-
-  battleTraits: z
-    .string({
-      required_error: "Please select a faction.",
-    }),
-  regimentAbilities: z
-    .string({
-      required_error: "Please select a regiment ability.",
-    }),
-    enhancments: z
-    .string({
-      required_error: "Please select a enhancment.",
-    }),
-
+  // faction: z.string({required_error: "Please select a faction.",}),
+  // faction: z.string().optional(),
+  battleTraits: z.string({required_error: "Please select a battle trait.",}),
+  // battleTraits: z.string().optional(),
+  regimentAbilities: z.string({required_error: "Please select a regiment ability.",}),
+  // regimentAbilities: z.string().optional(),
+  enhancements: z.string({required_error: "Please select an enhancement.",}),
+  //enhancements: z.string().optional(),
 })
+
+
+
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 export default function SelectFactionTacticsForm() {
-
-  const selectedFaction = useSearchParams().get('faction');
+  const selectedFaction = useSearchParams().get('faction')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
-    // defaultValues,
     mode: "onChange",
   })
 
-  //   useEffect(() => {
+  const faction = Factions.factions.find(faction => faction.id === selectedFaction)
+  const battleTraits = faction?.battleTraits || []
+  const regimentAbilities = faction?.regimentAbilities || []
+  const enhancements = faction?.enhancements || []
 
-  const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
+  const selectedBattleTraitId = form.watch('battleTraits')
+  const selectedRegimentAbilityId = form.watch('regimentAbilities')
+  const selectedEnhancementId = form.watch('enhancements')
 
-  const faction = Factions.factions.find(faction => faction.id === selectedFaction);
+  const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId)
+  const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === selectedRegimentAbilityId)
+  const selectedEnhancement = enhancements.find(enhancement => enhancement.id === selectedEnhancementId)
 
-  const battleTraits = faction?.battleTraits || [];
-  const selectedBattleTraitId = form.watch('battleTraits');
-  const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId);
+  // const onSubmit = async (data: ProfileFormValues) => {
+  //   console.log("onSubmit called", data)
+  //   setIsSubmitting(true)
+  //   // Simulating an API call
+  //   await new Promise(resolve => setTimeout(resolve, 1000))
+  //   setIsSubmitting(false)
+  //   console.log("Form submitted successfully")
+  // }
+  
+  const onSubmit = async (data: ProfileFormValues) => {
+    setIsSubmitting(true)
+    try {
+      
+      await navigateToStart(selectedFaction ?? '', data.battleTraits ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
+    } catch (error) {
+      console.error("Navigation error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
-  const enhancments = faction?.enhancements || [];
-  const selectedEnhancmentId = form.watch('enhancments');
-  const selectedEnhancment = enhancments.find(enhancment => enhancment.id === selectedEnhancmentId);
-
-  const regimentAbilities = faction?.regimentAbilities || [];
-  const selectedRegimentAbilityId = form.watch('regimentAbilities');
-  const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === selectedRegimentAbilityId);
-
-
-  // const handleBattleTraitChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //     setSelectedId(Number(e.target.value));
-  // };
-
-  // });
+  const handleTestClick = () => {
+    console.log("Test button clicked")
+  }
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
-        {/* Left side - Static Information */}
-        <div className="md:w-1/2 p-6 bg-white">
-          <h1 className="text-3xl font-bold mb-4">Select Tactics for {faction?.name}</h1>
-          <p className="mb-4">Units:</p>
-          <ul className="list-disc list-inside space-y-2">
+    <div className="min-h-screen bg-gray-100 p-4">
+      <h1 className="text-2xl font-bold mb-4">Select Battle Options for {faction?.name}</h1>
 
-            {faction?.units.map((unit, index) => (
-              <li key={unit} className="text-gray-700">{unit}</li>
-            ))}
-          </ul>
-
-        </div>
-
-        {/* Right side - Form with Dropdowns */}
-        <div className="md:w-1/2 p-6">
-        <Form {...form}>
-        <form className="space-y-8" action={navigateToStart}>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+ 
           <Card>
             <CardHeader>
-              <CardTitle>Select your Battle Tractics</CardTitle>
-              <CardDescription>Choose a Battle Trait, Regiment Ability and Enhancment</CardDescription>
+              <CardTitle>Battle Tactics</CardTitle>
             </CardHeader>
             <CardContent>
-              
-         <Input type="hidden" name="faction" value={selectedFaction ?? ''} />
-
-                  <div className="space-y-2">
-                    <FormField
-                      control={form.control}
-                      name="battleTraits"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium">Battle Traits</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value} name="battleTraits">
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select a Battle Tactic" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              {
-                                battleTraits.map((battleTrait, index) => (
-                                  <SelectItem key={index} value={battleTrait.id}>{battleTrait.name}</SelectItem>
-                                ))}
-
-                            </SelectContent>
-                          </Select>
-                          <FormDescription>
-                            {/* You can manage verified email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>. */}
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <div>Name: {selectedBattleTrait?.name}</div>
-                    <div>Effect: {selectedBattleTrait?.effect}</div>
-                    <div>Phase: {selectedBattleTrait?.phase}</div>
-                    <div>{selectedBattleTrait?.once ? "Once Per Battle" : ""}</div>
-
-                  </div>
-
-
-
-                  <div className="space-y-2">
-                    <FormField
-                      control={form.control}
-                      name="regimentAbilities"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium">Regiment Abilities</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value} name="regimentAbilities">
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select a Regiment Ability" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              {
-                                regimentAbilities.map((regimentAbility, index) => (
-                                  <SelectItem key={index} value={regimentAbility.id}>{regimentAbility.name}</SelectItem>
-                                ))}
-
-                            </SelectContent>
-                          </Select>
-                          <FormDescription>
-                            {/* You can manage verified email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>. */}
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="space-y-2">
-
-                    <div>Name: {selectedRegimentAbility?.name}</div>
-                    <div>Effect: {selectedRegimentAbility?.effect}</div>
-                    <div>Phase: {selectedRegimentAbility?.phase}</div>
-                    <div>{selectedRegimentAbility?.once ? "Once Per Battle" : ""}</div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <FormField
-                      control={form.control}
-                      name="enhancments"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-sm font-medium">Enhancements</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value} name="enhancments">
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select a Hero Enhancement" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              {
-                                enhancments.map((enhancments, index) => (
-                                  <SelectItem key={index} value={enhancments.id}>{enhancments.name}</SelectItem>
-                                ))}
-
-                            </SelectContent>
-                          </Select>
-                          <FormDescription>
-                            {/* You can manage verified email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>. */}
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <div>Name: {selectedEnhancment?.name}</div>
-                    <div>Effect: {selectedEnhancment?.effect}</div>
-                    <div>Phase: {selectedEnhancment?.phase}</div>
-                    <div>{selectedEnhancment?.once ? "Once Per Battle" : ""}</div>
-
-                  </div>
-
-
-              
-
+              <FormField
+                control={form.control}
+                name="battleTraits"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Battle Traits</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a Battle Tactic" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {battleTraits.map((battleTrait, index) => (
+                          <SelectItem key={index} value={battleTrait.id}>{battleTrait.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {selectedBattleTrait && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-md">
+                  <p><strong>Name:</strong> {selectedBattleTrait.name} {selectedBattleTrait.once && <strong>(Once Per Battle)</strong>}</p>
+                  <p><strong>Effect:</strong> {selectedBattleTrait.effect}</p>
+                  <p><strong>Phase:</strong> {selectedBattleTrait.phase}</p>                  
+                </div>
+              )}
             </CardContent>
-            <CardFooter>
-              <Button type="submit">Set Tactics</Button>
-            </CardFooter>
           </Card>
 
-          </form>
-          </Form>
-        </div>
-      </div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Regiment Abilities</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <FormField
+                control={form.control}
+                name="regimentAbilities"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Regiment Abilities</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a Regiment Ability" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {regimentAbilities.map((regimentAbility, index) => (
+                          <SelectItem key={index} value={regimentAbility.id}>{regimentAbility.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {selectedRegimentAbility && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-md">
+                  <p><strong>Name:</strong> {selectedRegimentAbility.name} {selectedRegimentAbility.once && <strong>(Once Per Battle)</strong>}</p>
+                  <p><strong>Effect:</strong> {selectedRegimentAbility.effect}</p>
+                  <p><strong>Phase:</strong> {selectedRegimentAbility.phase}</p>
 
+                </div>
+              )}
+            </CardContent>
+          </Card>
 
+          <Card>
+            <CardHeader>
+              <CardTitle>Enhancements</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <FormField
+                control={form.control}
+                name="enhancements"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Enhancements</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a Hero Enhancement" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {enhancements.map((enhancement, index) => (
+                          <SelectItem key={index} value={enhancement.id}>{enhancement.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              {selectedEnhancement && (
+                <div className="mt-4 p-4 bg-gray-50 rounded-md">
+                  <p><strong>Name:</strong> {selectedEnhancement.name} {selectedEnhancement.once && <strong>(Once Per Battle)</strong>}</p>
+                  <p><strong>Effect:</strong> {selectedEnhancement.effect}</p>
+                  <p><strong>Phase:</strong> {selectedEnhancement.phase}</p>
 
+                </div>
+              )}
+            </CardContent>
+          </Card>
 
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Setting Tactics..." : "Set Tactics"}
+          </Button>
 
+        </form>
+      </Form>
 
-
-
-
-
-
-
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="text-2xl">Units for {faction?.name}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ScrollArea className="h-[200px] rounded-md border p-4">
+            <ul className="space-y-2">
+              {faction?.units.map((unit, index) => (
+                <li key={index} className="text-gray-700">{unit}</li>
+              ))}
+            </ul>
+          </ScrollArea>
+        </CardContent>
+      </Card>
     </div>
   )
 }

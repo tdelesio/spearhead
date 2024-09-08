@@ -1,12 +1,13 @@
 "use client"
-import { Factions } from "./factions";
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Button } from "@/components/ui/button"
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useFieldArray, useForm } from "react-hook-form"
-import { navigateToTactics } from "./redirect";
+import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { Factions } from "./factions"
+import { navigateToTactics } from "./redirect"
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -24,74 +25,75 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-
 const profileFormSchema = z.object({
-  faction: z
-    .string({
-      required_error: "Please select a faction.",
-    }),
+  faction: z.string({
+    required_error: "Please select a faction.",
+  }),
 })
-
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>
 
-
 export default function SelectFactionForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter()
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
-    // defaultValues,
     mode: "onChange",
   })
 
+  const onSubmit = async (data: ProfileFormValues) => {
+    setIsSubmitting(true)
+    try {
+      await navigateToTactics(data.faction)
+    } catch (error) {
+      console.error("Navigation error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
-// export function Home() {
   return (
-    
-
-      
-      // <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]"> 
-      
-      <div>
+    <div className="w-full max-w-md mx-auto px-4 py-6">
+      <h2 className="text-2xl font-bold text-center mb-6">Select Your Faction</h2>
       <Form {...form}>
-      <form  className="space-y-8" action={navigateToTactics}>
-
-      <FormField
-          control={form.control}
-          name="faction"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Faction</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value} name="faction">
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a verified faction to display" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {Factions.factions.map((faction, index) => (
-                    <SelectItem key={index} value={faction.id}>{faction.name}</SelectItem>
-                  ))}
-                {/* <SelectItem value="stormcast">Stormcast Eternals</SelectItem>
-          <SelectItem value="DoK">Daughters of Khaine</SelectItem>
-          <SelectItem value="SoD">Slaves of Darkness</SelectItem>
-          <SelectItem value="skaven">Skaven</SelectItem> */}
-                </SelectContent>
-              </Select>
-              <FormDescription>
-                {/* You can manage verified email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>. */}
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-      <Button type="submit">Select Faction</Button>
-      </form>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <FormField
+            control={form.control}
+            name="faction"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-lg">Faction</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select a faction" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {Factions.factions.map((faction) => (
+                      <SelectItem key={faction.id} value={faction.id}>
+                        {faction.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormDescription>
+                  Choose your faction to view its specific tactics and abilities.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button 
+            type="submit" 
+            className="w-full"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Selecting..." : "Select Faction"}
+          </Button>
+        </form>
       </Form>
-      </div> 
-
-      
-  );
+    </div>
+  )
 }
