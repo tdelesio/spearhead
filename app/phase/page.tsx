@@ -2,33 +2,65 @@
 
 import { useSearchParams } from "next/navigation";
 import { getAbilityForRound, getAttacksForRound, Unit, Units } from "../units";
-import { Factions } from "@/app/factions";
+import { BattleTrait, Enhancement, Factions, RegimentAbilitiy } from "@/app/factions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
 import { Phase } from "../phase";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
+function getPhase(selectedPhase: string | null) : Phase {
+  return Phase.phases.find(phase => phase.id === selectedPhase) as Phase;
+}
+
+function showAttributes(selectedPhase: string | null) : boolean {
+  return selectedPhase === 'combat' || selectedPhase === 'shooting';
+}
+
+function showBattleTrait(selectedPhase: string | null, selectedBattleTrait: BattleTrait) : boolean {
+  return selectedBattleTrait?.phase === selectedPhase;
+}
+
+function showRegimentAbility(selectedPhase: string | null, selectedRegimentAbility: RegimentAbilitiy | null) : boolean {
+  return selectedRegimentAbility?.phase === selectedPhase;
+}
+
+function showEnhancement(selectedPhase: string | null, selectedEnhancement: Enhancement | null) : boolean {
+  return selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
+}
 
 export default function StartOfRoundPage() {
   const params = useSearchParams();
   const selectedFaction = params.get('faction');
-  const selectedPhase = params.get('phase');
-  const phase = Phase.phases.find(phase => phase.id === selectedPhase);
+  // const selectedPhase = params.get('phase');
+  
   const faction = Factions.factions.find(faction => faction.id === selectedFaction);
 
   const initialBattleTrait = params.get('battleTraits');
   const battleTraits = faction?.battleTraits || [];
   const selectedBattleTrait = battleTraits.find(trait => trait.id === initialBattleTrait);
-  const showBattleTrait = selectedBattleTrait?.phase === selectedPhase;
-
+  
   const initialRegimentAbility = params.get('regimentAbilities');
   const regimentAbilities = faction?.regimentAbilities || [];
   const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === initialRegimentAbility);
-  const showRegimentAbility = selectedRegimentAbility?.phase === selectedPhase;
+  
 
   const initialEnhancement = params.get('enhancements');
   const enhancements = faction?.enhancements || [];
   const selectedEnhancement = enhancements.find(enhancement => enhancement.id === initialEnhancement);
-  const showEnhancement = selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
+  
+
+  // const phase = Phase.phases.find(phase => phase.id === selectedPhase);
+  // const showBattleTrait = selectedBattleTrait?.phase === selectedPhase;
+  // const showRegimentAbility = selectedRegimentAbility?.phase === selectedPhase;
+  // const showEnhancement = selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
+  // const showAttributes = selectedPhase === 'combat' || selectedPhase === 'shooting'
 
   const factionUnits = Units.factions.find(faction => faction.id === selectedFaction);
 
@@ -47,20 +79,30 @@ export default function StartOfRoundPage() {
     })
   }
 
-  const showAttributes = selectedPhase === 'combat' || selectedPhase === 'shooting'
+  
 
   return (
-    <div className={`${phase?.bgcolor} text-white min-h-screen p-4`}>
+
+<div>
+<Carousel>
+<CarouselContent>
+  {Phase.phases.map(selectedPhase => (
+<CarouselItem key={selectedPhase.id}>
+
+    <div className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
+    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name} Abilities</h1>
+    <p className="text-sm mb-4">Once per battle items are marked. Tap a card to toggle if you have used that ability this round.</p>
+
       <div className="space-y-6">
         {/* Traits, Abilities, and Enhancements */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {showBattleTrait && renderCard(selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
-          {showRegimentAbility && renderCard(selectedRegimentAbility, "Regiment Ability", usedAbilities, handleCardClick)}
-          {showEnhancement && renderCard(selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
+          {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
+          {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && renderCard(selectedRegimentAbility, "Regiment Ability", usedAbilities, handleCardClick)}
+          {selectedEnhancement && showEnhancement(selectedPhase.id, selectedEnhancement) && renderCard(selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
         </div>
 
         {/* Movement */}
-        {selectedPhase === 'movement' && (
+        {selectedPhase.id === 'movement' && (
           <section>
             <h2 className="text-xl font-semibold mb-4">Movement</h2>
             <div className="space-y-4">
@@ -77,7 +119,7 @@ export default function StartOfRoundPage() {
         )}
 
         {/* Attacks */}
-        {showAttributes && (
+        {showAttributes(selectedPhase.id) && (
           <section>
             <h2 className="text-xl font-semibold mb-4">Attacks</h2>
             <div className="space-y-4">
@@ -87,16 +129,16 @@ export default function StartOfRoundPage() {
                     <CardTitle>{unit.name}</CardTitle>
                     <CardDescription>Health: {unit.health} Save: {unit.save} Ward: {unit.ward}</CardDescription>
                   </CardHeader>
-                  {getAttacksForRound(unit as Unit, selectedPhase || '').length > 0 && (
+                  {getAttacksForRound(unit as Unit, selectedPhase.id || '').length > 0 && (
                     <CardContent>
                       <div className="grid grid-cols-2 gap-2 text-sm font-medium mb-2">
                         <div>Attribute</div>
                         <div>Value</div>
                       </div>
-                      {getAttacksForRound(unit as Unit, selectedPhase || '').map((attr) => (
+                      {getAttacksForRound(unit as Unit, selectedPhase.id || '').map((attr) => (
                         <div key={attr.id} className="grid grid-cols-2 gap-2 text-sm">
                           <div>Name</div><div>{attr.name}</div>
-                          {selectedPhase === 'shooting' && (
+                          {selectedPhase.id === 'shooting' && (
                             <>
                               <div>Range</div><div>{attr.range}</div>
                             </>
@@ -118,12 +160,10 @@ export default function StartOfRoundPage() {
         )}
 
         {/* Phase Abilities */}
-        <section>
-          <h2 className="text-xl font-semibold mb-2">{phase?.name} Abilities</h2>
-          <p className="text-sm mb-4">Once per battle items are marked. Tap a card to toggle if you have used that ability this round.</p>
+        <section>        
           <div className="space-y-4">
             {factionUnits?.units.flatMap(unit =>
-              getAbilityForRound(unit as Unit, phase?.id || '').map(ability => 
+              getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability => 
                 renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
               )
             )}
@@ -143,6 +183,13 @@ export default function StartOfRoundPage() {
           </div>
         </section>
       </div>
+      </div>
+      </CarouselItem>
+      ))}
+      </CarouselContent>
+      <CarouselPrevious />
+    <CarouselNext />
+      </Carousel>
     </div>
   );
 }

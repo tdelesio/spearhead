@@ -3,7 +3,7 @@ export type Faction = {
     name: string;
     battleTraits: BattleTrait[];
     regimentAbilities: RegimentAbilitiy[];
-    enhancments: Enchancment[];
+    enhancements: Enhancement[];
     units: string[];
   }
   
@@ -23,7 +23,7 @@ export type Faction = {
     phase: string;
   }
 
-  export type Enchancment = {
+  export type Enhancement = {
     id: string;
     name: string;
     effect: string;

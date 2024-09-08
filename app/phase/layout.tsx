@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
 
     <div className="flex">
-    <LeftNav />
+    {/* <LeftNav /> */}
     <main className="flex-1">
 
 
