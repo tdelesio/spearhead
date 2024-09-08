@@ -215,7 +215,7 @@ function StartOfRoundPage() {
                         <div key={attr.id} className="grid grid-cols-9 gap-2 text-sm mt-2">
                           <div>{attr.name}</div>
                           {selectedPhase === 'shooting' ? (
-                            <div>{attr.range}"</div>
+                            <div>{attr.range}</div>
                           ) : null}
                           <div>{attr.attacks}</div>
                           <div>{attr.hit}+</div>
