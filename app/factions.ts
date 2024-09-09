@@ -282,5 +282,65 @@ export const Factions = {
         "units": ["Melusai Ironscale (Hero)", "Witch Aelves (5)", "Witch Aelves (5)", "Doomfire Warlocks (5)", "Blood Stalkers (5)"]
         
     },
+    {
+        "id": "fyreslayers",
+        "name": "Fyreslayers",
+        "battleTraits": [
+        {
+                "id": "urGoleRunes",
+                "name": "Ur-Gole Runes",
+                "effect": "Pick 1 of ur-gold runes, then make an activation roll of D6.  Each ur-gold runes can only be activated once per battle.  On a 1-5, the rune's standard effect applies.  On a 6, the enchanced effect applies.  Rune of Fury: S-Add 1 to hit rolls for combat attacks.  E-In addition, add 1 to the attacks.  Rune of Searing Heat: S-Add 1 to the Rend. E-In addition, add 1 to the damage. Rune of Fiery Determination: S-Ward 5 E-In addition, add 1 to save.  Run of Relentless Zeal: S- Add 2\" to the move E-In addition, add 2 to charge rolls",
+                "once": false,
+                "phase": "passive"
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "magicTunnels",
+                "name": "Magic Tunnels",
+                "effect": "Pick 2 friendly units, remove them from the battlefield and set them up again anywhere on the battfield more than 6\" from all enemy units.",
+                "once": false,
+                "phase": "start"
+            },
+            {
+            "id": "fyresteelThrowingAxe",
+                "name": "Fyresteel Throwing Axe",
+                "effect": "Pick any number of friendly units that are not in combat and are within 10\" of any enemy units.  For each of those units, pick a visible enemy unit with 10\" and roll a dice.  On 4+, inflict D3 mortal damage on that enemey unit.",
+                "once": false,
+                "phase": "shooting"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "tooStubbornToDie",
+                    "name": "Too Stubborn to Die",
+                    "effect": "Heal D3 your general",
+                    "once": false,
+                    "phase": "start",
+                },
+                {
+                    "id": "spiritIfGrimnir",
+                    "name": "Spirit of Grimnir",
+                    "effect": "You can re-roll activation rolls you make for the Ur-Gold runes ability",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "hornOfGrimnir",
+                    "name": "Horn of Grimnir",
+                    "effect": "Pick your general to use this ability if they are not in combat.  Roll a dice for each friendly unit on the battlefield.  For each 3+, you can return 1 slain model to the unit.",
+                    "once": false,
+                    "phase": "hero",
+                },
+                {
+                    "id": "powerfulPresence",
+                    "name": "Powerful Presence",
+                    "effect": "Add 3 to your general's control score.",
+                    "once": false,
+                    "phase": "passive",
+                },],
+        "units": ["Battlesmith (Hero)", "Hearthguard Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)"]
+        
+    },
 ]
 };

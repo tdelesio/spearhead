@@ -1478,7 +1478,240 @@ export const Units = {
 
                 },
             ]
-        }
+        },
+        {
+
+            "id": "battlesmith",
+            "name": "Battlesmith",
+            "move": 4,
+            "control": 5,
+            "health": 5,
+            "save": 5,
+            "ward": 6,
+            "hero": true,
+            "keywords": ["Infantry", "Hero", "Ward (6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [
+                    {
+                        "id": "iconOfGrimnir",
+                        "name": "Icon of Grimnir",
+                        "effect": "Add 1 to save rolls for friendly units while they are wholly within 12\" of this unit.",
+                        "once": false,
+                    }
+                ]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "plantTheIcon",
+                    "name": "Plant The Icon",
+                    "effect": "For the rest of the turn, friednly units have ward 5+ while they are within 12\" of this unit.",
+                    "once": true,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "ancestralBattleAxe",
+                        "name": "Ancestral Battle Axe",
+                        "range": 0,
+                        "attacks": 5,
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "hearthguardBerzerkers",
+            "name": "Hearthguard Berzerkers",
+            "move": 4,
+            "control": 1,
+            "health": 2,
+            "save": 6,
+            "ward": 6,
+            "hero": false,
+            "keywords": ["Infantry", "Ward (6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [
+                    {
+                        "id": "dutyUntoDeath",
+                        "name": "Duty Unto Death",
+                        "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
+                        "once": false,
+                    }
+                ]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "",
+                    "name": "",
+                    "effect": "",
+                    "once": true,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "flamestrikePoleaxe",
+                        "name": "Flamestrike Poleaxe",
+                        "range": 0,
+                        "attacks": 2,
+                        "hit": "3",
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Crit (Mortal)"
+                    },                    
+                ],
+                "abilities": [
+                    {
+                        "id": "dutyUntoDeath",
+                        "name": "Duty Unto Death",
+                        "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
+                        "once": false,
+                    }
+                ],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "vulkiteBerzerkers",
+            "name": "Vulkite Berzerkers",
+            "move": 4,
+            "control": 1,
+            "health": 2,
+            "save": 6,
+            "ward": 6,
+            "hero": false,
+            "Passive": {
+                "attacks": [],
+                "abilities": [
+                    {
+                        "id": "whirlwhindOfDestruction",
+                        "name": "Whirlwind Of Destruction",
+                        "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
+                        "once": false,
+                    }
+                ]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "",
+                    "name": "",
+                    "effect": "",
+                    "once": true,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": [
+                    {
+                        "id": "whirlwhindOfDestruction",
+                        "name": "Whirlwind Of Destruction",
+                        "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
+                        "once": false,
+                    }
+                ]
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "fyresteelHandaxes",
+                        "name": "Fyresteel Handaxes",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Anti-charge (+1 Rend)"
+                    },                
+                ],
+                "abilities": [
+                    {
+                        "id": "whirlwhindOfDestruction",
+                        "name": "Whirlwind Of Destruction",
+                        "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
+                        "once": false,
+                    }
+                ],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
     ]
 }
 
