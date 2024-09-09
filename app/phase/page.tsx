@@ -24,14 +24,17 @@ function showAttributes(selectedPhase: string | null) : boolean {
 }
 
 function showBattleTrait(selectedPhase: string | null, selectedBattleTrait: BattleTrait) : boolean {
-  return selectedBattleTrait?.phase === selectedPhase;
+  console.log(selectedPhase, selectedBattleTrait.phase);
+  return selectedBattleTrait?.phase === selectedPhase  || selectedBattleTrait?.phase === "passive";
 }
 
 function showRegimentAbility(selectedPhase: string | null, selectedRegimentAbility: RegimentAbilitiy | null) : boolean {
-  return selectedRegimentAbility?.phase === selectedPhase;
+  console.log(selectedPhase, selectedRegimentAbility?.phase);
+  return selectedRegimentAbility?.phase === selectedPhase || selectedRegimentAbility?.phase === "passive";
 }
 
 function showEnhancement(selectedPhase: string | null, selectedEnhancement: Enhancement | null) : boolean {
+  console.log(selectedPhase, selectedEnhancement?.phase);
   return selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
 }
 

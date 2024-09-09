@@ -12,6 +12,7 @@ export type Unit = {
     save: number;
     ward: number;
     hero: boolean;
+    keywords: string[];
     Passive: {
         attacks: Attack[];
         abilities: Ability[];
@@ -114,6 +115,7 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": true,
+                    "keywords": ["Hero", "Cavalry"],
                     "Passive": {
                         "attacks": [],
                         "abilities": []
@@ -193,6 +195,7 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": false,
+                    "keywords": ["Hero", "Priest", "Infantry"],
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -272,6 +275,7 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": false,
+                    "keywords": ["Infantry", "Fly", "Reinforcements"],
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -355,6 +359,7 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": false,
+                    "keywords": ["Infantry", "Reinforcements"],
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -442,6 +447,7 @@ export const Units = {
                         "save": 4,
                         "ward": 6,
                         "hero": true,
+                        "keywords": ["Hero", "Cavalry", "Ward (6+)"],
                         "Passive": {
                             "attacks": [],
                             "abilities": [{
@@ -528,6 +534,7 @@ export const Units = {
                         "save": 6,
                         "ward": 0,
                         "hero": false,
+                        "keywords": ["Hero", "Wizard", "Infantry"],
                         "Passive": {
                             "attacks": [],
                             "abilities": []
@@ -597,6 +604,7 @@ export const Units = {
                         "save": 5,
                         "ward": 0,
                         "hero": false,
+                        "keywords": ["Hero","Infantry"],
                         "Passive": {
                             "attacks": [],
                             "abilities": []
@@ -674,6 +682,7 @@ export const Units = {
                         "save": 5,
                         "ward": 0,
                         "hero": false,
+                        "keywords": ["Infantry", "Reinforcements"],
                         "Passive": {
                             "attacks": [],
                             "abilities": []
@@ -736,6 +745,7 @@ export const Units = {
                         "save": 5,
                         "ward": 0,
                         "hero": false,
+                        "keywords": ["Infantry"],
                         "Passive": {
                             "attacks": [],
                             "abilities": []
@@ -802,7 +812,664 @@ export const Units = {
                         }
     
                     },
+                    
                 
+            ]
+        },
+        {
+            id: "SoD",
+            units: [
+                {
+
+                    "id": "Chaos Lord",
+                    "name": "Chaos Lord",
+                    "move": 5,
+                    "control": 2,
+                    "health": 6,
+                    "save": 3,
+                    "ward": 0,
+                    "hero": true,
+                    "keywords": ["Hero", "Infantry"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [ {
+                            "id": "favouredOfThePantheon",
+                            "name": "Favoured Of The Pantheon",
+                            "effect": "OLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
+                            "once": false,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "reaperblade",
+                                "name": "Reaperblade",
+                                "range": 0,
+                                "attacks": "5",
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "2",
+                                "ability": "Crit (Mortal)"
+                            },
+                        ],
+                        "abilities": [{
+                            "id": "ironWilledChampion",
+                            "name": "Iron Willed Champion",
+                            "effect": "Pick a friendly unit wholly within 12\" and roll a dice.  On a 2+, add 1 to the hit rolls for attacks made by this unit this phase.",
+                            "once": false,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+
+                    "id": "chaosChariot",
+                    "name": "Chaos Chariot",
+                    "move": 10,
+                    "control": 2,
+                    "health": 7,
+                    "save": 4,
+                    "ward": 0,
+                    "hero": false,
+                    "keywords": ["War Machine"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "swiftDeath",
+                            "name": "Swift Death",
+                            "effect": "If this unit charged this phase, pick an enemy unit within 1\" to be the target and roll the dice.  On a 2+, inflict D3 mortal damage on the target.",
+                            "once": false,
+                        }]
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "chaosWarFlail",
+                                "name": "Chaos War Flail",
+                                "range": 0,
+                                "attacks": "6",
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": ""
+                            },
+                            {
+                                "id": "driversLashingWhip",
+                                "name": "Drivers Lashing Whip",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": 4,
+                                "wound": 4,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": ""
+                            },
+                            {
+                                "id": "warhorsesTramplingHooves",
+                                "name": "Warhorses Trampling Hooves",
+                                "range": 0,
+                                "attacks": "4",
+                                "hit": 5,
+                                "wound": 3,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": "Companion"
+                            }
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+
+                    "id": "chaosWarriors",
+                    "name": "Chaos Warriors",
+                    "move": 5,
+                    "control": 1,
+                    "health": 2,
+                    "save": 3,
+                    "ward": 0,
+                    "hero": false,
+                    "keywords": ["Infantry"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "bringersOfDesolation",
+                            "name": "Bringers Of Desolation",
+                            "effect": "Add 1 to wound rolls for combat attacks made by this unit that target an enemy unit that is contesting an objective you do not conotrl.",
+                            "once": false,
+                        }]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "runeEtchedHalbred",
+                                "name": "Rune Etched Halbred",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "3",
+                                "ability": ""
+                            }
+                        ],
+                        "abilities": [{
+                            "id": "bringersOfDesolation",
+                            "name": "Bringers Of Desolation",
+                            "effect": "Add 1 to wound rolls for combat attacks made by this unit that target an enemy unit that is contesting an objective you do not conotrl.",
+                            "once": false,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+
+                    "id": "chaosKnights",
+                    "name": "Chaos Knights",
+                    "keywords": ["Cavalry"],
+                    "move": 10,
+                    "control": 1,
+                    "health": 4,
+                    "save": 3,
+                    "ward": 0,
+                    "hero": false,
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "impalingCharge",
+                            "name": "Impaling Charge",
+                            "effect": "If this unit charged this phase, add 1 to the Rend characteristic of this unit's melee weapons this phase.",
+                            "once": false,
+                        }]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "impalingCharge",
+                            "name": "Impaling Charge",
+                            "effect": "If this unit charged this phase, add 1 to the Rend characteristic of this unit's Cursed Lance this phase.",
+                            "once": false,
+                        }]
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "cursedLance",
+                                "name": "Cursed Lance",
+                                "range": 0,
+                                "attacks": "3",
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "1",
+                                "ability": "Charge (+1 Damage)"
+                            },
+                            {
+                                "id": "chaosSteedTrampingHooves",
+                                "name": "Chaos Steed Tramping Hooves",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": 5,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "1",
+                                "ability": "Companion"
+                            }
+                        ],
+                        "abilities": [{
+                            "id": "impalingCharge",
+                            "name": "Impaling Charge",
+                            "effect": "If this unit charged this phase, add 1 to the Rend characteristic of this unit's melee weapons this phase.",
+                            "once": false,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+            ]
+        },
+        {
+            "id": "DoK",
+            "units": [
+                {
+
+                    "id": "melusaaiIronscale",
+                    "name": "Melusai Ironscale",
+                    "move": 8,
+                    "control": 2,
+                    "health": 6,
+                    "save": 5,
+                    "ward": 6,
+                    "hero": true,
+                    "keywords": ["Hero","Infantry", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "allOutSlaughter",
+                            "name": "All Out Slaughter",
+                            "effect": "Pick a friendly unit wholly within 12\".  Until the start of your next turn, add 1 to hit rolls for combat attacks made by this target.",
+                            "once": false,
+                        }]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "allOutSlaughter",
+                            "name": "All Out Slaughter",
+                            "effect": "Pick a friendly unit wholly within 12\".  Until the start of your next turn, add 1 to hit rolls for combat attacks made by this target.",
+                            "once": false,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [
+                            {
+                                "id": "keldrisaith",
+                                "name": "Keldrisaith",
+                                "range": 12,
+                                "attacks": "2",
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "D3",
+                                "ability": ""
+                            }
+                        ],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "keldrisaith",
+                                "name": "Keldrisaith",
+                                "range": 0,
+                                "attacks": "6",
+                                "hit": 3,
+                                "wound": 4,
+                                "rend": 1,
+                                "damage": "2",
+                                "ability": ""
+                            },
+                            
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "turnedToCrystal",
+                            "name": "Turned To Crystal",
+                            "effect": "Pick an Enemy unit with 1\" of this unit to target and roll a dice.  On a 2+ inflict 1 mortal damage on the target.",
+                            "once": false,
+                        }]
+                    }
+
+                },
+                {
+
+                    "id": "bloodStalkers",
+                    "name": "Blood Stalkers",
+                    "move": 8,
+                    "control": 1,
+                    "health": 2,
+                    "save": 5,
+                    "ward": 6,
+                    "hero": false,
+                    "keywords": ["Infantry", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "heartSeekers",
+                            "name": "Heart Seekers",
+                            "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
+                            "once": true,
+                        }]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [
+                            {
+                                "id": "heartSeekerBow",
+                                "name": "Heart Seeker Bow",
+                                "range": 18,
+                                "attacks": "3",
+                                "hit": 3,
+                                "wound": 4,
+                                "rend": 1,
+                                "damage": "1",
+                                "ability": "Crit (Auto-wound)"
+                            }
+                        ],
+                        "abilities": [
+                            {
+                                "id": "heartSeekers",
+                                "name": "Heart Seekers",
+                                "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
+                                "once": true,
+                            }
+                        ]
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "scianlar",
+                                "name": "Scianlar",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": "3",
+                                "wound": 4,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": ""
+                            },
+                            
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+
+                    "id": "doomfireWarlocks",
+                    "name": "Doomfire Warlocks",
+                    "move": 14,
+                    "control": 1,
+                    "health": 3,
+                    "save": 5,
+                    "ward": 6,
+                    "hero": false,
+                    "keywords": ["Cavalry", "Reinforcements", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "doomfireBolt",
+                            "name": "Doomfire",
+                            "effect": "Pick a visibile enemy with 12\" of this unit to be the target and make a casting roll of 2D6.  On a 6+ inflict D3 mortal damage on the target.",
+                            "once": false,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [
+                            {
+                                "id": "doomfireCrossbow",
+                                "name": "Doomfire Crossbow",
+                                "range": 10,
+                                "attacks": "2",
+                                "hit": 3,
+                                "wound": 4,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": ""
+                            }
+                        ],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "cursedScimitar",
+                                "name": "Cursed Scimitar",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": 3,
+                                "wound": 4,
+                                "rend": 1,
+                                "damage": "1",
+                                "ability": ""
+                            },
+                            {
+                                "id": "darkSteedViciousBite",
+                                "name": "Dark Steed Vicious Bite",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": 5,
+                                "wound": 3,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": "Companion"
+                            }
+                            
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+
+                    "id": "witchAelves",
+                    "name": "Witch Aelves",
+                    "move": 6,
+                    "control": 1,
+                    "health": 1,
+                    "save": 6,
+                    "ward": 6,
+                    "hero": false,
+                    "keywords": ["Infantry", "Reinforcements", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [
+                            {
+                                "id": "frenziedFervour",
+                                "name": "Frenzied Fervour",
+                                "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
+                                "once": true,
+                            }
+                        ]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": [
+                            {
+                                "id": "frenziedFervour",
+                                "name": "Frenzied Fervour",
+                                "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
+                                "once": true,
+                            }
+                        ]
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "pairedSciansa",
+                                "name": "Pair Sciansa",
+                                "range": 0,
+                                "attacks": "3",
+                                "hit": 3,
+                                "wound": 4,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": "Crit (Auto-wound)"
+                            },
+                        ],
+                        "abilities": [ {
+                            "id": "frenziedFervour",
+                            "name": "Frenzied Fervour",
+                            "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
+                            "once": true,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
             ]
         }
     ]

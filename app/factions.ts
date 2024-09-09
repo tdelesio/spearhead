@@ -160,6 +160,127 @@ export const Factions = {
                 },],
         "units": ["Clawlord on Gnaw-beast (Hero)", "Grey Seer (1)", "Warlock Engineer (1)", "Clanrats (10)", "Clanrats (10)", "Rat Orges (3)"]
         
-    }
+    },
+    {
+        "id": "SoD",
+        "name": "Slaves of Darkness",
+        "battleTraits": [
+        {
+                "id": "eyeOfTheGods",
+                "name": "Eye of the Gods",
+                "effect": "Pick a friendly unit that is either contesting an objective not conotrlled by your opponent and is not in combat, or a unit that destroyed an enemy unit this turn.  Roll a dice.  1:  No Effect.  2: Ward 6.  3: Add 1 to run rolls.  4:  Subtract 1 from wounds attacks.  5: Add 1 to rend 6: Pick any ability.",
+                "once": false,
+                "phase": "passive"
+        },
+        ],
+        "regimentAbilities": [
+            {
+                "id": "theDeadBanner",
+                "name": "The Dead Banner",
+                "effect": "Pick a friendly Chaos Warrior or Chaos Knight.  Immediately roll on the Eye of the Gods.",
+                "once": false,
+                "phase": "passive"
+            },
+            {
+                "id": "fierceConquerors",
+                "name": "Fierce Conquerors",
+                "effect": "Add 3 to the control scores of friendly Chaos Warriors units.",
+                "once": false,
+                "phase": "passive"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "markOfKhorne",
+                    "name": "Mark of Khorne",
+                    "effect": "Add 1 to the Rend of yyour general's melee weapon if they charged in the same turn.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "markOfTzeentch",
+                    "name": "Mark of Tzeentch",
+                    "effect": "Pick a friendly unit that is not your general.  Remove that unit from the battlefield and set it up again wholly within 6\" of your general and more than 6\" from all enemy units.  It cannot use Move abilities for the rest of the phase.",
+                    "once": true,
+                    "phase": "movement",
+                },
+                {
+                    "id": "markOfNurgle",
+                    "name": "Mark of Nurgle",
+                    "effect": "Subtract 1 from wound rolls for the combat attacks that target your general",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "markOfSlaanesh",
+                    "name": "Mark of Slaanesh",
+                    "effect": "Your general has Strike-First",
+                    "once": false,
+                    "phase": "passive",
+                },
+            ],
+        "units": ["Choas Lord (Hero)", "Chaos Chariot (1)", "Chaos Warriors (5)", "Chaos Warriors (5)", "Chaos Knights (5)"]
+        
+    },
+    {
+        "id": "DoK",
+        "name": "Daughters of Khaine",
+        "battleTraits": [
+        {
+                "id": "bloodRites",
+                "name": "Blood Rites",
+                "effect": "At the start of each battle round, all friendly units gain the Blood Rites passive abilities that corresponds to the battle round number.  1:  Add 1 to run for this unit.  2:  Add 1 to the Charge roll for this unit.  3:  Add 1 to the hit rolls for combat attacks made by this unit.  4:  Add 1 to wound rolls for combat attacks made by this unit. ",
+                "once": false,
+                "phase": "passive"
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "murderousEpiphany",
+                "name": "Murderous Epiphany",
+                "effect": "All friendly units gain the Blood Rites passive abiliity they would have gained at the start of the net battle round(they keep this ability for the rest of the battle, but they do not gain it for a second time at the start of the next battle round).",
+                "once": false,
+                "phase": "passive"
+            },
+            {
+            "id": "blessingOfKhaine",
+                "name": "Blessing of Khaine",
+                "effect": "Pick a friendly unit.  Add 1 to ward rolls for the unit this phase.",
+                "once": false,
+                "phase": "passive"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "bathedInBlood",
+                    "name": "Bathing in Blood",
+                    "effect": "Each time a model is slain by your general, Heal 1.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "fuledByRevenge",
+                    "name": "Fueled by Revenge",
+                    "effect": "Add 1 to the Rend of melee weapons used by friendly Blood Stalkers while they are wholly within 12\" of your general.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "flaskOfShademist",
+                    "name": "Flask of Shademist",
+                    "effect": "Unit the end of the phase, subtract 1 from hit rolls for attacks that target friendly units while they are wholly within 12\" of your general.",
+                    "once": true,
+                    "phase": "passive",
+                },
+                {
+                    "id": "zealousOperator",
+                    "name": "Zealous Operator",
+                    "effect": "Pick a friendly unit wholly within 9\" of your general that is not in combat.  Roll a dice for each slain model from the unit.  For each 5+, you can return 1 slain model to the unit.",
+                    "once": false,
+                    "phase": "hero",
+                },],
+        "units": ["Melusai Ironscale (Hero)", "Witch Aelves (5)", "Witch Aelves (5)", "Doomfire Warlocks (5)", "Blood Stalkers (5)"]
+        
+    },
 ]
 };
