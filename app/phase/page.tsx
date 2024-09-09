@@ -107,7 +107,7 @@ export default function StartOfRoundPage() {
           <section>
             <h2 className="text-xl font-semibold mb-4">Movement</h2>
             <div className="space-y-4">
-              {factionUnits?.units.map((unit) => (
+              {factionUnits?.units?.map((unit) => (
                 <Card key={unit.id} className="bg-white text-black max-w-md">
                   <CardHeader>
                     <CardTitle>{unit.name}</CardTitle>
@@ -124,7 +124,7 @@ export default function StartOfRoundPage() {
           <section>
             <h2 className="text-xl font-semibold mb-4">Attacks</h2>
             <div className="space-y-4">
-              {factionUnits?.units.map((unit) => (
+              {factionUnits?.units?.map((unit) => (
                 <Card key={unit.id} className="bg-white text-black w-full max-w-md overflow-hidden">
                   <CardHeader>
                     <CardTitle>{unit.name}</CardTitle>
@@ -178,7 +178,7 @@ export default function StartOfRoundPage() {
           <h2 className="text-xl font-semibold mb-2">Passive Abilities</h2>
           
           <div className="space-y-4">
-            {factionUnits?.units.flatMap(unit =>
+            {factionUnits?.units?.flatMap(unit =>
               unit.Passive.abilities.map(ability => 
                 renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
               )
