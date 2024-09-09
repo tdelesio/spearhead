@@ -832,7 +832,14 @@ export const Units = {
                     "keywords": ["Hero", "Infantry"],
                     "Passive": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [
+                            {
+                                "id": "favouredOfThePantheon",
+                                "name": "Favoured Of The Pantheon",
+                                "effect": "RoLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
+                                "once": false,
+                            }
+                        ]
                     },
                     "Start":
                     {
@@ -844,7 +851,7 @@ export const Units = {
                         "abilities": [ {
                             "id": "favouredOfThePantheon",
                             "name": "Favoured Of The Pantheon",
-                            "effect": "OLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
+                            "effect": "RoLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
                             "once": false,
                         }]
                     },

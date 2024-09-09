@@ -154,6 +154,17 @@ export default function StartOfRoundPage() {
                           <div>Ability</div><div className="truncate">{attr.ability}</div>
                         </div>
                       ))}
+                      {/* Phase Abilities */}
+        <section>        
+          <div className="space-y-4">
+            {factionUnits?.units.find(u => u.id === unit.id) 
+              ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability => 
+                  renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
+                )
+              : null
+            }
+          </div>
+        </section>
                     </CardContent>
                   )}
                 </Card>
@@ -162,16 +173,7 @@ export default function StartOfRoundPage() {
           </section>
         )}
 
-        {/* Phase Abilities */}
-        <section>        
-          <div className="space-y-4">
-            {factionUnits?.units.flatMap(unit =>
-              getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability => 
-                renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
-              )
-            )}
-          </div>
-        </section>
+        
 
         {/* Passive Abilities */}
         <section>
@@ -240,10 +242,9 @@ function renderAbilityCard(unit: Unit, ability: any, usedAbilities: Set<string>,
       <div className={`absolute inset-0 bg-gray-900/5 transition-opacity duration-300 ${isUsed ? 'opacity-100' : 'opacity-0'}`} />
       <div className={`relative transition-opacity duration-300 ${isUsed ? 'opacity-50' : 'opacity-100'}`}>
         <CardHeader>
-          <CardTitle>{unit.name}</CardTitle>
+          <CardTitle>{ability.name} {ability.once ? "(Once Per Battle)" : ""}</CardTitle>
         </CardHeader>
         <CardContent>
-          <h3 className="text-sm font-semibold">{ability.name} {ability.once ? "(Once Per Battle)" : ""}</h3>
           <p className="text-sm text-gray-500 dark:text-gray-400">{ability.effect}</p>
           {ability.once && (
             <Badge variant="secondary" className="mt-1">
