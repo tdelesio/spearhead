@@ -86,31 +86,29 @@ export default function StartOfRoundPage() {
 
   return (
 
-<div>
 <Carousel>
+
+
 <CarouselContent>
   {Phase.phases.map(selectedPhase => (
-<CarouselItem key={selectedPhase.id}>
+<CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
 
-    <div className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
-    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name} Abilities</h1>
-    <p className="text-sm mb-4">Once per battle items are marked. Tap a card to toggle if you have used that ability this round.</p>
+    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name} Abilities </h1>
 
       <div className="space-y-6">
         {/* Traits, Abilities, and Enhancements */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        
           {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
           {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && renderCard(selectedRegimentAbility, "Regiment Ability", usedAbilities, handleCardClick)}
           {selectedEnhancement && showEnhancement(selectedPhase.id, selectedEnhancement) && renderCard(selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
-        </div>
-
+        
         {/* Movement */}
         {selectedPhase.id === 'movement' && (
           <section>
             <h2 className="text-xl font-semibold mb-4">Movement</h2>
             <div className="space-y-4">
               {factionUnits?.units.map((unit) => (
-                <Card key={unit.id} className="bg-white text-black">
+                <Card key={unit.id} className="bg-white text-black max-w-md">
                   <CardHeader>
                     <CardTitle>{unit.name}</CardTitle>
                     <CardDescription>Movement: {unit.move}</CardDescription>
@@ -127,7 +125,7 @@ export default function StartOfRoundPage() {
             <h2 className="text-xl font-semibold mb-4">Attacks</h2>
             <div className="space-y-4">
               {factionUnits?.units.map((unit) => (
-                <Card key={unit.id} className="bg-white text-black">
+                <Card key={unit.id} className="bg-white text-black w-full max-w-md overflow-hidden">
                   <CardHeader>
                     <CardTitle>{unit.name}</CardTitle>
                     <CardDescription>Health: {unit.health} Save: {unit.save} Ward: {unit.ward}</CardDescription>
@@ -178,7 +176,7 @@ export default function StartOfRoundPage() {
         {/* Passive Abilities */}
         <section>
           <h2 className="text-xl font-semibold mb-2">Passive Abilities</h2>
-          <p className="text-sm mb-4">Once per battle items are marked. Tap a card to toggle if you have used that ability this round.</p>
+          
           <div className="space-y-4">
             {factionUnits?.units.flatMap(unit =>
               unit.Passive.abilities.map(ability => 
@@ -188,14 +186,11 @@ export default function StartOfRoundPage() {
           </div>
         </section>
       </div>
-      </div>
+      
       </CarouselItem>
       ))}
       </CarouselContent>
-      <CarouselPrevious />
-    <CarouselNext />
       </Carousel>
-    </div>
   );
 }
 
@@ -205,7 +200,7 @@ function renderCard(item: any, title: string, usedAbilities: Set<string>, handle
     <Card
       key={item?.id}
       className={`relative overflow-hidden transition-all duration-300 ease-in-out
-        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 cursor-not-allowed' : 'bg-white text-black cursor-pointer hover:shadow-md'}`}
+        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 cursor-not-allowed' : 'bg-white text-black cursor-pointer hover:shadow-md w-full max-w-md overflow-hidden'}`}
       onClick={() => handleCardClick(item?.id || '', item?.once || false)}
     >
       {isUsed && (
@@ -235,7 +230,7 @@ function renderAbilityCard(unit: Unit, ability: any, usedAbilities: Set<string>,
     <Card
       key={`${unit.id}-${ability.id}`}
       className={`relative cursor-pointer transition-all duration-300 ease-in-out
-        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 saturate-0' : 'bg-white text-black hover:shadow-md'}
+        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 saturate-0' : 'bg-white text-black hover:shadow-md w-full max-w-md overflow-hidden'}
       `}
       onClick={() => handleCardClick(unit.id, ability.once)}
     >
