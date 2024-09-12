@@ -8,7 +8,7 @@
                     "save": ,
                     "ward": 0,
                     "hero": false,
-                    "keywords": ["Infantry", "Fly", "Ward (6+)"],
+                    "keywords": [""],
                     "Passive": {
                         "attacks": [],
                         "abilities": []
@@ -101,7 +101,8 @@
                             "name": "",
                             "effect": "",
                             "once": false,
-                            "phase": "passive"
+                            "phase": "passive",
+                            "table": false
                     }
                     ],
                     "regimentAbilities": [

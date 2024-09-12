@@ -49,7 +49,6 @@ export const battleTraitTable = {
 
 export function AbilityTable({ passedFaction }: AbilityTableProps) {
 
-console.log("passedFaction=", passedFaction);
 
   const battleTrait = battleTraitTable.factions.find(trait => trait.faction === passedFaction);
 

@@ -358,7 +358,8 @@ export const Factions = {
                 "name": "Wave of Terror",
                 "effect": "Pick a friendly unit to use this ability if they charged this phase and the charge roll was 10+, pick an enemy unit within 1\" of it.  That target has Strike-Last this turn.  Ignore all modifiers to save rolls rolls for friendly units (positive or negative).",
                 "once": false,
-                "phase": "passive"
+                "phase": "passive",
+                "table": false
         }
         ],
         "regimentAbilities": [

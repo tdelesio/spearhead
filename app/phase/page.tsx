@@ -91,10 +91,10 @@ export default function StartOfRoundPage() {
   return (
 
 <Carousel>
-{/* <div className="absolute top-4 right-4 z-10 flex space-x-2">
+ <div className="absolute top-10 left-80 z-10  ">
         <CarouselPrevious className="h-8 w-8 rounded-full" />
         <CarouselNext className="h-8 w-8 rounded-full" />
-      </div> */}
+      </div> 
 
 
 <CarouselContent>
