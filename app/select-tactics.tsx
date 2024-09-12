@@ -99,9 +99,6 @@ export default function SelectFactionTacticsForm() {
     }
   }
 
-  const handleTestClick = () => {
-    console.log("Test button clicked")
-  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">

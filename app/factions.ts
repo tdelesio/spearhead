@@ -13,6 +13,7 @@ export type Faction = {
     effect: string;
     once: boolean;
     phase: string;
+    table: boolean;
   }
   
   export type RegimentAbilitiy = {
@@ -42,14 +43,16 @@ export const Factions = {
                 "name": "Shield of Azyr",
                 "effect": "Pick a friendly Unit.  Unit the start of your next turn, that unit has Ward 5+",
                 "once": true,
-                "phase": "hero"
+                "phase": "hero",
+                "table": false
         },
         {
                 "id": "stormCharge",
                 "name": "Storm Charge",
                 "effect": "Pick a friendly unit that is not in combat, that unit can charge this turn even if a run was used",
                 "once": true,
-                "phase": "charge"
+                "phase": "charge",
+                "table": false
         }
         ],
         "regimentAbilities": [
@@ -110,7 +113,8 @@ export const Factions = {
                 "name": "The Lurking Vermintide",
                 "effect": "Pick an undeployed friendly unit, set them up in the tunnels below.  On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
                 "once": true,
-                "phase": "movement"
+                "phase": "movement",
+                "table": false
         }
         ],
         "regimentAbilities": [
@@ -168,9 +172,10 @@ export const Factions = {
         {
                 "id": "eyeOfTheGods",
                 "name": "Eye of the Gods",
-                "effect": "Pick a friendly unit that is either contesting an objective not conotrlled by your opponent and is not in combat, or a unit that destroyed an enemy unit this turn.  Roll a dice.  1:  No Effect.  2: Ward 6.  3: Add 1 to run rolls.  4:  Subtract 1 from wounds attacks.  5: Add 1 to rend 6: Pick any ability.",
+                "effect": "Pick a friendly unit that is either contesting an objective not conotrlled by your opponent and is not in combat, or a unit that destroyed an enemy unit this turn.  Roll a dice.",
                 "once": false,
-                "phase": "passive"
+                "phase": "passive",
+                "table": true
         },
         ],
         "regimentAbilities": [
@@ -229,9 +234,10 @@ export const Factions = {
         {
                 "id": "bloodRites",
                 "name": "Blood Rites",
-                "effect": "At the start of each battle round, all friendly units gain the Blood Rites passive abilities that corresponds to the battle round number.  1:  Add 1 to run for this unit.  2:  Add 1 to the Charge roll for this unit.  3:  Add 1 to the hit rolls for combat attacks made by this unit.  4:  Add 1 to wound rolls for combat attacks made by this unit. ",
+                "effect": "At the start of each battle round, all friendly units gain the Blood Rites passive abilities that corresponds to the battle round number.",
                 "once": false,
-                "phase": "passive"
+                "phase": "passive",
+                "table": true
         }
         ],
         "regimentAbilities": [
@@ -291,7 +297,8 @@ export const Factions = {
                 "name": "Ur-Gole Runes",
                 "effect": "Pick 1 of ur-gold runes, then make an activation roll of D6.  Each ur-gold runes can only be activated once per battle.  On a 1-5, the rune's standard effect applies.  On a 6, the enchanced effect applies.  Rune of Fury: S-Add 1 to hit rolls for combat attacks.  E-In addition, add 1 to the attacks.  Rune of Searing Heat: S-Add 1 to the Rend. E-In addition, add 1 to the damage. Rune of Fiery Determination: S-Ward 5 E-In addition, add 1 to save.  Run of Relentless Zeal: S- Add 2\" to the move E-In addition, add 2 to charge rolls",
                 "once": false,
-                "phase": "passive"
+                "phase": "passive",
+                "table": true
         }
         ],
         "regimentAbilities": [
