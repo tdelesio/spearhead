@@ -8,6 +8,7 @@
                     "save": ,
                     "ward": 0,
                     "hero": false,
+                    "keywords": ["Infantry", "Fly", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
                         "abilities": []

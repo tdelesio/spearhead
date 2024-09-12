@@ -49,7 +49,7 @@ export type Unit = {
 
 }
 
-export function getAbilityForRound (unit: Unit, phase: string): Ability[] {
+export function getAbilityForRound(unit: Unit, phase: string): Ability[] {
     switch (phase) {
         case "start":
             return unit.Start.abilities;
@@ -70,7 +70,7 @@ export function getAbilityForRound (unit: Unit, phase: string): Ability[] {
     }
 }
 
-export function getAttacksForRound (unit: Unit, phase: string): Attack[] {
+export function getAttacksForRound(unit: Unit, phase: string): Attack[] {
     switch (phase) {
         case "shooting":
             return unit.Shooting.attacks;
@@ -347,7 +347,7 @@ export const Units = {
                         "attacks": [],
                         "abilities": []
                     }
-                
+
                 },
                 {
 
@@ -427,393 +427,393 @@ export const Units = {
                             "once": false,
                         }]
                     }
-                
+
                 }],
-                
-                
+
+
 
 
         },
         {
             "id": "skaven",
             "units": [
-                
-                    {
-                        "id": "clawLordOnGnawBeast",
-                        "name": "Clawlord on Gnaw-beast",
-                        "move": 9,
-                        "control": 2,
-                        "health": 7,
-                        "save": 4,
-                        "ward": 6,
-                        "hero": true,
-                        "keywords": ["Hero", "Cavalry", "Ward (6+)"],
-                        "Passive": {
-                            "attacks": [],
-                            "abilities": [{
-                                "id": "corneredRat",
-                                "name": "Cornered Rat",
-                                "effect": "When this unit is damaged, add 3 to the Attacks characteristic of its Warpforged Halbred.",
-                                "once": false,
-                            }]
-                        },
-                        "Start":
-                        {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Hero": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Movement": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Shooting": {
-                            "attacks": [
-                                {
-                                    "id": "ratlingPistol",
-                                    "name": "Ratling Pistol",
-                                    "range": 10,
-                                    "attacks": "D6",
-                                    "hit": 3,
-                                    "wound": 3,
-                                    "rend": 1,
-                                    "damage": "1",
-                                    "ability": "Crit (Auto-wound), Shoot in Combat"
-                                }
-                            ],
-                            "abilities": []
-                        },
-                        "Charge": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Combat":
-                        {
-                            "attacks": [
-                                {
-                                    "id": "WarforgedHalbred",
-                                    "name": "Warforged Halbred",
-                                    "range": 0,
-                                    "attacks": "5",
-                                    "hit": 3,
-                                    "wound": 4,
-                                    "rend": 1,
-                                    "damage": "2",
-                                    "ability": ""
-                                },
-                                {
-                                    "id": "Gnaw-beast Chised Fangs",
-                                    "name": "Gnaw-beast Chised Fangs",
-                                    "range": 0,
-                                    "attacks": "4",
-                                    "hit": 4,
-                                    "wound": 3,
-                                    "rend": 1,
-                                    "damage": "D3",
-                                    "ability": "Companion"
-                                },
-                                
-                            ],
-                            "abilities": [],
-                        },
-                        "End": {
-                            "attacks": [],
-                            "abilities": []
-                        }
-    
+
+                {
+                    "id": "clawLordOnGnawBeast",
+                    "name": "Clawlord on Gnaw-beast",
+                    "move": 9,
+                    "control": 2,
+                    "health": 7,
+                    "save": 4,
+                    "ward": 6,
+                    "hero": true,
+                    "keywords": ["Hero", "Cavalry", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "corneredRat",
+                            "name": "Cornered Rat",
+                            "effect": "When this unit is damaged, add 3 to the Attacks characteristic of its Warpforged Halbred.",
+                            "once": false,
+                        }]
                     },
+                    "Start":
                     {
-                        "id": "greySeer",
-                        "name": "Grey Seer",
-                        "move": 6,
-                        "control": 2,
-                        "health": 5,
-                        "save": 6,
-                        "ward": 0,
-                        "hero": false,
-                        "keywords": ["Hero", "Wizard", "Infantry"],
-                        "Passive": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Start":
-                        {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Hero": {
-                            "attacks": [],
-                            "abilities": [{
-                                "id": "willOfTheHornedRat",
-                                "name": "Will Of The Horned Rat",
-                                "effect": "Pick a friendly unit wholly within 13\" then roll a dice.  On a 3+, add the roll to the targets control score until the start of your next turn.",
-                                "once": false,
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [
+                            {
+                                "id": "ratlingPistol",
+                                "name": "Ratling Pistol",
+                                "range": 10,
+                                "attacks": "D6",
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "1",
+                                "ability": "Crit (Auto-wound), Shoot in Combat"
+                            }
+                        ],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "WarforgedHalbred",
+                                "name": "Warforged Halbred",
+                                "range": 0,
+                                "attacks": "5",
+                                "hit": 3,
+                                "wound": 4,
+                                "rend": 1,
+                                "damage": "2",
+                                "ability": ""
                             },
                             {
-                                "id": "wither",
-                                "name": "Wither",
-                                "effect": "Pick a visable enemy unit within 13\" of this unit to be the target, then making a casting rolling 2D6.  On a 6+, inflict D3 mortal damage on the target.",
+                                "id": "Gnaw-beast Chised Fangs",
+                                "name": "Gnaw-beast Chised Fangs",
+                                "range": 0,
+                                "attacks": "4",
+                                "hit": 4,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "D3",
+                                "ability": "Companion"
+                            },
+
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+                    "id": "greySeer",
+                    "name": "Grey Seer",
+                    "move": 6,
+                    "control": 2,
+                    "health": 5,
+                    "save": 6,
+                    "ward": 0,
+                    "hero": false,
+                    "keywords": ["Hero", "Wizard", "Infantry"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "willOfTheHornedRat",
+                            "name": "Will Of The Horned Rat",
+                            "effect": "Pick a friendly unit wholly within 13\" then roll a dice.  On a 3+, add the roll to the targets control score until the start of your next turn.",
+                            "once": false,
+                        },
+                        {
+                            "id": "wither",
+                            "name": "Wither",
+                            "effect": "Pick a visable enemy unit within 13\" of this unit to be the target, then making a casting rolling 2D6.  On a 6+, inflict D3 mortal damage on the target.",
+                            "once": false,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "warpstoneStaff",
+                                "name": "Warpstone Staff",
+                                "range": 0,
+                                "attacks": "3",
+                                "hit": 4,
+                                "wound": 4,
+                                "rend": 1,
+                                "damage": "D3",
+                                "ability": ""
+                            },
+
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+                    "id": "warlockEngineer",
+                    "name": "Warlock Engineer",
+                    "move": 6,
+                    "control": 2,
+                    "health": 5,
+                    "save": 5,
+                    "ward": 0,
+                    "hero": false,
+                    "keywords": ["Hero", "Infantry"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [
+                            {
+                                "id": "warplockMusket",
+                                "name": "Warplock Musket",
+                                "range": 24,
+                                "attacks": "2",
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 2,
+                                "damage": "D3",
+                                "ability": "Crit (Auto-wound)"
+                            }
+                        ],
+                        "abilities": [
+                            {
+                                "id": "more-moreWarpEnergy",
+                                "name": "More More Warp Energy",
+                                "effect": "When delcaring shoot and it has not used move ability this turn.  Roll a dice.  On a 2+, set the Damage characteristic of the Warplock Musket to 3 this phase.  On a 1, inflict D3 mortal damage to this unit.",
                                 "once": false,
-                            }]
-                        },
-                        "Movement": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Shooting": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Charge": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Combat":
-                        {
-                            "attacks": [
-                                {
-                                    "id": "warpstoneStaff",
-                                    "name": "Warpstone Staff",
-                                    "range": 0,
-                                    "attacks": "3",
-                                    "hit": 4,
-                                    "wound": 4,
-                                    "rend": 1,
-                                    "damage": "D3",
-                                    "ability": ""
-                                },
-                               
-                            ],
-                            "abilities": [],
-                        },
-                        "End": {
-                            "attacks": [],
-                            "abilities": []
-                        }
-    
+                            }
+                        ]
                     },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
                     {
-                        "id": "warlockEngineer",
-                        "name": "Warlock Engineer",
-                        "move": 6,
-                        "control": 2,
-                        "health": 5,
-                        "save": 5,
-                        "ward": 0,
-                        "hero": false,
-                        "keywords": ["Hero","Infantry"],
-                        "Passive": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Start":
-                        {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Hero": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Movement": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Shooting": {
-                            "attacks": [
-                                {
-                                    "id": "warplockMusket",
-                                    "name": "Warplock Musket",
-                                    "range": 24,
-                                    "attacks": "2",
-                                    "hit": 3,
-                                    "wound": 3,
-                                    "rend": 2,
-                                    "damage": "D3",
-                                    "ability": "Crit (Auto-wound)"
-                                }
-                            ],
-                            "abilities": [
-                                {
-                                    "id": "more-moreWarpEnergy",
-                                    "name": "More More Warp Energy",
-                                    "effect": "When delcaring shoot and it has not used move ability this turn.  Roll a dice.  On a 2+, set the Damage characteristic of the Warplock Musket to 3 this phase.  On a 1, inflict D3 mortal damage to this unit.",
-                                    "once": false,
-                                }
-                            ]
-                        },
-                        "Charge": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Combat":
-                        {
-                            "attacks": [
-                                {
-                                    "id": "warpforgedDagger",
-                                    "name": "Warpforged Dagger",
-                                    "range": 0,
-                                    "attacks": "3",
-                                    "hit": 4,
-                                    "wound": 4,
-                                    "rend": 0,
-                                    "damage": "2",
-                                    "ability": ""
-                                },
-                            
-                            ],
-                            "abilities": [],
-                        },
-                        "End": {
-                            "attacks": [],
-                            "abilities": []
-                        }
-    
+                        "attacks": [
+                            {
+                                "id": "warpforgedDagger",
+                                "name": "Warpforged Dagger",
+                                "range": 0,
+                                "attacks": "3",
+                                "hit": 4,
+                                "wound": 4,
+                                "rend": 0,
+                                "damage": "2",
+                                "ability": ""
+                            },
+
+                        ],
+                        "abilities": [],
                     },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+                    "id": "clanrats",
+                    "name": "Clanrats",
+                    "move": 6,
+                    "control": 1,
+                    "health": 1,
+                    "save": 5,
+                    "ward": 0,
+                    "hero": false,
+                    "keywords": ["Infantry", "Reinforcements"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
                     {
-                        "id": "clanrats",
-                        "name": "Clanrats",
-                        "move": 6,
-                        "control": 1,
-                        "health": 1,
-                        "save": 5,
-                        "ward": 0,
-                        "hero": false,
-                        "keywords": ["Infantry", "Reinforcements"],
-                        "Passive": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Start":
-                        {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Hero": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Movement": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Shooting": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Charge": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Combat":
-                        {
-                            "attacks": [
-                                {
-                                    "id": "rustyBlade",
-                                    "name": "Rusty Blade",
-                                    "range": 0,
-                                    "attacks": "2",
-                                    "hit": 4,
-                                    "wound": 5,
-                                    "rend": 0,
-                                    "damage": "1",
-                                    "ability": ""
-                                }
-                            ],
-                            "abilities": [],
-                        },
-                        "End": {
-                            "attacks": [],
-                            "abilities": [{
-                                "id": "seetingSwarm",
-                                "name": "Seeting Swarm",
-                                "effect": "You can return D3 slain models to this unit.",
-                                "once": false,
-                            }]
-                        }
-    
+                        "attacks": [],
+                        "abilities": []
                     },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
                     {
-                        "id": "ratOgors",
-                        "name": "Rat Ogres",
-                        "move": 6,
-                        "control": 1,
-                        "health": 4,
-                        "save": 5,
-                        "ward": 0,
-                        "hero": false,
-                        "keywords": ["Infantry"],
-                        "Passive": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Start":
-                        {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Hero": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Movement": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Shooting": {
-                            "attacks": [
-                                {
-                                    "id": "warpfireGun",
-                                    "name": "Warpfire Gun",
-                                    "range": 10,
-                                    "attacks": "2D6",
-                                    "hit": 2,
-                                    "wound": 4,
-                                    "rend": 2,
-                                    "damage": "1",
-                                    "ability": "Shoot in Combat"
-                                }
-                            ],
-                            "abilities": []
-                        },
-                        "Charge": {
-                            "attacks": [],
-                            "abilities": []
-                        },
-                        "Combat":
-                        {
-                            "attacks": [
-                                {
-                                    "id": "clawsBladesAndFangs",
-                                    "name": "Claws Blades And Fangs",
-                                    "range": 0,
-                                    "attacks": "5",
-                                    "hit": 4,
-                                    "wound": 3,
-                                    "rend": 1,
-                                    "damage": "2",
-                                    "ability": ""
-                                },
-                                
-                            ],
-                            "abilities": [{
-                                "id": "unleashedWarpFury",
-                                "name": "Unleashed Warp Fury",
-                                "effect": "Inflict D3 mortal damage on this uniit.  Then add 1 to the attacks characteristic of its melee weapons this phase.",
-                                "once": true,
-                            }],
-                        },
-                        "End": {
-                            "attacks": [],
-                            "abilities": []
-                        }
-    
+                        "attacks": [
+                            {
+                                "id": "rustyBlade",
+                                "name": "Rusty Blade",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": 4,
+                                "wound": 5,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": ""
+                            }
+                        ],
+                        "abilities": [],
                     },
-                    
-                
+                    "End": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "seetingSwarm",
+                            "name": "Seeting Swarm",
+                            "effect": "You can return D3 slain models to this unit.",
+                            "once": false,
+                        }]
+                    }
+
+                },
+                {
+                    "id": "ratOgors",
+                    "name": "Rat Ogres",
+                    "move": 6,
+                    "control": 1,
+                    "health": 4,
+                    "save": 5,
+                    "ward": 0,
+                    "hero": false,
+                    "keywords": ["Infantry"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [
+                            {
+                                "id": "warpfireGun",
+                                "name": "Warpfire Gun",
+                                "range": 10,
+                                "attacks": "2D6",
+                                "hit": 2,
+                                "wound": 4,
+                                "rend": 2,
+                                "damage": "1",
+                                "ability": "Shoot in Combat"
+                            }
+                        ],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "clawsBladesAndFangs",
+                                "name": "Claws Blades And Fangs",
+                                "range": 0,
+                                "attacks": "5",
+                                "hit": 4,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "2",
+                                "ability": ""
+                            },
+
+                        ],
+                        "abilities": [{
+                            "id": "unleashedWarpFury",
+                            "name": "Unleashed Warp Fury",
+                            "effect": "Inflict D3 mortal damage on this uniit.  Then add 1 to the attacks characteristic of its melee weapons this phase.",
+                            "once": true,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+
+
             ]
         },
         {
@@ -848,7 +848,7 @@ export const Units = {
                     },
                     "Hero": {
                         "attacks": [],
-                        "abilities": [ {
+                        "abilities": [{
                             "id": "favouredOfThePantheon",
                             "name": "Favoured Of The Pantheon",
                             "effect": "RoLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
@@ -1150,7 +1150,7 @@ export const Units = {
                     "save": 5,
                     "ward": 6,
                     "hero": true,
-                    "keywords": ["Hero","Infantry", "Ward (6+)"],
+                    "keywords": ["Hero", "Infantry", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -1212,7 +1212,7 @@ export const Units = {
                                 "damage": "2",
                                 "ability": ""
                             },
-                            
+
                         ],
                         "abilities": [],
                     },
@@ -1301,7 +1301,7 @@ export const Units = {
                                 "damage": "1",
                                 "ability": ""
                             },
-                            
+
                         ],
                         "abilities": [],
                     },
@@ -1389,7 +1389,7 @@ export const Units = {
                                 "damage": "1",
                                 "ability": "Companion"
                             }
-                            
+
                         ],
                         "abilities": [],
                     },
@@ -1464,7 +1464,7 @@ export const Units = {
                                 "ability": "Crit (Auto-wound)"
                             },
                         ],
-                        "abilities": [ {
+                        "abilities": [{
                             "id": "frenziedFervour",
                             "name": "Frenzied Fervour",
                             "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
@@ -1480,242 +1480,534 @@ export const Units = {
             ]
         },
         {
+            "id": "fyreslayers",
+            "units": [
 
-            "id": "battlesmith",
-            "name": "Battlesmith",
-            "move": 4,
-            "control": 5,
-            "health": 5,
-            "save": 5,
-            "ward": 6,
-            "hero": true,
-            "keywords": ["Infantry", "Hero", "Ward (6+)"],
-            "Passive": {
-                "attacks": [],
-                "abilities": [
-                    {
-                        "id": "iconOfGrimnir",
-                        "name": "Icon of Grimnir",
-                        "effect": "Add 1 to save rolls for friendly units while they are wholly within 12\" of this unit.",
-                        "once": false,
-                    }
-                ]
-            },
-            "Start":
-            {
-                "attacks": [],
-                "abilities": []
-            },
-            "Hero": {
-                "attacks": [],
-                "abilities": [{
-                    "id": "plantTheIcon",
-                    "name": "Plant The Icon",
-                    "effect": "For the rest of the turn, friednly units have ward 5+ while they are within 12\" of this unit.",
-                    "once": true,
-                }]
-            },
-            "Movement": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Shooting": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Charge": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Combat":
-            {
-                "attacks": [
-                    {
-                        "id": "ancestralBattleAxe",
-                        "name": "Ancestral Battle Axe",
-                        "range": 0,
-                        "attacks": 5,
-                        "hit": 3,
-                        "wound": 3,
-                        "rend": 1,
-                        "damage": "2",
-                        "ability": ""
+                {
+
+                    "id": "battlesmith",
+                    "name": "Battlesmith",
+                    "move": 4,
+                    "control": 5,
+                    "health": 5,
+                    "save": 5,
+                    "ward": 6,
+                    "hero": true,
+                    "keywords": ["Infantry", "Hero", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [
+                            {
+                                "id": "iconOfGrimnir",
+                                "name": "Icon of Grimnir",
+                                "effect": "Add 1 to save rolls for friendly units while they are wholly within 12\" of this unit.",
+                                "once": false,
+                            }
+                        ]
                     },
-                ],
-                "abilities": [],
-            },
-            "End": {
-                "attacks": [],
-                "abilities": []
-            }
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "plantTheIcon",
+                            "name": "Plant The Icon",
+                            "effect": "For the rest of the turn, friednly units have ward 5+ while they are within 12\" of this unit.",
+                            "once": true,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "ancestralBattleAxe",
+                                "name": "Ancestral Battle Axe",
+                                "range": 0,
+                                "attacks": 5,
+                                "hit": 3,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "2",
+                                "ability": ""
+                            },
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
 
+                },
+                {
+
+                    "id": "hearthguardBerzerkers",
+                    "name": "Hearthguard Berzerkers",
+                    "move": 4,
+                    "control": 1,
+                    "health": 2,
+                    "save": 6,
+                    "ward": 6,
+                    "hero": false,
+                    "keywords": ["Infantry", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [
+                            {
+                                "id": "dutyUntoDeath",
+                                "name": "Duty Unto Death",
+                                "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
+                                "once": false,
+                            }
+                        ]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "",
+                            "name": "",
+                            "effect": "",
+                            "once": true,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "flamestrikePoleaxe",
+                                "name": "Flamestrike Poleaxe",
+                                "range": 0,
+                                "attacks": 2,
+                                "hit": "3",
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "2",
+                                "ability": "Crit (Mortal)"
+                            },
+                        ],
+                        "abilities": [
+                            {
+                                "id": "dutyUntoDeath",
+                                "name": "Duty Unto Death",
+                                "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
+                                "once": false,
+                            }
+                        ],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+
+                    "id": "vulkiteBerzerkers",
+                    "name": "Vulkite Berzerkers",
+                    "move": 4,
+                    "control": 1,
+                    "health": 2,
+                    "save": 6,
+                    "ward": 6,
+                    "hero": false,
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [
+                            {
+                                "id": "whirlwhindOfDestruction",
+                                "name": "Whirlwind Of Destruction",
+                                "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
+                                "once": false,
+                            }
+                        ]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "",
+                            "name": "",
+                            "effect": "",
+                            "once": true,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": [
+                            {
+                                "id": "whirlwhindOfDestruction",
+                                "name": "Whirlwind Of Destruction",
+                                "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
+                                "once": false,
+                            }
+                        ]
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "fyresteelHandaxes",
+                                "name": "Fyresteel Handaxes",
+                                "range": 0,
+                                "attacks": "2",
+                                "hit": 4,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "1",
+                                "ability": "Anti-charge (+1 Rend)"
+                            },
+                        ],
+                        "abilities": [
+                            {
+                                "id": "whirlwhindOfDestruction",
+                                "name": "Whirlwind Of Destruction",
+                                "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
+                                "once": false,
+                            }
+                        ],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                }
+            ]
         },
         {
+            "id": "nighthaunt",
+            "units": [
+                {
 
-            "id": "hearthguardBerzerkers",
-            "name": "Hearthguard Berzerkers",
-            "move": 4,
-            "control": 1,
-            "health": 2,
-            "save": 6,
-            "ward": 6,
-            "hero": false,
-            "keywords": ["Infantry", "Ward (6+)"],
-            "Passive": {
-                "attacks": [],
-                "abilities": [
+                    "id": "knightOfShrouds",
+                    "name": "Knight of Shrouds",
+                    "move": 8,
+                    "control": 2,
+                    "health": 5,
+                    "save": 4,
+                    "ward": 6,
+                    "hero": true,
+                    "keywords": ["Infantry", "Hero", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
                     {
-                        "id": "dutyUntoDeath",
-                        "name": "Duty Unto Death",
-                        "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
-                        "once": false,
-                    }
-                ]
-            },
-            "Start":
-            {
-                "attacks": [],
-                "abilities": []
-            },
-            "Hero": {
-                "attacks": [],
-                "abilities": [{
-                    "id": "",
-                    "name": "",
-                    "effect": "",
-                    "once": true,
-                }]
-            },
-            "Movement": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Shooting": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Charge": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Combat":
-            {
-                "attacks": [
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "discorporate",
+                            "name": "Discorporate",
+                            "effect": "Pick a friendly unit wholly within 9\" of this unit to be the target.  Unit the start of the next turn, the target has Ward 5+",
+                            "once": false,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
                     {
-                        "id": "flamestrikePoleaxe",
-                        "name": "Flamestrike Poleaxe",
-                        "range": 0,
-                        "attacks": 2,
-                        "hit": "3",
-                        "wound": 3,
-                        "rend": 1,
-                        "damage": "2",
-                        "ability": "Crit (Mortal)"
-                    },                    
-                ],
-                "abilities": [
-                    {
-                        "id": "dutyUntoDeath",
-                        "name": "Duty Unto Death",
-                        "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
-                        "once": false,
-                    }
-                ],
-            },
-            "End": {
-                "attacks": [],
-                "abilities": []
-            }
+                        "attacks": [
+                            {
+                                "id": "swordOfStolenHours",
+                                "name": "Sword of Stolen Hours  ",
+                                "range": 0,
+                                "attacks": 5,
+                                "hit": 4,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "2",
+                                "ability": "Crit (Auto-wound)"
+                            },
 
-        },
-        {
+                        ],
+                        "abilities": [{
+                            "id": "discorporate",
+                            "name": "Discorporate",
+                            "effect": "Pick a friendly unit wholly within 9\" of this unit to be the target.  Unit the start of the next turn, the target has Ward 5+",
+                            "once": false,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
 
-            "id": "vulkiteBerzerkers",
-            "name": "Vulkite Berzerkers",
-            "move": 4,
-            "control": 1,
-            "health": 2,
-            "save": 6,
-            "ward": 6,
-            "hero": false,
-            "Passive": {
-                "attacks": [],
-                "abilities": [
-                    {
-                        "id": "whirlwhindOfDestruction",
-                        "name": "Whirlwind Of Destruction",
-                        "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
-                        "once": false,
-                    }
-                ]
-            },
-            "Start":
-            {
-                "attacks": [],
-                "abilities": []
-            },
-            "Hero": {
-                "attacks": [],
-                "abilities": [{
-                    "id": "",
-                    "name": "",
-                    "effect": "",
-                    "once": true,
-                }]
-            },
-            "Movement": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Shooting": {
-                "attacks": [],
-                "abilities": []
-            },
-            "Charge": {
-                "attacks": [],
-                "abilities": [
-                    {
-                        "id": "whirlwhindOfDestruction",
-                        "name": "Whirlwind Of Destruction",
-                        "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
-                        "once": false,
-                    }
-                ]
-            },
-            "Combat":
-            {
-                "attacks": [
-                    {
-                        "id": "fyresteelHandaxes",
-                        "name": "Fyresteel Handaxes",
-                        "range": 0,
-                        "attacks": "2",
-                        "hit": 4,
-                        "wound": 3,
-                        "rend": 1,
-                        "damage": "1",
-                        "ability": "Anti-charge (+1 Rend)"
-                    },                
-                ],
-                "abilities": [
-                    {
-                        "id": "whirlwhindOfDestruction",
-                        "name": "Whirlwind Of Destruction",
-                        "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
-                        "once": false,
-                    }
-                ],
-            },
-            "End": {
-                "attacks": [],
-                "abilities": []
-            }
+                },
+                {
 
-        },
+                    "id": "spiritHosts",
+                    "name": "Spirit Hosts",
+                    "move": 8,
+                    "control": 1,
+                    "health": 3,
+                    "save": 4,
+                    "ward": 0,
+                    "hero": false,
+                    "keywords": ["Infantry", "Fly", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "drawnToWar",
+                            "name": "Drawn To War",
+                            "effect": "Your general has Ward (4+) while they are within 1\" of this unit",
+                            "once": false,
+                        }]
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "spectralClawsAndDaggers",
+                                "name": "Spectral Claws and Daggers",
+                                "range": 0,
+                                "attacks": 6,
+                                "hit": 4,
+                                "wound": 4,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": "Crit (Auto-wound)"
+                            },
+
+                        ],
+                        "abilities": [],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+                    "id": "grimghastReapers",
+                    "name": "Grimghast Reapers",
+                    "move": 8,
+                    "control": 1,
+                    "health": 1,
+                    "save": 4,
+                    "ward": 6,
+                    "hero": false,
+                    "keywords": ["Infantry", "Fly", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "reapedLikeCorn",
+                            "name": "Reaped Like Corn",
+                            "effect": "Combat attacks made by this unit score ciritcal hits on unmodified hit rolls of 5+ if the target unit has 5 or more models.",
+                            "once": true,
+                        }]
+                    },
+                    "Start": {
+
+                        "attacks": [],
+                        "abilities": [],
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "slasherScythe",
+                                "name": "Slash Scythe",
+                                "range": 0,
+                                "attacks": 2,
+                                "hit": 4,
+                                "wound": 3,
+                                "rend": 1,
+                                "damage": "1",
+                                "ability": "Crit (Auto-wound)"
+                            },
+
+                        ],
+                        "abilities": [{
+                            "id": "reapedLikeCorn",
+                            "name": "Reaped Like Corn",
+                            "effect": "Combat attacks made by this unit score ciritcal hits on unmodified hit rolls of 5+ if the target unit has 5 or more models.",
+                            "once": true,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+                {
+
+                    "id": "chainrasps",
+                    "name": "Chainrasps",
+                    "move": 8,
+                    "control": 1,
+                    "health": 1,
+                    "save": 5,
+                    "ward": 6,
+                    "hero": false,
+                    "keywords": ["Infantry", "Fly", "Reinforcements", "Ward (6+)"],
+                    "Passive": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Start":
+                    {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Hero": {
+                        "attacks": [],
+                        "abilities": [{
+                            "id": "chillingHorde",
+                            "name": "Chilling Horde",
+                            "effect": "Add 1 to wound rolls for combat attacks made by this unit if it charged in the same turn.",
+                            "once": true,
+                        }]
+                    },
+                    "Movement": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Shooting": {
+                        "attacks": [],
+                        "abilities": []
+                    },
+                    "Charge": {
+                        "attacks": [],
+                        "abilities": [
+                            {
+                                "id": "chillingHorde",
+                                "name": "Chilling Horde",
+                                "effect": "Add 1 to wound rolls for combat attacks made by this unit if it charged in the same turn.",
+                                "once": true,
+                            }
+                        ]
+                    },
+                    "Combat":
+                    {
+                        "attacks": [
+                            {
+                                "id": "malignantWeapon",
+                                "name": "Malignant Weapon",
+                                "range": 0,
+                                "attacks": 2,
+                                "hit": 4,
+                                "wound": 5,
+                                "rend": 0,
+                                "damage": "1",
+                                "ability": "Crit (Auto-wound)"
+                            },
+
+                        ],
+                        "abilities": [{
+                            "id": "chillingHorde",
+                            "name": "Chilling Horde",
+                            "effect": "Add 1 to wound rolls for combat attacks made by this unit if it charged in the same turn.",
+                            "once": true,
+                        }],
+                    },
+                    "End": {
+                        "attacks": [],
+                        "abilities": []
+                    }
+
+                },
+               
+            ]
+        }
+
+
+
     ]
 }
-
-
-
-
 

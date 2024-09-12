@@ -349,5 +349,65 @@ export const Factions = {
         "units": ["Battlesmith (Hero)", "Hearthguard Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)"]
         
     },
+    {
+        "id": "nighthaunt",
+        "name": "Nighthaunt",
+        "battleTraits": [
+        {
+                "id": "waveOfTerror",
+                "name": "Wave of Terror",
+                "effect": "Pick a friendly unit to use this ability if they charged this phase and the charge roll was 10+, pick an enemy unit within 1\" of it.  That target has Strike-Last this turn.  Ignore all modifiers to save rolls rolls for friendly units (positive or negative).",
+                "once": false,
+                "phase": "passive"
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "deathStalkers",
+                "name": "Death Stalkers",
+                "effect": "Pick an enemry unit on the battlefield.  Add 1 to the Rend characteric of melee weapons used for attacks that target this unit..",
+                "once": false,
+                "phase": "start"
+            },
+            {
+            "id": "chorusOfTerror",
+                "name": "Chorus of Terror",
+                "effect": "Subtract 1 from hit rolls for combat attacks that target a friendly unit that charged in the same turn.",
+                "once": false,
+                "phase": "passive"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "soulfireRings",
+                    "name": "Soulfire Rings",
+                    "effect": "If any models were slain by your general this turn, heal D6 to your general.",
+                    "once": false,
+                    "phase": "end",
+                },
+                {
+                    "id": "cloakedInShadow",
+                    "name": "Cloaked in Shadow",
+                    "effect": "No more than 1 enemy unit can target your general with attacks (shooting or combat) per phase.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "beaconOfNagashizzar",
+                    "name": "Beacon of Nagashizzar",
+                    "effect": "Return 1 slain model to each friendly unit on the battlefield.",
+                    "once": true,
+                    "phase": "hero",
+                },
+                {
+                    "id": "shadowsEdge",
+                    "name": "Shadows Edge",
+                    "effect": "Your general's Sword of StolenHours has Crit (Mortal)",
+                    "once": false,
+                    "phase": "passive",
+                },],
+        "units": ["Knight of Shrouds (Hero)", "Spirit Hosts (3)", "Grimghast Reapers (5)", "Grimghast Reapers (5)", "Chainrasps (10)", "Chainrasps (10)"]
+        
+    },
 ]
 };

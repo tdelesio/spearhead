@@ -91,15 +91,27 @@ export default function StartOfRoundPage() {
   return (
 
 <Carousel>
+{/* <div className="absolute top-4 right-4 z-10 flex space-x-2">
+        <CarouselPrevious className="h-8 w-8 rounded-full" />
+        <CarouselNext className="h-8 w-8 rounded-full" />
+      </div> */}
 
 
 <CarouselContent>
+
+  
   {Phase.phases.map(selectedPhase => (
 <CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
 
     <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name} Abilities </h1>
+    <div className="flex space-x-2">
+               
+              </div>
+
+
 
       <div className="space-y-6 p-6">
+        
         {/* Traits, Abilities, and Enhancements */}
         
           {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(faction?.id || '',selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
@@ -259,7 +271,7 @@ function renderAbilityCard(unit: Unit, ability: any, usedAbilities: Set<string>,
       <div className={`absolute inset-0 bg-gray-900/5 transition-opacity duration-300 ${isUsed ? 'opacity-100' : 'opacity-0'}`} />
       <div className={`relative transition-opacity duration-300 ${isUsed ? 'opacity-50' : 'opacity-100'}`}>
         <CardHeader>
-          <CardTitle>{ability.name} {ability.once ? "(Once Per Battle)" : ""}</CardTitle>
+          <CardTitle>{unit.name} -  {ability.name} {ability.once ? <p>(Once Per Battle)</p> : ""}</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-sm text-gray-500 dark:text-gray-400">{ability.effect}</p>
