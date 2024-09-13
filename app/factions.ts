@@ -75,14 +75,14 @@ export const Factions = {
             {
                     "id": "hallowedScrolls",
                     "name": "Hallowed Scrolls",
-                    "effect": "Ward 5+",
+                    "effect": "Your general has Ward 5+",
                     "once": false,
                     "phase": "combat",
                 },
                 {
                     "id": "morrdaTalon",
                     "name": "Morrda's Talon",
-                    "effect": "Hallowed Greataxe has Crit (Mortal)",
+                    "effect": "Your general's Hallowed Greataxe has Crit (Mortal)",
                     "once": false,
                     "phase": "passive",
                 },
