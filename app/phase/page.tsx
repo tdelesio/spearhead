@@ -5,9 +5,18 @@ import { getAbilityForRound, getAttacksForRound, Unit, Units } from "../units";
 import { BattleTrait, Enhancement, Factions, RegimentAbilitiy } from "@/app/factions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useEffect, useState } from "react"
 import { Phase } from "../phase";
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+import { Separator } from "@radix-ui/react-select"; 
+import React, { useEffect, useState } from "react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 import {
   Carousel,
@@ -17,7 +26,13 @@ import {
   CarouselPrevious,
   CarouselFirst,
 } from "@/components/ui/carousel"
-import { AbilityTable } from "./batteTraitTable";
+import { AbilityTable } from "./battle-trait-table"
+import VictoryPointTracker from "./victory-points";
+import { BattleTacticCard, Deck } from "./battle-tactic-deck";
+// import { BattleTacticCard, Deck, shuffle } from "./battle-tactic-deck";
+// import { BattleTacticCard, Card, Deck, shuffle } from "./battle-tactic-deck";
+// import BattleTraitDeck from "./battle-tactic-deck";
+// const BattleTraitDeck = dynamic(() => import('./battle-tactic-deck'), {ssr: false})
 
 function getPhase(selectedPhase: string | null) : Phase {
   return Phase.phases.find(phase => phase.id === selectedPhase) as Phase;
@@ -38,6 +53,14 @@ function showRegimentAbility(selectedPhase: string | null, selectedRegimentAbili
 function showEnhancement(selectedPhase: string | null, selectedEnhancement: Enhancement | null) : boolean {
   return selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
 }
+
+const shuffle = (array: BattleTacticCard[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
 export default function StartOfRoundPage() {
 
@@ -74,6 +97,7 @@ export default function StartOfRoundPage() {
   const factionUnits = Units.factions.find(faction => faction.id === selectedFaction);
 
   const [usedAbilities, setUsedAbilities] = useState<Set<string>>(new Set())
+  // const [card1,card2,card3] = useState<Set<BattleTacticCard>>(new Set()); 
 
   const handleCardClick = (unitId: string, once: boolean) => {
     if (!once) return;
@@ -85,6 +109,7 @@ export default function StartOfRoundPage() {
         newSet.add(unitId)
       }
       return newSet
+  
     })
   }
 
@@ -96,7 +121,7 @@ export default function StartOfRoundPage() {
          
         }}
       >
-        Select Faction
+        Home
       </Link>
     )
   }
@@ -114,8 +139,40 @@ export default function StartOfRoundPage() {
     )
   }
 
+  const [deck, setDeck] = useState<BattleTacticCard[]>([]);
+  const [hand, setHand] = useState<BattleTacticCard[]>([]);
+
+  useEffect(() => {
+      const shuffledDeck = shuffle([...Deck.cards]);
+      setDeck(shuffledDeck);
+      setHand(shuffledDeck.slice(0, 3));
+  }, []);
+  // const myDeck = shuffle(Deck.cards);
+
+  // const stack: BattleTacticCard[] = [];
+  // myDeck.forEach(card => stack.push(card));
+
+  // const hand: BattleTacticCard[] = [];
+  // card1 = stack.shift();
+  // card2 = stack.shift();
+  // card3 = stack.shift();
+
+  const handleBattleTraitCarClick = (index: number) => {
+    setHand(prevHand => {
+        const newHand = [...prevHand];
+        newHand.splice(index, 1);
+        // if (deck.length > 0) {
+        //     const [newCard, ...remainingDeck] = deck;
+        //     newHand.push(newCard);
+        //     setDeck(remainingDeck);
+        // }
+
+        return newHand;
+    });
+};
 
   return (
+
 
 <Carousel>
  <div className="absolute top-10 left-80 z-10  ">
@@ -140,6 +197,17 @@ export default function StartOfRoundPage() {
 
       <div className="space-y-6 p-6">
         
+ {/* End, Show points */}
+ {selectedPhase.id === 'end' && ( 
+  <VictoryPointTracker/>
+ )}
+
+ {/* Start, draw cards to 3 */}
+ {selectedPhase.id === 'start' && hand.length< 3 && ( 
+  <div>{console.log(hand.length)}</div>
+ )}
+
+
         {/* Traits, Abilities, and Enhancements */}
         
           {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(faction?.id || '',selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
@@ -231,8 +299,17 @@ export default function StartOfRoundPage() {
           </section>
         )}
 
-        
-
+        {/* Cards */}
+        <section>
+        <h2 className="text-xl font-semibold mb-2">Battle Tactic Cards</h2>
+        <div>
+            {hand.map((card, index) => (
+                <React.Fragment key={card.id}>
+                    {renderBattleTacticDeckCard(card, () => handleBattleTraitCarClick(index))}
+                </React.Fragment>
+            ))}
+        </div>
+        </section>
         {/* Passive Abilities */}
         <section>
           <h2 className="text-xl font-semibold mb-2">Passive Abilities</h2>
@@ -254,6 +331,32 @@ export default function StartOfRoundPage() {
   );
 }
 
+function renderBattleTacticDeckCard(card: BattleTacticCard, onClick: () => void) {
+  return (
+      <div>
+          <Accordion type="single" collapsible className="w-full max-w-md overflow-hidden mb-4">
+              <AccordionItem value="item-1">
+                  <AccordionTrigger>{card.name}</AccordionTrigger>
+                  <AccordionContent>
+                      <Card className="w-full max-w-md mx-auto cursor-pointer" onClick={onClick}>
+                          <CardHeader>
+                              <h3 className="text-lg font-semibold">Battle Tactic Objective</h3>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                              {card.battleTacticObjective}
+                              <Separator className="my-4"/>
+                              <h3 className="text-lg font-semibold">{card.command.name}</h3>
+                              <span className="font-medium">Declare:</span> {card.command.usedBy}
+                              <Separator/>
+                              <span className="font-medium">Effect:</span> {card.command.effect}
+                          </CardContent>
+                      </Card>  
+                  </AccordionContent>
+              </AccordionItem>
+          </Accordion>
+      </div>
+  );
+}
 
 function renderCard(faction: string,item: any, title: string, usedAbilities: Set<string>, handleCardClick: (id: string, once: boolean) => void) {
   const isUsed = usedAbilities.has(item?.id || '');
