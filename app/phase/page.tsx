@@ -169,7 +169,7 @@ export default function StartOfRoundPage() {
             <h2 className="text-xl font-semibold mb-2">Phase Abilities</h2>
 
           {factionUnits?.units?.map((unit) => (
-            <div className="space-y-4 pb-4">
+            <div className="space-y-4 pb-4" key={unit.id}>
       
             {factionUnits?.units.find(u => u.id === unit.id) 
               ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability => 
