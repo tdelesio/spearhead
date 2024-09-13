@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { useEffect, useState } from "react"
 import { Phase } from "../phase";
+import Link from 'next/link'
 
 import {
   Carousel,
@@ -14,6 +15,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselFirst,
 } from "@/components/ui/carousel"
 import { AbilityTable } from "./batteTraitTable";
 
@@ -86,13 +88,39 @@ export default function StartOfRoundPage() {
     })
   }
 
-  
+    function Home() {
+    return (
+      <Link className="text-white"
+        href={{
+          pathname: '/',
+         
+        }}
+      >
+        Select Faction
+      </Link>
+    )
+  }
+
+  function NextRound() {
+    return (
+      <Link className="text-white"
+        href={{
+          pathname: '/phase',
+          query: { faction: selectedFaction, battleTraits: initialBattleTrait, regimentAbilities: initialRegimentAbility, enhancements: initialEnhancement },
+        }}
+      >
+        Next Round
+      </Link>
+    )
+  }
+
 
   return (
 
 <Carousel>
  <div className="absolute top-10 left-80 z-10  ">
         <CarouselPrevious className="h-8 w-8 rounded-full" />
+        <Home />
         <CarouselNext className="h-8 w-8 rounded-full" />
       </div> 
 
@@ -103,7 +131,7 @@ export default function StartOfRoundPage() {
   {Phase.phases.map(selectedPhase => (
 <CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
 
-    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name} Abilities </h1>
+    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name}</h1>  {selectedPhase.id === 'end' && ( <CarouselFirst />)}
     <div className="flex space-x-2">
                
               </div>
@@ -232,18 +260,18 @@ function renderCard(faction: string,item: any, title: string, usedAbilities: Set
 
     <Card
       key={item?.id}
-      className={`relative overflow-hidden transition-all duration-300 ease-in-out
-        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 cursor-not-allowed' : 'bg-white text-black cursor-pointer hover:shadow-md w-full max-w-md overflow-hidden'}`}
+      className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full max-w-md overflow-hidden
+        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 ' : 'bg-white text-black cursor-pointer hover:shadow-md '}`}
       onClick={() => handleCardClick(item?.id || '', item?.once || false)}
     >
-      {isUsed && (
+      {/* {isUsed && (
         <>
           <div className="absolute inset-0 bg-gray-500 opacity-20" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-[1px] w-full bg-gray-600 dark:bg-gray-400 rotate-45 transform origin-center" />
+          <div className="absolute inset-0 flex items-center justify-center ">
+            <div className="h-[1px] w-full bg-gray-600 dark:bg-gray-400 rotate-45 transform origin-center " />
           </div>
         </>
-      )}
+      )} */}
       <div className={`relative ${isUsed ? 'opacity-50' : ''}`}>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
@@ -253,6 +281,13 @@ function renderCard(faction: string,item: any, title: string, usedAbilities: Set
           <p className="text-sm text-gray-500 dark:text-gray-400">{item?.effect}</p>
         </CardContent>
       </div>
+      {isUsed && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-4xl font-bold text-gray-500 dark:text-gray-400 opacity-75 rotate-[-20deg]">
+            USED
+          </span>
+        </div>
+      )}
     </Card>
 
   );

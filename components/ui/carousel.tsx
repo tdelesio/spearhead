@@ -8,6 +8,7 @@ import useEmblaCarousel, {
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -26,6 +27,7 @@ type CarouselContextProps = {
   api: ReturnType<typeof useEmblaCarousel>[1]
   scrollPrev: () => void
   scrollNext: () => void
+  scrollTo: (index: number) => void
   canScrollPrev: boolean
   canScrollNext: boolean
 } & CarouselProps
@@ -77,6 +79,10 @@ const Carousel = React.forwardRef<
       setCanScrollNext(api.canScrollNext())
     }, [])
 
+    const scrollTo = React.useCallback((index: number) => {
+      api?.scrollTo(index)
+    }, [api])
+
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
     }, [api])
@@ -95,7 +101,7 @@ const Carousel = React.forwardRef<
           scrollNext()
         }
       },
-      [scrollPrev, scrollNext]
+      [scrollPrev, scrollNext, scrollTo]
     )
 
     React.useEffect(() => {
@@ -130,6 +136,7 @@ const Carousel = React.forwardRef<
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
           scrollNext,
+          scrollTo,
           canScrollPrev,
           canScrollNext,
         }}
@@ -252,6 +259,25 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselFirst = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<typeof Button>
+>(({ className, ...props }, ref) => {
+  const { scrollTo } = useCarousel()
+
+  return (
+    <Button
+      ref={ref}
+      {...props}
+      className={cn("mt-4", className)}
+      onClick={() => scrollTo(0)}
+    >
+      Next Round
+    </Button>
+  )
+})
+CarouselFirst.displayName = "CarouselFirst"
+
 export {
   type CarouselApi,
   Carousel,
@@ -259,4 +285,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselFirst,
 }

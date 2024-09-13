@@ -59,7 +59,7 @@ export const Factions = {
             {
                 "id": "strikeWhereNeeded",
                 "name": "Strike Where Needed",
-                "effect": "Free Retreat",
+                "effect": "The unit using the retreat ability.  No mortal damange is inflicted when they use Retreat.  In addition, the unit can still use Charge this turn even though it used a retreat ability.",
                 "once": true,
                 "phase": "movement"
             },
@@ -67,7 +67,7 @@ export const Factions = {
                 "id": "blazeOfGlory",
                 "name": "Blaze of Glory",
                 "effect": "Pick a friendly unit that is in combat, each time a model is slain, make a vengance roll of D6.  On 4+ inflict 1 mortal damage",
-                "once": false,
+                "once": true,
                 "phase": "combat"
             }
         ],
