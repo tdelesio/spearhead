@@ -27,7 +27,7 @@ const VictoryPointTracker = () => {
 
 
 <div className="space-y-4">
-        <Card key="vp-counter" className="bg-white text-black max-w-md">
+        <Card key="vp-counter" className="bg-white text-black max-w-md overflow-hidden w-full mx-auto">
                   <CardHeader>
                     <CardTitle>Victory Points</CardTitle>
                     <CardDescription className="flex justify-between py-2"><span><Button  onClick={handleClick2}>- </Button></span><span className="text-lg">{counter}</span><span><Button onClick={handleClick1}>+</Button></span></CardDescription>

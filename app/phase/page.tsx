@@ -158,27 +158,35 @@ export default function StartOfRoundPage() {
   //Start of HTML
   return (
 
-
-    <Carousel>
-      <div className="absolute top-10 left-80 z-10  ">
-        <CarouselPrevious className="h-8 w-8 rounded-full" />
-        <Home />
-        <CarouselNext className="h-8 w-8 rounded-full" />
-      </div>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Carousel className="w-full relative">
+      
 
 
       <CarouselContent>
 
 
         {Phase.phases.map(selectedPhase => (
-          <CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
+          <CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen w-full p-4 sm:p-6 lg:p-8`}>
 
-            <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name}</h1>  {selectedPhase.id === 'end' && (<CarouselFirst onClick={nextRoundClick} className="cursor-pointer hover:bg-gray-200" />)}
-            <div className="flex space-x-2">
-
-            </div>
-
-
+<section className="w-full max-w-3xl mx-auto">
+  <div className="flex justify-between items-center mb-4">
+    <h1 className="text-xl font-semibold">{selectedPhase?.name}</h1>
+    <div className="flex items-center space-x-2">
+      
+      <CarouselPrevious />
+      <Home />
+      <CarouselNext />
+    </div>
+  </div>
+</section>
+            
+            
+            {selectedPhase.id === 'end' && (
+              <CarouselFirst onClick={nextRoundClick} className="cursor-pointer hover:bg-gray-200" />
+            )}
+            
+            <div className="flex space-x-2"/>
 
             <div className="space-y-6 p-6">
 
@@ -202,11 +210,11 @@ export default function StartOfRoundPage() {
 
               {/* Movement */}
               {selectedPhase.id === 'movement' && (
-                <section>
+                <section className="w-full max-w-3xl mx-auto">
                   <h2 className="text-xl font-semibold mb-4">Movement</h2>
                   <div className="space-y-4">
                     {factionUnits?.units?.map((unit) => (
-                      <Card key={unit.id} className="bg-white text-black max-w-md">
+                      <Card key={unit.id} className="bg-white text-black max-w-3xl mx-auto w-full overflow-hidden">
                         <CardHeader>
                           <CardTitle>{unit.name}</CardTitle>
                           <CardDescription>Movement: {unit.move}</CardDescription>
@@ -219,7 +227,7 @@ export default function StartOfRoundPage() {
 
               {/* Non-Combat Phase */}
               {!isCombatPhase(selectedPhase.id) && (
-                <section>
+                <section className="w-full max-w-3xl mx-auto">
                   <h2 className="text-xl font-semibold mb-2">Phase Abilities</h2>
 
                   {factionUnits?.units?.map((unit) => (
@@ -238,11 +246,11 @@ export default function StartOfRoundPage() {
 
               {/* Combat Phase? */}
               {isCombatPhase(selectedPhase.id) && (
-                <section>
+                <section className="w-full max-w-3xl mx-auto">
                   <h2 className="text-xl font-semibold mb-4">Attacks</h2>
                   <div className="space-y-4">
                     {factionUnits?.units?.map((unit) => (
-                      <Card key={unit.id} className="bg-white text-black w-full max-w-md overflow-hidden">
+                      <Card key={unit.id} className="bg-white text-black w-full max-w-3xl overflow-hidden">
                         <CardHeader>
                           <CardTitle>{unit.name}</CardTitle>
                           <CardDescription className="border-b-2 border-gray-300 flex justify-between py-2"><span>Health: {unit.health}</span> <span>Save: {unit.save}+</span> <span>Ward: {unit.ward}+</span></CardDescription>
@@ -267,7 +275,7 @@ export default function StartOfRoundPage() {
                               </div>
                             ))}
 
-                            <section>
+                            <section className="w-full max-w-3xl mx-auto">
                               <div className="space-y-4">
                                 {factionUnits?.units.find(u => u.id === unit.id)
                                   ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability =>
@@ -286,7 +294,7 @@ export default function StartOfRoundPage() {
               )}
 
               {/* Cards */}
-              <section>
+              <section className="w-full max-w-3xl mx-auto">
                 <h2 className="text-xl font-semibold mb-2">Battle Tactic Cards</h2>
                 <div>
                   {hand.map((card, index) => (
@@ -297,7 +305,7 @@ export default function StartOfRoundPage() {
                 </div>
               </section>
               {/* Passive Abilities */}
-              <section>
+              <section className="w-full max-w-3xl mx-auto">
                 <h2 className="text-xl font-semibold mb-2">Passive Abilities</h2>
 
                 <div className="space-y-4">
@@ -314,17 +322,18 @@ export default function StartOfRoundPage() {
         ))}
       </CarouselContent>
     </Carousel>
+    </div>
   );
 }
 
 function renderBattleTacticDeckCard(card: BattleTacticCard, onClick: () => void) {
   return (
     <div>
-      <Accordion type="single" collapsible className="w-full max-w-md overflow-hidden mb-4">
+      <Accordion type="single" collapsible className="w-full max-w-md max-w-3xl overflow-hidden mb-4">
         <AccordionItem value="item-1">
           <AccordionTrigger>{card.name}</AccordionTrigger>
           <AccordionContent>
-            <Card className="w-full max-w-md mx-auto cursor-pointer" onClick={onClick}>
+            <Card className="w-full max-w-3xl mx-auto cursor-pointer overflow-hidden" onClick={onClick}>
               <CardHeader>
                 <h3 className="text-lg font-semibold">Battle Tactic Objective</h3>
               </CardHeader>
@@ -365,7 +374,7 @@ function renderCard(faction: string, item: any, title: string, usedAbilities: Se
 
     <Card
       key={item?.id}
-      className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full max-w-md overflow-hidden
+      className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full max-w-3xl overflow-hidden mx-auto
         ${isUsed ? 'bg-gray-300 dark:bg-gray-800 ' : 'bg-white text-black cursor-pointer hover:shadow-md '}`}
       onClick={() => handleCardClick(item?.id || '', item?.once || false)}
     >
@@ -403,8 +412,8 @@ function renderAbilityCard(unit: Unit, ability: any, usedAbilities: Set<string>,
   return (
     <Card
       key={`${unit.id}-${ability.id}`}
-      className={`relative cursor-pointer transition-all duration-300 ease-in-out
-        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 saturate-0 w-full max-w-md overflow-hidden' : 'bg-white text-black hover:shadow-md w-full max-w-md overflow-hidden'}
+      className={`relative cursor-pointer transition-all duration-300 ease-in-out w-full max-w-3xl overflow-hidden mx-auto
+        ${isUsed ? 'bg-gray-300 dark:bg-gray-800 saturate-0' : 'bg-white text-black hover:shadow-md'}
       `}
       onClick={() => handleCardClick(unit.id, ability.once)}
     >
