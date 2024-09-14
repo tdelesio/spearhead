@@ -36,7 +36,7 @@ export const Factions = {
     "factions": [
     {
         "id": "stormcast",
-        "name": "Stormcast Eternals",
+        "name": "Stormcast Eternals - Vigilant Brotherhood",
         "battleTraits": [
         {
                 "id": "shieldOfAzyr",
@@ -102,6 +102,67 @@ export const Factions = {
                 },
             ],
         "units": ["LordVigilant (Hero)", "LordVertiant (1)", "Procecutors (5)", "Liberators (5)"]
+        
+    },
+    {
+        "id": "stormcast2",
+        "name": "Stormcast Eternals - Yndrastra's Spearhead",
+        "battleTraits": [
+        {
+                "id": "lightningStrikeArrival",
+                "name": "Lightning Strike Arrival",
+                "effect": "Yndrastra and your Annihilators are not setup during the deployment phase.  Instead, from the third battle round onward, they can use the following ability.  Setup this unit anywhere on the battlefield more than 6\" from all enemy units.",
+                "once": true,
+                "phase": "movement",
+                "table": false
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "driveThemBack",
+                "name": "Drive Them Back",
+                "effect": "Pick any number of friendly units that are borh contesting an objective and in combat.  Each of those units can make a pile-in move.  For each unit that did so, pick an enemy unit within 1\" of it and roll a dice.  On a 4+, inflict 1 mortal damage on the that enemy unit.",
+                "once": false,
+                "phase": "end"
+            },
+            {
+            "id": "defendToTheLast",
+                "name": "Defend to the Last",
+                "effect": "Friendly units have a Ward(6+) while they are contesting an objective you control.",
+                "once": false,
+                "phase": "passive"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "thePrimeHuntress",
+                    "name": "The Prime Huntress",
+                    "effect": "The damage characteristic of your Thengavar is 2D6 for attacks that target a MONSTER.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "strikeWithTheTempestRage",
+                    "name": "Strike with the Tempest Rage",
+                    "effect": "Your general has STRIKE-FIRST if they charged in the same turn.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "dazzlingRadiance",
+                    "name": "Dazzling Radiance",
+                    "effect": "Pick your general to use this ability if they were set up this phase.  You return 1 slan model to each friendly unit wholly with 12\" of your general",
+                    "once": true,
+                    "phase": "movement",
+                },
+                {
+                    "id": "hawkOfTheCelestrialSkies",
+                    "name": "Hawk of the Celestrial Skies",
+                    "effect": "Unit the end of the phase, add 1 to hit rolls for attacks made by friendly units while they are wholly within 12\" of your general.",
+                    "once": true,
+                    "phase": "combat",
+                },],
+        "units": ["Yndrastra (Hero)", "Knight Vexillor (1)", "Annihilators (3)", "Vanquishers (5)", "Vanquishers (5)", "Stormcast Chariot (1)"]
         
     },
     {

@@ -2290,7 +2290,376 @@ export const Units = {
             }
 
         },
-    ]}
+    ]},
+    {
+        "id": "stormcast2",
+        units: [
+        {
+
+            "id": "yndrastra",
+            "name": "Yndrastra",
+            "move": "12",
+            "control": 2,
+            "health": 8,
+            "save": 3,
+            "ward": 6,
+            "hero": true,
+            "keywords": ["Hero", "Infantry", "Fly", "Ward (6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "thengavar",
+                    "name": "Thangavar",
+                    "range": 12,
+                    "attacks": "1",
+                    "hit": 3,
+                    "wound": 2,
+                    "rend": 2,
+                    "damage": "4",
+                    "ability": "Shoot in Combat"
+                }],
+                "abilities": [{
+                    "id": "champioinOfSigmar",
+                    "name": "Champioin of Sigmar",
+                    "effect": "This unit has ward (5+) this phase.",
+                    "once": true,
+                }]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "bladeOfTheHighHeavens",
+                        "name": "Blade of the High Heavens",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 2,
+                        "damage": "4",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [{
+                    "id": "champioinOfSigmar",
+                    "name": "Champioin of Sigmar",
+                    "effect": "This unit has ward (5+) this phase.",
+                    "once": true,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "vanquishers",
+            "name": "Vanquishers",
+            "move": "5",
+            "control": 1,
+            "health": 2,
+            "save": 3,
+            "ward": 0,
+            "hero": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "lightningStrikes",
+                    "name": "Lightning Strikes",
+                    "effect": "Add 1 to the Damage chararacterstic of this unit's Celestrial Greatswords for the attacks that target an enemy unit that has 5 or more models.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "celestialGreatsword",
+                        "name": "Celestial Greatsword",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "knightVexillor",
+            "name": "Knight Vexillor",
+            "move": "5",
+            "control": 5,
+            "health": 6,
+            "save": 3,
+            "ward": 0,
+            "hero": false,
+            "keywords": ["Hero", "Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "bannerOfTheReforged",
+                    "name": "Banner of the Reforged",
+                    "effect": "Pick a friendly unit wholly within 12\" of this unit to be the target.  Heal (D3_ the target, add 3 to that unit's control score until the start of your next turn.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "sigmariteWarblade",
+                        "name": "Sigmarite Warblade",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "annihilators",
+            "name": "Annihilators",
+            "move": "4",
+            "control": 1,
+            "health": 3,
+            "save": 2,
+            "ward": 0,
+            "hero": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "forceOfTheFallingStar",
+                    "name": "Force of the Falling Star",
+                    "effect": "If this unit charged this phae and the unmodified charge roll was 8+, pick an enemy unit within 1\" of it to be the target.  The target has STRIKE-LAST this turn.",
+                    "once": false,
+                }]
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "metoricHammer",
+                        "name": "Metoric Hammer",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                ],
+                "abilities": [{
+                    "id": "",
+                    "name": "",
+                    "effect": "",
+                    "once": true,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "stromstrikeChariot",
+            "name": "Stromstrike Chariot",
+            "move": "10",
+            "control": 2,
+            "health": 10,
+            "save": 3,
+            "ward": 0,
+            "hero": false,
+            "keywords": ["War Machine"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "greatStormbow",
+                    "name": "Great Stormbow",
+                    "range": 18,
+                    "attacks": "2",
+                    "hit": 3,
+                    "wound": 3,
+                    "rend": 1,
+                    "damage": "1",
+                    "ability": ""
+                }],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "azyrUnleashed",
+                    "name": "Azyr Unleashed",
+                    "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target and roll a dice.  On a 2+, inflict D3 mortal wounds on that unit.",
+                    "once": false,
+                }]
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "stromStrikeAxe",
+                        "name": "Strom Strike Axe",
+                        "range": 0,
+                        "attacks": 3,
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    },  
+                    {
+                        "id": "gryphChargersBeaksAndClaws",
+                        "name": "Gryph-Chargers Beaks and Claws",
+                        "range": 0,
+                        "attacks": "6",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "companion"
+                    },                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    }
 
     ]
 }
