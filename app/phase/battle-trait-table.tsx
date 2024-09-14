@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 interface AbilityTableProps {
   passedFaction: string;
+  description: string;
 }
 
 export type BattleTraitTable ={
@@ -41,13 +42,24 @@ export const battleTraitTable = {
       "Add 1 to the hit rolls for combat attacks made by this unit.",
       "Add 1 to wound rolls for combat attacks made by this unit."
     ]
+  },
+  {
+    "faction": "gloomspiteGitz",
+    "columnOneLabel": "Ability",
+    "columnTwoLabel": "Effect",
+    "labels": ["Frothing Zealots", "Lunar Squids", "Moonlite Hide"],
+    "abilities": [
+      "If the unit is a Moonclan Stabbas unit, add 3 to its contorl score.",
+      "If the unit is a Squiq Hooper unit, no mortal damaage is inflicted when it uses its retreat ability.",
+      "If the unit is a Rockgut Troggoths unit, add 1 to save rolls for attacks that target this unit.",
+    ]
   }
 ]
 
 }
 
 
-export function AbilityTable({ passedFaction }: AbilityTableProps) {
+export function AbilityTable({ passedFaction, description }: AbilityTableProps) {
 
 
   const battleTrait = battleTraitTable.factions.find(trait => trait.faction === passedFaction);
@@ -60,10 +72,10 @@ export function AbilityTable({ passedFaction }: AbilityTableProps) {
 
     <Card
     key=""
-    className="relative overflow-hidden transition-all duration-300 ease-in-out  w-full max-w-md overflow-hidden">
+    className="relative overflow-hidden transition-all duration-300 ease-in-out  w-full max-w-3xl overflow-hidden mx-auto w-full overflow-hidden">
 
 <CardHeader>
-          <CardTitle>Battle Trait</CardTitle>
+          <CardTitle>Battle Trait </CardTitle><p>{description}</p>
         </CardHeader>
         <CardContent>
     <Table>

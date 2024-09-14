@@ -410,5 +410,66 @@ export const Factions = {
         "units": ["Knight of Shrouds (Hero)", "Spirit Hosts (3)", "Grimghast Reapers (5)", "Grimghast Reapers (5)", "Chainrasps (10)", "Chainrasps (10)"]
         
     },
+    {
+        "id": "gloomspiteGitz",
+        "name": "Gloomspite Gitz",
+        "battleTraits": [
+        {
+                "id": "underTheLightOfTheBadMoon",
+                "name": "Under the Light of the Bad Moon",
+                "effect": "Pick a terrority (either friendly or enemy) to be under the light of the bad moon.  If both players can use the ability, the players roll off and the winner picks the terirory to be under the Light of the Bad moon.  The picked terrirory remains under the light of the bad moon for the first and second round.  In the third and fourth round, the other territory is selected.  While a unit is wholly within the territory that is under the light of the bad moon, the appropiate effect applies.",
+                "once": false,
+                "phase": "passive",
+                "table": true
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "theLunaticHordes",
+                "name": "The Lunatic Hordes",
+                "effect": "Pick a friendly Moonclan Stabbas unit.  You can return up to D3 slain models to the unit this turn.",
+                "once": false,
+                "phase": "hero"
+            },
+            {
+            "id": "theHandOfGork",
+                "name": "The Hand of Gork",
+                "effect": "Pick a friendly unit that is not in combat.  Remove that unit from the battlefield and set it up again more than 9\" from all enemy units.",
+                "once": true,
+                "phase": "movement"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "fightAnotherDay",
+                    "name": "Fight Another Day",
+                    "effect": "Pick your general to use this ability if they used a fight ability this phase.  Your general can make a 2D6 move but cannot end that move in combat.",
+                    "once": false,
+                    "phase": "end",
+                },
+                {
+                    "id": "theClammyCowl",
+                    "name": "The Clammy Cowl",
+                    "effect": "Subtract 1 from hit rolls that target your general",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "hallucinogenicFungusBrew",
+                    "name": "Hallucinogenic Fungus Brew",
+                    "effect": "Your general has Ward 4+ in the first battle round, Ward 5+ in the second battle round, and Ward6+ in the third and foruth battle round",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "nightshadeMushroom",
+                    "name": "Nightshade Mushroom",
+                    "effect": "Pick a friendly unit with your general's combat range.  That unit cannot be targeted by shooting attacks in the next shooting phase.",
+                    "once": true,
+                    "phase": "movement",
+                },],
+        "units": ["Loon Bose (Hero)", "Moonclan Stabbas (10)", "Moonclan Stabbas (10)", "Squig Hoopers (5)", "Squig Hoopers (5)", "Rockgut Troggoths (3)"]
+        
+    },
 ]
 };

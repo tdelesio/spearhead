@@ -367,7 +367,8 @@ function renderCard(faction: string, item: any, title: string, usedAbilities: Se
 
   if (showTable) {
 
-    return <AbilityTable passedFaction={faction} />
+
+    return <AbilityTable passedFaction={faction} description={item.effect} />
   }
 
   return (

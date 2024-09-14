@@ -6,7 +6,7 @@ export type FactionUnits = {
 export type Unit = {
     id: string;
     name: string;
-    move: number;
+    move: string;
     control: number;
     health: number;
     save: number;
@@ -109,7 +109,7 @@ export const Units = {
 
                     "id": "LordVigilant",
                     "name": "Lord Vigilant",
-                    "move": 12,
+                    "move": "12",
                     "control": 2,
                     "health": 8,
                     "save": 3,
@@ -189,7 +189,7 @@ export const Units = {
 
                     "id": "LordVeritant",
                     "name": "Lord Veritant",
-                    "move": 5,
+                    "move": "5",
                     "control": 2,
                     "health": 6,
                     "save": 3,
@@ -269,7 +269,7 @@ export const Units = {
 
                     "id": "Procecutors",
                     "name": "Procecutors",
-                    "move": 12,
+                    "move": "12",
                     "control": 1,
                     "health": 2,
                     "save": 3,
@@ -353,7 +353,7 @@ export const Units = {
 
                     "id": "Liberators",
                     "name": "Liberators",
-                    "move": 5,
+                    "move": "5",
                     "control": 1,
                     "health": 2,
                     "save": 3,
@@ -441,7 +441,7 @@ export const Units = {
                 {
                     "id": "clawLordOnGnawBeast",
                     "name": "Clawlord on Gnaw-beast",
-                    "move": 9,
+                    "move": "9",
                     "control": 2,
                     "health": 7,
                     "save": 4,
@@ -528,7 +528,7 @@ export const Units = {
                 {
                     "id": "greySeer",
                     "name": "Grey Seer",
-                    "move": 6,
+                    "move": "6",
                     "control": 2,
                     "health": 5,
                     "save": 6,
@@ -598,7 +598,7 @@ export const Units = {
                 {
                     "id": "warlockEngineer",
                     "name": "Warlock Engineer",
-                    "move": 6,
+                    "move": "6",
                     "control": 2,
                     "health": 5,
                     "save": 5,
@@ -676,7 +676,7 @@ export const Units = {
                 {
                     "id": "clanrats",
                     "name": "Clanrats",
-                    "move": 6,
+                    "move": "6",
                     "control": 1,
                     "health": 1,
                     "save": 5,
@@ -739,7 +739,7 @@ export const Units = {
                 {
                     "id": "ratOgors",
                     "name": "Rat Ogres",
-                    "move": 6,
+                    "move": "6",
                     "control": 1,
                     "health": 4,
                     "save": 5,
@@ -823,7 +823,7 @@ export const Units = {
 
                     "id": "Chaos Lord",
                     "name": "Chaos Lord",
-                    "move": 5,
+                    "move": "5",
                     "control": 2,
                     "health": 6,
                     "save": 3,
@@ -899,7 +899,7 @@ export const Units = {
 
                     "id": "chaosChariot",
                     "name": "Chaos Chariot",
-                    "move": 10,
+                    "move": "10",
                     "control": 2,
                     "health": 7,
                     "save": 4,
@@ -985,7 +985,7 @@ export const Units = {
 
                     "id": "chaosWarriors",
                     "name": "Chaos Warriors",
-                    "move": 5,
+                    "move": "5",
                     "control": 1,
                     "health": 2,
                     "save": 3,
@@ -1055,7 +1055,7 @@ export const Units = {
                     "id": "chaosKnights",
                     "name": "Chaos Knights",
                     "keywords": ["Cavalry"],
-                    "move": 10,
+                    "move": "10",
                     "control": 1,
                     "health": 4,
                     "save": 3,
@@ -1144,7 +1144,7 @@ export const Units = {
 
                     "id": "melusaaiIronscale",
                     "name": "Melusai Ironscale",
-                    "move": 8,
+                    "move": "8",
                     "control": 2,
                     "health": 6,
                     "save": 5,
@@ -1231,7 +1231,7 @@ export const Units = {
 
                     "id": "bloodStalkers",
                     "name": "Blood Stalkers",
-                    "move": 8,
+                    "move": "8",
                     "control": 1,
                     "health": 2,
                     "save": 5,
@@ -1315,7 +1315,7 @@ export const Units = {
 
                     "id": "doomfireWarlocks",
                     "name": "Doomfire Warlocks",
-                    "move": 14,
+                    "move": "14",
                     "control": 1,
                     "health": 3,
                     "save": 5,
@@ -1403,7 +1403,7 @@ export const Units = {
 
                     "id": "witchAelves",
                     "name": "Witch Aelves",
-                    "move": 6,
+                    "move": "6",
                     "control": 1,
                     "health": 1,
                     "save": 6,
@@ -1487,7 +1487,7 @@ export const Units = {
 
                     "id": "battlesmith",
                     "name": "Battlesmith",
-                    "move": 4,
+                    "move": "4",
                     "control": 5,
                     "health": 5,
                     "save": 5,
@@ -1558,7 +1558,7 @@ export const Units = {
 
                     "id": "hearthguardBerzerkers",
                     "name": "Hearthguard Berzerkers",
-                    "move": 4,
+                    "move": "4",
                     "control": 1,
                     "health": 2,
                     "save": 6,
@@ -1636,7 +1636,7 @@ export const Units = {
 
                     "id": "vulkiteBerzerkers",
                     "name": "Vulkite Berzerkers",
-                    "move": 4,
+                    "move": "4",
                     "control": 1,
                     "health": 2,
                     "save": 6,
@@ -1725,7 +1725,7 @@ export const Units = {
 
                     "id": "knightOfShrouds",
                     "name": "Knight of Shrouds",
-                    "move": 8,
+                    "move": "8",
                     "control": 2,
                     "health": 5,
                     "save": 4,
@@ -1795,7 +1795,7 @@ export const Units = {
 
                     "id": "spiritHosts",
                     "name": "Spirit Hosts",
-                    "move": 8,
+                    "move": "8",
                     "control": 1,
                     "health": 3,
                     "save": 4,
@@ -1859,7 +1859,7 @@ export const Units = {
                 {
                     "id": "grimghastReapers",
                     "name": "Grimghast Reapers",
-                    "move": 8,
+                    "move": "8",
                     "control": 1,
                     "health": 1,
                     "save": 4,
@@ -1929,7 +1929,7 @@ export const Units = {
 
                     "id": "chainrasps",
                     "name": "Chainrasps",
-                    "move": 8,
+                    "move": "8",
                     "control": 1,
                     "health": 1,
                     "save": 5,
@@ -2004,9 +2004,293 @@ export const Units = {
                 },
                
             ]
-        }
+        },
+        {
+            "id": "gloomspiteGitz",
+            "units": [{
 
+            "id": "loonBoss",
+            "name": "Loon Boss",
+            "move": "5",
+            "control": 2,
+            "health": 5,
+            "save": 4,
+            "ward": 6,
+            "hero": true,
+            "keywords": ["Hero", "Infantry", "Ward (6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "ImDaBoss",
+                    "name": "I'm Da Boss",
+                    "effect": "Pick a friendly Moonclan Stabbas unit wholly within 12\" of this unit.  Pick either Beckon the Loonic Horders:  If the target unit is not in combat, you can return D6 slain models to it.  OR  Stab Em Good: Add 1 to hit rolls for attacks made by this unit until the end of the phase.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "moonSlicer",
+                        "name": "Moon Slicer",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "D3",
+                        "ability": ""
+                    },                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
 
+        },
+        {
+
+            "id": "squiqHopper",
+            "name": "Squiq Hopper",
+            "move": "D6+8",
+            "control": 1,
+            "health": 2,
+            "save": 6,
+            "ward": 0,
+            "hero": false,
+            "keywords": ["Cavalry", "Fly"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "boingBoingBoing",
+                    "name": "Boing Boing Boing",
+                    "effect": "Pick an enemy unit that any models in this unit passed across across this phase to be the target, then roll a dice for each model in that unit.  For each 4+, inflict 1 mortal damage on that unit.",
+                    "once": false,
+                }]
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "slitta",
+                        "name": "Slitta",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 5,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "squiqFangFilledGob",
+                        "name": "Squiq Fang Filled Gob",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "rockgutTroggoths",
+            "name": "Rockgut Troggoths",
+            "move": "6",
+            "control": 2,
+            "health": 5,
+            "save": 4,
+            "ward": 5,
+            "hero": false,
+            "keywords": ["Infantry", "Ward (5+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": [{
+                    "id": "regeneration",
+                    "name": "Regeneration",
+                    "effect": "Heal D3 to this unit.",
+                    "once": false,
+                }]
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "throwinBoulders",
+                    "name": "Throwin' Boulders",
+                    "range": 10,
+                    "attacks": "1",
+                    "hit": 5,
+                    "wound": 2,
+                    "rend": 2,
+                    "damage": "D3",
+                    "ability": ""
+                }],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "massiveStoneMaul",
+                        "name": "Massive Stone Maul",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 2,
+                        "damage": "3",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "moonclanStabbas",
+            "name": "Moonclan Stabbas",
+            "move": "5",
+            "control": 1,
+            "health": 1,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "keywords": ["Infantry", "Reinforcements"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "netters",
+                    "name": "Netters",
+                    "effect": "Pick an enemry infantry unit in combat with this unit. to get the target.  Roll a dice, on 2+, subtract 1 from hit rolls for attack modifiers made by the target this phase.",
+                    "once": true,
+                }]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "stabba",
+                        "name": "Stabba",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": "4",
+                        "wound": "5",
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [{
+                    "id": "netters",
+                    "name": "Netters",
+                    "effect": "Pick an enemry infantry unit in combat with this unit. to get the target.  Roll a dice, on 2+, subtract 1 from hit rolls for attack modifiers made by the target this phase.",
+                    "once": true,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+    ]}
 
     ]
 }
