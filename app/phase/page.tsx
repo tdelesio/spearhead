@@ -9,7 +9,7 @@ import { Phase } from "../phase";
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Separator } from "@radix-ui/react-select"; 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 
 import {
   Accordion,
@@ -142,11 +142,17 @@ export default function StartOfRoundPage() {
   const [deck, setDeck] = useState<BattleTacticCard[]>([]);
   const [hand, setHand] = useState<BattleTacticCard[]>([]);
 
-  useEffect(() => {
-      const shuffledDeck = shuffle([...Deck.cards]);
-      setDeck(shuffledDeck);
-      setHand(shuffledDeck.slice(0, 3));
-  }, []);
+
+
+  // const [selectedPhase, setSelectedPhase] = useState(Phase.phases[0]);
+
+  // useEffect(() => {
+  //   if (selectedPhase.id === 'end' && hand.length < 3 && deck.length > 0) {
+  //     const newCards = deck.slice(0, 3 - hand.length);
+  //     setHand([...hand, ...newCards]);
+  //     setDeck(deck.slice(3 - hand.length));
+  //   }
+  // }, [selectedPhase.id, hand.length, deck.length]);
   // const myDeck = shuffle(Deck.cards);
 
   // const stack: BattleTacticCard[] = [];
@@ -171,6 +177,31 @@ export default function StartOfRoundPage() {
     });
 };
 
+const nextRoundClick = () => {
+  console.log("cards left in deck",deck.length);
+  if (hand.length < 3 && deck.length > 0) {
+    const newCards = deck.slice(0, 3 - hand.length);
+    setHand([...hand, ...newCards]);
+    setDeck(deck.slice(3 - hand.length));
+  }
+
+  console.log("cards left in deck",deck.length);
+};
+
+const initializedRef = useRef(false);
+useEffect(() => {
+  
+  if (!initializedRef.current) {
+  const shuffledDeck = shuffle([...Deck.cards]);
+  console.log("shuffledDeck before draw",shuffledDeck);
+  setDeck(shuffledDeck);
+  setHand(shuffledDeck.splice(0, 3));
+  
+  console.log("shuffledDeck after draw",shuffledDeck);
+  initializedRef.current = true;
+    }
+}, []);
+
   return (
 
 
@@ -188,7 +219,7 @@ export default function StartOfRoundPage() {
   {Phase.phases.map(selectedPhase => (
 <CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
 
-    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name}</h1>  {selectedPhase.id === 'end' && ( <CarouselFirst />)}
+    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name}</h1>  {selectedPhase.id === 'end' && ( <CarouselFirst onClick={nextRoundClick} className="cursor-pointer hover:bg-gray-200"/>)}
     <div className="flex space-x-2">
                
               </div>
@@ -202,10 +233,11 @@ export default function StartOfRoundPage() {
   <VictoryPointTracker/>
  )}
 
- {/* Start, draw cards to 3 */}
+ {/* Start, draw cards to 3 
  {selectedPhase.id === 'start' && hand.length< 3 && ( 
-  <div>{console.log(hand.length)}</div>
+  <div></div>
  )}
+  */}
 
 
         {/* Traits, Abilities, and Enhancements */}

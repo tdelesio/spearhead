@@ -262,15 +262,22 @@ CarouselNext.displayName = "CarouselNext"
 const CarouselFirst = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, ...props }, ref) => {
+>(({ className, onClick,...props }, ref) => {
   const { scrollTo } = useCarousel()
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    scrollTo(0)
+    if (onClick) {
+      onClick(event)
+    }
+  }
 
   return (
     <Button
       ref={ref}
       {...props}
       className={cn("mt-4", className)}
-      onClick={() => scrollTo(0)}
+      onClick={handleClick}
     >
       Next Round
     </Button>
