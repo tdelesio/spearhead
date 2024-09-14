@@ -8,8 +8,8 @@ import { Badge } from "@/components/ui/badge"
 import { Phase } from "../phase";
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { Separator } from "@radix-ui/react-select"; 
-import React, { useEffect, useState,useRef } from "react";
+import { Separator } from "@radix-ui/react-select";
+import React, { useEffect, useState, useRef } from "react";
 
 import {
   Accordion,
@@ -34,71 +34,79 @@ import { BattleTacticCard, Deck } from "./battle-tactic-deck";
 // import BattleTraitDeck from "./battle-tactic-deck";
 // const BattleTraitDeck = dynamic(() => import('./battle-tactic-deck'), {ssr: false})
 
-function getPhase(selectedPhase: string | null) : Phase {
+function getPhase(selectedPhase: string | null): Phase {
   return Phase.phases.find(phase => phase.id === selectedPhase) as Phase;
 }
 
-function isCombatPhase(selectedPhase: string | null) : boolean {
+function isCombatPhase(selectedPhase: string | null): boolean {
   return selectedPhase === 'combat' || selectedPhase === 'shooting';
 }
 
-function showBattleTrait(selectedPhase: string | null, selectedBattleTrait: BattleTrait) : boolean {
-  return selectedBattleTrait?.phase === selectedPhase  || selectedBattleTrait?.phase === "passive";
+function showBattleTrait(selectedPhase: string | null, selectedBattleTrait: BattleTrait): boolean {
+  return selectedBattleTrait?.phase === selectedPhase || selectedBattleTrait?.phase === "passive";
 }
 
-function showRegimentAbility(selectedPhase: string | null, selectedRegimentAbility: RegimentAbilitiy | null) : boolean {
+function showRegimentAbility(selectedPhase: string | null, selectedRegimentAbility: RegimentAbilitiy | null): boolean {
   return selectedRegimentAbility?.phase === selectedPhase || selectedRegimentAbility?.phase === "passive";
 }
 
-function showEnhancement(selectedPhase: string | null, selectedEnhancement: Enhancement | null) : boolean {
+function showEnhancement(selectedPhase: string | null, selectedEnhancement: Enhancement | null): boolean {
   return selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
 }
 
 const shuffle = (array: BattleTacticCard[]) => {
   for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 };
 
 export default function StartOfRoundPage() {
 
+  //Scroll to top of page when the page is loaded
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const params = useSearchParams();
   const selectedFaction = params.get('faction');
-  // const selectedPhase = params.get('phase');
-  
   const faction = Factions.factions.find(faction => faction.id === selectedFaction);
 
   const initialBattleTrait = params.get('battleTraits');
   const battleTraits = faction?.battleTraits || [];
   const selectedBattleTrait = battleTraits.find(trait => trait.id === initialBattleTrait);
-  
+
   const initialRegimentAbility = params.get('regimentAbilities');
   const regimentAbilities = faction?.regimentAbilities || [];
   const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === initialRegimentAbility);
-  
 
   const initialEnhancement = params.get('enhancements');
   const enhancements = faction?.enhancements || [];
   const selectedEnhancement = enhancements.find(enhancement => enhancement.id === initialEnhancement);
-  
-
-  // const phase = Phase.phases.find(phase => phase.id === selectedPhase);
-  // const showBattleTrait = selectedBattleTrait?.phase === selectedPhase;
-  // const showRegimentAbility = selectedRegimentAbility?.phase === selectedPhase;
-  // const showEnhancement = selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
-  // const showAttributes = selectedPhase === 'combat' || selectedPhase === 'shooting'
 
   const factionUnits = Units.factions.find(faction => faction.id === selectedFaction);
 
   const [usedAbilities, setUsedAbilities] = useState<Set<string>>(new Set())
-  // const [card1,card2,card3] = useState<Set<BattleTacticCard>>(new Set()); 
 
+  const [deck, setDeck] = useState<BattleTacticCard[]>([]);
+  const [hand, setHand] = useState<BattleTacticCard[]>([]);
+
+  //Link to return to home page
+  function Home() {
+    return (
+      <Link className="text-white"
+        href={{
+          pathname: '/',
+
+        }}
+      >
+        Home
+      </Link>
+    )
+  }
+
+  //Mark card as used visuabilly for cards that can only be used once per battle
   const handleCardClick = (unitId: string, once: boolean) => {
     if (!once) return;
     setUsedAbilities(prev => {
@@ -109,291 +117,237 @@ export default function StartOfRoundPage() {
         newSet.add(unitId)
       }
       return newSet
-  
+
     })
   }
 
-    function Home() {
-    return (
-      <Link className="text-white"
-        href={{
-          pathname: '/',
-         
-        }}
-      >
-        Home
-      </Link>
-    )
-  }
-
-  function NextRound() {
-    return (
-      <Link className="text-white"
-        href={{
-          pathname: '/phase',
-          query: { faction: selectedFaction, battleTraits: initialBattleTrait, regimentAbilities: initialRegimentAbility, enhancements: initialEnhancement },
-        }}
-      >
-        Next Round
-      </Link>
-    )
-  }
-
-  const [deck, setDeck] = useState<BattleTacticCard[]>([]);
-  const [hand, setHand] = useState<BattleTacticCard[]>([]);
-
-
-
-  // const [selectedPhase, setSelectedPhase] = useState(Phase.phases[0]);
-
-  // useEffect(() => {
-  //   if (selectedPhase.id === 'end' && hand.length < 3 && deck.length > 0) {
-  //     const newCards = deck.slice(0, 3 - hand.length);
-  //     setHand([...hand, ...newCards]);
-  //     setDeck(deck.slice(3 - hand.length));
-  //   }
-  // }, [selectedPhase.id, hand.length, deck.length]);
-  // const myDeck = shuffle(Deck.cards);
-
-  // const stack: BattleTacticCard[] = [];
-  // myDeck.forEach(card => stack.push(card));
-
-  // const hand: BattleTacticCard[] = [];
-  // card1 = stack.shift();
-  // card2 = stack.shift();
-  // card3 = stack.shift();
-
+  //Remove card from hand when the card is clicked
   const handleBattleTraitCarClick = (index: number) => {
     setHand(prevHand => {
-        const newHand = [...prevHand];
-        newHand.splice(index, 1);
-        // if (deck.length > 0) {
-        //     const [newCard, ...remainingDeck] = deck;
-        //     newHand.push(newCard);
-        //     setDeck(remainingDeck);
-        // }
+      const newHand = [...prevHand];
+      newHand.splice(index, 1);
 
-        return newHand;
+      return newHand;
     });
-};
+  };
 
-const nextRoundClick = () => {
-  console.log("cards left in deck",deck.length);
-  if (hand.length < 3 && deck.length > 0) {
-    const newCards = deck.slice(0, 3 - hand.length);
-    setHand([...hand, ...newCards]);
-    setDeck(deck.slice(3 - hand.length));
-  }
-
-  console.log("cards left in deck",deck.length);
-};
-
-const initializedRef = useRef(false);
-useEffect(() => {
-  
-  if (!initializedRef.current) {
-  const shuffledDeck = shuffle([...Deck.cards]);
-  console.log("shuffledDeck before draw",shuffledDeck);
-  setDeck(shuffledDeck);
-  setHand(shuffledDeck.splice(0, 3));
-  
-  console.log("shuffledDeck after draw",shuffledDeck);
-  initializedRef.current = true;
+  //Button to draw cards to 3 when on the start phase.  
+  const nextRoundClick = () => {
+    if (hand.length < 3 && deck.length > 0) {
+      const newCards = deck.slice(0, 3 - hand.length);
+      setHand([...hand, ...newCards]);
+      setDeck(deck.slice(3 - hand.length));
     }
-}, []);
 
+  };
+
+  //Logiic initially shufftle and draw cards to 3.  Also checks to make sure it only happens once.
+  const initializedRef = useRef(false);
+  useEffect(() => {
+
+    if (!initializedRef.current) {
+      const shuffledDeck = shuffle([...Deck.cards]);
+      setDeck(shuffledDeck);
+      setHand(shuffledDeck.splice(0, 3));
+
+      initializedRef.current = true;
+    }
+  }, []);
+
+
+  //Start of HTML
   return (
 
 
-<Carousel>
- <div className="absolute top-10 left-80 z-10  ">
+    <Carousel>
+      <div className="absolute top-10 left-80 z-10  ">
         <CarouselPrevious className="h-8 w-8 rounded-full" />
         <Home />
         <CarouselNext className="h-8 w-8 rounded-full" />
-      </div> 
+      </div>
 
 
-<CarouselContent>
-
-  
-  {Phase.phases.map(selectedPhase => (
-<CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
-
-    <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name}</h1>  {selectedPhase.id === 'end' && ( <CarouselFirst onClick={nextRoundClick} className="cursor-pointer hover:bg-gray-200"/>)}
-    <div className="flex space-x-2">
-               
-              </div>
+      <CarouselContent>
 
 
+        {Phase.phases.map(selectedPhase => (
+          <CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen p-4`}>
 
-      <div className="space-y-6 p-6">
-        
- {/* End, Show points */}
- {selectedPhase.id === 'end' && ( 
-  <VictoryPointTracker/>
- )}
+            <h1 className="text-xl font-semibold mb-2">{selectedPhase?.name}</h1>  {selectedPhase.id === 'end' && (<CarouselFirst onClick={nextRoundClick} className="cursor-pointer hover:bg-gray-200" />)}
+            <div className="flex space-x-2">
 
- {/* Start, draw cards to 3 
+            </div>
+
+
+
+            <div className="space-y-6 p-6">
+
+              {/* End, Show points */}
+              {selectedPhase.id === 'end' && (
+                <VictoryPointTracker />
+              )}
+
+              {/* Start, draw cards to 3 
  {selectedPhase.id === 'start' && hand.length< 3 && ( 
   <div></div>
  )}
   */}
 
 
-        {/* Traits, Abilities, and Enhancements */}
-        
-          {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(faction?.id || '',selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
-          {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && renderCard(faction?.id || '',selectedRegimentAbility, "Regiment Ability", usedAbilities, handleCardClick)}
-          {selectedEnhancement && showEnhancement(selectedPhase.id, selectedEnhancement) && renderCard(faction?.id || '',selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
-        
-        {/* Movement */}
-        {selectedPhase.id === 'movement' && (
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Movement</h2>
-            <div className="space-y-4">
-              {factionUnits?.units?.map((unit) => (
-                <Card key={unit.id} className="bg-white text-black max-w-md">
-                  <CardHeader>
-                    <CardTitle>{unit.name}</CardTitle>
-                    <CardDescription>Movement: {unit.move}</CardDescription>
-                  </CardHeader>
-                </Card>
-              ))}
-            </div>
-          </section>
-        )}
+              {/* Traits, Abilities, and Enhancements */}
 
-        {/* Non-Combat Phase */}
-        {!isCombatPhase(selectedPhase.id) && (
-          <section>
-            <h2 className="text-xl font-semibold mb-2">Phase Abilities</h2>
+              {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(faction?.id || '', selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
+              {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && renderCard(faction?.id || '', selectedRegimentAbility, "Regiment Ability", usedAbilities, handleCardClick)}
+              {selectedEnhancement && showEnhancement(selectedPhase.id, selectedEnhancement) && renderCard(faction?.id || '', selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
 
-          {factionUnits?.units?.map((unit) => (
-            <div className="space-y-4 pb-4" key={unit.id}>
-      
-            {factionUnits?.units.find(u => u.id === unit.id) 
-              ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability => 
-                  renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
-                )
-              : null
-            }
-          </div>
-          ))}
-          </section>
-        )}
+              {/* Movement */}
+              {selectedPhase.id === 'movement' && (
+                <section>
+                  <h2 className="text-xl font-semibold mb-4">Movement</h2>
+                  <div className="space-y-4">
+                    {factionUnits?.units?.map((unit) => (
+                      <Card key={unit.id} className="bg-white text-black max-w-md">
+                        <CardHeader>
+                          <CardTitle>{unit.name}</CardTitle>
+                          <CardDescription>Movement: {unit.move}</CardDescription>
+                        </CardHeader>
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+              )}
 
-        {/* Combat Phase? */}
-        {isCombatPhase(selectedPhase.id) && (
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Attacks</h2>
-            <div className="space-y-4">
-              {factionUnits?.units?.map((unit) => (
-                <Card key={unit.id} className="bg-white text-black w-full max-w-md overflow-hidden">
-                  <CardHeader>
-                    <CardTitle>{unit.name}</CardTitle>
-                    <CardDescription className="border-b-2 border-gray-300 flex justify-between py-2"><span>Health: {unit.health}</span> <span>Save: {unit.save}+</span> <span>Ward: {unit.ward}+</span></CardDescription>
-                  </CardHeader>
-                  {getAttacksForRound(unit as Unit, selectedPhase.id || '').length > 0 && (
-                    <CardContent>
-                      {getAttacksForRound(unit as Unit, selectedPhase.id || '').map((attr) => (
-                        <div key={attr.id} className="grid grid-cols-2 gap-2 text-sm">
-                          <div className="border-gray-300 pt-5">Name</div><div className="border-gray-300 pt-5">{attr.name}</div>
-                          {selectedPhase.id === 'shooting' && (
-                            <>
-                              <div>Range</div><div>{attr.range}</div>
-                            </>
-                          )}
-                          <div className="border-b-2">Attacks</div><div className="border-b-2">{attr.attacks}</div>
-                          <div className="border-b-2">Hit</div><div className="border-b-2">{attr.hit}+</div>
-                          <div className="border-b-2">Wound</div><div className="border-b-2">{attr.wound}+</div>
-                          <div className="border-b-2">Rend</div><div className="border-b-2">{attr.rend}</div>
-                          <div className="border-b-2">Damage</div><div className="border-b-2">{attr.damage}</div>
-                          <div className="border-b-4 border-red-300">Ability</div><div className="border-b-4  border-red-300">{attr.ability}</div>
-                        
-                        </div>
-                      ))}
-                     
-        <section>        
-          <div className="space-y-4">
-            {factionUnits?.units.find(u => u.id === unit.id) 
-              ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability => 
-                  renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
-                )
-              : null
-            }
-          </div>
-        </section>
-                    </CardContent>
+              {/* Non-Combat Phase */}
+              {!isCombatPhase(selectedPhase.id) && (
+                <section>
+                  <h2 className="text-xl font-semibold mb-2">Phase Abilities</h2>
+
+                  {factionUnits?.units?.map((unit) => (
+                    <div className="space-y-4 pb-4" key={unit.id}>
+
+                      {factionUnits?.units.find(u => u.id === unit.id)
+                        ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability =>
+                          renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
+                        )
+                        : null
+                      }
+                    </div>
+                  ))}
+                </section>
+              )}
+
+              {/* Combat Phase? */}
+              {isCombatPhase(selectedPhase.id) && (
+                <section>
+                  <h2 className="text-xl font-semibold mb-4">Attacks</h2>
+                  <div className="space-y-4">
+                    {factionUnits?.units?.map((unit) => (
+                      <Card key={unit.id} className="bg-white text-black w-full max-w-md overflow-hidden">
+                        <CardHeader>
+                          <CardTitle>{unit.name}</CardTitle>
+                          <CardDescription className="border-b-2 border-gray-300 flex justify-between py-2"><span>Health: {unit.health}</span> <span>Save: {unit.save}+</span> <span>Ward: {unit.ward}+</span></CardDescription>
+                        </CardHeader>
+                        {getAttacksForRound(unit as Unit, selectedPhase.id || '').length > 0 && (
+                          <CardContent>
+                            {getAttacksForRound(unit as Unit, selectedPhase.id || '').map((attr) => (
+                              <div key={attr.id} className="grid grid-cols-2 gap-2 text-sm">
+                                <div className="border-gray-300 pt-5">Name</div><div className="border-gray-300 pt-5">{attr.name}</div>
+                                {selectedPhase.id === 'shooting' && (
+                                  <>
+                                    <div>Range</div><div>{attr.range}</div>
+                                  </>
+                                )}
+                                <div className="border-b-2">Attacks</div><div className="border-b-2">{attr.attacks}</div>
+                                <div className="border-b-2">Hit</div><div className="border-b-2">{attr.hit}+</div>
+                                <div className="border-b-2">Wound</div><div className="border-b-2">{attr.wound}+</div>
+                                <div className="border-b-2">Rend</div><div className="border-b-2">{attr.rend}</div>
+                                <div className="border-b-2">Damage</div><div className="border-b-2">{attr.damage}</div>
+                                <div className="border-b-4 border-red-300">Ability</div><div className="border-b-4  border-red-300">{attr.ability}</div>
+
+                              </div>
+                            ))}
+
+                            <section>
+                              <div className="space-y-4">
+                                {factionUnits?.units.find(u => u.id === unit.id)
+                                  ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability =>
+                                    renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
+                                  )
+                                  : null
+                                }
+                              </div>
+                            </section>
+                          </CardContent>
+                        )}
+                      </Card>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Cards */}
+              <section>
+                <h2 className="text-xl font-semibold mb-2">Battle Tactic Cards</h2>
+                <div>
+                  {hand.map((card, index) => (
+                    <React.Fragment key={card.id}>
+                      {renderBattleTacticDeckCard(card, () => handleBattleTraitCarClick(index))}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </section>
+              {/* Passive Abilities */}
+              <section>
+                <h2 className="text-xl font-semibold mb-2">Passive Abilities</h2>
+
+                <div className="space-y-4">
+                  {factionUnits?.units?.flatMap(unit =>
+                    unit.Passive.abilities.map(ability =>
+                      renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
+                    )
                   )}
-                </Card>
-              ))}
+                </div>
+              </section>
             </div>
-          </section>
-        )}
 
-        {/* Cards */}
-        <section>
-        <h2 className="text-xl font-semibold mb-2">Battle Tactic Cards</h2>
-        <div>
-            {hand.map((card, index) => (
-                <React.Fragment key={card.id}>
-                    {renderBattleTacticDeckCard(card, () => handleBattleTraitCarClick(index))}
-                </React.Fragment>
-            ))}
-        </div>
-        </section>
-        {/* Passive Abilities */}
-        <section>
-          <h2 className="text-xl font-semibold mb-2">Passive Abilities</h2>
-          
-          <div className="space-y-4">
-            {factionUnits?.units?.flatMap(unit =>
-              unit.Passive.abilities.map(ability => 
-                renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
-              )
-            )}
-          </div>
-        </section>
-      </div>
-      
-      </CarouselItem>
-      ))}
+          </CarouselItem>
+        ))}
       </CarouselContent>
-      </Carousel>
+    </Carousel>
   );
 }
 
 function renderBattleTacticDeckCard(card: BattleTacticCard, onClick: () => void) {
   return (
-      <div>
-          <Accordion type="single" collapsible className="w-full max-w-md overflow-hidden mb-4">
-              <AccordionItem value="item-1">
-                  <AccordionTrigger>{card.name}</AccordionTrigger>
-                  <AccordionContent>
-                      <Card className="w-full max-w-md mx-auto cursor-pointer" onClick={onClick}>
-                          <CardHeader>
-                              <h3 className="text-lg font-semibold">Battle Tactic Objective</h3>
-                          </CardHeader>
-                          <CardContent className="space-y-4">
-                              {card.battleTacticObjective}
-                              <Separator className="my-4"/>
-                              <h3 className="text-lg font-semibold">{card.command.name}</h3>
-                              <span className="font-medium">Declare:</span> {card.command.usedBy}
-                              <Separator/>
-                              <span className="font-medium">Effect:</span> {card.command.effect}
-                          </CardContent>
-                      </Card>  
-                  </AccordionContent>
-              </AccordionItem>
-          </Accordion>
-      </div>
+    <div>
+      <Accordion type="single" collapsible className="w-full max-w-md overflow-hidden mb-4">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>{card.name}</AccordionTrigger>
+          <AccordionContent>
+            <Card className="w-full max-w-md mx-auto cursor-pointer" onClick={onClick}>
+              <CardHeader>
+                <h3 className="text-lg font-semibold">Battle Tactic Objective</h3>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {card.battleTacticObjective}
+                <Separator className="my-4" />
+                <h3 className="text-lg font-semibold">{card.command.name}</h3>
+                <span className="font-medium">Declare:</span> {card.command.usedBy}
+                <Separator />
+                <span className="font-medium">Effect:</span> {card.command.effect}
+              </CardContent>
+            </Card>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
   );
 }
 
-function renderCard(faction: string,item: any, title: string, usedAbilities: Set<string>, handleCardClick: (id: string, once: boolean) => void) {
+function renderCard(faction: string, item: any, title: string, usedAbilities: Set<string>, handleCardClick: (id: string, once: boolean) => void) {
   const isUsed = usedAbilities.has(item?.id || '');
   let showTable = false;
-  
+
   if (item.table) {
     showTable = item.table;
   }
@@ -403,8 +357,8 @@ function renderCard(faction: string,item: any, title: string, usedAbilities: Set
 
 
   if (showTable) {
-  
-  return <AbilityTable passedFaction={faction} />
+
+    return <AbilityTable passedFaction={faction} />
   }
 
   return (
