@@ -72,7 +72,7 @@ export function AbilityTable({ passedFaction, description }: AbilityTableProps) 
 
     <Card
     key=""
-    className="relative overflow-hidden transition-all duration-300 ease-in-out  w-full max-w-3xl overflow-hidden mx-auto w-full overflow-hidden">
+    className="relative overflow-hidden transition-all duration-300 ease-in-out mx-auto w-full overflow-hidden">
 
 <CardHeader>
           <CardTitle>Battle Trait </CardTitle><p>{description}</p>

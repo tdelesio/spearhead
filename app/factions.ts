@@ -167,7 +167,7 @@ export const Factions = {
     },
     {
         "id": "skaven",
-        "name": "Skaven",
+        "name": "Skaven - Gnawfeast Clawpack",
         "battleTraits": [
         {
                 "id": "lurkingVermintide",
@@ -226,6 +226,68 @@ export const Factions = {
         "units": ["Clawlord on Gnaw-beast (Hero)", "Grey Seer (1)", "Warlock Engineer (1)", "Clanrats (10)", "Clanrats (10)", "Rat Orges (3)"]
         
     },
+    {
+        "id": "skaven2",
+        "name": "Skaven - Warpspark Clawpack",
+        "battleTraits": [
+        {
+                "id": "alwaysThreeCalowstepsAhead",
+                "name": "Always Three Calowsteps Ahead",
+                "effect": "Pick a friendly unit that is not in combat.  That untit can use Normal Move ability as if it were your movement phase. ",
+                "once": true,
+                "phase": "movement",
+                "table": false
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "warpstoneLacedArmor",
+                "name": "Warpstone Laced Armor",
+                "effect": "Your Stormfields unit has a Ward (4+) this phase.",
+                "once": true,
+                "phase": "combat"
+            },
+            {
+            "id": "endlessSwarmOfRats",
+                "name": "Endless Swarm of Rats",
+                "effect": "When a friendly Clanrats unit uses it Seething Swarm abililty, you can return D6 slain models to that unit instead of D3.",
+                "once": false,
+                "phase": "passive"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "skilledManipulator",
+                    "name": "Skilled Manipulator",
+                    "effect": "Your general has a Ward (4+) while they are within 1\" of any friendly Clanrats unit.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "skitterleap",
+                    "name": "Skitterleap",
+                    "effect": "Make a casting roll of 2D6.  On a 6+, remove your general from the battield and set them up again on the battlefield more than 6\" from all enemy units.  They cannot use Move abilities in the following movement phase.",
+                    "once": false,
+                    "phase": "hero",
+                },
+                {
+                    "id": "cageOfWarpLightning",
+                    "name": "Cage of Warp Lightning",
+                    "effect": "Pick a visible enemy unit within 12\" of your general and roll a dice.  On a 2+, the enemy unit has STRIKE-LAST this phase.  On a 1, inflict 1 mortal damage on your general.",
+                    "once": true,
+                    "phase": "combat",
+                },
+                {
+                    "id": "scurryAway",
+                    "name": "Scurry Away",
+                    "effect": "Roll a dice.  On a 3+, this unit can immediately use the Retreat ability as if it were your movement phase.  If it does so, no mortal damage is inflicted when it uses Retreat.",
+                    "once": false,
+                    "phase": "combat",
+                },],
+        "units": ["Grey Seer (Hero)", "Stormfiends (3)", "Warp Ligtning Cannon (1)", "Clanrats (10)", "Clanrats (10)"]
+        
+    },
+
     {
         "id": "SoD",
         "name": "Slaves of Darkness",

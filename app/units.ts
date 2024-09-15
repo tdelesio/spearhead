@@ -817,6 +817,318 @@ export const Units = {
             ]
         },
         {
+            "id": "skaven2",
+            units: [
+            {
+
+                "id": "greySeer",
+                "name": "Grey Seer",
+                "move": "6",
+                "control": 2,
+                "health": 5,
+                "save": 6,
+                "ward": 0,
+                "hero": true,
+                "keywords": ["Hero", "Wizard", "Infantry"],
+                "Passive": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Start":
+                {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Hero": {
+                    "attacks": [],
+                    "abilities": [{
+                        "id": "willOfTheHornedRat",
+                        "name": "Will Of The Horned Rat",
+                        "effect": "Pick a friendly unit wholly within 13\" then roll a dice.  On a 3+, add the roll to the targets control score until the start of your next turn.",
+                        "once": false,
+                    },
+                    {
+                        "id": "wither",
+                        "name": "Wither",
+                        "effect": "Pick a visable enemy unit within 13\" of this unit to be the target, then making a casting rolling 2D6.  On a 6+, inflict D3 mortal damage on the target.",
+                        "once": false,
+                    }]
+                },
+                "Movement": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Shooting": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Charge": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Combat":
+                {
+                    "attacks": [
+                        {
+                            "id": "warpstoneStaff",
+                            "name": "Warpstone Staff",
+                            "range": 0,
+                            "attacks": "3",
+                            "hit": 4,
+                            "wound": 4,
+                            "rend": 1,
+                            "damage": "D3",
+                            "ability": ""
+                        },                    
+                    ],
+                    "abilities": [],
+                },
+                "End": {
+                    "attacks": [],
+                    "abilities": []
+                }
+
+            },
+            {
+
+                "id": "stormfiends",
+                "name": "Stormfiends",
+                "move": "6",
+                "control": 2,
+                "health": 6,
+                "save": 4,
+                "ward": 0,
+                "hero": false,
+                "keywords": ["Infantry"],
+                "Passive": {
+                    "attacks": [],
+                    "abilities": [{
+                        "id": "shockGauntlets",
+                        "name": "Shock Gauntlets",
+                        "effect": "Each time an attack with this unit's Shock Gauntlets score a critical hit, that attack scores D6 hits instead of 1 (make a wounds roll for each).",
+                        "once": false,
+                    }]
+                },
+                "Start":
+                {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Hero": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Movement": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Shooting": {
+                    "attacks": [{
+                        "id": "ratlingCannon",
+                        "name": "Ratling Cannon",
+                        "range": 15,
+                        "attacks": "3D6",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "windLaunchers",
+                        "name": "Wind Launchers",
+                        "range": 15,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 2,
+                        "damage": "D3",
+                        "ability": ""
+                    }
+                ],
+                    "abilities": []
+                },
+                "Charge": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Combat":
+                {
+                    "attacks": [
+                        {
+                            "id": "shockGauntlets",
+                            "name": "Shock Gauntlets",
+                            "range": 0,
+                            "attacks": "4",
+                            "hit": 4,
+                            "wound": 2,
+                            "rend": 1,
+                            "damage": "2",
+                            "ability": ""
+                        },
+                        {
+                            "id": "clubbingBlows",
+                            "name": "Clubbing Blows",
+                            "range": 0,
+                            "attacks": "4",
+                            "hit": 4,
+                            "wound": 2,
+                            "rend": 0,
+                            "damage": "2",
+                            "ability": ""
+                        },
+                        
+                    ],
+                    "abilities": [],
+                },
+                "End": {
+                    "attacks": [],
+                    "abilities": []
+                }
+
+            },
+            {
+
+                "id": "warpLightningCannon",
+                "name": "Warp Lightning Cannon",
+                "move": "3",
+                "control": 2,
+                "health": 8,
+                "save": 4,
+                "ward": 0,
+                "hero": false,
+                "keywords": ["War Machine"],
+                "Passive": {
+                    "attacks": [],
+                    "abilities": [{
+                        "id": "warpLightningBlaster",
+                        "name": "Warp Lightning Blaster",
+                        "effect": "Each attack made with this weapon in a single phase must target the same enemy unit.  Each hit inflicts 1 mortal damage on the target and the attack sequence ends.",
+                        "once": false,
+                    }]
+                },
+                "Start":
+                {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Hero": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Movement": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Shooting": {
+                    "attacks": [],
+                    "abilities": [{
+                        "id": "warpLightningBlaster",
+                        "name": "Warp Lightning Blaster",
+                        "range": 20,
+                        "attacks": "2D6",
+                        "hit": 4,
+                        "wound": 0,
+                        "rend": 0,
+                        "damage": "0",
+                        "ability": "see passive"
+                    }]
+                },
+                "Charge": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Combat":
+                {
+                    "attacks": [
+                        {
+                            "id": "crewsTeethAndKnives",
+                            "name": "Crews Teeth And Knives",
+                            "range": 0,
+                            "attacks": "D6",
+                            "hit": 4,
+                            "wound": 5,
+                            "rend": 0,
+                            "damage": "1",
+                            "ability": ""
+                        },
+                        
+                    ],
+                    "abilities": [],
+                },
+                "End": {
+                    "attacks": [],
+                    "abilities": []
+                }
+
+            },
+            {
+
+                "id": "clanrats",
+                "name": "Clanrats",
+                "move": "6",
+                "control": 1,
+                "health": 1,
+                "save": 5,
+                "ward": 0,
+                "hero": false,
+                "keywords": ["Infantry", "Reinforcements"],
+                "Passive": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Start":
+                {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Hero": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Movement": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Shooting": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Charge": {
+                    "attacks": [],
+                    "abilities": []
+                },
+                "Combat":
+                {
+                    "attacks": [
+                        {
+                            "id": "rustyBlade",
+                            "name": "Rusty Blade",
+                            "range": 0,
+                            "attacks": "2",
+                            "hit": 4,
+                            "wound": 5,
+                            "rend": 0,
+                            "damage": "1",
+                            "ability": ""
+                        }
+                    ],
+                    "abilities": [],
+                },
+                "End": {
+                    "attacks": [],
+                    "abilities": [{
+                        "id": "seethingSwarm",
+                        "name": "Seething Swarm",
+                        "effect": "You can return D3 slain models to this unit.",
+                        "once": false,
+                    }]
+                }
+
+            },
+            ]
+        },
+        {
             id: "SoD",
             units: [
                 {

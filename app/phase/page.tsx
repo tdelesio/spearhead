@@ -169,7 +169,7 @@ export default function StartOfRoundPage() {
         {Phase.phases.map(selectedPhase => (
           <CarouselItem key={selectedPhase.id} className={`${selectedPhase?.bgcolor} text-white min-h-screen w-full p-4 sm:p-6 lg:p-8`}>
 
-<section className="w-full max-w-3xl mx-auto">
+<section className="w-full  mx-auto">
   <div className="flex justify-between items-center mb-4">
     <h1 className="text-xl font-semibold">{selectedPhase?.name}</h1>
     <div className="flex items-center space-x-2">
@@ -210,11 +210,11 @@ export default function StartOfRoundPage() {
 
               {/* Movement */}
               {selectedPhase.id === 'movement' && (
-                <section className="w-full max-w-3xl mx-auto">
+                <section className="w-full  mx-auto">
                   <h2 className="text-xl font-semibold mb-4">Movement</h2>
                   <div className="space-y-4">
                     {factionUnits?.units?.map((unit) => (
-                      <Card key={unit.id} className="bg-white text-black max-w-3xl mx-auto w-full overflow-hidden">
+                      <Card key={unit.id} className="bg-white text-black  mx-auto w-full overflow-hidden">
                         <CardHeader>
                           <CardTitle>{unit.name}</CardTitle>
                           <CardDescription>Movement: {unit.move}</CardDescription>
@@ -227,7 +227,7 @@ export default function StartOfRoundPage() {
 
               {/* Non-Combat Phase */}
               {!isCombatPhase(selectedPhase.id) && (
-                <section className="w-full max-w-3xl mx-auto">
+                <section className="w-full  mx-auto">
                   <h2 className="text-xl font-semibold mb-2">Phase Abilities</h2>
 
                   {factionUnits?.units?.map((unit) => (
@@ -246,11 +246,11 @@ export default function StartOfRoundPage() {
 
               {/* Combat Phase? */}
               {isCombatPhase(selectedPhase.id) && (
-                <section className="w-full max-w-3xl mx-auto">
+                <section className="w-full  mx-auto">
                   <h2 className="text-xl font-semibold mb-4">Attacks</h2>
                   <div className="space-y-4">
                     {factionUnits?.units?.map((unit) => (
-                      <Card key={unit.id} className="bg-white text-black w-full max-w-3xl overflow-hidden">
+                      <Card key={unit.id} className="bg-white text-black w-full  overflow-hidden">
                         <CardHeader>
                           <CardTitle>{unit.name}</CardTitle>
                           <CardDescription className="border-b-2 border-gray-300 flex justify-between py-2"><span>Health: {unit.health}</span> <span>Save: {unit.save}+</span> <span>Ward: {unit.ward}+</span></CardDescription>
@@ -275,7 +275,7 @@ export default function StartOfRoundPage() {
                               </div>
                             ))}
 
-                            <section className="w-full max-w-3xl mx-auto">
+                            <section className="w-full  mx-auto">
                               <div className="space-y-4">
                                 {factionUnits?.units.find(u => u.id === unit.id)
                                   ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability =>
@@ -294,7 +294,7 @@ export default function StartOfRoundPage() {
               )}
 
               {/* Cards */}
-              <section className="w-full max-w-3xl mx-auto">
+              <section className="w-full  mx-auto">
                 <h2 className="text-xl font-semibold mb-2">Battle Tactic Cards</h2>
                 <div>
                   {hand.map((card, index) => (
@@ -305,7 +305,7 @@ export default function StartOfRoundPage() {
                 </div>
               </section>
               {/* Passive Abilities */}
-              <section className="w-full max-w-3xl mx-auto">
+              <section className="w-full  mx-auto">
                 <h2 className="text-xl font-semibold mb-2">Passive Abilities</h2>
 
                 <div className="space-y-4">
@@ -329,11 +329,11 @@ export default function StartOfRoundPage() {
 function renderBattleTacticDeckCard(card: BattleTacticCard, onClick: () => void) {
   return (
     <div>
-      <Accordion type="single" collapsible className="w-full max-w-md max-w-3xl overflow-hidden mb-4">
+      <Accordion type="single" collapsible className="w-full max-w-md  overflow-hidden mb-4">
         <AccordionItem value="item-1">
           <AccordionTrigger>{card.name}</AccordionTrigger>
           <AccordionContent>
-            <Card className="w-full max-w-3xl mx-auto cursor-pointer overflow-hidden" onClick={onClick}>
+            <Card className="w-full  mx-auto cursor-pointer overflow-hidden" onClick={onClick}>
               <CardHeader>
                 <h3 className="text-lg font-semibold">Battle Tactic Objective</h3>
               </CardHeader>
@@ -367,15 +367,15 @@ function renderCard(faction: string, item: any, title: string, usedAbilities: Se
 
   if (showTable) {
 
-
-    return <AbilityTable passedFaction={faction} description={item.effect} />
+    
+    return <AbilityTable passedFaction={faction} />
   }
 
   return (
 
     <Card
       key={item?.id}
-      className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full max-w-3xl overflow-hidden mx-auto
+      className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full  overflow-hidden mx-auto
         ${isUsed ? 'bg-gray-300 dark:bg-gray-800 ' : 'bg-white text-black cursor-pointer hover:shadow-md '}`}
       onClick={() => handleCardClick(item?.id || '', item?.once || false)}
     >
@@ -413,7 +413,7 @@ function renderAbilityCard(unit: Unit, ability: any, usedAbilities: Set<string>,
   return (
     <Card
       key={`${unit.id}-${ability.id}`}
-      className={`relative cursor-pointer transition-all duration-300 ease-in-out w-full max-w-3xl overflow-hidden mx-auto
+      className={`relative cursor-pointer transition-all duration-300 ease-in-out w-full  overflow-hidden mx-auto
         ${isUsed ? 'bg-gray-300 dark:bg-gray-800 saturate-0' : 'bg-white text-black hover:shadow-md'}
       `}
       onClick={() => handleCardClick(unit.id, ability.once)}
