@@ -21,9 +21,9 @@ export default function RootLayout({
 }>) {
   return (
 
-    <div className="flex">
+    <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
     {/* <LeftNav /> */}
-    <main className="flex-1">
+    <main className="flex-grow container mx-auto">
 
 
 

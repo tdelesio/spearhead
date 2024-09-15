@@ -159,7 +159,7 @@ export default function StartOfRoundPage() {
   //Start of HTML
   return (
 
-<div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
+<div className=" mx-auto ">
     <Carousel className="w-full relative">
       
 
