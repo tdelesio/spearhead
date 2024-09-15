@@ -34,6 +34,7 @@ import { BattleTacticCard, Deck } from "./battle-tactic-deck";
 // import BattleTraitDeck from "./battle-tactic-deck";
 // const BattleTraitDeck = dynamic(() => import('./battle-tactic-deck'), {ssr: false})
 
+
 function getPhase(selectedPhase: string | null): Phase {
   return Phase.phases.find(phase => phase.id === selectedPhase) as Phase;
 }
@@ -158,7 +159,7 @@ export default function StartOfRoundPage() {
   //Start of HTML
   return (
 
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
     <Carousel className="w-full relative">
       
 
@@ -368,7 +369,7 @@ function renderCard(faction: string, item: any, title: string, usedAbilities: Se
   if (showTable) {
 
     
-    return <AbilityTable passedFaction={faction} />
+    return <AbilityTable passedFaction={faction} description={item.description} />
   }
 
   return (
