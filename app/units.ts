@@ -2971,7 +2971,279 @@ export const Units = {
 
         },
         ]
-    }
+    },
+    {
+        "id": "soulblight",
+        units: [
+        {
+
+            "id": "vampireLord",
+            "name": "Vampire Lord",
+            "move": "6",
+            "control": 2,
+            "health": 5,
+            "save": 3,
+            "ward": 6,
+            "hero": true,
+            "keywords": ["Hero", "Infantry", "Wizard", "Vampire", "Ward(6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "vileTransference",
+                    "name": "Vile Transference",
+                    "effect": "Pick a visbile enemy unit within 6\" of thisunit to be the target, then make a casting roll of 2D6.  On a 6+, roll a number of dice equal to the target's health.  For each 5+, inflict 1 mortal data on the target and Heal(1) this unit.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "dynasticWarRelic",
+                        "name": "Dynastic War Relic",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "bloodKnight",
+            "name": "Blood Knight",
+            "move": "10",
+            "control": 1,
+            "health": 3,
+            "save": 3,
+            "ward": 6,
+            "hero": false,
+            "keywords": ["Calvary", "Vampire", "Ward(6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "riderOfRuin",
+                    "name": "Rider of Ruin",
+                    "effect": "Models in this unit can pass across enemy infantry models as if this unit had FLY.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "templarLanceOrTemplarSword",
+                        "name": "Templar Lance/Sword",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Charge (+1 Damage)"
+                    },
+                    {
+                        "id": "nightmaresHoovesAndTeeth",
+                        "name": "Nightmare's Hooves and Teeth",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 5,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "vargheists",
+            "name": "Vargheists",
+            "move": "12",
+            "control": 1,
+            "health": 4,
+            "save": 5,
+            "ward": 6,
+            "hero": false,
+            "keywords": ["Infantry", "Vampire", "Ward(6+)", "Fly"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "theScrentOfGore",
+                    "name": "The Scrent of Gore",
+                    "effect": "Add 1 to wound rolls for attacks made by this unit that target a damaged unit.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "murderousFangsAndTalons",
+                        "name": "Murderous Fangs and Talons",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Crit (2 Hit)"
+                    },                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "deathrattleSkeletons",
+            "name": "Deathrattle Skeletons",
+            "move": "4",
+            "control": 1,
+            "health": 1,
+            "save": 5,
+            "ward": 6,
+            "hero": false,
+            "keywords": ["Infantry", "Ward(6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "ancientWeapon",
+                        "name": "Ancient Weapon",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                ],
+                "abilities": [{
+                    "id": "skeletonLegion",
+                    "name": "Skeleton Legion",
+                    "effect": "For each slain model from this unit, make a legion roll of D6.  For each 5+, return 1 slain model to this unit.",
+                    "once": true,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
 
     ]
 }

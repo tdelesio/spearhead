@@ -594,5 +594,66 @@ export const Factions = {
         "units": ["Loon Bose (Hero)", "Moonclan Stabbas (10)", "Moonclan Stabbas (10)", "Squig Hoopers (5)", "Squig Hoopers (5)", "Rockgut Troggoths (3)"]
         
     },
+    {
+        "id": "soulblight",
+        "name": "Soulblight Gravelords",
+        "battleTraits": [
+        {
+                "id": "swoopDown",
+                "name": "Swoop Down",
+                "effect": "Your Vargheists are not set up during the deployment phase.  Instead, from the third battle round onwards, it can set up this unit anywhere on the battlie more than 6\" from all enemy units during movement phase.  In addition, Each time a friendly Vampure unit users a FIGHT ability, after all of its attacks have been resolved, Heal(X) that vampire unit where X is the number of damage points allocated by those attacks.",
+                "once": false,
+                "phase": "passive",
+                "table": false
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "endlessLegions",
+                "name": "Endless Legions",
+                "effect": "Pick a friendly Deathrattle Skeletons unit.  You can set up a replacement unit with D6+4 models anywhere on the battlefield more than 6\" from all enemy units.",
+                "once": true,
+                "phase": "movement"
+            },
+            {
+            "id": "ruinousChargers",
+                "name": "Ruinous Chargers",
+                "effect": "Pick your Blood Knights unit to use this ability if they charged this turn.  Inflick D3 mortal damage on each enemy unit it passed accross during the CHARGE abililty.",
+                "once": false,
+                "phase": "charge"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "graveSandShards",
+                    "name": "Grave Sand Shards",
+                    "effect": "You declare Skeleton Legion abillity for a unit within 9\" of your general.Add 1 to each legion roll made for this unit.",
+                    "once": true,
+                    "phase": "combat",
+                },
+                {
+                    "id": "cloudOfBats",
+                    "name": "Cloud of Bats",
+                    "effect": "Remove yoru general from the battlefield and set them up again anywhere on the battlefield more than 6\" from all enemy units. ",
+                    "once": true,
+                    "phase": "movement",
+                },
+                {
+                    "id": "auraOfNight",
+                    "name": "Aura of Night",
+                    "effect": "Ignore negative modifiers to save rolls for shooting attacks that target your general",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "spiritGale",
+                    "name": "Spirit Gale",
+                    "effect": "Make a casting roll of 2D6.  On a 7+, inflict 1 mortal damange on each enemy unit on the battlefield.",
+                    "once": false,
+                    "phase": "hero",
+                },],
+        "units": ["Vampire Lord (Hero)", "Deathrattle Skeletons (10)", "Deathrattle Skeletons (10)", "Blood Knights (5)", "Vargheists (3)"]
+        
+    },
 ]
 };

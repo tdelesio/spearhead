@@ -1,4 +1,4 @@
-            {
+{
                 "id": "",
                 units: [
                 {
@@ -323,78 +323,3 @@
                 },
                 ]
             },
-
-
-                {
-                    "id": "",
-                    "name": "",
-                    "effect": "",
-                    "once": true,
-                }
-
-
-
-                Faction
-
-                {
-                    "id": "",
-                    "name": "",
-                    "battleTraits": [
-                    {
-                            "id": "",
-                            "name": "",
-                            "effect": "",
-                            "once": false,
-                            "phase": "passive",
-                            "table": false
-                    }
-                    ],
-                    "regimentAbilities": [
-                        {
-                            "id": "",
-                            "name": "",
-                            "effect": "",
-                            "once": false,
-                            "phase": "passive"
-                        },
-                        {
-                        "id": "",
-                            "name": "",
-                            "effect": "",
-                            "once": false,
-                            "phase": ""
-                        }
-                    ],
-                    "enhancements": [
-                        {
-                                "id": ",
-                                "name": ",
-                                "effect": "",
-                                "once": false,
-                                "phase": "passive",
-                            },
-                            {
-                                "id": "",
-                                "name": "",
-                                "effect": "",
-                                "once": false,
-                                "phase": "passive",
-                            },
-                            {
-                                "id": "",
-                                "name": "",
-                                "effect": "",
-                                "once": false,
-                                "phase": "passive",
-                            },
-                            {
-                                "id": "",
-                                "name": "",
-                                "effect": "",
-                                "once": false,
-                                "phase": "passive",
-                            },],
-                    "units": [""]
-                    
-                },
-            
