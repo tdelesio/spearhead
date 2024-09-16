@@ -11,6 +11,8 @@
                     "save": 5,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": [""],
                     "Passive": {
                         "attacks": [],

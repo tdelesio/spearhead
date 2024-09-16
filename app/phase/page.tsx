@@ -52,7 +52,11 @@ function showRegimentAbility(selectedPhase: string | null, selectedRegimentAbili
 }
 
 function showEnhancement(selectedPhase: string | null, selectedEnhancement: Enhancement | null): boolean {
-  return selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === "passive";
+  return selectedEnhancement?.phase === selectedPhase; //|| selectedEnhancement?.phase === "passive";
+}
+
+function showEnhancementOnCombatPhase(general: boolean | false, selectedEnhancement: Enhancement | null): boolean {
+  return general && (selectedEnhancement?.phase === "passive"  || selectedEnhancement?.phase === "combat" || selectedEnhancement?.phase === "shooting")
 }
 
 const shuffle = (array: BattleTacticCard[]) => {
@@ -215,12 +219,30 @@ export default function StartOfRoundPage() {
                   <h2 className="text-xl font-semibold mb-4">Movement</h2>
                   <div className="space-y-4">
                     {factionUnits?.units?.map((unit) => (
+                      <section className="w-full  mx-auto">
                       <Card key={unit.id} className="bg-white text-black  mx-auto w-full overflow-hidden">
                         <CardHeader>
                           <CardTitle>{unit.name}</CardTitle>
-                          <CardDescription>Movement: {unit.move}</CardDescription>
+                          <CardDescription>Movement: {unit.move}" {unit.fly && (" (Fly)")}</CardDescription>
                         </CardHeader>
+                        <CardContent>
+                        <div className="space-y-4">
+                        {factionUnits?.units.find(u => u.id === unit.id)
+                          ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability =>
+                            renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
+                          )
+                          : null
+                        }
+                      </div>
+                        <section className="pt-2">
+                        {unit.keywords.map((keyword) => (<span>({keyword}) </span>))}
+                        </section>
+                        </CardContent>
                       </Card>
+
+                  
+                      
+                      </section>
                     ))}
                   </div>
                 </section>
@@ -256,8 +278,8 @@ export default function StartOfRoundPage() {
                           <CardTitle>{unit.name}</CardTitle>
                           <CardDescription className="border-b-2 border-gray-300 flex justify-between py-2"><span>Health: {unit.health}</span> <span>Save: {unit.save}+</span> <span>Ward: {unit.ward}+</span></CardDescription>
                         </CardHeader>
-                        {getAttacksForRound(unit as Unit, selectedPhase.id || '').length > 0 && (
-                          <CardContent>
+                        <CardContent>
+                        
                             {getAttacksForRound(unit as Unit, selectedPhase.id || '').map((attr) => (
                               <div key={attr.id} className="grid grid-cols-2 gap-2 text-sm">
                                 <div className="border-gray-300 pt-5">Name</div><div className="border-gray-300 pt-5">{attr.name}</div>
@@ -286,8 +308,17 @@ export default function StartOfRoundPage() {
                                 }
                               </div>
                             </section>
-                          </CardContent>
-                        )}
+
+                            <section className="w-full mx-auto pt-2">
+
+                            {selectedEnhancement && showEnhancementOnCombatPhase(unit.general, selectedEnhancement) && renderCard(faction?.id || '', selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
+
+                            </section>
+                          
+                            <section className="pt-2">
+                        {unit.keywords.map((keyword) => (<span>({keyword}) </span>))}
+                        </section>
+                        </CardContent>
                       </Card>
                     ))}
                   </div>

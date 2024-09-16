@@ -1,3 +1,8 @@
+export type Alliance = {
+    id: string;
+    name: string;
+    factions: string[];
+}
 export type Faction = {
     id: string;
     name: string;
@@ -31,6 +36,30 @@ export type Faction = {
     once: boolean;
     phase: string;
   }
+export const Alliances = {
+    "alliances": [
+        {
+            "id": "order",
+            "name": "Order",
+            "factions": ["stormcast1", "stormcast2", "DoK", "fyreslayers"]
+        },
+        {
+            "id": "death",
+            "name": "death",
+            "factions": ["nighthaunt", "soulblight"]
+        },
+        {
+            "id": "chaos",
+            "name": "chaos",
+            "factions": ["skaven1", "skaven2", "SoD"]
+        },
+        {
+            "id": "destruction",
+            "name": "Destruction",
+            "factions": ["gloomspiteGitz"]
+        },
+    ]
+}
 
 export const Factions = {
     "factions": [
@@ -84,7 +113,7 @@ export const Factions = {
                     "name": "Morrda's Talon",
                     "effect": "Your general's Hallowed Greataxe has Crit (Mortal)",
                     "once": false,
-                    "phase": "passive",
+                    "phase": "combat",
                 },
                 {
                     "id": "quickSilverDraught",
@@ -112,7 +141,7 @@ export const Factions = {
                 "id": "lightningStrikeArrival",
                 "name": "Lightning Strike Arrival",
                 "effect": "Yndrastra and your Annihilators are not setup during the deployment phase.  Instead, from the third battle round onward, they can use the following ability.  Setup this unit anywhere on the battlefield more than 6\" from all enemy units.",
-                "once": true,
+                "once": false,
                 "phase": "movement",
                 "table": false
         }

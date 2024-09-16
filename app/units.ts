@@ -12,6 +12,8 @@ export type Unit = {
     save: number;
     ward: number;
     hero: boolean;
+    general: boolean;
+    fly: false;
     keywords: string[];
     Passive: {
         attacks: Attack[];
@@ -115,6 +117,8 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": true,
+                    "general": true,
+                    "fly": false,
                     "keywords": ["Hero", "Cavalry"],
                     "Passive": {
                         "attacks": [],
@@ -130,8 +134,8 @@ export const Units = {
                         "abilities": [{
                             "id": "PlanTheAttack",
                             "name": "Plan the Attack",
-                            "effect": "Pick a friendly unit within 6, that unit can make a free attack this phase",
-                            "once": true,
+                            "effect": "Pick an objective you do not control.  For the rest of the turn, add 1 to hit rolls for combat attacks made by friendly units that target enemy units contesting that objective.",
+                            "once": false,
                         }]
                     },
                     "Movement": {
@@ -140,7 +144,12 @@ export const Units = {
                     },
                     "Shooting": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [{
+                            "id": "DeliverJudgement",
+                            "name": "Deliver Judgement",
+                            "effect": "Pick a friendly wholly within 12\".  The target can use 2 Fight abilites this phase.  After the first is used, the target has Strike-Last",
+                            "once": true,
+                        }]
                     },
                     "Charge": {
                         "attacks": [],
@@ -194,15 +203,17 @@ export const Units = {
                     "health": 6,
                     "save": 3,
                     "ward": 0,
-                    "hero": false,
+                    "hero": true,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Hero", "Priest", "Infantry"],
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
                             "id": "SenseUnholySorcery",
                             "name": "Sense Unholy Sorcery",
-                            "effect": "This unit's Gryph-crow is a token. This unit has Ward (5+) while its Gryph-crow is on the battlefield. If you make an unmodied ward roll of 1 for this unit, remove its Gryph-crow from the battlefield",
-                            "once": false,
+                            "effect": "This unit's Gryph-crow is a token. This unit has Ward (5+) while its Gryph-crow is on the battlefield. If you make an unmodied ward roll of 1 for this unit, remove its Gryph-crow from the battlefield.  Click this ability if you roll a 1 to remove ward.",
+                            "once": true,
                         }]
                     },
                     "Start":
@@ -275,6 +286,8 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": true,
                     "keywords": ["Infantry", "Fly", "Reinforcements"],
                     "Passive": {
                         "attacks": [],
@@ -283,8 +296,7 @@ export const Units = {
                             "name": "Skirmishers",
                             "effect": "The unit has a coherency range of 2\"",
                             "once": false,
-                        }
-                        ]
+                        }]
                     },
                     "Start":
                     {
@@ -297,7 +309,12 @@ export const Units = {
                     },
                     "Movement": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [{
+                            "id": "callForReinforcement",
+                            "name": "Call for Reinforcements",
+                            "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                            "once": true,
+                        }]
                     },
                     "Shooting": {
                         "attacks": [
@@ -359,6 +376,8 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Infantry", "Reinforcements"],
                     "Passive": {
                         "attacks": [],
@@ -380,7 +399,12 @@ export const Units = {
                     },
                     "Movement": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [{
+                            "id": "callForReinforcement",
+                            "name": "Call for Reinforcements",
+                            "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                            "once": true,
+                        }]
                     },
                     "Shooting": {
                         "attacks": [],
@@ -447,6 +471,8 @@ export const Units = {
                     "save": 4,
                     "ward": 6,
                     "hero": true,
+                    "general": true,
+                    "fly": false,
                     "keywords": ["Hero", "Cavalry", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -533,7 +559,9 @@ export const Units = {
                     "health": 5,
                     "save": 6,
                     "ward": 0,
-                    "hero": false,
+                    "hero": true,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Hero", "Wizard", "Infantry"],
                     "Passive": {
                         "attacks": [],
@@ -603,7 +631,9 @@ export const Units = {
                     "health": 5,
                     "save": 5,
                     "ward": 0,
-                    "hero": false,
+                    "hero": true,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Hero", "Infantry"],
                     "Passive": {
                         "attacks": [],
@@ -682,6 +712,8 @@ export const Units = {
                     "save": 5,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Infantry", "Reinforcements"],
                     "Passive": {
                         "attacks": [],
@@ -698,7 +730,12 @@ export const Units = {
                     },
                     "Movement": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [{
+                            "id": "callForReinforcement",
+                            "name": "Call for Reinforcements",
+                            "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                            "once": true,
+                        }]
                     },
                     "Shooting": {
                         "attacks": [],
@@ -745,6 +782,8 @@ export const Units = {
                     "save": 5,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Infantry"],
                     "Passive": {
                         "attacks": [],
@@ -829,6 +868,8 @@ export const Units = {
                 "save": 6,
                 "ward": 0,
                 "hero": true,
+                "general": false,
+                "fly": false,
                 "keywords": ["Hero", "Wizard", "Infantry"],
                 "Passive": {
                     "attacks": [],
@@ -899,6 +940,8 @@ export const Units = {
                 "save": 4,
                 "ward": 0,
                 "hero": false,
+                "general": false,
+                "fly": false,
                 "keywords": ["Infantry"],
                 "Passive": {
                     "attacks": [],
@@ -997,6 +1040,8 @@ export const Units = {
                 "save": 4,
                 "ward": 0,
                 "hero": false,
+                "general": false,
+                "fly": false,
                 "keywords": ["War Machine"],
                 "Passive": {
                     "attacks": [],
@@ -1072,6 +1117,8 @@ export const Units = {
                 "save": 5,
                 "ward": 0,
                 "hero": false,
+                "general": false,
+                "fly": false,
                 "keywords": ["Infantry", "Reinforcements"],
                 "Passive": {
                     "attacks": [],
@@ -1088,7 +1135,12 @@ export const Units = {
                 },
                 "Movement": {
                     "attacks": [],
-                    "abilities": []
+                    "abilities": [{
+                        "id": "callForReinforcement",
+                        "name": "Call for Reinforcements",
+                        "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                        "once": true,
+                    }]
                 },
                 "Shooting": {
                     "attacks": [],
@@ -1141,6 +1193,8 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": true,
+                    "general": true,
+                    "fly": false,
                     "keywords": ["Hero", "Infantry"],
                     "Passive": {
                         "attacks": [],
@@ -1217,6 +1271,8 @@ export const Units = {
                     "save": 4,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["War Machine"],
                     "Passive": {
                         "attacks": [],
@@ -1303,6 +1359,8 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Infantry"],
                     "Passive": {
                         "attacks": [],
@@ -1373,6 +1431,8 @@ export const Units = {
                     "save": 3,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "Passive": {
                         "attacks": [],
                         "abilities": [{
@@ -1462,6 +1522,8 @@ export const Units = {
                     "save": 5,
                     "ward": 6,
                     "hero": true,
+                    "general": true,
+                    "fly": false,
                     "keywords": ["Hero", "Infantry", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -1549,6 +1611,8 @@ export const Units = {
                     "save": 5,
                     "ward": 6,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Infantry", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -1633,6 +1697,8 @@ export const Units = {
                     "save": 5,
                     "ward": 6,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Cavalry", "Reinforcements", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -1654,7 +1720,12 @@ export const Units = {
                     },
                     "Movement": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [{
+                            "id": "callForReinforcement",
+                            "name": "Call for Reinforcements",
+                            "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                            "once": true,
+                        }]
                     },
                     "Shooting": {
                         "attacks": [
@@ -1721,6 +1792,8 @@ export const Units = {
                     "save": 6,
                     "ward": 6,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Infantry", "Reinforcements", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -1744,7 +1817,12 @@ export const Units = {
                     },
                     "Movement": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [{
+                            "id": "callForReinforcement",
+                            "name": "Call for Reinforcements",
+                            "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                            "once": true,
+                        }]
                     },
                     "Shooting": {
                         "attacks": [],
@@ -1805,6 +1883,8 @@ export const Units = {
                     "save": 5,
                     "ward": 6,
                     "hero": true,
+                    "general": true,
+                    "fly": false,
                     "keywords": ["Infantry", "Hero", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -1876,6 +1956,8 @@ export const Units = {
                     "save": 6,
                     "ward": 6,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
                     "keywords": ["Infantry", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -1954,6 +2036,9 @@ export const Units = {
                     "save": 6,
                     "ward": 6,
                     "hero": false,
+                    "general": false,
+                    "fly": false,
+                    "keywords": ["Infantry","Ward (6+)"],
                     "Passive": {
                         "attacks": [],
                         "abilities": [
@@ -2043,6 +2128,8 @@ export const Units = {
                     "save": 4,
                     "ward": 6,
                     "hero": true,
+                    "general": true,
+                    "fly": false,
                     "keywords": ["Infantry", "Hero", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -2113,6 +2200,8 @@ export const Units = {
                     "save": 4,
                     "ward": 0,
                     "hero": false,
+                    "general": false,
+                    "fly": true,
                     "keywords": ["Infantry", "Fly", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -2177,6 +2266,8 @@ export const Units = {
                     "save": 4,
                     "ward": 6,
                     "hero": false,
+                    "general": false,
+                    "fly": true,
                     "keywords": ["Infantry", "Fly", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -2247,6 +2338,8 @@ export const Units = {
                     "save": 5,
                     "ward": 6,
                     "hero": false,
+                    "general": false,
+                    "fly": true,
                     "keywords": ["Infantry", "Fly", "Reinforcements", "Ward (6+)"],
                     "Passive": {
                         "attacks": [],
@@ -2268,7 +2361,12 @@ export const Units = {
                     },
                     "Movement": {
                         "attacks": [],
-                        "abilities": []
+                        "abilities": [{
+                            "id": "callForReinforcement",
+                            "name": "Call for Reinforcements",
+                            "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                            "once": true,
+                        }]
                     },
                     "Shooting": {
                         "attacks": [],
@@ -2329,6 +2427,8 @@ export const Units = {
             "save": 4,
             "ward": 6,
             "hero": true,
+            "general": true,
+            "fly": false,
             "keywords": ["Hero", "Infantry", "Ward (6+)"],
             "Passive": {
                 "attacks": [],
@@ -2393,6 +2493,8 @@ export const Units = {
             "save": 6,
             "ward": 0,
             "hero": false,
+            "general": false,
+            "fly": true,
             "keywords": ["Cavalry", "Fly"],
             "Passive": {
                 "attacks": [],
@@ -2468,6 +2570,8 @@ export const Units = {
             "save": 4,
             "ward": 5,
             "hero": false,
+            "general": false,
+            "fly": false,
             "keywords": ["Infantry", "Ward (5+)"],
             "Passive": {
                 "attacks": [],
@@ -2543,6 +2647,8 @@ export const Units = {
             "save": 5,
             "ward": 0,
             "hero": false,
+            "general": false,
+            "fly": false,
             "keywords": ["Infantry", "Reinforcements"],
             "Passive": {
                 "attacks": [],
@@ -2559,7 +2665,12 @@ export const Units = {
             },
             "Movement": {
                 "attacks": [],
-                "abilities": []
+                "abilities": [{
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                }]
             },
             "Shooting": {
                 "attacks": [],
@@ -2616,6 +2727,8 @@ export const Units = {
             "save": 3,
             "ward": 6,
             "hero": true,
+            "general": true,
+            "fly": true,
             "keywords": ["Hero", "Infantry", "Fly", "Ward (6+)"],
             "Passive": {
                 "attacks": [],
@@ -2671,6 +2784,17 @@ export const Units = {
                         "damage": "4",
                         "ability": ""
                     },
+                    {
+                        "id": "thengavar",
+                        "name": "Thangavar",
+                        "range": 12,
+                        "attacks": "1",
+                        "hit": 3,
+                        "wound": 2,
+                        "rend": 2,
+                        "damage": "4",
+                        "ability": "Shoot in Combat"
+                    }
                     
                 ],
                 "abilities": [{
@@ -2696,6 +2820,8 @@ export const Units = {
             "save": 3,
             "ward": 0,
             "hero": false,
+            "general": false,
+            "fly": false,
             "keywords": ["Infantry"],
             "Passive": {
                 "attacks": [],
@@ -2760,7 +2886,9 @@ export const Units = {
             "health": 6,
             "save": 3,
             "ward": 0,
-            "hero": false,
+            "hero": true,
+            "general": false,
+            "fly": false,
             "keywords": ["Hero", "Infantry"],
             "Passive": {
                 "attacks": [],
@@ -2826,6 +2954,8 @@ export const Units = {
             "save": 2,
             "ward": 0,
             "hero": false,
+            "general": false,
+            "fly": false,
             "keywords": ["Infantry"],
             "Passive": {
                 "attacks": [],
@@ -2895,6 +3025,8 @@ export const Units = {
             "save": 3,
             "ward": 0,
             "hero": false,
+            "general": false,
+            "fly": false,
             "keywords": ["War Machine"],
             "Passive": {
                 "attacks": [],
@@ -2985,6 +3117,8 @@ export const Units = {
             "save": 3,
             "ward": 6,
             "hero": true,
+            "general": true,
+            "fly": false,
             "keywords": ["Hero", "Infantry", "Wizard", "Vampire", "Ward(6+)"],
             "Passive": {
                 "attacks": [],
@@ -3049,6 +3183,8 @@ export const Units = {
             "save": 3,
             "ward": 6,
             "hero": false,
+            "general": false,
+            "fly": false,
             "keywords": ["Calvary", "Vampire", "Ward(6+)"],
             "Passive": {
                 "attacks": [],
@@ -3124,6 +3260,8 @@ export const Units = {
             "save": 5,
             "ward": 6,
             "hero": false,
+            "general": false,
+            "fly": true,
             "keywords": ["Infantry", "Vampire", "Ward(6+)", "Fly"],
             "Passive": {
                 "attacks": [],
@@ -3188,6 +3326,8 @@ export const Units = {
             "save": 5,
             "ward": 6,
             "hero": false,
+            "general": false,
+            "fly": false,
             "keywords": ["Infantry", "Ward(6+)"],
             "Passive": {
                 "attacks": [],
