@@ -208,7 +208,7 @@ export default function StartOfRoundPage() {
           <DialogHeader>
             <DialogTitle>Thank you for playing!</DialogTitle>
             <DialogDescription>
-              You've completed all 4 rounds. Would you like to support our project?
+              You have completed all 4 rounds. Would you like to support our project?
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
