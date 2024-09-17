@@ -455,9 +455,9 @@ export const Factions = {
             {
             "id": "blessingOfKhaine",
                 "name": "Blessing of Khaine",
-                "effect": "Pick a friendly unit wholly within 12\" of your general.  You cannot pick your general.Add 1 to ward rolls for the unit this phase.",
+                "effect": "Pick a friendly unit wholly within 12\" of your general.  You cannot pick your general.Add 1 to ward rolls for the unit this phase (only once per round).",
                 "once": false,
-                "phase": "combat"
+                "phase": "anycombat"
             }
         ],
         "enhancements": [
