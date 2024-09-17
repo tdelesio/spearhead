@@ -48,7 +48,7 @@ export default function HomePage() {
               description: "Want to go deeper? Check out the lore.",
             },
             {
-              href: "patreon.com/Agesofsigmar",
+              href: "https://patreon.com/Agesofsigmar",
               title: "Thank Me",
               description: "Like what you see? Buy me a coffee.",
             },
