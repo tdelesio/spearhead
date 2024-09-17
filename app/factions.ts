@@ -247,13 +247,13 @@ export const Factions = {
         
     },
     {
-        "id": "skaven",
+        "id": "skaven1",
         "name": "Skaven - Gnawfeast Clawpack",
         "battleTraits": [
         {
                 "id": "lurkingVermintide",
                 "name": "The Lurking Vermintide",
-                "effect": "Pick an undeployed friendly unit, set them up in the tunnels below.  On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
+                "effect": "Pick an undeployed friendly unit, set them up in the tunnels below.  Units in the tunnels below that have not beed used the Gnawhole Ambush ability by the end of the third battle round are destroyed.  GNAWHOLE AMBUSH:  On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
                 "once": true,
                 "phase": "movement",
                 "table": false
@@ -270,7 +270,7 @@ export const Factions = {
             {
             "id": "toQuickToHit",
                 "name": "To Quick to Hit",
-                "effect": "No mortal damaged is inflicted when they use Retreat.",
+                "effect": "No mortal damaged is inflicted on friendly units when they use Retreat.",
                 "once": false,
                 "phase": "movement"
             }

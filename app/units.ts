@@ -67,6 +67,8 @@ export function getAbilityForRound(unit: Unit, phase: string): Ability[] {
             return unit.Combat.abilities;
         case "end":
             return unit.End.abilities;
+        case "passive":
+            return unit.Passive.abilities;
         default:
             return [];
     }
@@ -459,7 +461,7 @@ export const Units = {
 
         },
         {
-            "id": "skaven",
+            "id": "skaven1",
             "units": [
 
                 {

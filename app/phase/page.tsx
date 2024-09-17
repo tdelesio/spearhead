@@ -326,6 +326,7 @@ export default function StartOfRoundPage() {
                         </CardHeader>
                         <CardContent>
                         
+                        {/* Display Attacks for the round */}
                             {getAttacksForRound(unit as Unit, selectedPhase.id || '').map((attr) => (
                               <div key={attr.id} className="grid grid-cols-2 gap-2 text-sm">
                                 <div className="border-gray-300 pt-5">Name</div><div className="border-gray-300 pt-5">{attr.name}</div>
@@ -344,10 +345,21 @@ export default function StartOfRoundPage() {
                               </div>
                             ))}
 
-                            <section className="w-full  mx-auto">
+                            {/* Show abilities for unit for round*/}
+                            <section className="w-full  mx-auto pt-2">
                               <div className="space-y-4">
                                 {factionUnits?.units.find(u => u.id === unit.id)
                                   ? getAbilityForRound(unit as Unit, selectedPhase?.id || '').map(ability =>
+                                    renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
+                                  )
+                                  : null
+                                }
+                              </div>
+
+                              {/* Show passive abilities*/}
+                              <div className="space-y-4">
+                                {factionUnits?.units.find(u => u.id === unit.id)
+                                  ? getAbilityForRound(unit as Unit, "passive" || '').map(ability =>
                                     renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
                                   )
                                   : null
@@ -357,6 +369,7 @@ export default function StartOfRoundPage() {
 
                             <section className="w-full mx-auto pt-2">
 
+                            {/* Display Enhancements for General*/}
                             {selectedEnhancement && showEnhancementOnCombatPhase(unit.general, selectedEnhancement) && renderCard(faction?.id || '', selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
 
                             </section>
