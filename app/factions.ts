@@ -1,8 +1,16 @@
+
+
 export type Alliance = {
     id: string;
     name: string;
-    factions: string[];
+    factions: NVP[];
 }
+
+export type NVP = {
+    id: string;
+    name: string;
+}
+
 export type Faction = {
     id: string;
     name: string;
@@ -41,22 +49,66 @@ export const Alliances = {
         {
             "id": "order",
             "name": "Order",
-            "factions": ["stormcast1", "stormcast2", "DoK", "fyreslayers"]
+            "factions": [
+                {
+                    "id" : "stormcast1",
+                    "name": "Stormcast Eternals - Vigilant Brotherhood"
+                 },
+                 { 
+                    "id": "stormcast2", 
+                    "name": "Stormcast Eternals - Yndrastra's Spearhead"
+                 },
+                 {
+                    "id": "DoK",
+                    "name": "Daughters of Khaine"
+                  },
+                  {
+                    "id": "fyreslayers",
+                    "name": "Fyreslayers"
+                  },
+                ]
         },
         {
             "id": "death",
-            "name": "death",
-            "factions": ["nighthaunt", "soulblight"]
+            "name": "Death",
+            "factions": [
+                {
+                    "id": "nighthaunt",
+                    "name": "Nighthaunt"
+                 },
+                 {
+                    "id": "soulblight",
+                    "name": "Soulblight Gravelords"
+                 },
+                ]
         },
         {
             "id": "chaos",
-            "name": "chaos",
-            "factions": ["skaven1", "skaven2", "SoD"]
+            "name": "Chaos",
+            "factions": [
+                {
+                    "id": "skaven1",
+                    "name": "Skaven - Gnawfeast Clawpack",
+                 },
+                 {
+                    "id": "skaven2",
+                    "name": "Skaven - Warpspark Clawpack",
+                 },
+                 {
+                    "id": "SoD",
+                    "name": "Slaves of Darkness",
+                 },
+            ]
         },
         {
             "id": "destruction",
             "name": "Destruction",
-            "factions": ["gloomspiteGitz"]
+            "factions": [
+                {
+                    "id": "gloomspiteGitz",
+                    "name": "Gloomspite Gitz"
+                },
+            ]
         },
     ]
 }
