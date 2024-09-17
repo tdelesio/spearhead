@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Factions } from "./factions"
+import { Alliances, Factions } from "./factions"
 import { navigateToTactics } from "./redirect"
 import { Button } from "@/components/ui/button"
 import {
@@ -64,6 +64,17 @@ export default function SelectFactionForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-lg">Faction</FormLabel>
+
+                {/* <Select>
+                <SelectContent>
+                    {Alliances.alliances.factions.map((faction) => (
+                      <SelectItem key={faction.id} value={faction.id}>
+                        {faction.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select> */}
+
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger className="w-full">

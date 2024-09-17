@@ -219,11 +219,11 @@ export default function StartOfRoundPage() {
                   <h2 className="text-xl font-semibold mb-4">Movement</h2>
                   <div className="space-y-4">
                     {factionUnits?.units?.map((unit) => (
-                      <section className="w-full  mx-auto">
+                      <section className="w-full  mx-auto" key={unit.id}>
                       <Card key={unit.id} className="bg-white text-black  mx-auto w-full overflow-hidden">
                         <CardHeader>
                           <CardTitle>{unit.name}</CardTitle>
-                          <CardDescription>Movement: {unit.move}" {unit.fly && (" (Fly)")}</CardDescription>
+                          <CardDescription>Movement: {unit.move}&quot; {unit.fly && (" (Fly)")}</CardDescription>
                         </CardHeader>
                         <CardContent>
                         <div className="space-y-4">
@@ -235,7 +235,7 @@ export default function StartOfRoundPage() {
                         }
                       </div>
                         <section className="pt-2">
-                        {unit.keywords.map((keyword) => (<span>({keyword}) </span>))}
+                        {unit.keywords.map((keyword, index) => (<span key={index}>({keyword}) </span>))}
                         </section>
                         </CardContent>
                       </Card>
@@ -316,7 +316,7 @@ export default function StartOfRoundPage() {
                             </section>
                           
                             <section className="pt-2">
-                        {unit.keywords.map((keyword) => (<span>({keyword}) </span>))}
+                        {unit.keywords.map((keyword, index) => (<span key={index}>({keyword}) </span>))}
                         </section>
                         </CardContent>
                       </Card>
