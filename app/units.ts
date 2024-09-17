@@ -1655,7 +1655,7 @@ export const Units = {
                                 "id": "heartSeekers",
                                 "name": "Heart Seekers",
                                 "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
-                                "once": true,
+                                "once": false,
                             }
                         ]
                     },
@@ -1802,7 +1802,7 @@ export const Units = {
                                 "id": "frenziedFervour",
                                 "name": "Frenzied Fervour",
                                 "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
-                                "once": true,
+                                "once": false,
                             }
                         ]
                     },
@@ -1835,7 +1835,7 @@ export const Units = {
                                 "id": "frenziedFervour",
                                 "name": "Frenzied Fervour",
                                 "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
-                                "once": true,
+                                "once": false,
                             }
                         ]
                     },
@@ -1858,7 +1858,7 @@ export const Units = {
                             "id": "frenziedFervour",
                             "name": "Frenzied Fervour",
                             "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
-                            "once": true,
+                            "once": false,
                         }],
                     },
                     "End": {

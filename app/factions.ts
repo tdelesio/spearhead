@@ -449,15 +449,15 @@ export const Factions = {
                 "id": "murderousEpiphany",
                 "name": "Murderous Epiphany",
                 "effect": "All friendly units gain the Blood Rites passive abiliity they would have gained at the start of the net battle round(they keep this ability for the rest of the battle, but they do not gain it for a second time at the start of the next battle round).",
-                "once": false,
-                "phase": "passive"
+                "once": true,
+                "phase": "hero"
             },
             {
             "id": "blessingOfKhaine",
                 "name": "Blessing of Khaine",
-                "effect": "Pick a friendly unit.  Add 1 to ward rolls for the unit this phase.",
+                "effect": "Pick a friendly unit wholly within 12\" of your general.  You cannot pick your general.Add 1 to ward rolls for the unit this phase.",
                 "once": false,
-                "phase": "passive"
+                "phase": "combat"
             }
         ],
         "enhancements": [
@@ -499,7 +499,7 @@ export const Factions = {
         {
                 "id": "urGoleRunes",
                 "name": "Ur-Gole Runes",
-                "effect": "Pick 1 of ur-gold runes, then make an activation roll of D6.  Each ur-gold runes can only be activated once per battle.  On a 1-5, the rune's standard effect applies.  On a 6, the enchanced effect applies.  Rune of Fury: S-Add 1 to hit rolls for combat attacks.  E-In addition, add 1 to the attacks.  Rune of Searing Heat: S-Add 1 to the Rend. E-In addition, add 1 to the damage. Rune of Fiery Determination: S-Ward 5 E-In addition, add 1 to save.  Run of Relentless Zeal: S- Add 2\" to the move E-In addition, add 2 to charge rolls",
+                "effect": "Pick 1 of ur-gold runes, then make an activation roll of D6.  Each ur-gold runes can only be activated once per battle.  On a 1-5, the rune's standard effect applies.  On a 6, the enchanced effect applies.",
                 "once": false,
                 "phase": "passive",
                 "table": true
@@ -510,7 +510,7 @@ export const Factions = {
                 "id": "magicTunnels",
                 "name": "Magic Tunnels",
                 "effect": "Pick 2 friendly units, remove them from the battlefield and set them up again anywhere on the battfield more than 6\" from all enemy units.",
-                "once": false,
+                "once": true,
                 "phase": "start"
             },
             {
@@ -548,7 +548,7 @@ export const Factions = {
                     "name": "Powerful Presence",
                     "effect": "Add 3 to your general's control score.",
                     "once": false,
-                    "phase": "passive",
+                    "phase": "end",
                 },],
         "units": ["Battlesmith (Hero)", "Hearthguard Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)", "Vulkite Berzerkers (5)"]
         

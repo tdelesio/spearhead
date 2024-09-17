@@ -53,6 +53,18 @@ export const battleTraitTable = {
       "If the unit is a Squiq Hooper unit, no mortal damaage is inflicted when it uses its retreat ability.",
       "If the unit is a Rockgut Troggoths unit, add 1 to save rolls for attacks that target this unit.",
     ]
+  },
+  {
+    "faction": "fyreslayers",
+    "columnOneLabel": "Standard",
+    "columnTwoLabel": "Enhanced",
+    "labels": ["Rune of Fury: Add 1 to hit rolls to all attacks made by this unit's melee weapon.", "Rune of Searing Heat: Add 1 to Rend characteristic of your unit's melee weapons.", "Rune of Fiery Determination: Your units have Ward(5).", "Rune of Relentless Zeal: Add 2\" to you move."],
+    "abilities": [
+      "In addition, add 1 to your Attack characteristic for this unit's melee weapon.",
+      "In addition, add 1 to the Damage characteristic for this unit's melee weapon.",
+      "In addition, add 1 to save rolls for this unit.",
+      "In addition, add 2 to charge rolls for this unit."
+    ]
   }
 ]
 
