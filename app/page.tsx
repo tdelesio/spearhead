@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import SelectFactionForm from "./select-faction-form"
 import SelectFactionTacticsForm from "./select-tactics"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function HomePage() {
   const faction = useSearchParams().get('faction')
@@ -28,6 +29,7 @@ export default function HomePage() {
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8 space-y-8">
+        <Analytics />
         {faction ? <SelectFactionTacticsForm /> : <SelectFactionForm />}
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
