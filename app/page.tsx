@@ -45,9 +45,9 @@ export default function HomePage() {
               description: "See available models for your faction or start a new one.",
             },
             {
-              href: "https://www.blacklibrary.com/",
-              title: "Lore",
-              description: "Want to go deeper? Check out the lore.",
+              href: "https://github.com/tdelesio/spearhead/issues",
+              title: "Issues",
+              description: "Bugs/Faction Requests/Feature Requests",
             },
             {
               href: "https://patreon.com/Agesofsigmar",
