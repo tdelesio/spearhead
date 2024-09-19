@@ -3386,6 +3386,754 @@ export const Units = {
         },
         ]
     },
+    {
+        "id": "maggotkin",
+        units: [
+        {
+
+            "id": "spoilpoxScivener",
+            "name": "Spoilpox Scivener",
+            "move": "4",
+            "control": 2,
+            "health": 5,
+            "save": 5,
+            "ward": 5,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Infantry", "Ward(5+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "keepCountingImWatchingYou",
+                    "name": "Keep Counting, I'm Watching You",
+                    "effect": "Pick a friendly Plaguebearer unit wholly within 14\" of this unit to be the target.  Pick 1 of the following.  The effect lasts unti the start of your next turn.  Tally of Blows:  Add 1 to the Attack characteristric of the target unit's melee weapon.  Recorded Stamina:  Add 1 to save rolls for the target unit.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "disgustingSneezes",
+                        "name": "Disgusting Sneezes",
+                        "range": 7,
+                        "attacks": "D6",
+                        "hit": 2,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    }
+                ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "distendedMaw",
+                        "name": "Distended Maw",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Cal"
+                    },
+                    {
+                        "id": "disgustingSneezes",
+                        "name": "Disgusting Sneezes",
+                        "range": 7,
+                        "attacks": "D6",
+                        "hit": 2,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "pusgoyleBlightlord",
+            "name": "Pusgoyle Blightlord",
+            "move": "8",
+            "control": 2,
+            "health": 8,
+            "save": 4,
+            "ward": 5,
+            "hero": false,
+            "general": false,
+            "fly": true,
+            "keywords": ["Calvary", "Fly", "Ward(5+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "wrackAndRuin",
+                    "name": "Wrack and Ruin",
+                    "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target and roll a dice.  On a 2+, inflict D3 mortal damage on the target.",
+                    "once": false,
+                }]
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "blightedScythe",
+                        "name": "Blighted Scythe",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 2,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "rotFlysMouthPasteAndString",
+                        "name": "Rot Fly's Mouthpaste and String",
+                        "range": 0,
+                        "attacks": "6",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "putridBlightKings",
+            "name": "Putrid Blightking",
+            "move": "4",
+            "control": 1,
+            "health": 3,
+            "save": 3,
+            "ward": 5,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Ward(5+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "blightedWeapon",
+                        "name": "Blighted Weapon",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "relentlessAttackers",
+                    "name": "Relentless Attackers",
+                    "effect": "Pick an enemy INFANTRY unit in combat with this unit to be the target and roll a dice for each model in this unit that is within the target unit's combat range.  For each roll that exceends the target's Health characteristic, inflict 1 mortal damage on the target.",
+                    "once": false,
+                }]
+            }
+
+        },
+        {
+
+            "id": "plaguebearers",
+            "name": "Plaguebearers",
+            "move": "4",
+            "control": 1,
+            "health": 2,
+            "save": 6,
+            "ward": 5,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Ward(5+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "cloudOfFlies",
+                    "name": "Cloud of Flies",
+                    "effect": "Subtract 1 from hit rolls for shooting attacks that target this unit.",
+                    "once": true,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "plaguesword",
+                        "name": "Plaguesword",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Crit (Mortal Damage)"
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
+    {
+        "id": "kharadronOverlords",
+        units: [
+        {
+
+            "id": "arkanautAdmiral",
+            "name": "Arkanaut Admiral",
+            "move": "4",
+            "control": 2,
+            "health": 6,
+            "save": 3,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "alwaysTakeWhatYouAreOwed",
+                    "name": "Always Take What You Are Owed",
+                    "effect": "Pick a friendly Arkanaut Company unit wholly within 12\" of this unit to be the target.  Add D6 to the target's control score until the start of your next turn.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "masterworkVolleyPistol",
+                        "name": "Masterwork Volley Pistol",
+                        "range": 10,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Shoot in Combat"
+                    }
+                ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "skalhammer",
+                        "name": "Skalhammer",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 2,
+                        "rend": 1,
+                        "damage": "3",
+                        "ability": ""
+                    },
+                    {
+                        "id": "masterworkVolleyPistol",
+                        "name": "Masterwork Volley Pistol",
+                        "range": 10,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Shoot in Combat"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "skywardens",
+            "name": "Skywardens",
+            "move": "12",
+            "control": 1,
+            "health": 2,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": true,
+            "keywords": ["Infantry", "Fly"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "vulcaniserPistol",
+                        "name": "Vulcaniser Pistol",
+                        "range": 10,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    },
+                    {
+                        "id": "aethermaticVolleyGun",
+                        "name": "Aethermatic Volley Gun",
+                        "range": 15,
+                        "attacks": "2D6",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "vulcaniserPistol",
+                        "name": "Vulcaniser Pistol",
+                        "range": 10,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    },
+                    {
+                        "id": "skypike",
+                        "name": "Skypike",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Crit (Mortal Damage)"
+                    },
+                    {
+                        "id": "gunButt",
+                        "name": "Gun Butt",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 5,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "timedCharge",
+                    "name": "Timed Charge",
+                    "effect": "Pick an enemy unit in combat with this unit to be the target, then roll a dice.  On a 2+, inflict 1 mortal damage on the target and this unit can immediately use the RETREAT ability without any mortal damage being inflicted on it.",
+                    "once": true,
+                }]
+            }
+
+        },
+        {
+
+            "id": "arkanautCompany",
+            "name": "Arkanaut Company",
+            "move": "4",
+            "control": 1,
+            "health": 1,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "glorySeekers",
+                    "name": "Glory Seekers",
+                    "effect": "Add 1 to hit rolls for attacks made by this unit that target this unit contesting an objective.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "privateerPistol",
+                        "name": "Privateer Pistol",
+                        "range": 10,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    },
+                    {
+                        "id": "aethermaticVolleyGun",
+                        "name": "Aethermatic Volley Gun",
+                        "range": 15,
+                        "attacks": "2D6",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "lightSkyhook",
+                        "name": "Light Skyhook",
+                        "range": 15,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 2,
+                        "damage": "D3",
+                        "ability": ""
+                    }
+                ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "privateerPistol",
+                        "name": "Privateer Pistol",
+                        "range": 10,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    },
+                    {
+                        "id": "arkanautCutter",
+                        "name": "Arkanaut Cutter",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "gunButt",
+                        "name": "Gun Butt",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 5,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "skypike",
+                        "name": "Skypike",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Crit (Mortal Damage)"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "arkanautFrigate",
+            "name": "Arkanaut Frigate",
+            "move": "12",
+            "control": 5,
+            "health": 15,
+            "save": 3,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": true,
+            "keywords": ["WarMachine", "Fly"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "battleDamaged",
+                    "name": "Battle Damaged",
+                    "effect": "While this unit has 10 or more damage points, the attack characteristic of its Heavy Skyhook is 1.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "bombRacks",
+                    "name": "Bomb Racks",
+                    "effect": "Pick an enemy unit that this unit passed across this phase to be the target, then roll a dice.  On a 2+, inflict D3 mortal damage on the target.",
+                    "once": true,
+                }]
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "heavySkyhook",
+                    "name": "Heavy Skyhook",
+                    "range": 24,
+                    "attacks": "2",
+                    "hit": 4,
+                    "wound": 3,
+                    "rend": 2,
+                    "damage": "D6",
+                    "ability": ""
+                },
+                {
+                    "id": "aethershotCarbines",
+                    "name": "Aethershot Carbines",
+                    "range": 12,
+                    "attacks": "4",
+                    "hit": 3,
+                    "wound": 3,
+                    "rend": 1,
+                    "damage": "2",
+                    "ability": "Shoot in Combat"
+                }
+            ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "aethershotCarbines",
+                        "name": "Aethershot Carbines",
+                        "range": 12,
+                        "attacks": "4",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Shoot in Combat"
+                    },
+                    {
+                        "id": "crewsBordingWeapons",
+                        "name": "Crew's Bording Weapons",
+                        "range": 0,
+                        "attacks": "8",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
+
 
     ]
 }

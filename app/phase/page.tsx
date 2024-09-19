@@ -11,7 +11,7 @@ import dynamic from 'next/dynamic'
 import { Separator } from "@radix-ui/react-select";
 import React, { useEffect, useState, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
-
+import BattleTacticsCounter from "./battle-tactics-counter";
 
 import {
   Accordion,
@@ -256,6 +256,9 @@ export default function StartOfRoundPage() {
               {/* Traits, Abilities, and Enhancements */}
 
               {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(faction?.id || '', selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
+
+              {selectedBattleTrait?.special === "counter" && selectedPhase.id === "combat" && (<BattleTacticsCounter selectedFaction={faction?.id || ''} />)}
+
               {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && renderCard(faction?.id || '', selectedRegimentAbility, "Regiment Ability", usedAbilities, handleCardClick)}
               {selectedEnhancement && showEnhancement(selectedPhase.id, selectedEnhancement) && renderCard(faction?.id || '', selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
 
@@ -453,8 +456,9 @@ function renderCard(faction: string, item: any, title: string, usedAbilities: Se
   const isUsed = usedAbilities.has(item?.id || '');
   let showTable = false;
 
-  if (item.table) {
-    showTable = item.table;
+
+  if (item.special === "table") {
+    showTable = item.special;
   }
 
 
@@ -463,7 +467,9 @@ function renderCard(faction: string, item: any, title: string, usedAbilities: Se
 
     
     return <AbilityTable passedFaction={faction} description={item.effect} />
-  }
+  } 
+
+
 
   return (
 

@@ -26,7 +26,7 @@ export type Faction = {
     effect: string;
     once: boolean;
     phase: string;
-    table: boolean;
+    special: string;
   }
   
   export type RegimentAbilitiy = {
@@ -66,6 +66,10 @@ export const Alliances = {
                     "id": "fyreslayers",
                     "name": "Fyreslayers"
                   },
+                  {
+                    "id": "kharadronOverlords",
+                    "name": "Kharadron Overlords"
+                  }
                 ]
         },
         {
@@ -98,6 +102,10 @@ export const Alliances = {
                     "id": "SoD",
                     "name": "Slaves of Darkness",
                  },
+                 {
+                    "id": "maggotkin",
+                    "name": "Maggotkin of Nurgle"
+                 }
             ]
         },
         {
@@ -125,7 +133,7 @@ export const Factions = {
                 "effect": "Pick a friendly Unit.  Unit the start of your next turn, that unit has Ward 5+",
                 "once": true,
                 "phase": "hero",
-                "table": false
+                "special": "none"
         },
         {
                 "id": "stormCharge",
@@ -133,7 +141,7 @@ export const Factions = {
                 "effect": "Pick a friendly unit that is not in combat, that unit can charge this turn even if a run was used",
                 "once": true,
                 "phase": "charge",
-                "table": false
+                "special": "none"
         }
         ],
         "regimentAbilities": [
@@ -195,7 +203,7 @@ export const Factions = {
                 "effect": "Yndrastra and your Annihilators are not setup during the deployment phase.  Instead, from the third battle round onward, they can use the following ability.  Setup this unit anywhere on the battlefield more than 6\" from all enemy units.",
                 "once": false,
                 "phase": "movement",
-                "table": false
+                "special": "none"
         }
         ],
         "regimentAbilities": [
@@ -256,7 +264,7 @@ export const Factions = {
                 "effect": "Pick an undeployed friendly unit, set them up in the tunnels below.  Units in the tunnels below that have not beed used the Gnawhole Ambush ability by the end of the third battle round are destroyed.  GNAWHOLE AMBUSH:  On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
                 "once": true,
                 "phase": "movement",
-                "table": false
+                "special": "none"
         }
         ],
         "regimentAbilities": [
@@ -317,7 +325,7 @@ export const Factions = {
                 "effect": "Pick a friendly unit that is not in combat.  That untit can use Normal Move ability as if it were your movement phase. ",
                 "once": true,
                 "phase": "movement",
-                "table": false
+                "special": "none"
         }
         ],
         "regimentAbilities": [
@@ -379,7 +387,7 @@ export const Factions = {
                 "effect": "Pick a friendly unit that is either contesting an objective not conotrlled by your opponent and is not in combat, or a unit that destroyed an enemy unit this turn.  Roll a dice.",
                 "once": false,
                 "phase": "passive",
-                "table": true
+                "special": "table"
         },
         ],
         "regimentAbilities": [
@@ -441,7 +449,7 @@ export const Factions = {
                 "effect": "At the start of each battle round, all friendly units gain the Blood Rites passive abilities that corresponds to the battle round number.",
                 "once": false,
                 "phase": "passive",
-                "table": true
+                "special": "table"
         }
         ],
         "regimentAbilities": [
@@ -502,7 +510,7 @@ export const Factions = {
                 "effect": "Pick 1 of ur-gold runes, then make an activation roll of D6.  Each ur-gold runes can only be activated once per battle.  On a 1-5, the rune's standard effect applies.  On a 6, the enchanced effect applies.",
                 "once": false,
                 "phase": "passive",
-                "table": true
+                "special": "table"
         }
         ],
         "regimentAbilities": [
@@ -563,7 +571,7 @@ export const Factions = {
                 "effect": "Pick a friendly unit to use this ability if they charged this phase and the charge roll was 10+, pick an enemy unit within 1\" of it.  That target has Strike-Last this turn.  Ignore all modifiers to save rolls rolls for friendly units (positive or negative).",
                 "once": false,
                 "phase": "passive",
-                "table": false
+                "special": "none"
         }
         ],
         "regimentAbilities": [
@@ -624,7 +632,7 @@ export const Factions = {
                 "effect": "Pick a terrority (either friendly or enemy) to be under the light of the bad moon.  If both players can use the ability, the players roll off and the winner picks the terirory to be under the Light of the Bad moon.  The picked terrirory remains under the light of the bad moon for the first and second round.  In the third and fourth round, the other territory is selected.  While a unit is wholly within the territory that is under the light of the bad moon, the appropiate effect applies.",
                 "once": false,
                 "phase": "passive",
-                "table": true
+                "special": "table"
         }
         ],
         "regimentAbilities": [
@@ -685,7 +693,7 @@ export const Factions = {
                 "effect": "Your Vargheists are not set up during the deployment phase.  Instead, from the third battle round onwards, it can set up this unit anywhere on the battlie more than 6\" from all enemy units during movement phase.  In addition, Each time a friendly Vampure unit users a FIGHT ability, after all of its attacks have been resolved, Heal(X) that vampire unit where X is the number of damage points allocated by those attacks.",
                 "once": false,
                 "phase": "passive",
-                "table": false
+                "special": "none"
         }
         ],
         "regimentAbilities": [
@@ -736,5 +744,128 @@ export const Factions = {
         "units": ["Vampire Lord (Hero)", "Deathrattle Skeletons (10)", "Deathrattle Skeletons (10)", "Blood Knights (5)", "Vargheists (3)"]
         
     },
+    {
+        "id": "maggotkin",
+        "name": "Maggotkin of Nurgle",
+        "battleTraits": [
+        {
+                "id": "infectiousHosts",
+                "name": "Infectious Hosts",
+                "effect": "One of your Purgoyle Blightlords and one of your Plaguebearers are not set up during the deployment phase.  Instead from the third battle round onwards, you can use the following ability  Daemonic Summoning: Setup up this unit anywhere on the battlefield more than 6\" from all enemy units.",
+                "once": true,
+                "phase": "movement",
+                "special": "counter"
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "locusOfFecundity",
+                "name": "Locus of Fecundity",
+                "effect": "Pick a friendly unit.  Heal D3 to that unit.",
+                "once": true,
+                "phase": "hero"
+            },
+            {
+            "id": "infestedWithWonders",
+                "name": "Infested with Wonders",
+                "effect": "Eash time an friendly model is slain, before it is removed from the battlefield, you can pick a enemy model within 1\" of it and roll a dice.  On a 4+, inflict 1 mortal damage on that unit.",
+                "once": false,
+                "phase": "passive"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "summonerOfPlaguebearers",
+                    "name": "Summoner of Plaguebearers",
+                    "effect": "Pick a friendly Plaguebearers unit and wholly within 14\" of your general.  Return 1 slain model to the unit.",
+                    "once": false,
+                    "phase": "end",
+                },
+                {
+                    "id": "gardenerOfNurgle",
+                    "name": "Gardener of Nurgle",
+                    "effect": "If your general is contesting an objective not contested by enemy models, roll a dice.  On a 3+, that objective is contested by you to be desecrated.  Friendly units have Ward(4)+ while they are contesting a desecrated objective.  If your opponent gains control of a desecrated objective, it is no longer desecrated.",
+                    "once": false,
+                    "phase": "movement",
+                },
+                {
+                    "id": "pestilentBreath",
+                    "name": "Pestilent Breath",
+                    "effect": "Pick an enemy unit within 7\" of your general and roll a dice for each model in the unit.  For each 5+, inflict 1 mortal damage on that unit.",
+                    "once": false,
+                    "phase": "shooting",
+                },
+                {
+                    "id": "giftOfTheFerbileFrenzy",
+                    "name": "Gift of the Ferbile Frenzy",
+                    "effect": "Unit the end of the phase, add 1 to the Attacks characteristic of melee weapons used by friendly units while they are wholly within 7\" of your general.",
+                    "once": false,
+                    "phase": "combat",
+                },],
+        "units": ["Spoilpox Scrivener (Hero)", "Pusgoyle Blightlord (1)", "Pusgoyle Blightlord (1)", "Putrid Blightkings (5)", "Putrid Blightkings (5)", "Plaguebears (5)", "Plaguebearers (5)"]
+        
+    }, 
+    {
+        "id": "kharadronOverlords",
+        "name": "Kharadron Overlords",
+        "battleTraits": [
+        {
+                "id": "plyTheSkies",
+                "name": "Ply the Skies",
+                "effect": "You declared a non-charge move ability for the Arkanaut Frigate.  Pick a friendly INFANTRY unit that is wholly within the combat range of the Arkanaut Frigate and not in combat to be transported.  Remove the INFANTRY unit from the battlefield.  Then when the Arkanaut Frigate is ends its move, set up the infantry unit n the battlefield again, wholly within combat range of the Arknaunt Frigate and not in combat.  A unit cannot use the Charge ability if it was transported in the same turn.",
+                "once": false,
+                "phase": "movement",
+                "special": "none"
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "assaultBoats",
+                "name": "Assault Boats",
+                "effect": "Pick a friendly unit that was transported this turn to use this ability.  That unit can still use CHARGE Abilities later in the turn.",
+                "once": true,
+                "phase": "movement"
+            },
+            {
+            "id": "disengage",
+                "name": "Disengage",
+                "effect": "Pick a friendly Arkanaut Frigate to use this ability.  If that unit uses a RETREAT ability this phase, no mortal damage is inflicted on it and it can still use SHOOT abilities later in this turn.",
+                "once": true,
+                "phase": "movement",
+                "special": "counter"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "masterwroughtArmour",
+                    "name": "Masterwrought Armour",
+                    "effect": "Your general has Ward 5+.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "flaskOfVintageGorogna",
+                    "name": "Flask of Vintage Gorogna",
+                    "effect": "Heal (D6) to your general.",
+                    "once": true,
+                    "phase": "hero",
+                },
+                {
+                    "id": "theresNiRewardWithoutRisk",
+                    "name": "There's No Reward Without Risk",
+                    "effect": "Reaction.  You declared a CHARGE ability for a unit wholly within 12\" of your general.  You can re-roll the charge roll for that CHARGE ability.",
+                    "once": true,
+                    "phase": "charge",
+                },
+                {
+                    "id": "leaeNoDuardidBehind",
+                    "name": "Leave No Duardid Behind",
+                    "effect": "Pick a friendly Arkanaunt Company unit wholly within 12\" of your general and roll a dice for each slain model from this unit.  For each 4+, you can return 1 slain model to the unit.",
+                    "once": true,
+                    "phase": "hero",
+                },],
+        "units": ["Arkanaut Admiral (Hero)", "Arkanaut Company[incl. Skypike] (5)", "Arkanaut Company[incl. Light Skyhook and Aethermatic Volley Gun] (5)", "Skywardens (3)", "Arkanaut Frigate (1)"]
+        
+    }, 
 ]
 };
