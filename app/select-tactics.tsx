@@ -123,7 +123,7 @@ export default function SelectFactionTacticsForm() {
               
               {selectedBattleTrait && (
                 <div className="mt-4 p-4 bg-gray-50 rounded-md">
-                  <p><strong>Name:</strong> {selectedBattleTrait.name} {selectedBattleTrait.once && <strong>(Once Per Battle)</strong>}</p>
+                  <p><strong>Name:</strong> {selectedBattleTrait.name} {selectedBattleTrait.once === onces.battle && <strong>(Once Per Battle)</strong>}</p>
                   <p><strong>Effect:</strong> {selectedBattleTrait.effect}</p>
                    <p><strong>Phase:</strong> {convertEnumToString(selectedBattleTrait.phase)}</p>                   
                 </div>
