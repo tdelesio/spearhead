@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { BattleTrait, Factions } from "./factions"
+import { BattleTrait, Factions, onces } from "./factions"
 import { navigateToStart } from './redirect'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -160,7 +160,7 @@ export default function SelectFactionTacticsForm() {
               />
               {selectedRegimentAbility && (
                 <div className="mt-4 p-4 bg-gray-50 rounded-md">
-                  <p><strong>Name:</strong> {selectedRegimentAbility.name} {selectedRegimentAbility.once && <strong>(Once Per Battle)</strong>}</p>
+                  <p><strong>Name:</strong> {selectedRegimentAbility.name} {selectedRegimentAbility.once === onces.battle && <strong>(Once Per Battle)</strong>}</p>
                   <p><strong>Effect:</strong> {selectedRegimentAbility.effect}</p>
                   <p><strong>Phase:</strong> {convertEnumToString(selectedRegimentAbility.phase)}</p>
 
@@ -198,7 +198,7 @@ export default function SelectFactionTacticsForm() {
               />
               {selectedEnhancement && (
                 <div className="mt-4 p-4 bg-gray-50 rounded-md">
-                  <p><strong>Name:</strong> {selectedEnhancement.name} {selectedEnhancement.once && <strong>(Once Per Battle)</strong>}</p>
+                  <p><strong>Name:</strong> {selectedEnhancement.name} {selectedEnhancement.once === onces.battle && <strong>(Once Per Battle)</strong>}</p>
                   <p><strong>Effect:</strong> {selectedEnhancement.effect}</p>
                   <p><strong>Phase:</strong> {convertEnumToString(selectedEnhancement.phase)}</p>
 
