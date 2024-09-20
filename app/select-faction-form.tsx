@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Alliances, Factions, NVP } from "./factions"
+import { Factions } from "./factions"
+import { Alliances, NVP } from "./alliances"
 import { navigateToTactics } from "./redirect"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from 'react'

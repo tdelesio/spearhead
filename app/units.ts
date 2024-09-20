@@ -1,3 +1,5 @@
+import { phases } from "./phase";
+
 export type FactionUnits = {
     id: string;
     units: Unit[];
@@ -51,34 +53,11 @@ export type Unit = {
 
 }
 
-export function getAbilityForRound(unit: Unit, phase: string): Ability[] {
+export function getAttacksForRound(unit: Unit, phase: number): Attack[] {
     switch (phase) {
-        case "start":
-            return unit.Start.abilities;
-        case "hero":
-            return unit.Hero.abilities;
-        case "movement":
-            return unit.Movement.abilities;
-        case "shooting":
-            return unit.Shooting.abilities;
-        case "charge":
-            return unit.Charge.abilities;
-        case "combat":
-            return unit.Combat.abilities;
-        case "end":
-            return unit.End.abilities;
-        case "passive":
-            return unit.Passive.abilities;
-        default:
-            return [];
-    }
-}
-
-export function getAttacksForRound(unit: Unit, phase: string): Attack[] {
-    switch (phase) {
-        case "shooting":
+        case phases.shooting:
             return unit.Shooting.attacks;
-        case "combat":
+        case phases.combat:
             return unit.Combat.attacks;
         default:
             return [];
@@ -5158,6 +5137,8 @@ export const Units = {
         
         ]
     },
+    // sylvaneth
+
     ]
 }
 

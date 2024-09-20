@@ -1,11 +1,11 @@
 "use client"
 
 import { useSearchParams } from "next/navigation";
-import { getAbilityForRound, getAttacksForRound, Unit, Units } from "../units";
-import { BattleTrait, Enhancement, Factions, RegimentAbilitiy } from "@/app/factions";
+import { getAttacksForRound, Unit, Units } from "../units";
+import { BattleTrait, battleTraitSpecials, Enhancement, Factions, RegimentAbilitiy } from "@/app/factions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Phase } from "../phase";
+import { getAbilityForRound, Phase, phases } from "../phase";
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { Separator } from "@radix-ui/react-select";
@@ -38,30 +38,31 @@ import { Button } from "@/components/ui/button";
 // const BattleTraitDeck = dynamic(() => import('./battle-tactic-deck'), {ssr: false})
 
 
-function getPhase(selectedPhase: string | null): Phase {
+function getPhase(selectedPhase: number | null): Phase {
   return Phase.phases.find(phase => phase.id === selectedPhase) as Phase;
 }
 
-function isCombatPhase(selectedPhase: string | null): boolean {
-  return selectedPhase === 'combat' || selectedPhase === 'shooting';
+function isCombatPhase(selectedPhase: number | null): boolean {
+  return selectedPhase === phases.combat || selectedPhase === phases.shooting;
 }
 
-function showBattleTrait(selectedPhase: string | null, selectedBattleTrait: BattleTrait): boolean {
-  return selectedBattleTrait?.phase === selectedPhase || selectedBattleTrait?.phase === "passive";
+function showBattleTrait(selectedPhase: number | null, selectedBattleTrait: BattleTrait): boolean {
+  return selectedBattleTrait?.phase === selectedPhase || selectedBattleTrait?.phase === phases.passive;
 }
 
-function showRegimentAbility(selectedPhase: string | null, selectedRegimentAbility: RegimentAbilitiy | null): boolean {
-  return selectedRegimentAbility?.phase === selectedPhase || selectedRegimentAbility?.phase === "passive" || ((selectedPhase === "combat" || selectedPhase === "shooting") && selectedRegimentAbility?.phase === 'anycombat');
+function showRegimentAbility(selectedPhase: number | null, selectedRegimentAbility: RegimentAbilitiy | null): boolean {
+  return selectedRegimentAbility?.phase === selectedPhase || selectedRegimentAbility?.phase === phases.passive || ((selectedPhase === phases.combat || selectedPhase === phases.shooting) && selectedRegimentAbility?.phase === phases.anycombat);
 }
 
-function showEnhancement(selectedPhase: string | null, selectedEnhancement: Enhancement | null): boolean {
+function showEnhancement(selectedPhase: number | null, selectedEnhancement: Enhancement | null): boolean {
   return selectedEnhancement?.phase === selectedPhase; //|| selectedEnhancement?.phase === "passive";
 }
 
 function showEnhancementOnCombatPhase(general: boolean | false, selectedEnhancement: Enhancement | null): boolean {
-  return general && (selectedEnhancement?.phase === "passive"  || selectedEnhancement?.phase === "combat" || selectedEnhancement?.phase === "shooting")
+  return general && (selectedEnhancement?.phase === phases.passive  || selectedEnhancement?.phase === phases.combat || selectedEnhancement?.phase === phases.shooting)
 }
 
+//Function to handle shuffling of the Battle Tactic Card Deck
 const shuffle = (array: BattleTacticCard[]) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -70,6 +71,7 @@ const shuffle = (array: BattleTacticCard[]) => {
   return array;
 };
 
+//Primary Method
 export default function StartOfRoundPage() {
 
   //Scroll to top of page when the page is loaded
@@ -227,7 +229,7 @@ export default function StartOfRoundPage() {
       </Dialog>
 
 
-{selectedPhase.id === 'end' && (
+{selectedPhase.id === phases.end && (
   <CarouselFirst 
     onClick={() => {
       handleRoundIncrement()
@@ -242,28 +244,22 @@ export default function StartOfRoundPage() {
             <div className="space-y-6 p-6">
 
               {/* End, Show points */}
-              {selectedPhase.id === 'end' && (
+              {selectedPhase.id === phases.end && (
                 <VictoryPointTracker />
               )}
-
-              {/* Start, draw cards to 3 
- {selectedPhase.id === 'start' && hand.length< 3 && ( 
-  <div></div>
- )}
-  */}
 
 
               {/* Traits, Abilities, and Enhancements */}
 
               {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(faction?.id || '', selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)}
 
-              {selectedBattleTrait?.special === "counter" && selectedPhase.id === "combat" && (<BattleTacticsCounter selectedFaction={faction?.id || ''} />)}
+              {selectedBattleTrait?.special === battleTraitSpecials.counter && selectedPhase.id === phases.combat && (<BattleTacticsCounter selectedFaction={faction?.id || ''} />)}
 
               {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && renderCard(faction?.id || '', selectedRegimentAbility, "Regiment Ability", usedAbilities, handleCardClick)}
               {selectedEnhancement && showEnhancement(selectedPhase.id, selectedEnhancement) && renderCard(faction?.id || '', selectedEnhancement, "Enhancement", usedAbilities, handleCardClick)}
 
               {/* Movement */}
-              {selectedPhase.id === 'movement' && (
+              {selectedPhase.id === phases.movement && (
                 <section className="w-full  mx-auto">
                   <h2 className="text-xl font-semibold mb-4">Movement</h2>
                   <div className="space-y-4">
@@ -330,10 +326,10 @@ export default function StartOfRoundPage() {
                         <CardContent>
                         
                         {/* Display Attacks for the round */}
-                            {getAttacksForRound(unit as Unit, selectedPhase.id || '').map((attr) => (
+                            {getAttacksForRound(unit as Unit, selectedPhase.id || 0).map((attr) => (
                               <div key={attr.id} className="grid grid-cols-2 gap-2 text-sm">
                                 <div className="border-gray-300 pt-5">Name</div><div className="border-gray-300 pt-5">{attr.name}</div>
-                                {selectedPhase.id === 'shooting' && (
+                                {selectedPhase.id === phases.shooting && (
                                   <>
                                     <div>Range</div><div>{attr.range}</div>
                                   </>
@@ -362,7 +358,7 @@ export default function StartOfRoundPage() {
                               {/* Show passive abilities*/}
                               <div className="space-y-4">
                                 {factionUnits?.units.find(u => u.id === unit.id)
-                                  ? getAbilityForRound(unit as Unit, "passive" || '').map(ability =>
+                                  ? getAbilityForRound(unit as Unit, phases.passive).map(ability =>
                                     renderAbilityCard(unit as Unit, ability, usedAbilities, handleCardClick)
                                   )
                                   : null
