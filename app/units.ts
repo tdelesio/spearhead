@@ -4133,8 +4133,1031 @@ export const Units = {
         },
         ]
     },
+    {
+        "id": "DoT",
+        units: [
+        {
 
+            "id": "MagisterOnDiscOfTzeentch",
+            "name": "Magister on Disc of Tzeentch",
+            "move": "14",
+            "control": 2,
+            "health": 6,
+            "save": 4,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": true,
+            "keywords": ["Hero", "Wizard", "Cavalry", "Fly"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "boltOfChange",
+                    "name": "Bolt of Change",
+                    "effect": "Pick a visible enemy unit within 18\" of this unit to be the target, then make a casting roll of 2D6.  On a 6+, inflict D3 mortal damage on the target.  If any models are slain by this ability, you can pick a friendly Tazzangors unit wholly within 18\" of this unit and return 1 slain model to the Tazaangors unit.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "tzeentchainRunestaff",
+                    "name": "Tzeentchain Runestaff",
+                    "range": 18,
+                    "attacks": "1",
+                    "hit": 3,
+                    "wound": 4,
+                    "rend": 0,
+                    "damage": "D3",
+                    "ability": ""
+                },],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "warpsteelSword",
+                        "name": "Warsteel Sword",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "D3",
+                        "ability": ""
+                    },
+                    {
+                        "id": "discsTeethAndHorns",
+                        "name": "Disc's Teeth and Horns",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "D3",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
 
+        },
+        {
+
+            "id": "kairicAcolytes",
+            "name": "Kairic Acolytes",
+            "move": "5",
+            "control": 2,
+            "health": 1,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "sorcerousBolts",
+                        "name": "Sorcerous Bolts",
+                        "range": 18,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [{
+                    "id": "gestaltSorcery",
+                    "name": "Gestalt Sorcery",
+                    "effect": "Make a ccasting roll of 2D6.  On a 6+, add 1 to the Rend Characteristic of this unit's Sorcerous Bolts this phase.",
+                    "once": true,
+                }]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "cursedBlade",
+                        "name": "Cursed Blade",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                   
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "screamersOfTzeentch",
+            "name": "Screamers of Tzeentch",
+            "move": "",
+            "control": 1,
+            "health": 3,
+            "save": 5,
+            "ward": 6,
+            "hero": false,
+            "general": false,
+            "fly": true,
+            "keywords": ["Beast", "Fly", "Ward(6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "slashingFins",
+                    "name": "Slashing Fins",
+                    "effect": "Pick an enemy unit that any models in this unit passed across this phase to be the target, then roll a dice for each model unit that did so.  For each 4+, inflict 1 mortal damage on the target.",
+                    "once": false,
+                }]
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "lampreyBite",
+                        "name": "Lamprey Bite",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "tzaangors",
+            "name": "Tzaangors",
+            "move": "6",
+            "control": 1,
+            "health": 2,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "longPlannedStrike",
+                    "name": "Long Planned Strike",
+                    "effect": "While this unit is wholly within enemy territory, its melee weapons have a Crit (2 Hits)",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "savageBladeAndViciousBeak",
+                        "name": "Savage Blade and Vicious Beak",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "flamersOfTzeentch",
+            "name": "Flamers of Tzeentch",
+            "move": "9",
+            "control": 1,
+            "health": 2,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Fly", "Ward (6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "capriciousWyrdFlame",
+                    "name": "Capricious WyrdFlame",
+                    "effect": "Add 1 to hit rolls for attacks made by this unit if the target unit has 5 or more models",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [ {
+                    "id": "wyrdflame",
+                    "name": "Wyrdflame",
+                    "range": 12,
+                    "attacks": "3",
+                    "hit": 3,
+                    "wound": 4,
+                    "rend": 0,
+                    "damage": "D3",
+                    "ability": ""
+                },],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "flamingMaws",
+                        "name": "Flaming Maws",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
+    {
+        "id": "orrukWarclans",
+        units: [
+        {
+
+            "id": "killabossOnGreatGnashtoof",
+            "name": "Killaboss on Great Gnashtoof",
+            "move": "10",
+            "control": 2,
+            "health": 10,
+            "save": 3,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Cavalry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "allPartOfDaPlan",
+                    "name": "All Part of Da Plan",
+                    "effect": "Pick a friendly unit wholly within 9\" of this unit be the target.  You cannot pick this unit.  Add 3 to the target's control score until the start of your next turn.",
+                    "once": true,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "jaggedBosStikka",
+                        "name": "Jagged Boss-Stikka",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Crit(Mortal)"
+                    },
+                    {
+                        "id": "gnashhoofsBoneCrushingFangs",
+                        "name": "Gnashtoof's Bone-crushing Fangs",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "beastSkewerKillbow",
+            "name": "Beast-Skewer Killbow",
+            "move": "5",
+            "control": 2,
+            "health": 5,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["War Machine"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "skewered",
+                    "name": "Skewered",
+                    "effect": "The damage characteristic of this unit's Beast-skewer Bolts is 6 instead of D6 if the target is a MONSTER.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "beastSkewerBolts",
+                    "name": "Beast Skewer Bolts",
+                    "range": 24,
+                    "attacks": "2",
+                    "hit": 4,
+                    "wound": 2,
+                    "rend": 2,
+                    "damage": "D6",
+                    "ability": "Crit (Auto-wound)"
+                },],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "jaggedyBlades",
+                        "name": "Jaggedy Blades",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Crit (Mortal)"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "murknobWithBelchaBanna",
+            "name": "Murknob with Belcha-Banna",
+            "move": "5",
+            "control": 5,
+            "health": 6,
+            "save": 4,
+            "ward": 0,
+            "hero": true,
+            "general": false,
+            "fly": false,
+            "keywords": ["Hero", "Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "breathOfTheMireDrakes",
+                    "name": "Breath of the Mire-Drakes",
+                    "effect": "Roll a dice of each enemy unit in combat with this unit.  On a 1, nothing happens.  On a 2-5, inflict 1 mortal damage on that enemy unit.  On a 6, inflict D3 mortal damage on that unit.",
+                    "once": false,
+                }]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "murknobCleaver",
+                        "name": "Murnob Cleaver",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Crit (Mortal)"
+                    },
+                
+                ],
+                "abilities": [{
+                    "id": "breathOfTheMireDrakes",
+                    "name": "Breath of the Mire-Drakes",
+                    "effect": "Roll a dice of each enemy unit in combat with this unit.  On a 1, nothing happens.  On a 2-5, inflict 1 mortal damage on that enemy unit.  On a 6, inflict D3 mortal damage on that unit.",
+                    "once": false,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "gutrippaz",
+            "name": "Gutrippaz",
+            "move": "5",
+            "control": 1,
+            "health": 2,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "scareTaktikz",
+                    "name": "Scare Taktikz",
+                    "effect": "Roll a dice.  On a 3+, subtract 1 from hit rolls for atacks that target this unit this phase.  This ability has no effect on attacks made by HEROS.",
+                    "once": true,
+                }]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "wickedHacka",
+                        "name": "Wicked Hacka",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Crit (Mortal)"
+                    },
+                  
+                ],
+                "abilities": [{
+                    "id": "scareTaktikz",
+                    "name": "Scare Taktikz",
+                    "effect": "Roll a dice.  On a 3+, subtract 1 from hit rolls for atacks that target this unit this phase.  This ability has no effect on attacks made by HEROS.",
+                    "once": true,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "manSkewerBoltBoyz",
+            "name": "Man-Skewer Boltboyz",
+            "move": "5",
+            "control": 1,
+            "health": 2,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "pickemOff",
+                    "name": "Pick'em Off",
+                    "effect": "Add 1 to hit rolls for this unit's shooting attacks if has not used a moved ability this turn.",
+                    "once": true,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "pickemOff",
+                    "name": "Pick'em Off",
+                    "effect": "Add 1 to hit rolls for this unit's shooting attacks if has not used a moved ability this turn.",
+                    "once": true,
+                }]
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "manskewerCrossbow",
+                        "name": "Man-skewer Crossbow",
+                        "range": 18,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "Crit (Auto-wound)"
+                    },
+                ],
+                "abilities": [{
+                    "id": "pickemOff",
+                    "name": "Pick'em Off",
+                    "effect": "Add 1 to hit rolls for this unit's shooting attacks if has not used a moved ability this turn.",
+                    "once": true,
+                }]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "jaggedyBlade",
+                        "name": "Jaggedy Blade",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Crit (Mortal)"
+                    },
+                  
+                ],
+                "abilities": [{
+                    "id": "scareTaktikz",
+                    "name": "Scare Taktikz",
+                    "effect": "Roll a dice.  On a 3+, subtract 1 from hit rolls for atacks that target this unit this phase.  This ability has no effect on attacks made by HEROS.",
+                    "once": true,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
+
+    {
+        "id": "seraphon",
+        units: [
+        {
+
+            "id": "saurusOldbloodOnCarnosaur",
+            "name": "Saurus Oldblood on Carnosaur",
+            "move": "10",
+            "control": 5,
+            "health": 14,
+            "save": 5,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Monster"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "ancientWarlord",
+                    "name": "Ancient Warlord",
+                    "effect": "Pick a friendly unit wholly within 12\" of this unit to be the target.  You cannot pick this unit.  Unit the start of your next turn, add 1 to the charge rolls for that target.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "sunboltGauntlet",
+                        "name": "Sunbolt Gauntlet",
+                        "range": 12,
+                        "attacks": "D6",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    }
+                ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "sunboltGauntlet",
+                        "name": "Sunbolt Gauntlet",
+                        "range": 12,
+                        "attacks": "D6",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    },
+                    {
+                        "id": "relicCelestiteWeapon",
+                        "name": "Relic Celestite Weapon",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                    {
+                        "id": "carnosaurMassiveJaws",
+                        "name": "carnosaur's Massive Jaws",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 2,
+                        "damage": "3",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [{
+                    "id": "battleDamaged",
+                    "name": "Battle Damaged",
+                    "effect": "While this unit has 10 or more damage points, the Attack Characteristic of its Carnosaur's Massive Jaws is 1.",
+                    "once": false,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "saurusWarriors",
+            "name": "Saurus Warriors",
+            "move": "5",
+            "control": 1,
+            "health": 2,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [
+                    {
+                    "id": "orderedCohorts",
+                    "name": "Ordered Cohorts",
+                    "effect": "Add 1 to save rolls for this unit while it is contesting an objective you control.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "celestiteClub",
+                        "name": "Celestite Club",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    },
+
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "kroxigor",
+            "name": "Kroxigor",
+            "move": "5",
+            "control": 2,
+            "health": 6,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "brutalBlows",
+                    "name": "Brutal Blows",
+                    "effect": "This unit's melee weapon have Crit (2 Hits) if the target unit has 5 or more models.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "drakebiteMaul",
+                        "name": "Drakebite Maul",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                  
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        
+        ]
+    },
     ]
 }
 

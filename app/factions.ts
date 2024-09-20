@@ -69,6 +69,10 @@ export const Alliances = {
                   {
                     "id": "kharadronOverlords",
                     "name": "Kharadron Overlords"
+                  },
+                  {
+                    "id": "Seraphon",
+                    "name": "seraphon"
                   }
                 ]
         },
@@ -105,6 +109,10 @@ export const Alliances = {
                  {
                     "id": "maggotkin",
                     "name": "Maggotkin of Nurgle"
+                 },
+                 {
+                    "id": "DoT",
+                    "name": "Disciples of Tzeentch"
                  }
             ]
         },
@@ -116,6 +124,10 @@ export const Alliances = {
                     "id": "gloomspiteGitz",
                     "name": "Gloomspite Gitz"
                 },
+                {
+                    "id": "orrukWarclans",
+                    "name": "Orruk Warclans"
+                }
             ]
         },
     ]
@@ -867,5 +879,190 @@ export const Factions = {
         "units": ["Arkanaut Admiral (Hero)", "Arkanaut Company[incl. Skypike] (5)", "Arkanaut Company[incl. Light Skyhook and Aethermatic Volley Gun] (5)", "Skywardens (3)", "Arkanaut Frigate (1)"]
         
     }, 
+    {
+        "id": "DoT",
+        "name": "Disciples of Tzeentch",
+        "battleTraits": [
+        {
+                "id": "mastersOfDestiny",
+                "name": "Master of Destiny",
+                "effect": "Roll 9 dice and put them to one side.  These are your destiny dice.  During the battle, instead of rolling the dice for 1 of the rolls from the list opposite, you can pick one of your destiny dice and use it as the roll.  Once a destiny dice has been used, it is discarded.  If you want to replace a roll that uses more than one D6, you must use the same number of Destiny Dice.  (2 dice to replace 2D6 casting roll).  The following can be replaced with destiny dice:  Casting Rolls, Run Rolls, Charge Rolls, Hitt Rolls, Wound Rolls, Save Rolls (You must still modify the save by the Rend)",
+                "once": false,
+                "phase": "passive",
+                "table": false
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "transientForms",
+                "name": "Transient Forms",
+                "effect": "Rll a dice each time a friend Kairic Acolytes model is slain in a combat phase.  On a 4+, you can return 1 slain model to the friendly Tzaangors unit within 9\" of the slaim model.",
+                "once": false,
+                "phase": "passive"
+            },
+            {
+            "id": "eternalConflagration",
+                "name": "Eternal Conflagration",
+                "effect": "Add 1 to the Rend charactesistic of ranged weapons used by friendly Flamers of Tzeentch units.",
+                "once": false,
+                "phase": ""
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "shieldOfFate",
+                    "name": "Shield of Fate",
+                    "effect": "Pick a visible friendly unit wholly within 18\" of your general, then make a casting roll of 2D6.  On a 6+, until the start of your next turn, that unit has a Ward(6+).  If that unit already has a ward save, add 1 to ward rolls for that unit unilt the start of the next turn instead.",
+                    "once": false,
+                    "phase": "hero",
+                },
+                {
+                    "id": "daemonheart",
+                    "name": "DaemonHeart",
+                    "effect": "Pick an enemy unit within 1\" of your general.  Inflict an amount of mortal damage on that unit equal to the number of the current battle round.",
+                    "once": true,
+                    "phase": "combat",
+                },
+                {
+                    "id": "glimpseTheFuture",
+                    "name": "If you have fewer than 6 destiny dice, make a casting roll of 2D6.  On a 7+, you can roll a dice and add it to your destiny dice.",
+                    "effect": "",
+                    "once": false,
+                    "phase": "hero",
+                },
+                {
+                    "id": "timeslipPendant",
+                    "name": "Timeslip Pendant",
+                    "effect": "Pick an enemy unit within 9\" of your general.  That unit has STRIKE-LAST this phase.",
+                    "once": true,
+                    "phase": "combat",
+                },],
+        "units": ["Magister on Disc of Tzeentch (Hero)", "Flamers of Tzeentch (3)", "Screamers of Tzeentch (3)", "Tzaangors (5)", "Tzaangors (5)", "Kairic Acolytes (10)"]
+        
+    }, 
+    {
+        "id": "orrukWarclans",
+        "name": "Orruk Warclans",
+        "battleTraits": [
+        {
+                "id": "kruleboyzWaagh",
+                "name": "Kruleboyz WAAGH!",
+                "effect": "Pivk your general to use this ability, then pick another friendly unit wholly within 12\" of them to be the target.  You general and the garget has STRIKE-FIRST this phase",
+                "once": true,
+                "phase": "combat",
+                "table": false
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "noisyRacket",
+                "name": "Noisy Racket",
+                "effect": "subtract 1 from wound rolls for attacks made by enemy units in the first battle round.",
+                "once": false,
+                "phase": "passive"
+            },
+            {
+            "id": "coveredInMud",
+                "name": "Covered In Mud",
+                "effect": "In the first Battle round.  Pick a friendly unit to use this ability.  In this battle, that unit is not visible to enemy models that are more than 12\" away from it.",
+                "once": true,
+                "phase": "start"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "egomaniak",
+                    "name": "Egomaniak",
+                    "effect": "If any other friendly units are within your general's combat range, before you allocate a damage point to your general, roll a dice.  On a 4+ you must allocate that damage point to one of those units instead.",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "morksEyePebble",
+                    "name": "Mork's Eye Pebble",
+                    "effect": "In the next shooting phase, friendly units have a Ward (5+) while they are wholly within 12\" of your general.",
+                    "once": true,
+                    "phase": "movement",
+                },
+                {
+                    "id": "kunninPlan",
+                    "name": "Kunnin' Plan",
+                    "effect": "Pick a friendly unit wholly within 12\" of your general.  If that unit uses a RETREAT ability this turn, no mortal damage is inflicted on it and it can still use SHOOT and/or CHARGE abilityes later in the turn.",
+                    "once": true,
+                    "phase": "hero",
+                },
+                {
+                    "id": "eyeBiterAsh",
+                    "name": "Eye-Biter Ash",
+                    "effect": "Pick an enemy unit in combat with your general and roll a dice.  On a 1-4 subtract 1 from hit rolls for attacks made by that unit for the rest of the phase.  On a 5+, subtract 1 from hit rolls for attacks made by this unit for the rest of the battle.",
+                    "once": true,
+                    "phase": "combat",
+                },],
+        "units": ["Killaboss on Great Gnashtoof (Hero)", "Murknob with Belcha-banna (1)", "Man-skewer Boltboyz (3)", "Gutrippaz (5)", "Gutrippaz (5)", "Beast-skewer Killbow (1)"]
+        
+    }, 
+    {
+        "id": "seraphon",
+        "name": "Seraphon",
+        "battleTraits": [
+        {
+                "id": "beastOfTheDarkJungles",
+                "name": "Beat of the Dark Jungles",
+                "effect": "Pick your general to use this ability if they are in combat.  Pick 1 of the following.  Gargantuan Jaws:  Pick an enemy unit in combat with your general and roll a dice.  If the roll exceeds that unit's Health, 1 model in that unit is slain. Roar:  Pick an enemy unit in combat with your general.  Subtract D6 from that unit's control score this turn.",
+                "once": false,
+                "phase": "combat",
+                "table": false
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "predatoryFighters",
+                "name": "Predatory Fighters",
+                "effect": "Roll a dice for each enemy unit in combat with any friendly units.  On a 3+, inflict mortal damage on the unit being rolled for.",
+                "once": true,
+                "phase": "end"
+            },
+            {
+            "id": "templeCityGuardians",
+                "name": "Templa City Guardians",
+                "effect": "Friendly units have Ward (6+) while they are wholly within friendly territory.",
+                "once": false,
+                "phase": "passive"
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "sotekGaze",
+                    "name": "Sotek's Gaze",
+                    "effect": "Roll a dice.  Add the roll to your general's control score this turn.",
+                    "once": false,
+                    "phase": "end",
+                },
+                {
+                    "id": "ancientStrategist",
+                    "name": "Ancient Strategist",
+                    "effect": "Pick a friendly unit wholly within 12\" of your general.  You cannot pick your general.",
+                    "once": true,
+                    "phase": "movement",
+                },
+                {
+                    "id": "bladeOfRealities",
+                    "name": "Blade of Realities",
+                    "effect": "Add 1 to the rend characteristic of your general's Relic Celestilee Weapon",
+                    "once": false,
+                    "phase": "passive",
+                },
+                {
+                    "id": "theWrathOfChiotec",
+                    "name": "The Wrath Chotec",
+                    "effect": "The attacks characteristic of your general's Sunbolt Gauntlet is 6 instead of D6",
+                    "once": false,
+                    "phase": "passive",
+                },],
+        "units": ["Saurus Oldblood on Carnosaur (Hero)", "Saurus Warriors (5)", "Saurus Warriors (5)", "Kroxigor (3)"]
+        
+    }, 
+
 ]
 };
+
