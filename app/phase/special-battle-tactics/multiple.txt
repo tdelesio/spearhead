@@ -1,0 +1,20 @@
+{
+    "faction": factions.,
+        "abilities": [
+            {
+                "id": "",
+                "name": "",
+                "effect": "",
+                "once": onces.,
+                "phase": phases.,               
+        },
+        {
+                "id": "",
+                "name": "",
+                "effect": "",
+                "once": onces.,
+                "phase": phases.,
+        }
+
+        ]
+    },

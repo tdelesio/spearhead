@@ -1,5 +1,6 @@
 "use client"
 
+import { factions } from "@/app/factions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import React, { useState } from "react";
@@ -10,7 +11,7 @@ import React, { useState } from "react";
 export const counters = {
     "factions": [
       {
-        "faction": "maggotkin",
+        "faction": factions.maggotkinOfNurgleBleakHost,
         "label": "Disease",
         "abilities": [
             {
@@ -31,7 +32,7 @@ export const counters = {
 }
 
 export type Counter ={
-    faction: string;
+    faction: number;
     label: string;
     abilities: Ability[];
   }
@@ -44,7 +45,7 @@ type Ability ={
 }
 
 interface CounterProps {
-    selectedFaction: string;
+    selectedFaction: number;
   }
 
  export function BattleTacticCounter({selectedFaction}: CounterProps) {

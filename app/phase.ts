@@ -71,6 +71,32 @@ export const Phase = {
 }
 
 
+export function convertEnumToString(passedFaction: number): string {
+    if (passedFaction === phases.start)
+        return "start"
+    else if (passedFaction === phases.hero)
+        return "hero"
+    else if (passedFaction === phases.movement)
+        return "movement"
+    else if (passedFaction === phases.shooting)
+        return "shooting"
+    else if (passedFaction === phases.charge)
+        return "charge"
+    else if (passedFaction === phases.combat)
+        return "combat"
+    else if (passedFaction === phases.end)
+        return "end"
+    else if (passedFaction === phases.passive)
+        return "passive"
+    else if (passedFaction === phases.anycombat)
+        return "anycombat"
+    else if (passedFaction === phases.any)
+        return "any"
+    else 
+        return "unknown"
+}
+
+
 
 export function convertStringToEnum(passedFaction: string): number {
     if (passedFaction === 'start')

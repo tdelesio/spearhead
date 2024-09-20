@@ -1,14 +1,15 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { factions } from '@/app/factions';
 
 interface AbilityTableProps {
-  passedFaction: string;
+  passedFaction: number;
   description: string;
 }
 
 export type BattleTraitTable ={
-  faction: string;
+  faction: number;
   columnOneLabel: string;
   columnTwoLabel: string;
   labels: string[];
@@ -18,7 +19,7 @@ export type BattleTraitTable ={
 export const battleTraitTable = {
   "factions": [
     {
-      "faction": "SoD",
+      "faction": factions.slaveToDarknessBloodWindLegion,
     "columnOneLabel": "D6",
     "columnTwoLabel": "Ability",
     "labels": ["1", "2", "3", "4", "5", "6"],
@@ -32,7 +33,7 @@ export const battleTraitTable = {
     ]
   },
   {
-    "faction": "DoK",
+    "faction": factions.daughtersOfKhaineHeartflayerTroupe,
     "columnOneLabel": "Round",
     "columnTwoLabel": "Ability",
     "labels": ["1", "2", "3", "4"],
@@ -44,7 +45,7 @@ export const battleTraitTable = {
     ]
   },
   {
-    "faction": "gloomspiteGitz",
+    "faction": factions.gloomspiteGitzBadMoonMadmob,
     "columnOneLabel": "Ability",
     "columnTwoLabel": "Effect",
     "labels": ["Frothing Zealots", "Lunar Squids", "Moonlite Hide"],
@@ -55,7 +56,7 @@ export const battleTraitTable = {
     ]
   },
   {
-    "faction": "fyreslayers",
+    "faction": factions.fyreslayersSageAxeband,
     "columnOneLabel": "Standard",
     "columnTwoLabel": "Enhanced",
     "labels": ["Rune of Fury: Add 1 to hit rolls to all attacks made by this unit's melee weapon.", "Rune of Searing Heat: Add 1 to Rend characteristic of your unit's melee weapons.", "Rune of Fiery Determination: Your units have Ward(5).", "Rune of Relentless Zeal: Add 2\" to you move."],

@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Factions } from "./factions"
 import { Alliances, NVP } from "./alliances"
 import { navigateToTactics } from "./redirect"
 import { Button } from "@/components/ui/button"
@@ -27,7 +26,7 @@ import {
 } from "@/components/ui/select"
 
 const profileFormSchema = z.object({
-  faction: z.string({
+  faction: z.number({
     required_error: "Please select a faction.",
   }),
   alliance: z.string({
@@ -58,24 +57,21 @@ export default function SelectFactionForm() {
     }
   }
 
- 
-
-useEffect(() => {
-  const alliance = form.watch("alliance")
-  if (alliance) {
-    const selectedAlliance = Alliances.alliances.find(a => a.id === alliance)
-    setAvailableFactions(selectedAlliance ? selectedAlliance.factions.map(f => typeof f === 'string' ? { id: f, name: f } : f) : [])
-    form.setValue("faction", "") // Reset faction when alliance changes
-  }
-}, [form.watch("alliance")])
+  useEffect(() => {
+    const alliance = form.watch("alliance")
+    if (alliance) {
+      const selectedAlliance = Alliances.alliances.find(a => a.id === alliance)
+      setAvailableFactions(selectedAlliance ? selectedAlliance.factions.map(f => typeof f === 'number' ? { id: f, name: f } : f) : [])
+      form.setValue("faction", 0) // Reset faction when alliance changes
+    }
+  }, [form.watch("alliance")])
 
   return (
     <div className="w-full max-w-md mx-auto px-4 py-6">
       <h2 className="text-2xl font-bold text-center mb-6">Select Your Faction</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
-        <FormField
+          <FormField
             control={form.control}
             name="alliance"
             render={({ field }) => (
@@ -102,15 +98,14 @@ useEffect(() => {
               </FormItem>
             )}
           />
-              
           
-              <FormField
+          <FormField
             control={form.control}
             name="faction"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-lg">Faction</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={(value) => field.onChange(Number(value))} value={field.value?.toString()}>
                   <FormControl>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select a faction" />
@@ -118,7 +113,7 @@ useEffect(() => {
                   </FormControl>
                   <SelectContent>
                     {availableFactions.map((faction) => (
-                      <SelectItem key={faction.id} value={faction.id}>
+                      <SelectItem key={faction.id} value={faction.id.toString()}>
                         {faction.name}
                       </SelectItem>
                     ))}

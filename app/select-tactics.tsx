@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { Factions } from "./factions"
+import { BattleTrait, Factions } from "./factions"
 import { navigateToStart } from './redirect'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/select"
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { convertEnumToString } from './phase'
 
 // const profileFormSchema = z.object({
 //   faction: z.string().optional(),
@@ -43,7 +44,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 const profileFormSchema = z.object({
   // faction: z.string({required_error: "Please select a faction.",}),
   // faction: z.string().optional(),
-  battleTraits: z.string({required_error: "Please select a battle trait.",}),
+  // battleTraits: z.string({required_error: "Please select a battle trait.",}),
   // battleTraits: z.string().optional(),
   regimentAbilities: z.string({required_error: "Please select a regiment ability.",}),
   // regimentAbilities: z.string().optional(),
@@ -57,7 +58,12 @@ const profileFormSchema = z.object({
 type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 export default function SelectFactionTacticsForm() {
-  const selectedFaction = useSearchParams().get('faction')
+  // const selectedFaction = useSearchParams().get('faction')
+
+  const params = useSearchParams();
+  const passedFaction = params.get('faction') || '0';
+  const selectedFaction = parseInt(passedFaction);
+  
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const form = useForm<ProfileFormValues>({
@@ -70,11 +76,13 @@ export default function SelectFactionTacticsForm() {
   const regimentAbilities = faction?.regimentAbilities || []
   const enhancements = faction?.enhancements || []
 
-  const selectedBattleTraitId = form.watch('battleTraits')
+
+  // const selectedBattleTraitId = form.watch('battleTraits')
   const selectedRegimentAbilityId = form.watch('regimentAbilities')
   const selectedEnhancementId = form.watch('enhancements')
 
-  const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId)
+  // const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId)
+  const selectedBattleTrait = faction?.battleTraits[0] as BattleTrait;
   const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === selectedRegimentAbilityId)
   const selectedEnhancement = enhancements.find(enhancement => enhancement.id === selectedEnhancementId)
 
@@ -91,7 +99,7 @@ export default function SelectFactionTacticsForm() {
     setIsSubmitting(true)
     try {
       
-      await navigateToStart(selectedFaction ?? '', data.battleTraits ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
+      await navigateToStart(selectedFaction ?? '', selectedBattleTrait.id ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
     } catch (error) {
       console.error("Navigation error:", error)
     } finally {
@@ -112,33 +120,12 @@ export default function SelectFactionTacticsForm() {
               <CardTitle>Battle Tactics</CardTitle>
             </CardHeader>
             <CardContent>
-              <FormField
-                control={form.control}
-                name="battleTraits"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Battle Traits</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a Battle Tactic" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {battleTraits.map((battleTrait, index) => (
-                          <SelectItem key={index} value={battleTrait.id}>{battleTrait.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              
               {selectedBattleTrait && (
                 <div className="mt-4 p-4 bg-gray-50 rounded-md">
                   <p><strong>Name:</strong> {selectedBattleTrait.name} {selectedBattleTrait.once && <strong>(Once Per Battle)</strong>}</p>
                   <p><strong>Effect:</strong> {selectedBattleTrait.effect}</p>
-                  <p><strong>Phase:</strong> {selectedBattleTrait.phase}</p>                  
+                   <p><strong>Phase:</strong> {convertEnumToString(selectedBattleTrait.phase)}</p>                   
                 </div>
               )}
             </CardContent>
@@ -175,7 +162,7 @@ export default function SelectFactionTacticsForm() {
                 <div className="mt-4 p-4 bg-gray-50 rounded-md">
                   <p><strong>Name:</strong> {selectedRegimentAbility.name} {selectedRegimentAbility.once && <strong>(Once Per Battle)</strong>}</p>
                   <p><strong>Effect:</strong> {selectedRegimentAbility.effect}</p>
-                  <p><strong>Phase:</strong> {selectedRegimentAbility.phase}</p>
+                  <p><strong>Phase:</strong> {convertEnumToString(selectedRegimentAbility.phase)}</p>
 
                 </div>
               )}
@@ -213,7 +200,7 @@ export default function SelectFactionTacticsForm() {
                 <div className="mt-4 p-4 bg-gray-50 rounded-md">
                   <p><strong>Name:</strong> {selectedEnhancement.name} {selectedEnhancement.once && <strong>(Once Per Battle)</strong>}</p>
                   <p><strong>Effect:</strong> {selectedEnhancement.effect}</p>
-                  <p><strong>Phase:</strong> {selectedEnhancement.phase}</p>
+                  <p><strong>Phase:</strong> {convertEnumToString(selectedEnhancement.phase)}</p>
 
                 </div>
               )}

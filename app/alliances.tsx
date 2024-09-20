@@ -1,3 +1,4 @@
+import { factions } from "./factions";
 
 
 export type Alliance = {
@@ -7,7 +8,7 @@ export type Alliance = {
 }
 
 export type NVP = {
-    id: string;
+    id: number;
     name: string;
 }
 
@@ -18,31 +19,31 @@ export const Alliances = {
             "name": "Order",
             "factions": [
                 {
-                    "id" : "stormcast1",
+                    "id" : factions.stormcastVigilantBrotherHood,
                     "name": "Stormcast Eternals - Vigilant Brotherhood"
                  },
                  { 
-                    "id": "stormcast2", 
+                    "id": factions.stormcastYndrastra, 
                     "name": "Stormcast Eternals - Yndrastra's Spearhead"
                  },
                  {
-                    "id": "DoK",
+                    "id": factions.daughtersOfKhaineHeartflayerTroupe,
                     "name": "Daughters of Khaine"
                   },
                   {
-                    "id": "fyreslayers",
+                    "id": factions.fyreslayersSageAxeband,
                     "name": "Fyreslayers"
                   },
                   {
-                    "id": "kharadronOverlords",
+                    "id": factions.kharadronOverlordsSkyhammerTaskForce,
                     "name": "Kharadron Overlords"
                   },
                   {
-                    "id": "Seraphon",
+                    "id": factions.seraphonStarscaleWarhost,
                     "name": "seraphon"
                   },
                   {
-                    "id": "sylvaneth",
+                    "id": factions.sylvanethBitterbarkCopse,
                     "name": "Sylvaneth - Bitterbark Copse"
                   }
                 ]
@@ -52,11 +53,11 @@ export const Alliances = {
             "name": "Death",
             "factions": [
                 {
-                    "id": "nighthaunt",
+                    "id": factions.nighthauntSlasherHost,
                     "name": "Nighthaunt"
                  },
                  {
-                    "id": "soulblight",
+                    "id": factions.soulblightGravelordsBloodCraveHunt,
                     "name": "Soulblight Gravelords"
                  },
                 ]
@@ -66,23 +67,23 @@ export const Alliances = {
             "name": "Chaos",
             "factions": [
                 {
-                    "id": "skaven1",
+                    "id": factions.skavenGnawfeastClawPack,
                     "name": "Skaven - Gnawfeast Clawpack",
                  },
                  {
-                    "id": "skaven2",
+                    "id": factions.skavenWarpSparkClawPack,
                     "name": "Skaven - Warpspark Clawpack",
                  },
                  {
-                    "id": "SoD",
+                    "id": factions.slaveToDarknessBloodWindLegion,
                     "name": "Slaves of Darkness",
                  },
                  {
-                    "id": "maggotkin",
+                    "id": factions.maggotkinOfNurgleBleakHost,
                     "name": "Maggotkin of Nurgle"
                  },
                  {
-                    "id": "DoT",
+                    "id": factions.disciplesOfTzeentchFluxbladeCoven,
                     "name": "Disciples of Tzeentch"
                  }
             ]
@@ -92,11 +93,11 @@ export const Alliances = {
             "name": "Destruction",
             "factions": [
                 {
-                    "id": "gloomspiteGitz",
+                    "id": factions.gloomspiteGitzBadMoonMadmob,
                     "name": "Gloomspite Gitz"
                 },
                 {
-                    "id": "orrukWarclans",
+                    "id": factions.orrukWarclans,
                     "name": "Orruk Warclans"
                 }
             ]

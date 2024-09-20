@@ -41,6 +41,7 @@ export const battleTraitSpecials = Object.freeze({
     none: 0,
     table: 1,
     counter: 2,
+    multiple: 3,
 });
 
 export const onces = Object.freeze({
@@ -49,29 +50,52 @@ export const onces = Object.freeze({
     turn: 2,
 })
 
+export const factions = Object.freeze({
+    stormcastVigilantBrotherHood: 1,
+    stormcastYndrastra: 2,
+    skavenGnawfeastClawPack: 3,
+    skavenWarpSparkClawPack: 4,
+    slaveToDarknessBloodWindLegion: 5,
+    soulblightGravelordsBloodCraveHunt: 6,
+    fyreslayersSageAxeband: 7,
+    disciplesOfTzeentchFluxbladeCoven: 8,
+    daughtersOfKhaineHeartflayerTroupe: 9,
+    citiesOfSigmarCasteliteCompany: 10,
+    nighthauntSlasherHost: 11,
+    sylvanethBitterbarkCopse: 12,
+    maggotkinOfNurgleBleakHost: 13,    
+    seraphonStarscaleWarhost: 14,
+    kharadronOverlordsSkyhammerTaskForce: 15,
+    hedonitesOfSlaaneshBladeOfTheLuridDream: 16,
+    luminethRealmLordsGlitteringPhalanx: 17,
+    ossiarchBonereapersTitheReaperEchelon: 18,
+    sonsOfBehematWallsmasherStomp: 19,
+    bladesOfKhorneBloodboundGorePilgrims: 20,
+    idonethDeepkinSoulraidHunt: 21,
+    gloomspiteGitzBadMoonMadmob: 22,
+    flesheaterCourtsCarrionRetainers: 23,
+    ogorMawTribesTyrantsBellow: 24,
+    orrukWarclans: 25,
+
+
+})
+
 
 export const Factions = {
     "factions": [
     {
-        "id": "stormcast",
+        "id": factions.stormcastVigilantBrotherHood,
         "name": "Stormcast Eternals - Vigilant Brotherhood",
         "battleTraits": [
-        {
-                "id": "shieldOfAzyr",
-                "name": "Shield of Azyr",
-                "effect": "Pick a friendly Unit.  Unit the start of your next turn, that unit has Ward 5+",
-                "once": onces.battle,
-                "phase": phases.hero,
-                "special": battleTraitSpecials.none,
-        },
-        {
-                "id": "stormCharge",
-                "name": "Storm Charge",
-                "effect": "Pick a friendly unit that is not in combat, that unit can charge this turn even if a run was used",
-                "once": onces.battle,
-                "phase": phases.charge,
-                 "special": battleTraitSpecials.none,
+            {
+                "id": "holyOrders",
+                "name": "HolyOrders",
+                "effect": "During the battle, you can use the following abilities.",
+                "once": onces.none,
+                "phase": phases.any,
+                "special": battleTraitSpecials.multiple,
         }
+             
         ],
         "regimentAbilities": [
             {
@@ -86,7 +110,7 @@ export const Factions = {
                 "name": "Blaze of Glory",
                 "effect": "Pick a friendly unit that is in combat, each time a model is slain, make a vengance roll of D6.  On 4+ inflict 1 mortal damage",
                  "once": onces.battle,
-                "phase": phases.combat
+                "phase": phases.anycombat
             }
         ],
         "enhancements": [
@@ -123,7 +147,7 @@ export const Factions = {
         
     },
     {
-        "id": "stormcast2",
+        "id": factions.stormcastYndrastra,
         "name": "Stormcast Eternals - Yndrastra's Spearhead",
         "battleTraits": [
         {
@@ -184,16 +208,16 @@ export const Factions = {
         
     },
     {
-        "id": "skaven1",
+        "id": factions.skavenGnawfeastClawPack,
         "name": "Skaven - Gnawfeast Clawpack",
         "battleTraits": [
         {
-                "id": "lurkingVermintide",
-                "name": "The Lurking Vermintide",
-                "effect": "Pick an undeployed friendly unit, set them up in the tunnels below.  Units in the tunnels below that have not beed used the Gnawhole Ambush ability by the end of the third battle round are destroyed.  GNAWHOLE AMBUSH:  On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
-                 "once": onces.battle,
-                "phase": phases.movement,
-                 "special": battleTraitSpecials.none
+                "id": "lurkingVermintideDeployment",
+                "name": "Deployment",
+                "effect": "The Lurking Vermintide is completed during the deployment phase.",
+                 "once": onces.none,
+                "phase": phases.passive,
+                 "special": battleTraitSpecials.multiple
         }
         ],
         "regimentAbilities": [
@@ -245,7 +269,7 @@ export const Factions = {
         
     },
     {
-        "id": "skaven2",
+        "id": factions.skavenWarpSparkClawPack,
         "name": "Skaven - Warpspark Clawpack",
         "battleTraits": [
         {
@@ -307,7 +331,7 @@ export const Factions = {
     },
 
     {
-        "id": "SoD",
+        "id": factions.slaveToDarknessBloodWindLegion,
         "name": "Slaves of Darkness - Bloodwind Legion",
         "battleTraits": [
         {
@@ -369,7 +393,7 @@ export const Factions = {
         
     },
     {
-        "id": "DoK",
+        "id": factions.daughtersOfKhaineHeartflayerTroupe,
         "name": "Daughters of Khaine - Heartflayer Troupe",
         "battleTraits": [
         {
@@ -430,7 +454,7 @@ export const Factions = {
         
     },
     {
-        "id": "fyreslayers",
+        "id": factions.fyreslayersSageAxeband,
         "name": "Fyreslayers - Saga Axeband",
         "battleTraits": [
         {
@@ -491,16 +515,16 @@ export const Factions = {
         
     },
     {
-        "id": "nighthaunt",
+        "id": factions.nighthauntSlasherHost,
         "name": "Nighthaunt - Slasher Host",
         "battleTraits": [
         {
-                "id": "waveOfTerror",
-                "name": "Wave of Terror",
-                "effect": "Pick a friendly unit to use this ability if they charged this phase and the charge roll was 10+, pick an enemy unit within 1\" of it.  That target has Strike-Last this turn.  Ignore all modifiers to save rolls rolls for friendly units (positive or negative).",
+                "id": "waveOfTerrorOverview",
+                "name": "Night Haunt Battle Traits",
+                "effect": "You can use the following abilities.",
                 "once": onces.none,
                 "phase": phases.passive,
-                 "special": battleTraitSpecials.none
+                 "special": battleTraitSpecials.multiple
         }
         ],
         "regimentAbilities": [
@@ -552,7 +576,7 @@ export const Factions = {
         
     },
     {
-        "id": "gloomspiteGitz",
+        "id": factions.gloomspiteGitzBadMoonMadmob,
         "name": "Gloomspite Gitz - Bad Moon Madmob",
         "battleTraits": [
         {
@@ -613,7 +637,7 @@ export const Factions = {
         
     },
     {
-        "id": "soulblight",
+        "id": factions.soulblightGravelordsBloodCraveHunt,
         "name": "Soulblight Gravelords - Bloodcrave Hunt",
         "battleTraits": [
         {
@@ -674,16 +698,16 @@ export const Factions = {
         
     },
     {
-        "id": "maggotkin",
+        "id": factions.maggotkinOfNurgleBleakHost,
         "name": "Maggotkin of Nurgle - Bleak Host",
         "battleTraits": [
         {
                 "id": "infectiousHosts",
                 "name": "Infectious Hosts",
-                "effect": "One of your Purgoyle Blightlords and one of your Plaguebearers are not set up during the deployment phase.  Instead from the third battle round onwards, you can use the following ability  Daemonic Summoning: Setup up this unit anywhere on the battlefield more than 6\" from all enemy units.",
-                 "once": onces.battle,
-                "phase": phases.movement,
-                "special": battleTraitSpecials.counter,
+                "effect": "One of your Purgoyle Blightlords and one of your Plaguebearers are not set up during the deployment phase.  Instead from the third battle round onwards, you can use the following ability.",
+                 "once": onces.none,
+                "phase": phases.passive,
+                "special": battleTraitSpecials.multiple,
         }
         ],
         "regimentAbilities": [
@@ -735,7 +759,7 @@ export const Factions = {
         
     }, 
     {
-        "id": "kharadronOverlords",
+        "id": factions.kharadronOverlordsSkyhammerTaskForce,
         "name": "Kharadron Overlords - Skyhammer Task Force",
         "battleTraits": [
         {
@@ -796,7 +820,7 @@ export const Factions = {
         
     }, 
     {
-        "id": "DoT",
+        "id": factions.disciplesOfTzeentchFluxbladeCoven,
         "name": "Disciples of Tzeentch - Fluxblade Coven",
         "battleTraits": [
         {
@@ -857,7 +881,7 @@ export const Factions = {
         
     }, 
     {
-        "id": "orrukWarclans",
+        "id": factions.orrukWarclans,
         "name": "Orruk Warclans - Swampskulka Gang",
         "battleTraits": [
         {
@@ -918,7 +942,7 @@ export const Factions = {
         
     }, 
     {
-        "id": "seraphon",
+        "id": factions.seraphonStarscaleWarhost,
         "name": "Seraphon - Starscale Warhost",
         "battleTraits": [
         {
@@ -980,20 +1004,20 @@ export const Factions = {
     }, 
     
     // {
-    //     "id": "sylvaneth",
+    //     "id": factions.sylvanethBitterbarkCopse,
     //     "name": "Sylvaneth - Bitterbark Copse",
     //     "battleTraits": [
     //     {
     //             "id": "leyLines",
     //             "name": "Ley Lines",
     //             "effect": "Each of these can be used once per turn, at tne end of any turn. Heal (1) each friendly unit that is within 3\" of any terrain features.  In Addition, Pick a friendly unit from the battlefield and set it up again so that each model in the unit is within 3\" of any terrain features and more than 6\" from all enemy units. ",
-    //             "once": onces.none,
+    //             "once": onces.turn,
     //             "phase": phases.passive,
-    //             "table": "none"
+    //             "special": battleTraitSpecials.multiple
     //     }
     //     ],
     //     "regimentAbilities": [
-    //         {
+    //         {   
     //             "id": "vengefulSpiritsOfTheLand",
     //             "name": "Vengeful Spirits of the Land",
     //             "effect": "Once per trun, end of any turn.  Pick an enemy unit that is contesting an objective and roll a dice.  On a 4+, inflict D3 mortal damage on that enemy unit.",

@@ -1,3 +1,4 @@
+import { factions } from "./factions";
 import { phases } from "./phase";
 
 export type FactionUnits = {
@@ -86,7 +87,7 @@ export type Attack = {
 export const Units = {
     "factions": [
         {
-            "id": "stormcast",
+            "id": factions.stormcastVigilantBrotherHood,
             units: [
                 {
 
@@ -440,7 +441,7 @@ export const Units = {
 
         },
         {
-            "id": "skaven1",
+            "id": factions.skavenGnawfeastClawPack,
             "units": [
 
                 {
@@ -837,7 +838,7 @@ export const Units = {
             ]
         },
         {
-            "id": "skaven2",
+            "id": factions.skavenWarpSparkClawPack,
             units: [
             {
 
@@ -1162,7 +1163,7 @@ export const Units = {
             ]
         },
         {
-            id: "SoD",
+            id: factions.slaveToDarknessBloodWindLegion,
             units: [
                 {
 
@@ -1179,14 +1180,7 @@ export const Units = {
                     "keywords": ["Hero", "Infantry"],
                     "Passive": {
                         "attacks": [],
-                        "abilities": [
-                            {
-                                "id": "favouredOfThePantheon",
-                                "name": "Favoured Of The Pantheon",
-                                "effect": "RoLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
-                                "once": false,
-                            }
-                        ]
+                        "abilities": []
                     },
                     "Start":
                     {
@@ -1388,12 +1382,7 @@ export const Units = {
                                 "ability": ""
                             }
                         ],
-                        "abilities": [{
-                            "id": "bringersOfDesolation",
-                            "name": "Bringers Of Desolation",
-                            "effect": "Add 1 to wound rolls for combat attacks made by this unit that target an enemy unit that is contesting an objective you do not conotrl.",
-                            "once": false,
-                        }],
+                        "abilities": [],
                     },
                     "End": {
                         "attacks": [],
@@ -1491,7 +1480,7 @@ export const Units = {
             ]
         },
         {
-            "id": "DoK",
+            "id": factions.daughtersOfKhaineHeartflayerTroupe,
             "units": [
                 {
 
@@ -1851,7 +1840,7 @@ export const Units = {
             ]
         },
         {
-            "id": "fyreslayers",
+            "id": factions.fyreslayersSageAxeband,
             "units": [
 
                 {
@@ -2097,7 +2086,7 @@ export const Units = {
             ]
         },
         {
-            "id": "nighthaunt",
+            "id": factions.nighthauntSlasherHost,
             "units": [
                 {
 
@@ -2397,7 +2386,7 @@ export const Units = {
             ]
         },
         {
-            "id": "gloomspiteGitz",
+            "id": factions.gloomspiteGitzBadMoonMadmob,
             "units": [{
 
             "id": "loonBoss",
@@ -2696,7 +2685,7 @@ export const Units = {
         },
     ]},
     {
-        "id": "stormcast2",
+        "id": factions.stormcastYndrastra,
         units: [
         {
 
@@ -2885,7 +2874,7 @@ export const Units = {
                 "abilities": [{
                     "id": "bannerOfTheReforged",
                     "name": "Banner of the Reforged",
-                    "effect": "Pick a friendly unit wholly within 12\" of this unit to be the target.  Heal (D3_ the target, add 3 to that unit's control score until the start of your next turn.",
+                    "effect": "Pick a friendly unit wholly within 12\" of this unit to be the target.  Heal (D3) the target, add 3 to that unit's control score until the start of your next turn.",
                     "once": false,
                 }]
             },
@@ -3086,7 +3075,7 @@ export const Units = {
         ]
     },
     {
-        "id": "soulblight",
+        "id": factions.soulblightGravelordsBloodCraveHunt,
         units: [
         {
 
@@ -3366,7 +3355,7 @@ export const Units = {
         ]
     },
     {
-        "id": "maggotkin",
+        "id": factions.maggotkinOfNurgleBleakHost,
         units: [
         {
 
@@ -3670,7 +3659,7 @@ export const Units = {
         ]
     },
     {
-        "id": "kharadronOverlords",
+        "id": factions.kharadronOverlordsSkyhammerTaskForce,
         units: [
         {
 
@@ -4113,7 +4102,7 @@ export const Units = {
         ]
     },
     {
-        "id": "DoT",
+        "id": factions.disciplesOfTzeentchFluxbladeCoven,
         units: [
         {
 
@@ -4495,7 +4484,7 @@ export const Units = {
         ]
     },
     {
-        "id": "orrukWarclans",
+        "id": factions.orrukWarclans,
         units: [
         {
 
@@ -4892,7 +4881,7 @@ export const Units = {
     },
 
     {
-        "id": "seraphon",
+        "id": factions.seraphonStarscaleWarhost,
         units: [
         {
 
