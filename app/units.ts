@@ -5440,6 +5440,342 @@ export const Units = {
         },
         ]
     },
+    {
+        "id": factions.idonethDeepkinSoulraidHunt,
+        units: [
+        {
+
+            "id": "isharannSoulscryer",
+            "name": "Isharann Soulscryer",
+            "move": "6",
+            "control": 2,
+            "health": 5,
+            "save": 5,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "ritualOfTheCreepingMist",
+                    "name": "Ritual of the Creeping Mist",
+                    "effect": "Pick a visible friendly unit wholly within 12\" of this unit to be the target, then roll a dice.  On a 4+, unit the start of your next turn, the target unit cannot by targeted by shooting attacks unless the attacking model is within its combat range.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "scryfishShoal",
+                        "name": "Scryfish Shoul",
+                        "range": 10,
+                        "attacks": "8",
+                        "hit": 5,
+                        "wound": 5,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Shoot in Combat, companion"
+                    },
+                ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "scryfishShoal",
+                        "name": "Scryfish Shoul",
+                        "range": 10,
+                        "attacks": "8",
+                        "hit": 5,
+                        "wound": 5,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "Shoot in Combat, companion"
+                    },
+                    {
+                        "id": "abyssalTouch",
+                        "name": "Abyssal Touch",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "D3",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "akhellianMorrsarrGuard",
+            "name": "Akhelian Morrsarr Guard",
+            "move": "14",
+            "control": 1,
+            "health": 4,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": true,
+            "keywords": ["Cavalry", "Fly"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "biovoltaicBlast",
+                    "name": "Biovoltaic Blast",
+                    "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target, then roll a number of dice equal to the number of models in this unit.  For each 4-5, inflict 1 mortal damage on the target.  For each 6+, inflict D3 mortal damage on the target.  Add 1 to each roll if there are more models in the target unit than this unit.",
+                    "once": true,
+                }]
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "voltspear",
+                        "name": "Voltspear",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Charge (+1 Damage)"
+                    },
+                    {
+                        "id": "fangmoraFangsAndLashingTail",
+                        "name": "Fangmora's Fangs and Lashing Tail",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "D3",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "akhellianAllopex",
+            "name": "Akhelian Allopex",
+            "move": "12",
+            "control": 2,
+            "health": 8,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": true,
+            "keywords": ["Cavalry", "Fly"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "bloodthirstyPredators",
+                    "name": "Blood Thirsty Predators",
+                    "effect": "Add 1 to the Attacks characteristic of this unit's Allopex's Frocious Bite if it is within 6\" of any damaged enemy units or if it is within 6\" of any enemy units that have had any models slain in the same turn.",
+                    "once": true,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "razorshellHarpoonLauncher",
+                        "name": "Razorshell Harpoon Launcher",
+                        "range": 18,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 2,
+                        "rend": 1,
+                        "damage": "3",
+                        "ability": "Anti-Monster (+1 Rend)"
+                    },
+                ],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "barbedHooksAndBlades",
+                        "name": "Barbed Hooks and Blades",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "allopexsFerociousBite",
+                        "name": "Allopex's Ferocious Bite",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 2,
+                        "damage": "2",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "namartiThralls",
+            "name": "Namarti Thralls",
+            "move": "6",
+            "control": 1,
+            "health": 1,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Reinforcements"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [
+                    {
+                        "id": "sweepingBlows",
+                        "name": "Sweeping Blows",
+                        "effect": "Add 1 to the Damage characteristic of this units Lanmari for attacks that target an enemy MONSTER.",
+                        "once": false,
+                    }
+                ]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [
+                    {
+                        "id": "callForReinforcement",
+                        "name": "Call for Reinforcements",
+                        "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                        "once": true,
+                    }
+                ]
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "lanmari",
+                        "name": "Lanmari",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 2,
+                        "damage": "2",
+                        "ability": "Anti-Infantry (+1 Rend)"
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
     // sylvaneth
 
     ]

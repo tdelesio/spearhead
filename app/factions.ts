@@ -1082,6 +1082,69 @@ export const Factions = {
         "units": ["Scinari Cathallar (Hero)", "Vanari Auralan Sentinels (5)", "Vanari Auralan Sentinels (5)", "Vanari Auralan Wardens (10)", "Vanari Bladelords (5)"]
         
     }, 
+    {
+        "id": factions.idonethDeepkinSoulraidHunt,
+        "name": "Idoneth Deepkin - Soulraid Hunt",
+        "battleTraits": [
+        {
+                "id": "tidesOfDeath",
+                "name": "Tides of Death",
+                "effect": "In each battleround, all friendly units have the Tides of Death passive ability that corresponds to the curent battle round number as shown in the table.",
+                "once": onces.none,
+                "phase": phases.passive,
+                "special": battleTraitSpecials.table,
+        }
+        ],
+        "regimentAbilities": [
+            {
+                "id": "wayOfTheCrestingWave",
+                "name": "Way of the Creshing Wave",
+                "effect": "Add 1 to the Rend characteristic of melee weapons used by friendly Namarti Thralls units that charged in the same turn.",
+                "once": onces.none,
+                "phase": phases.passive,
+            },
+            {
+            "id": "etherseaPredator",
+                "name": "Ethersea Predator",
+                "effect": "Pick a friendly Cavalry unit that used a FIGHT ability this turn.  Heal (D3) that unit.",
+                "once": onces.none,
+                "phase": phases.end,
+            }
+        ],
+        "enhancements": [
+            {
+            "id": "archRitualist",
+                "name": "Arch-Ritualist",
+                "effect": "Add 1 to rolls for your general's Ritual of the Creeping Mist ability.",
+                "once": onces.none,
+                "phase": phases.passive,
+            },
+                
+                {
+                    "id": "steelshellArmor",
+                    "name": "Steelshell Armor",
+                    "effect": "Ignore all modifiers to save rolls for you general (positive and negative)",
+                   "once": onces.none,
+                   "phase": phases.passive,
+                },
+                {
+                    "id": "mindFlare",
+                    "name": "Mind Flare",
+                    "effect": "Pick an enemy unit in combat with your general.  Unit the end of the phase, attacks made by this unit only score hits on unmodified hit rolls of 6.",
+                    "once": onces.battle,
+                    "phase": phases.combat,
+                },
+                {
+                    "id": "deliciousMorsels",
+                    "name": "Delicious Morsels",
+                    "effect": "Heal (1) each friendly Cavalry unit within your general's combat range.",
+                    "once": onces.none,
+                    "phase": phases.hero,
+                },],
+        "units": ["Isharann Soulscyer (Hero)", "Akhelian Morrsarr Guard (3)", "Akhelian Allopex (1)", "Namarti Thralls (5)", "Namarti Thralls (5)"]
+        
+    }, 
+    //
     
     // {
     //     "id": factions.sylvanethBitterbarkCopse,

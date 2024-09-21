@@ -49,6 +49,10 @@ export const Alliances = {
                   {
                         "id": factions.luminethRealmLordsGlitteringPhalanx,
                         "name": "Lumineth Realm-Lords - Glittering Phalanx"
+                  },
+                  {
+                    "id": factions.idonethDeepkinSoulraidHunt,
+                    "name": "Idoneth Deepkin - Soulraid Hunt"
                   }
 
                 ]

@@ -66,6 +66,19 @@ export const battleTraitTable = {
       "In addition, add 1 to save rolls for this unit.",
       "In addition, add 2 to charge rolls for this unit."
     ]
+  },
+  {
+    "faction": factions.idonethDeepkinSoulraidHunt,
+    "columnOneLabel": "Round",
+    "columnTwoLabel": "Ability",
+    "labels": ["1", "2", "3", "4"],
+    "abilities": [
+      "Low Tide: Subtract 1 from hit rolls for shooting attacks that target this unit.",
+      "Flood Tide: Ths unit can use a RUN ability and still use SHOOT and/or CHARGE abilities later in the turn.",
+      "High Tide: This unit as STRIKE-FIRST",
+      "EBB Tide: This unit can use a RETREAT ability and still use a SHOOT and/or CHARGE abilities later in this turn."
+
+    ]
   }
 ]
 
