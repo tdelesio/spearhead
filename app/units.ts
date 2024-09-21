@@ -5126,6 +5126,320 @@ export const Units = {
         
         ]
     },
+    {
+        "id": factions.luminethRealmLordsGlitteringPhalanx,
+        units: [
+        {
+
+            "id": "scinariCathallar",
+            "name": "Scinari Cathallar",
+            "move": "6",
+            "control": 2,
+            "health": 5,
+            "save": 5,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Wizard", "Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "darknessOfTheSoul",
+                    "name": "Darkness of the Soul",
+                    "effect": "Pick an enemy unit within 12\" of this unit to be the target then roll a dice.  On a 3+, subtract D6 from the contrl score of the target unit this turn.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "despairingTool",
+                        "name": "Despairing Tool",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "D3",
+                        "ability": ""
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "vanariBladelords",
+            "name": "Vanari Bladelords",
+            "move": "6",
+            "control": 1,
+            "health": 2,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "swordmasters",
+                    "name": "Swordmasters",
+                    "effect": "Each time this unit uses a FIGHT ability, you must pick either the Perfect Strike or Flurry of Blows weapon characteristic for all the attacks it makes with its Sunmetal Greatblade.  In adition, Do not use the attack sequence for an attack made with Perfect Strile.  Instead, roll a dice.  On a 2+, inflict 1 mortal damage on the target unit.",
+                    "once": false,
+                },
+                {
+                    "id": "guardians",
+                    "name": "Guardians",
+                    "effect": "While your general is wholly within this unit's combat range, both this unit and your general has Ward (5+).",
+                    "once": false,
+                }
+            ]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "sunmetalGreatbladePerfectStrike",
+                        "name": "Sunmetal Greatblade: Perfect Strile",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 0,
+                        "wound": 0,
+                        "rend": 0,
+                        "damage": "0",
+                        "ability": "See Ability"
+                    },
+                    {
+                        "id": "sunmetalGreatbladeFlurryOfBlows",
+                        "name": "Sunmetal Greatblade: Flurry of Blows",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Crit (Mortal), Anti-Infantry (+1 Rend)"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "vanariAuralanSentiels",
+            "name": "Vanari Auralan Sentinels",
+            "move": "6",
+            "control": 1,
+            "health": 1,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Reinforcements"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                }]
+            },
+            "Shooting": {
+                "attacks": [
+                    {
+                        "id": "auralanBow",
+                        "name": "Auralan Bow",
+                        "range": 18,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Crit (Auto-Wound)"
+                    }
+                ],
+                "abilities": [
+                    {
+                        "id": "loftedShots",
+                        "name": "Lofted Shots",
+                        "effect": "Unit the end of the phase, add 6\" to the Range characteristic of this unit's Aurain Bows but subtract 1 from hit rolls for this unit's shooting attacks.",
+                        "once": false,
+                    }
+                ]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [                    
+                    {
+                        "id": "vanariDagger",
+                        "name": "Vanari Dagger",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "vanariAuralanWardens",
+            "name": "Vanari Auralan Wardens",
+            "move": "6",
+            "control": 1,
+            "health": 1,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Reinforcements"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                }]
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "wardensPike",
+                        "name": "Warden's Pike",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                ],
+                "abilities": [
+                    {
+                        "id": "moonfireFlasks",
+                        "name": "Moonfire Flasks",
+                        "effect": "Pick an enemy unit in combat with this unit and that charged this turn to be the target, then roll a dice.  On a 2+, inflict D3 mortal damage on that target.",
+                        "once": true,
+                    }
+                ],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
     // sylvaneth
 
     ]

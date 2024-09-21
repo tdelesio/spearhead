@@ -28,24 +28,29 @@ export const Alliances = {
                  },
                  {
                     "id": factions.daughtersOfKhaineHeartflayerTroupe,
-                    "name": "Daughters of Khaine"
+                    "name": "Daughters of Khaine - Heartflayer Troupe"
                   },
                   {
                     "id": factions.fyreslayersSageAxeband,
-                    "name": "Fyreslayers"
+                    "name": "Fyreslayers - Saga Axeband"
                   },
                   {
                     "id": factions.kharadronOverlordsSkyhammerTaskForce,
-                    "name": "Kharadron Overlords"
+                    "name": "Kharadron Overlords - Skyhammer Task Force"
                   },
                   {
                     "id": factions.seraphonStarscaleWarhost,
-                    "name": "seraphon"
+                    "name": "Seraphon - Starscale Warhost"
                   },
+                //   {
+                //     "id": factions.sylvanethBitterbarkCopse,
+                //     "name": "Sylvaneth - Bitterbark Copse"
+                //   },
                   {
-                    "id": factions.sylvanethBitterbarkCopse,
-                    "name": "Sylvaneth - Bitterbark Copse"
+                        "id": factions.luminethRealmLordsGlitteringPhalanx,
+                        "name": "Lumineth Realm-Lords - Glittering Phalanx"
                   }
+
                 ]
         },
         {
@@ -54,11 +59,11 @@ export const Alliances = {
             "factions": [
                 {
                     "id": factions.nighthauntSlasherHost,
-                    "name": "Nighthaunt"
+                    "name": "Nighthaunt- Slasher Host"
                  },
                  {
                     "id": factions.soulblightGravelordsBloodCraveHunt,
-                    "name": "Soulblight Gravelords"
+                    "name": "Soulblight Gravelords - Bloodcrave Hunt"
                  },
                 ]
         },
@@ -76,15 +81,15 @@ export const Alliances = {
                  },
                  {
                     "id": factions.slaveToDarknessBloodWindLegion,
-                    "name": "Slaves of Darkness",
+                    "name": "Slaves of Darkness - Bloodwind Legion",
                  },
                  {
                     "id": factions.maggotkinOfNurgleBleakHost,
-                    "name": "Maggotkin of Nurgle"
+                    "name": "Maggotkin of Nurgle - Bleak Host"
                  },
                  {
                     "id": factions.disciplesOfTzeentchFluxbladeCoven,
-                    "name": "Disciples of Tzeentch"
+                    "name": "Disciples of Tzeentch - Fluxblade Coven"
                  }
             ]
         },
@@ -94,11 +99,11 @@ export const Alliances = {
             "factions": [
                 {
                     "id": factions.gloomspiteGitzBadMoonMadmob,
-                    "name": "Gloomspite Gitz"
+                    "name": "Gloomspite Gitz - Bad Moon Madmob"
                 },
                 {
                     "id": factions.orrukWarclans,
-                    "name": "Orruk Warclans"
+                    "name": "Orruk Warclans - Swampskulka Gang"
                 }
             ]
         },

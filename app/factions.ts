@@ -1002,6 +1002,86 @@ export const Factions = {
         "units": ["Saurus Oldblood on Carnosaur (Hero)", "Saurus Warriors (5)", "Saurus Warriors (5)", "Kroxigor (3)"]
         
     }, 
+    {
+        "id": factions.luminethRealmLordsGlitteringPhalanx,
+        "name": "Lumineth Realm-Lords - Glittering Phalanx",
+        "battleTraits": [ 
+            {
+                "id": "shiningCompay",
+                "name": "Shinning Company",
+                "effect": "Once per phase.  A friendly unit targeted by an ATTACK ability and that has not made a pile-in move this turn.  Subtract 1 from hit rolls for the attacks that target that friendly unit.",
+                "once": onces.none,
+                "phase": phases.combat,    
+                "special": battleTraitSpecials.none,           
+        },
+        {
+                "id": "powerOfHysh",
+                "name": "Power of Hysh",
+                "effect": "Once per turn.  Pick a friednly unit.  Roll a dice.  On a 2+, until the start of your next turn, attacks made by that untit score a critical hit on unmodified hit rolls of 5+",
+                "once": onces.none,
+                "phase": phases.hero,
+                "special": battleTraitSpecials.none,   
+        },
+        {
+            "id": "lightningReactions",
+            "name": "Lightning Reactions",
+            "effect": "When players are alternating picking units to use a FIGHT ability, when it is your turn to pick a unit, you can pick 2 units instead of 1.  Resolve the second FIGHT ability immediately after the first.",
+            "once": onces.none,
+            "phase": phases.passive,
+            "special": battleTraitSpecials.none,   
+    }
+
+
+
+        ],
+        "regimentAbilities": [
+            {
+                "id": "arcanePowers",
+                "name": "Arcane Powers",
+                "effect": "Add 1 to casting rolls for your general",
+                "once": onces.none,
+                "phase": phases.passive,
+            },
+            {
+            "id": "heightenedReflexes",
+                "name": "Heightened Reflexes",
+                "effect": "Add 1 to save rolls for friendly units that use a FIGHT ability immediately after another friendly unit because of the 'Lightning Reactins' ability, until the end of the phase.",
+                "once": onces.none,
+                "phase": phases.passive,
+            }
+        ],
+        "enhancements": [
+            {
+                    "id": "overwhelmingHeat",
+                    "name": "Overwhelming Heat",
+                    "effect": "Pick a visible enemy within 24\" of your general, then make a casting roll of 2D6.  On a 7+, halve rh Move characteristic of that unit until the start of your next turn and roll a dice.  If the roll equals or exceeds that unit's Save characteristic, inflict D3 mortal damage on it.",
+                    "once": onces.none,
+                    "phase": phases.hero,
+                },
+                {
+                    "id": "protectionOfHysh",
+                    "name": "Protection of Hysh",
+                    "effect": "Pick a visible friendly unit wholly within 12\" of your general to be the target, then make a casting roll of 2D6.  On a 7+, the target has Ward(5+) unit the start of your next turn.",
+                    "once": onces.none,
+                    "phase": phases.hero,
+                },
+                {
+                    "id": "waystone",
+                    "name": "Waystone",
+                    "effect": "Remove your general from the battlefield and set up them again anywhere on the battlefield more than 6\" from all enemy units.",
+                   "once": onces.none,
+                   "phase": phases.movement,
+                },
+                {
+                    "id": "speedOfHysh",
+                    "name": "Speed of Hysh",
+                    "effect": "Pick a visible friendly unit wholly within 18\" of your general, then make a casting roll of 2S6.  On a 5+, double the Move characteristic of that unit until the start of your next turn.",
+                    "once": onces.none,
+                    "phase": phases.hero,
+                },],
+        "units": ["Scinari Cathallar (Hero)", "Vanari Auralan Sentinels (5)", "Vanari Auralan Sentinels (5)", "Vanari Auralan Wardens (10)", "Vanari Bladelords (5)"]
+        
+    }, 
     
     // {
     //     "id": factions.sylvanethBitterbarkCopse,

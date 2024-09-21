@@ -111,6 +111,34 @@ export const multiples = {
 
             ]
         },
+        {
+            "faction": factions.luminethRealmLordsGlitteringPhalanx,
+                "abilities": [
+                    {
+                        "id": "shiningCompay",
+                        "name": "Shinning Company",
+                        "effect": "Once per phase.  A friendly unit targeted by an ATTACK ability and that has not made a pile-in move this turn.  Subtract 1 from hit rolls for the attacks that target that friendly unit.",
+                        "once": onces.none,
+                        "phase": phases.combat,               
+                },
+                {
+                        "id": "powerOfHysh",
+                        "name": "Power of Hysh",
+                        "effect": "Once per turn.  Pick a friednly unit.  Roll a dice.  On a 2+, until the start of your next turn, attacks made by that untit score a critical hit on unmodified hit rolls of 5+",
+                        "once": onces.none,
+                        "phase": phases.hero,
+                },
+                {
+                    "id": "lightningReactions",
+                    "name": "Lightning Reactions",
+                    "effect": "When players are alternating picking units to use a FIGHT ability, when it is your turn to pick a unit, you can pick 2 units instead of 1.  Resolve the second FIGHT ability immediately after the first.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+            }
+
+        
+                ]
+            },
 
     ]
 }

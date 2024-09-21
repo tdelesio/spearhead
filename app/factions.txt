@@ -1,5 +1,5 @@
 {
-                    "id": "",
+                    "id": factions.,
                     "name": "",
                     "battleTraits": [
                     {
@@ -7,7 +7,7 @@
                             "name": "",
                             "effect": "",
                             "once": onces.,
-                            "once": onces.,
+                            "phase": phases.,
                             "special": battleTraitSpecials.,
                     }
                     ],
@@ -17,14 +17,14 @@
                             "name": "",
                             "effect": "",
                             "once": onces.,
-                            "once": onces.,
+                            "phase": phase.,
                         },
                         {
                         "id": "",
                             "name": "",
                             "effect": "",
                             "once": onces.,
-                            "once": onces.,
+                            "phase": phases.,
                         }
                     ],
                     "enhancements": [
@@ -33,28 +33,28 @@
                                 "name": ",
                                 "effect": "",
                                 "once": onces.,
-                                "once": onces.,
+                                "phase": phases.,
                             },
                             {
                                 "id": "",
                                 "name": "",
                                 "effect": "",
                                 "once": onces.,
-                                "once": onces.,
+                                "phase": phases.,
                             },
                             {
                                 "id": "",
                                 "name": "",
                                 "effect": "",
                                "once": onces.,
-                               "once": onces.,
+                               "phase": phases.,
                             },
                             {
                                 "id": "",
                                 "name": "",
                                 "effect": "",
                                 "once": onces.,
-                                "once": onces.,
+                                "phase": phases.,
                             },],
                     "units": [""]
                     

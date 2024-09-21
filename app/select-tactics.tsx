@@ -46,6 +46,7 @@ const profileFormSchema = z.object({
   // faction: z.string().optional(),
   // battleTraits: z.string({required_error: "Please select a battle trait.",}),
   // battleTraits: z.string().optional(),
+  battleTraits: z.string({required_error: "Please select a battle trait.",}),
   regimentAbilities: z.string({required_error: "Please select a regiment ability.",}),
   // regimentAbilities: z.string().optional(),
   enhancements: z.string({required_error: "Please select an enhancement.",}),
@@ -77,12 +78,12 @@ export default function SelectFactionTacticsForm() {
   const enhancements = faction?.enhancements || []
 
 
-  // const selectedBattleTraitId = form.watch('battleTraits')
+  const selectedBattleTraitId = form.watch('battleTraits')
   const selectedRegimentAbilityId = form.watch('regimentAbilities')
   const selectedEnhancementId = form.watch('enhancements')
 
-  // const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId)
-  const selectedBattleTrait = faction?.battleTraits[0] as BattleTrait;
+  const selectedBattleTrait = battleTraits.find(trait => trait.id === selectedBattleTraitId)
+  // const selectedBattleTrait = faction?.battleTraits[0] as BattleTrait;
   const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === selectedRegimentAbilityId)
   const selectedEnhancement = enhancements.find(enhancement => enhancement.id === selectedEnhancementId)
 
@@ -99,7 +100,8 @@ export default function SelectFactionTacticsForm() {
     setIsSubmitting(true)
     try {
       
-      await navigateToStart(selectedFaction ?? '', selectedBattleTrait.id ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
+      await navigateToStart(selectedFaction ?? '', data.battleTraits ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
+      // await navigateToStart(selectedFaction ?? '', selectedBattleTrait.id ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
     } catch (error) {
       console.error("Navigation error:", error)
     } finally {
@@ -120,12 +122,33 @@ export default function SelectFactionTacticsForm() {
               <CardTitle>Battle Tactics</CardTitle>
             </CardHeader>
             <CardContent>
-              
+            <FormField
+                control={form.control}
+                name="battleTraits"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Battle Traits</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a Battle Tactic" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {battleTraits.map((battleTrait, index) => (
+                          <SelectItem key={index} value={battleTrait.id}>{battleTrait.name}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               {selectedBattleTrait && (
                 <div className="mt-4 p-4 bg-gray-50 rounded-md">
                   <p><strong>Name:</strong> {selectedBattleTrait.name} {selectedBattleTrait.once === onces.battle && <strong>(Once Per Battle)</strong>}</p>
                   <p><strong>Effect:</strong> {selectedBattleTrait.effect}</p>
-                   <p><strong>Phase:</strong> {convertEnumToString(selectedBattleTrait.phase)}</p>                   
+                  <p><strong>Phase:</strong> {convertEnumToString(selectedBattleTrait.phase)}</p>                   
                 </div>
               )}
             </CardContent>
