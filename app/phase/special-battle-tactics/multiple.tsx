@@ -112,33 +112,52 @@ export const multiples = {
             ]
         },
         {
-            "faction": factions.luminethRealmLordsGlitteringPhalanx,
+            "faction": factions.flesheaterCourtsCarrionRetainers,
                 "abilities": [
                     {
-                        "id": "shiningCompay",
-                        "name": "Shinning Company",
-                        "effect": "Once per phase.  A friendly unit targeted by an ATTACK ability and that has not made a pile-in move this turn.  Subtract 1 from hit rolls for the attacks that target that friendly unit.",
+                        "id": "nobleDeeds",
+                        "name": "Noble Deeds",
+                        "effect": "Each time a friendly HERO uses a FIGHT ability, after its attacks have been resolved, give that HERO a number of noble deed points equal to the number of damage points allocated by that ability.  Each HERO can have a maximum of 6 noble deeds points at any time.",
                         "once": onces.none,
-                        "phase": phases.combat,               
+                        "phase": phases.passive,               
                 },
                 {
-                        "id": "powerOfHysh",
-                        "name": "Power of Hysh",
-                        "effect": "Once per turn.  Pick a friednly unit.  Roll a dice.  On a 2+, until the start of your next turn, attacks made by that untit score a critical hit on unmodified hit rolls of 5+",
+                        "id": "feedFrenzy",
+                        "name": "Feeding Frenzy",
+                        "effect": "Add 1 to attacks characteristic of melee weapons used by friendly units while they are wholly within 12\" of any friendly HEROS that have 6 noble deed points.",
                         "once": onces.none,
-                        "phase": phases.hero,
+                        "phase": phases.passive,
                 },
                 {
-                    "id": "lightningReactions",
-                    "name": "Lightning Reactions",
-                    "effect": "When players are alternating picking units to use a FIGHT ability, when it is your turn to pick a unit, you can pick 2 units instead of 1.  Resolve the second FIGHT ability immediately after the first.",
+                    "id": "summonLoyalSubjects",
+                    "name": "Summon Loyal Subjects",
+                    "effect": "Pick a friendly HERO with any noble deed points to use this ability.  Spend any number of that HERO's noble deed points as follows:  Pick a friendly Cryptguard unit within 9\" of the unit and spend 1 noble deed point to return 1 model to the unit.  OR  Pick a friendly Morbheg Knights unit within 9\" of this unit and spend 2 noble deed points to return 1 slain model to that unit.",
                     "once": onces.none,
-                    "phase": phases.passive,
+                    "phase": phases.movement,
             }
-
         
                 ]
             },
+            {
+                "faction": factions.sonsOfBehematWallsmasherStomp,
+                    "abilities": [
+                        {
+                            "id": "belowingRoar",
+                            "name": "Belowing Roar",
+                            "effect": "Pick a friendly unit to use this ability, pick an enemy unit in combat with it to be the targget, then roll a dice.  On a 2+, subtract 1 from hit rolls for attacks made by this target unit this phase.",
+                            "once": onces.none,
+                            "phase": phases.anycombat,               
+                    },
+                    {
+                            "id": "grabThoseRocksAndChuckThem",
+                            "name": "'Grab Those Rocks and Chuck'em",
+                            "effect": "Pick your general to use this ability, then pick another friendly unit wholly within 12\" of them.  Add 1 to the Attacks characteristic of that unit's Throwin' Rocks this turn.",
+                            "once": onces.none,
+                            "phase": phases.hero,
+                    }
+            
+                    ]
+                },
 
     ]
 }

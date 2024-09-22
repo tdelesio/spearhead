@@ -19,14 +19,6 @@ export const Alliances = {
             "name": "Order",
             "factions": [
                 {
-                    "id" : factions.stormcastVigilantBrotherHood,
-                    "name": "Stormcast Eternals - Vigilant Brotherhood"
-                 },
-                 { 
-                    "id": factions.stormcastYndrastra, 
-                    "name": "Stormcast Eternals - Yndrastra's Spearhead"
-                 },
-                 {
                     "id": factions.daughtersOfKhaineHeartflayerTroupe,
                     "name": "Daughters of Khaine - Heartflayer Troupe"
                   },
@@ -35,25 +27,39 @@ export const Alliances = {
                     "name": "Fyreslayers - Saga Axeband"
                   },
                   {
+                    "id": factions.idonethDeepkinSoulraidHunt,
+                    "name": "Idoneth Deepkin - Soulraid Hunt"
+                  },
+                  {
                     "id": factions.kharadronOverlordsSkyhammerTaskForce,
                     "name": "Kharadron Overlords - Skyhammer Task Force"
                   },
                   {
-                    "id": factions.seraphonStarscaleWarhost,
-                    "name": "Seraphon - Starscale Warhost"
-                  },
+                    "id": factions.luminethRealmLordsGlitteringPhalanx,
+                    "name": "Lumineth Realm-Lords - Glittering Phalanx"
+              },
+              {
+                "id": factions.seraphonStarscaleWarhost,
+                "name": "Seraphon - Starscale Warhost"
+              },
+                {
+                    "id" : factions.stormcastVigilantBrotherHood,
+                    "name": "Stormcast Eternals - Vigilant Brotherhood"
+                 },
+                 { 
+                    "id": factions.stormcastYndrastra, 
+                    "name": "Stormcast Eternals - Yndrastra's Spearhead"
+                 },
+                 
+                  
+                  
+                  
                 //   {
                 //     "id": factions.sylvanethBitterbarkCopse,
                 //     "name": "Sylvaneth - Bitterbark Copse"
                 //   },
-                  {
-                        "id": factions.luminethRealmLordsGlitteringPhalanx,
-                        "name": "Lumineth Realm-Lords - Glittering Phalanx"
-                  },
-                  {
-                    "id": factions.idonethDeepkinSoulraidHunt,
-                    "name": "Idoneth Deepkin - Soulraid Hunt"
-                  }
+                  
+                  
 
                 ]
         },
@@ -62,6 +68,10 @@ export const Alliances = {
             "name": "Death",
             "factions": [
                 {
+                    "id": factions.flesheaterCourtsCarrionRetainers,
+                    "name": "Flesh-eater Courts - Carrion Retainers",
+                 },
+                {
                     "id": factions.nighthauntSlasherHost,
                     "name": "Nighthaunt- Slasher Host"
                  },
@@ -69,12 +79,25 @@ export const Alliances = {
                     "id": factions.soulblightGravelordsBloodCraveHunt,
                     "name": "Soulblight Gravelords - Bloodcrave Hunt"
                  },
+                 
                 ]
         },
         {
             "id": "chaos",
             "name": "Chaos",
             "factions": [
+                {
+                    "id": factions.disciplesOfTzeentchFluxbladeCoven,
+                    "name": "Disciples of Tzeentch - Fluxblade Coven"
+                 },
+                 {
+                    "id": factions.hedonitesOfSlaaneshBladeOfTheLuridDream,
+                    "name": "Hedonites of Slaanesh - Blades of the Lurid Dream"
+                 },
+                 {
+                    "id": factions.maggotkinOfNurgleBleakHost,
+                    "name": "Maggotkin of Nurgle - Bleak Host"
+                 },
                 {
                     "id": factions.skavenGnawfeastClawPack,
                     "name": "Skaven - Gnawfeast Clawpack",
@@ -87,14 +110,9 @@ export const Alliances = {
                     "id": factions.slaveToDarknessBloodWindLegion,
                     "name": "Slaves of Darkness - Bloodwind Legion",
                  },
-                 {
-                    "id": factions.maggotkinOfNurgleBleakHost,
-                    "name": "Maggotkin of Nurgle - Bleak Host"
-                 },
-                 {
-                    "id": factions.disciplesOfTzeentchFluxbladeCoven,
-                    "name": "Disciples of Tzeentch - Fluxblade Coven"
-                 }
+                 
+                 
+                 
             ]
         },
         {
@@ -108,6 +126,10 @@ export const Alliances = {
                 {
                     "id": factions.orrukWarclans,
                     "name": "Orruk Warclans - Swampskulka Gang"
+                },
+                {
+                    "id": factions.sonsOfBehematWallsmasherStomp,
+                    "name": "Sons of Behema - Wallsmasher Stomp"
                 }
             ]
         },

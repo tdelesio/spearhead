@@ -17,7 +17,7 @@
                             "name": "",
                             "effect": "",
                             "once": onces.,
-                            "phase": phase.,
+                            "phase": phases.,
                         },
                         {
                         "id": "",
@@ -29,8 +29,8 @@
                     ],
                     "enhancements": [
                         {
-                                "id": ",
-                                "name": ",
+                                "id": "",
+                                "name": "",
                                 "effect": "",
                                 "once": onces.,
                                 "phase": phases.,

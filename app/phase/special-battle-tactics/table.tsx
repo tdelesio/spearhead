@@ -79,6 +79,18 @@ export const battleTraitTable = {
       "EBB Tide: This unit can use a RETREAT ability and still use a SHOOT and/or CHARGE abilities later in this turn."
 
     ]
+  },
+  {
+    "faction": factions.hedonitesOfSlaaneshBladeOfTheLuridDream,
+    "columnOneLabel": "Depravity Points",
+    "columnTwoLabel": "Ability",
+    "labels": ["12+", "24+", "36+"],
+    "abilities": [
+      "Tantalising Torment:  This unit can use a RUN ability and still use CHARGE abilities later in the turn.",
+      "Sadistic Spite: This unit's melee weapons have Crit (Mortal) ",
+      "Oblivious Indulgence: This unit has Ward (5+)",
+
+    ]
   }
 ]
 

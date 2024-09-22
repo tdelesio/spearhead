@@ -331,3 +331,15 @@
                 },
                 ]
             },
+
+
+
+
+
+
+            {
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                }

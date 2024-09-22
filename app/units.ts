@@ -5776,6 +5776,729 @@ export const Units = {
         },
         ]
     },
+    {
+        "id": factions.flesheaterCourtsCarrionRetainers,
+        units: [
+        {
+
+            "id": "abhorrantArchregent",
+            "name": "Abhorrant Archregent",
+            "move": "6",
+            "control": 2,
+            "health": 6,
+            "save": 5,
+            "ward": 6,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Infantry", "Ward(6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "derangedTransformation",
+                    "name": "Deranged Transformation",
+                    "effect": "Pick a visible friendly unit wholly within 18\" of this unit to be the target, then make a casting roll of 2D6.  On a 6+, until the start of your next turn, add 2\" to the target's move characteristic and add 1 to wound rolls for its attacks.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "goryTalonsAndFangs",
+                        "name": "Gory Talons and Fangs",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 3,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "cryptGuard",
+            "name": "Crypt Guard",
+            "move": "6",
+            "control": 1,
+            "health": 1,
+            "save": 6,
+            "ward": 5,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Reinforcements", "Ward(5+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "royalBodyguard",
+                    "name": "Royal Bodyguard",
+                    "effect": "Add 1 ward rolls for friendly HEROs that are wholly within this unit's combat range.",
+                    "once": true,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                }]
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "cursedWeapons",
+                        "name": "Cursed Weapons",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "morbhegKnights",
+            "name": "Morbheg Knights",
+            "move": "12",
+            "control": 1,
+            "health": 4,
+            "save": 4,
+            "ward": 6,
+            "hero": false,
+            "general": false,
+            "fly": true,
+            "keywords": ["Cavalry", "Fly", "Ward(6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "predatorsPounce",
+                    "name": "Predator's Pounce",
+                    "effect": "This unit can use CHARGE abilities even if it used a RETREAT ability in the same turn.  On addition, no mortal damage is inflicted on this unit when it uses RETREAT abilities.",
+                    "once": true,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "grislyLance",
+                        "name": "Grisly Lance",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Charge (+1 Damage)"
+                    },
+                    {
+                        "id": "nightshriekerClawandTooth",
+                        "name": "Nightshrieker's Claws and Teeth",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "varghulfCourtier",
+            "name": "Varghulf Courtier",
+            "move": "10",
+            "control": 2,
+            "health": 8,
+            "save": 5,
+            "ward": 6,
+            "hero": true,
+            "general": false,
+            "fly": false,
+            "keywords": ["Hero", "Infantry", "Ward(6+)"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "immenseClaws",
+                        "name": "Immense Claws",
+                        "range": 0,
+                        "attacks": "7",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                    {
+                        "id": "dagger-likeFangs",
+                        "name": "Dagger-like Fangs",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 3,
+                        "wound": 2,
+                        "rend": 2,
+                        "damage": "3",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "victoryFeast",
+                    "name": "Victory Feast",
+                    "effect": "If any models where slain by this unit this turn, Heal (d6) this unit and this unit can immediately use the RETREAT ability without any mortal damage being inflicted on it.",
+                    "once": false,
+                }]
+            }
+
+        },
+        ]
+    },
+    {
+        "id": factions.sonsOfBehematWallsmasherStomp,
+        units: [
+        {
+
+            "id": "mancrusherGargant",
+            "name": "Mancrusher Gargant",
+            "move": "8",
+            "control": 10,
+            "health": 12,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Monster", "Reinforcements"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "timber",
+                    "name": "Timber",
+                    "effect": "If this model is slain, before removing it from the battlefield. the players must roll off.  The winner picks a point on the battfield up to 3\" from this model.  Inflict D3 mortal damage on each enemy unit within 2\" of that point.  This model is then removed from the battlefield.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                }]
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "throwinRocls",
+                    "name": "Throwin' Rocks",
+                    "range": 12,
+                    "attacks": "1",
+                    "hit": 5,
+                    "wound": 2,
+                    "rend": 2,
+                    "damage": "D3",
+                    "ability": ""
+                },],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "massiveClub",
+                        "name": "Massive Club",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                    {
+                        "id": "eadbutt",
+                        "name": "'Eadbutt",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 2,
+                        "damage": "4",
+                        "ability": ""
+                    },
+                    {
+                        "id": "mightyKick",
+                        "name": "Mighty Kick",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 2,
+                        "damage": "D3",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [{
+                    "id": "stuffEmInMeBag",
+                    "name": "Stuff'em in Me Bag",
+                    "effect": "Pick an enemy unit in combat with this unit to be the target, then roll a dice.  If the roll is at least double the target unit's Health characteristic, 1 model in that unit is slain.",
+                    "once": false,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
+    {
+        "id": factions.hedonitesOfSlaaneshBladeOfTheLuridDream,
+        units: [
+        {
+
+            "id": "shardspeaherOfSlaanish",
+            "name": "Shardspeaker of Slaanesh",
+            "move": "6",
+            "control": 2,
+            "health": 5,
+            "save": 5,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Wizard", "Infatry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "visionOfDamnation",
+                    "name": "Vision of Damnation",
+                    "effect": "Make a casting roll of 2D6.  On a 6+, roll 6 dice.  For each 4+, you recieve 1 depravity point.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "hazeStaff",
+                        "name": "Haze Staff",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "D3",
+                        "ability": ""
+                    },
+                   
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "slickBladeSeekers",
+            "name": "Slickblade Seekers",
+            "move": "12",
+            "control": 1,
+            "health": 4,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Cavalry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "unrivalledVelocity",
+                    "name": "Unrivaled Veloctiy",
+                    "effect": "You can re-roll charge rolls for this unit.",
+                    "once": true,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "slickbladeSeekers",
+                        "name": "Slickblade Seekers",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Charge (+1 Damage)"
+                    },
+                    {
+                        "id": "exaltedSteedsPoisonedTongue",
+                        "name": "Exalted Steed's Poisoned Tongue",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "companion"
+                    }
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "slaangorFiendbloods",
+            "name": "Slaangor Fiendbloods",
+            "move": "6",
+            "control": 1,
+            "health": 3,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "slaughterAtAnyCost",
+                    "name": "Slaughter at any Cost",
+                    "effect": "This unit can use this ability if any damage points were allocated to it this turn.  This unit can use the Normal Move ability as if it were your movement phase.",
+                    "once": false,
+                }]
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "razorsharpClaws",
+                        "name": "Razor-sharp Claws",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                    {
+                        "id": "razorSharpAndGildedWeapon",
+                        "name": "Razor-sharp Claw and Gilded Weapon",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 4,
+                        "wound": 3,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "blissbardArchers",
+            "name": "Blissbarb Archers",
+            "move": "6",
+            "control": 1,
+            "health": 1,
+            "save": 6,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Reinforcements"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "lightfootedKillers",
+                    "name": "Light-footed Killers",
+                    "effect": "This unit can use SHOOT abilities even if it used a RUN ability in the same turn.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                }]
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "blissbardBow",
+                        "name": "Blissbard Bow",
+                        "range": 18,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": ""
+                    },
+                    {
+                        "id": "sybariteBlade",
+                        "name": "Sybarite Blade",
+                        "range": 0,
+                        "attacks": "1",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [{
+                    "id": "",
+                    "name": "",
+                    "effect": "",
+                    "once": true,
+                }],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
     // sylvaneth
 
     ]
