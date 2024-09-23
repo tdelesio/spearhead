@@ -78,7 +78,7 @@ export default function HomePage() {
         <h3>Getting Started and Cards</h3>
         <p>Start by selecting your Alliance and Faction.  There is also an option to deal (virtually) the Battle Tactic cards from Spearhead.  It functions as the actual deck and will provide you with 3 cards.  If you use them (either the command or the scoring), just click on them and it will be removed from your hand.  At the end of the round, your hand will be refilled back up to 3 cards.</p>
         <h3>Abilities</h3>
-        <p>Abilities have been filtered to only show up during the phase that you can use it.  So for instance, if a Regiment Ability can only be used during HERO phase, it won't show up until that phase.  Passive abilties are always there.  The one time use cards are marked as such.  You can click on them if you would like the app to remember they were used.  The ability will be greyed out and marked as used.  I manually transcribed all the abilties and I probably made mistakes every where from spelling errors to marking things incorrectly.  If you find something, let me know and I'll fix it.</p>
+        <p>Abilities have been filtered to only show up during the phase that you can use it.  So for instance, if a Regiment Ability can only be used during HERO phase, it will not show up until that phase.  Passive abilties are always there.  The one time use cards are marked as such.  You can click on them if you would like the app to remember they were used.  The ability will be greyed out and marked as used.  I manually transcribed all the abilties and I probably made mistakes every where from spelling errors to marking things incorrectly.  If you find something, let me know and I will fix it.</p>
         
       </main>
 
