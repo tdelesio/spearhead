@@ -1328,69 +1328,252 @@ export const Factions = {
             "units": ["Shardspeaker of Slaanesh (Hero)", "Blissbarb Archers with 1 Blissbrew Homonculus (5)", "Blissbarb Archers (5)", "Slickblade Seekers (5)", "Slaangor Fiendbloods (3)"]
 
         },
-        //
+        {
+            "id": factions.bladesOfKhorneBloodboundGorePilgrims,
+            "name": "Blades of Khorne - Bloodbound Gore Pilgrims",
+            "battleTraits": [
+            {
+                    "id": "bloodTraits",
+                    "name": "Blood Traits",
+                    "effect": "The 3 abilities are available for the battle.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                    "special": battleTraitSpecials.multiple,
+            }
+            ],
+            "regimentAbilities": [
+                {
+                    "id": "favouredOfKhorne",
+                    "name": "Favoured of Khorne",
+                    "effect": "Roll a dice.  On a 2+, you recieve 1 blood tithe point.",
+                    "once": onces.none,
+                    "phase": phases.start,
+                },
+                {
+                "id": "bloodwokenRunies",
+                    "name": "Blood-woken Ruins",
+                    "effect": "Friendly unit have Ward (5+) if they have used a FIGHT ability in the same phase.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                }
+            ],
+            "enhancements": [
+                {
+                        "id": "resanguination",
+                        "name": "Resanguination",
+                        "effect": "Pick a visible friendly unit wholly within 16\" of your general, then make a chanting roll of D6.  On a 3+, Heal (D3) that unit.",
+                        "once": onces.none,
+                        "phase": phases.hero,
+                    },
+                    {
+                        "id": "theCrimsonPlate",
+                        "name": "The Crimson Plate",
+                        "effect": "Your general has Ward 5+",
+                        "once": onces.none,
+                        "phase": phases.passive,
+                    },
+                    {
+                        "id": "headhunter",
+                        "name": "Headhunter",
+                        "effect": "Pick an enemy HERO in combat with your general.  Your general has STRIKE-FIRST this phase, but all attacks made by them this phase must target that enemy HERO.",
+                       "once": onces.none,
+                       "phase": phases.combat,
+                    },
+                    {
+                        "id": "unholyFlames",
+                        "name": "Unholy Flames",
+                        "effect": "Pick a visible friendly unit wholly within 16\" of your general, then make a chanting roll of D6.  On a 4+, add 1 to the Rend characteristic of that unit's melee weapons until the start of your next turn.",
+                        "once": onces.none,
+                        "phase": phases.hero,
+                    },],
+            "units": ["Slaughterpriest (Hero)", "Blood Warriors (5)", "Blood Warriors (5)", "Bloodreavers (10)", "Mighty Skullcrushers (3)"]
+            
+        }, 
+        {
+            "id": factions.ossiarchBonereapersTitheReaperEchelon,
+            "name": "Ossiarch Bonereapers - Tithe-Reaper Echelon",
+            "battleTraits": [
+            {
+                    "id": "reserveContingent",
+                    "name": "Reserve Contingent",
+                    "effect": "One of your Mortek Guard unit is not set up during the deployment phase.  Instead, from the thrd battle round onwards, it can use the follow ability.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                    "special": battleTraitSpecials.multiple,
+            }
+            ],
+            "regimentAbilities": [
+                {
+                    "id": "impenetrableRanks",
+                    "name": "Impenetrable Ranks",
+                    "effect": "Pick a friendly unit to use this ability.  Unit the end of the phase, add 1 to ward rolls for that unit.",
+                    "once": onces.battle,
+                    "phase": phases.combat,
+                    "tag": "ossiarchCommand"
+                },
+                {
+                "id": "reformRanks",
+                    "name": "Re-Form Ranks",
+                    "effect": "Pick a friendly Mortek Guard unit in combat to use this ability.  That unit can use a RETREAT ability this phase without any mortal damage being inflicted on it.",
+                    "once": onces.battle,
+                    "phase": phases.movement,
+                    "tag": "ossiarchCommand"
+                }
+            ],
+            "enhancements": [
+                {
+                        "id": "empowerNairiteWeapons",
+                        "name": "Empowered Badirite Weapons",
+                        "effect": "Pick a visible friendly Mortek Guard unit wholly within 12\" of your general, then make a casting role of 2D6.  On a 5+, until the start of your next turn, add 1 to the Rend characteristic of this unit's melee weapon.",
+                        "once": onces.none,
+                        "phase": phases.hero,
+                    },
+                    {
+                        "id": "unstoppableCommander",
+                        "name": "Unstoppable Commander",
+                        "effect": "Pick a friendly, Mortek Guard unit wholly within 12\" of your general, then roll a dice.  On a 2+, add 3\" to that unit's Move characteristic this phase.",
+                        "once": onces.none,
+                        "phase": phases.movement,
+                    },
+                    {
+                        "id": "murderousDrive",
+                        "name": "Murderous Drive",
+                        "effect": "Your general's Soulreaper Scytge has Crit (2 Hits)",
+                       "once": onces.none,
+                       "phase": phases.passive,
+                    },
+                    {
+                        "id": "marrowpact",
+                        "name": "Marrowpact",
+                        "effect": "Each time your general uses a FIGHT ability after all of their attacks have been resolve.  Heal (X) your general where X is the number of damage points allocated by those attacks.",
+                        "once": onces.none,
+                        "phase": phases.passive,
+                    },],
+            "units": ["Mortisan Soulreaper (Hero)", "Mortek Guard (10)", "Mortek Guard (10)", "Kavalos Deathriders (5)", "Gothizzar Harvester (1)"]
+            
+        }, 
+       {
+            "id": factions.sylvanethBitterbarkCopse,
+            "name": "Sylvaneth - Bitterbark Copse",
+            "battleTraits": [
+            {
+                    "id": "sylvanetBattleTrait",
+                    "name": "Sylvaneth Battle Traits",
+                    "effect": "You can use the following abilities during the batle.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                    "special": battleTraitSpecials.multiple
+            }
+            ],
+            "regimentAbilities": [
+                {   
+                    "id": "vengefulSpiritsOfTheLand",
+                    "name": "Vengeful Spirits of the Land",
+                    "effect": "Once per trun, end of any turn.  Pick an enemy unit that is contesting an objective and roll a dice.  On a 4+, inflict D3 mortal damage on that enemy unit.",
+                    "once": onces.none,
+                    "phase": phases.end
+                },
+                {
+                "id": "walkersOfTheHiddenPaths",
+                    "name": "Walkers of the Hidden Paths",
+                    "effect": "Pick a friendly unit that is within 3\" of any terrain features and not on combat.  Remove that unit from the battlefield and set it up again more that 6\" from all enemy units.  That unit cannot use MOVE abilities for the rest of the phase.",
+                    "once": onces.none,
+                    "phase": phases.movement
+                }
+            ],
+            "enhancements": [
+                {
+                        "id": "regrowth",
+                        "name": "Regrowth",
+                        "effect": "Pick a visible friendly unit wholly within 18\" of your general to be the target, then make a casting roll of 2D6.  On a 5+, Heal (D6) the target",
+                        "once": onces.none,
+                        "phase": phases.hero,
+                    },
+                    {
+                        "id": "gnarledWarrior",
+                        "name": "Gnarled Warrior",
+                        "effect": "Ignore negative modifiers to save rolls for your general.",
+                        "once": onces.none,
+                        "phase": phases.passive,
+                    },
+                    {
+                        "id": "treesong",
+                        "name": "Treesong",
+                        "effect": "Pick a visible friendly unit wholly within 12\" of your general to be the target, then make a casting roll of 2D6.  On a 7+, add 1 to the Rend characteristic of the target unit's melee weapons until the start of your next turn.",
+                        "once": onces.none,
+                        "phase": phases.hero,
+                    },
+                    {
+                        "id": "seedOfRebirth",
+                        "name": "Seed of Rebirth",
+                        "effect": "If your general would be destroyed, before removing them from play, roll a dice.  On a 3+, your generial is not destroyed and any remaining damage points inflicted on them have no effect.  Then Heal (1) your general.  This unit cannot use this ability again for the rest of the battle.",
+                        "once": onces.battle,
+                        "phase": phases.passive,
+                    },],
+            "units": ["Branchwych (Hero)", "Treelord (1)", "Kurnoth Hunters (3)", "Tree-Revenants (5)"]
 
-        // {
-        //     "id": factions.sylvanethBitterbarkCopse,
-        //     "name": "Sylvaneth - Bitterbark Copse",
-        //     "battleTraits": [
-        //     {
-        //             "id": "leyLines",
-        //             "name": "Ley Lines",
-        //             "effect": "Each of these can be used once per turn, at tne end of any turn. Heal (1) each friendly unit that is within 3\" of any terrain features.  In Addition, Pick a friendly unit from the battlefield and set it up again so that each model in the unit is within 3\" of any terrain features and more than 6\" from all enemy units. ",
-        //             "once": onces.turn,
-        //             "phase": phases.passive,
-        //             "special": battleTraitSpecials.multiple
-        //     }
-        //     ],
-        //     "regimentAbilities": [
-        //         {   
-        //             "id": "vengefulSpiritsOfTheLand",
-        //             "name": "Vengeful Spirits of the Land",
-        //             "effect": "Once per trun, end of any turn.  Pick an enemy unit that is contesting an objective and roll a dice.  On a 4+, inflict D3 mortal damage on that enemy unit.",
-        //             "once": onces.none,
-        //             "phase": phases.passive
-        //         },
-        //         {
-        //         "id": "",
-        //             "name": "",
-        //             "effect": "",
-        //             "once": onces.none,
-        //             "phase": ""
-        //         }
-        //     ],
-        //     "enhancements": [
-        //         {
-        //                 "id": ",
-        //                 "name": ",
-        //                 "effect": "",
-        //                 "once": onces.none,
-        //                 "phase": phases.passive,
-        //             },
-        //             {
-        //                 "id": "",
-        //                 "name": "",
-        //                 "effect": "",
-        //                 "once": onces.none,
-        //                 "phase": phases.passive,
-        //             },
-        //             {
-        //                 "id": "",
-        //                 "name": "",
-        //                 "effect": "",
-        //                 "once": onces.none,
-        //                 "phase": phases.passive,
-        //             },
-        //             {
-        //                 "id": "",
-        //                 "name": "",
-        //                 "effect": "",
-        //                 "once": onces.none,
-        //                 "phase": phases.passive,
-        //             },],
-        //     "units": [""]
-
-        // }, 
+        }, 
+        {
+            "id": factions.ogorMawTribesTyrantsBellow,
+            "name": "Ogor Maw Tribes - Tyrants Bellow",
+            "battleTraits": [
+            {
+                    "id": "onTheMawpath",
+                    "name": "On the Mawpath",
+                    "effect": "Your Ironblaster and Mournfang Pack unit are not set up during the deployment phase.  Instead, from the the third battle round onwards,, they can use the follow ability.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                    "special": battleTraitSpecials.multiple,
+            }
+            ],
+            "regimentAbilities": [
+                {
+                    "id": "pulverisingGirth",
+                    "name": "Pulverising Girth",
+                    "effect": "Pick any number of friendly units that charged this phase.  For each of those units, pick an enemy unit in combat with it and roll a dice.  On a 4+ inflict 1 mortal damage on that enemy unit.",
+                    "once": onces.none,
+                    "phase": phases.charge,
+                },
+                {
+                "id": "bredForToughness",
+                    "name": "Bred for Toughness",
+                    "effect": "Add 1 to health characterstic of your Ironblaster and your Mournfang Pack unit.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                }
+            ],
+            "enhancements": [
+                {
+                        "id": "longstrider",
+                        "name": "Longstrider",
+                        "effect": "Your general has a Move of 8\" instead of 6\".",
+                        "once": onces.none,
+                        "phase": phases.passive,
+                    },
+                    {
+                        "id": "flaskOfStonehornBlood",
+                        "name": "Flask of Stonehorn Blood",
+                        "effect": "Reaction to an attack.  Your general has a Ward (3+) this phase.",
+                        "once": onces.battle,
+                        "phase": phases.anycombat,
+                    },
+                    {
+                        "id": "boomingRoar",
+                        "name": "Booming Roar",
+                        "effect": "Roll a dice.  On a 4+, subtrat 1 from hit rolls for attacks made by enemy units this phase while they are within 9\" of your general.",
+                       "once": onces.none,
+                       "phase": phases.anycombat,
+                    },
+                    {
+                        "id": "blubbergryb",
+                        "name": "Blubbergrub",
+                        "effect": "Pick either your Ironblaster or your Mournfang Pack unit if it is within your general's combat range.  Heal (D6) that unit.",
+                        "once": onces.battle,
+                        "phase": phases.movement,
+                    },],
+            "units": ["Tyrant (Hero)", "Mournfang Pack (2)", "Ogor Gluttons (3)", "Ogor Gluttons (3)", "Leadbelchers (4)", "Ironblaster (1)"]
+            
+        }, 
     ]
 };
 

@@ -51,13 +51,10 @@ export const Alliances = {
                     "name": "Stormcast Eternals - Yndrastra's Spearhead"
                  },
                  
-                  
-                  
-                  
-                //   {
-                //     "id": factions.sylvanethBitterbarkCopse,
-                //     "name": "Sylvaneth - Bitterbark Copse"
-                //   },
+                  {
+                    "id": factions.sylvanethBitterbarkCopse,
+                    "name": "Sylvaneth - Bitterbark Copse"
+                  },
                   
                   
 
@@ -86,6 +83,10 @@ export const Alliances = {
             "id": "chaos",
             "name": "Chaos",
             "factions": [
+                {
+                    "id": factions.bladesOfKhorneBloodboundGorePilgrims,
+                    "name": "Blades of Khorne - Bloodbound Gore Pilgrims"
+                },
                 {
                     "id": factions.disciplesOfTzeentchFluxbladeCoven,
                     "name": "Disciples of Tzeentch - Fluxblade Coven"
@@ -122,6 +123,10 @@ export const Alliances = {
                 {
                     "id": factions.gloomspiteGitzBadMoonMadmob,
                     "name": "Gloomspite Gitz - Bad Moon Madmob"
+                },
+                {
+                    "id": factions.ogorMawTribesTyrantsBellow,
+                    name: "Ogor Mawtribes - Tyrant's Bellow"
                 },
                 {
                     "id": factions.orrukWarclans,

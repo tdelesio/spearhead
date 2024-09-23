@@ -113,20 +113,20 @@ export const multiples = {
         },
         {
             "faction": factions.flesheaterCourtsCarrionRetainers,
-                "abilities": [
-                    {
-                        "id": "nobleDeeds",
-                        "name": "Noble Deeds",
-                        "effect": "Each time a friendly HERO uses a FIGHT ability, after its attacks have been resolved, give that HERO a number of noble deed points equal to the number of damage points allocated by that ability.  Each HERO can have a maximum of 6 noble deeds points at any time.",
-                        "once": onces.none,
-                        "phase": phases.passive,               
+            "abilities": [
+                {
+                    "id": "nobleDeeds",
+                    "name": "Noble Deeds",
+                    "effect": "Each time a friendly HERO uses a FIGHT ability, after its attacks have been resolved, give that HERO a number of noble deed points equal to the number of damage points allocated by that ability.  Each HERO can have a maximum of 6 noble deeds points at any time.",
+                    "once": onces.none,
+                    "phase": phases.passive,
                 },
                 {
-                        "id": "feedFrenzy",
-                        "name": "Feeding Frenzy",
-                        "effect": "Add 1 to attacks characteristic of melee weapons used by friendly units while they are wholly within 12\" of any friendly HEROS that have 6 noble deed points.",
-                        "once": onces.none,
-                        "phase": phases.passive,
+                    "id": "feedFrenzy",
+                    "name": "Feeding Frenzy",
+                    "effect": "Add 1 to attacks characteristic of melee weapons used by friendly units while they are wholly within 12\" of any friendly HEROS that have 6 noble deed points.",
+                    "once": onces.none,
+                    "phase": phases.passive,
                 },
                 {
                     "id": "summonLoyalSubjects",
@@ -134,30 +134,113 @@ export const multiples = {
                     "effect": "Pick a friendly HERO with any noble deed points to use this ability.  Spend any number of that HERO's noble deed points as follows:  Pick a friendly Cryptguard unit within 9\" of the unit and spend 1 noble deed point to return 1 model to the unit.  OR  Pick a friendly Morbheg Knights unit within 9\" of this unit and spend 2 noble deed points to return 1 slain model to that unit.",
                     "once": onces.none,
                     "phase": phases.movement,
-            }
+                }
+
+            ]
+        },
+        {
+            "faction": factions.sonsOfBehematWallsmasherStomp,
+            "abilities": [
+                {
+                    "id": "belowingRoar",
+                    "name": "Belowing Roar",
+                    "effect": "Pick a friendly unit to use this ability, pick an enemy unit in combat with it to be the targget, then roll a dice.  On a 2+, subtract 1 from hit rolls for attacks made by this target unit this phase.",
+                    "once": onces.none,
+                    "phase": phases.anycombat,
+                },
+                {
+                    "id": "grabThoseRocksAndChuckThem",
+                    "name": "'Grab Those Rocks and Chuck'em",
+                    "effect": "Pick your general to use this ability, then pick another friendly unit wholly within 12\" of them.  Add 1 to the Attacks characteristic of that unit's Throwin' Rocks this turn.",
+                    "once": onces.none,
+                    "phase": phases.hero,
+                }
+
+            ]
+        },
+        {
+            "faction": factions.bladesOfKhorneBloodboundGorePilgrims,
+            "abilities": [
+                {
+                    "id": "theBloodTithe",
+                    "name": "The Blood Tithe",
+                    "effect": "Each time a unit is destroyed during the battle, you receieve 1 blood tithe point.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                },
+                {
+                    "id": "murderlust",
+                    "name": "Murderlust",
+                    "effect": "Spend 1 blood tithe point and pick up to D3 Friendly units.  Each of those units can move D6\" (roll for each)",
+                    "once": onces.none,
+                    "phase": phases.hero,
+                },
+                ,
+                {
+                    "id": "headsMustRoll",
+                    "name": "Heads Must Roll",
+                    "effect": "Spend 3 blood tithe points and pick up to 3 friendly units.  Add 1 to the Rend characteristic of those unit's melee weapons until the start of your next turn.",
+                    "once": onces.none,
+                    "phase": phases.hero,
+                }
+
+            ]
+        },
+        {
+            "faction": factions.ossiarchBonereapersTitheReaperEchelon,
+            "abilities": [
+                {
+                    "id": "contingentArrival",
+                    "name": "Contingent Arrival",
+                    "effect": "Set up this unti anywhere on the battlefield wholly within 3\" of a battlefied edge and more than 6\" from all enemy units.",
+                    "once": onces.battle,
+                    "phase": phases.movement,
+                },
+                {
+                    "id": "ossiarchCommands",
+                    "name": "Ossiarch Commands",
+                    "effect": "At the start of the battle round, you recieve 2 Oassiarch command points.  Each Ossirach Command costs 1 Ossiarch command point to use.  The same unit cannot use more than one Ossiarch Command in the same plase.  At the end of the battle round, all remaining Ossiarch command points are lost.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                }
+
+            ]
+        },
+        {
+            "faction": factions.sylvanethBitterbarkCopse,
+            "abilities": [
+                {
+                    "id": "leyLines",
+                    "name": "Ley Lines",
+                    "effect": "Each of these can be used once per turn, at tne end of any turn. Heal (1) each friendly unit that is within 3\" of any terrain features.  In Addition, Pick a friendly unit from the battlefield and set it up again so that each model in the unit is within 3\" of any terrain features and more than 6\" from all enemy units. ",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                },
+                {
+                    "id": "strikeAndFade",
+                    "name": "Strike and Fade",
+                    "effect": "Pick a friendly unit that used a FIGHT ability this turn and is within 3\" of any terrain features, then roll a dice.  On a 2+, remove that unit from the battlefield and set it up again so that each model in the unit is within 3\" of any terrain features and more than 6\" from all enemy units.",
+                    "once": onces.none,
+                    "phase": phases.end,
+                }
+
+            ]
+        },
+        {
+            "faction": factions.ogorMawTribesTyrantsBellow,
+                "abilities": [
+                    {
+                        "id": "bellowingArrival",
+                        "name": "Bellowing Arrival",
+                        "effect": "Set up this unit anywhere on the battlefield, within 1\" of a battfield edge and more than 6\" from all enemy Units.",
+                        "once": onces.none,
+                        "phase": phases.movement,               
+                },
+                
         
                 ]
             },
-            {
-                "faction": factions.sonsOfBehematWallsmasherStomp,
-                    "abilities": [
-                        {
-                            "id": "belowingRoar",
-                            "name": "Belowing Roar",
-                            "effect": "Pick a friendly unit to use this ability, pick an enemy unit in combat with it to be the targget, then roll a dice.  On a 2+, subtract 1 from hit rolls for attacks made by this target unit this phase.",
-                            "once": onces.none,
-                            "phase": phases.anycombat,               
-                    },
-                    {
-                            "id": "grabThoseRocksAndChuckThem",
-                            "name": "'Grab Those Rocks and Chuck'em",
-                            "effect": "Pick your general to use this ability, then pick another friendly unit wholly within 12\" of them.  Add 1 to the Attacks characteristic of that unit's Throwin' Rocks this turn.",
-                            "once": onces.none,
-                            "phase": phases.hero,
-                    }
-            
-                    ]
-                },
+
 
     ]
 }
