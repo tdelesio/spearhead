@@ -7776,6 +7776,346 @@ export const Units = {
         },
         ]
     },
+    {
+        "id": factions.citiesOfSigmarCasteliteCompany,
+        units: [
+        {
+
+            "id": "freeguildCavalierMarshal",
+            "name": "Freeguild Cavalier-Marshal",
+            "move": "10",
+            "control": 2,
+            "health": 7,
+            "save": 3,
+            "ward": 0,
+            "hero": true,
+            "general": true,
+            "fly": false,
+            "keywords": ["Hero", "Cavalry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "decisiveCommander",
+                    "name": "Decisive Commander",
+                    "effect": "Pick a friendly Freeguild Steelhelms unit wholly within 12\" of this unit to be the target and roll a dice.  On a 2+, pick 1:  On Your Feet:  If the target unit is not in combat, you can return D3 slain models to it.  Yeild No Quarter:  Add 3 to the target unit's control score until the start of your next turn.",
+                    "once": false,
+                }]
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "dragoonPistol",
+                    "name": "Dargoon Pistol",
+                    "range": 10,
+                    "attacks": "2",
+                    "hit": 3,
+                    "wound": 4,
+                    "rend": 1,
+                    "damage": "1",
+                    "ability": "Shoot in Combat"
+                },],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "dragoonPistol",
+                        "name": "Dargoon Pistol",
+                        "range": 10,
+                        "attacks": "2",
+                        "hit": 3,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Shoot in Combat"
+                    },
+                    {
+                        "id": "masterForcedLongsword",
+                        "name": "Master-forged Longsword",
+                        "range": 0,
+                        "attacks": "5",
+                        "hit": 3,
+                        "wound" 4,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                    {
+                        "id": "warhorsesSteelshoedHorse",
+                        "name": "Warhorse's Steel-shod Hooves",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 5,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "freeguildSteelhelms",
+            "name": "Freeguild Steelhelms",
+            "move": "5",
+            "control": 1,
+            "health": 1,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Infantry", "Reinforcements"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "callForReinforcement",
+                    "name": "Call for Reinforcements",
+                    "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
+                    "once": true,
+                },
+                {
+                    "id": "consecrateTheLand",
+                    "name": "Consecrate the Land",
+                    "effect": "If this unit is contesting an objective you control that is not contested by any enemy models, roll a dice.  On a 3+, that objective is considered by you to be consencrated.  Friendly units have Ward (6+) while they are contesting a consecrated objective.  If you opponent gains control of the consecreated objective, it is no long consecreated.",
+                    "once": false,
+                }
+            ]
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "freeguildWeapons",
+                        "name": "Freeguild Weapons",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "freeguildCavaliers",
+            "name": "Freeguild Cavaliers",
+            "move": "10",
+            "control": 1,
+            "health": 3,
+            "save": 5,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Cavalry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "devastatingCharge",
+                    "name": "Devastating Charge",
+                    "effect": "If this unit charged this phase, pick an enemy unit in combat with it to be the target and roll a dice.  On a 2+, inflict D3 mortal damage on the target.",
+                    "once": false,
+                }]
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "cavalierWeapon",
+                        "name": "Cavalier weapon",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 1,
+                        "damage": "1",
+                        "ability": "Charge (+1 Damage)"
+                    },
+                    {
+                        "id": "warhorsesSteelAndHooves",
+                        "name": "Warhorse's Steel-shed Hooves",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 5,
+                        "wound": 3,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": "companion"
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        {
+
+            "id": "ironweldGreatCannon",
+            "name": "Ironweld Great Cannon",
+            "move": "3",
+            "control": 2,
+            "health": 8,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["War Machine"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "shotAndSteel",
+                    "name": "Shot and Steel",
+                    "effect": "Each time this unit uses a SHOOT ability, choose either the Cannonball or Grapeshot weapon characteristic for all the attacks it makes with its Great Cannon.  The Cannonball can only be choosen if this unit has no used a MOVE ability this turn.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [{
+                    "id": "greatCannonCannonball",
+                    "name": "Great Cannon: Cannonball",
+                    "range": 24,
+                    "attacks": "2",
+                    "hit": 4,
+                    "wound": 2,
+                    "rend": 2,
+                    "damage": "D3+2",
+                    "ability": ""
+                },
+                {
+                    "id": "greatCannonGrapeshot",
+                    "name": "Great Cannon: Grapeshot",
+                    "range": 12,
+                    "attacks": "5",
+                    "hit": 3,
+                    "wound": 3,
+                    "rend": 1,
+                    "damage": "2",
+                    "ability": ""
+                }],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "crewsToolsAndSidearms",
+                        "name": "Crew's Tools and Sidearms",
+                        "range": 0,
+                        "attacks": "2",
+                        "hit": 4,
+                        "wound": 4,
+                        "rend": 0,
+                        "damage": "1",
+                        "ability": ""
+                    }
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
+        ]
+    },
 
 
     ]

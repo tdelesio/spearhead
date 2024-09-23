@@ -1573,6 +1573,67 @@ export const Factions = {
                     },],
             "units": ["Tyrant (Hero)", "Mournfang Pack (2)", "Ogor Gluttons (3)", "Ogor Gluttons (3)", "Leadbelchers (4)", "Ironblaster (1)"]
             
+        },
+        {
+            "id": factions.citiesOfSigmarCasteliteCompany,
+            "name": "Cities of Sigmar - Castelite Company",
+            "battleTraits": [
+            {
+                    "id": "theOfficarOrder",
+                    "name": "The Officar's Order",
+                    "effect": "Pick a battle tactic card in your hand and place it face-down separetly next to your other battle tactic cards.  The information on it is still hideen from your opponent but make it clear which card is separte.  The card stays separate until you use the command on it or score the battle tactic on it as described below.  When you use the command on that card, it is not discard but returns to your hand.  Your opponent can check the information on it before it returns to your hand.  The card goes back to being a normal battle tactic card, with the exception that you cannot use the command on it in the same phase it went back into your hand.  If you did not use the command on the card you you separated, you can still score the battle tactic on it at the end of your turn as normal if you met its conditions.  If you do so, discard it as normal.  If you neither used the command nor scored the battle tactic on the card, it automatically returns to your hand at the end of your turn.  Design's Note:  This ability essentially lets you use a command 'for free' but you have to choose the command at the start of the battle so it requires some planning ahead!",
+                    "once": onces.battle,
+                    "phase": phases.start,
+                    "special": battleTraitSpecials.none,
+            }
+            ],
+            "regimentAbilities": [
+                {
+                    "id": "forSigmarCharge",
+                    "name": "For Sigmar, Charge",
+                    "effect": "Use this ability before any CHARGE abilities are used this phase.  Friendly CAVALRY units that charge this phase have STRIKE-FIRST this turn.",
+                    "once": onces.battle,
+                    "phase": phases.charge,
+                },
+                {
+                "id": "ironweldDiscipline",
+                    "name": "Ironweld Discipline",
+                    "effect": "Pick your Ironweld Great Cannon to use this ability.  It can use the SHOOT ability as if it were your shooting phase.",
+                    "once": onces.battle,
+                    "phase": phases.shooting,
+                }
+            ],
+            "enhancements": [
+                {
+                        "id": "flaskOfLethisianDarkwater",
+                        "name": "Flask of Lethisian Darkwater",
+                        "effect": "Heal (D6) your general.",
+                        "once": onces.battle,
+                        "phase": phases.start,
+                    },
+                    {
+                        "id": "heriloomBlade",
+                        "name": "Heirloom Blade",
+                        "effect": "Add 1 to the Rend characteristic of your generla's Master-forged Longsword.",
+                        "once": onces.none,
+                        "phase": phases.passive,
+                    },
+                    {
+                        "id": "brazierOfHolyFlame",
+                        "name": "Brazier of Holy Flame",
+                        "effect": "Pick a friendly Freeguild Steelhems unit within your general's combat range.",
+                       "once": onces.none,
+                       "phase": phases.end,
+                    },
+                    {
+                        "id": "glimmering",
+                        "name": "Glimmering",
+                        "effect": "Each phase, you can re-roll 1 hit roll or wound roll or 1 save roll made for your general.",
+                        "once": onces.none,
+                        "phase": phases.passive,
+                    },],
+            "units": ["Freeguild Cavalier-Marshal (Hero)", "Freeguild Steelhelms (10)", "Freeguild Cavaliers (5)", "Ironweld Great Cannon (1)"]
+            
         }, 
     ]
 };

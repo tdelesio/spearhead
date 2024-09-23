@@ -19,6 +19,10 @@ export const Alliances = {
             "name": "Order",
             "factions": [
                 {
+                    "id": factions.citiesOfSigmarCasteliteCompany,
+                    "name": "Cities of Sigmar - Castelite Company"
+                },
+                {
                     "id": factions.daughtersOfKhaineHeartflayerTroupe,
                     "name": "Daughters of Khaine - Heartflayer Troupe"
                   },
