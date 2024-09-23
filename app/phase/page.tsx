@@ -191,7 +191,7 @@ export default function StartOfRoundPage() {
         <div className="space-y-4">
           {renderAbilityCard(bt, phase)}
           {factionAbilities.map((ability) => 
-            (phase.id === ability.phase || ability.phase === phases.passive) && (
+            (phase.id === ability?.phase || ability?.phase === phases.passive) && (
               <React.Fragment key={ability.id}>
                 {renderAbilityCard(ability, phase)}
               </React.Fragment>

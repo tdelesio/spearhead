@@ -7852,7 +7852,7 @@ export const Units = {
                         "range": 0,
                         "attacks": "5",
                         "hit": 3,
-                        "wound" 4,
+                        "wound": 4,
                         "rend": 1,
                         "damage": "2",
                         "ability": ""
