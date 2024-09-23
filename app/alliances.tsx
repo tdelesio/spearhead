@@ -77,6 +77,10 @@ export const Alliances = {
                     "name": "Nighthaunt- Slasher Host"
                  },
                  {
+                    "id": factions.ossiarchBonereapersTitheReaperEchelon,
+                    "name": "Ossirach Bonereapers - Tithe Reaper Echelon"
+                 },
+                 {
                     "id": factions.soulblightGravelordsBloodCraveHunt,
                     "name": "Soulblight Gravelords - Bloodcrave Hunt"
                  },
