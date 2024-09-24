@@ -58,7 +58,7 @@ export const multiples = {
                     "id": "gnawholeAmbush",
                     "name": "Gnawhole Ambush",
                     "effect": "On movement phase you can move from tunnels and set them up wholly within 6\" of a corner of the battlefield and more than 9\" from all enemy units",
-                    "once": onces.none,
+                    "once": onces.battle,
                     "phase": phases.movement,
                 }
 
@@ -72,7 +72,7 @@ export const multiples = {
                     "name": "Wave of Terror",
                     "effect": "Pick a friendly unit to use this ability if they charged this phase and the charge roll was 10+, pick an enemy unit within 1\" of it.  That target has Strike-Last this turn.",
                     "once": onces.none,
-                    "phase": phases.passive,
+                    "phase": phases.charge,
                 },
                 {
                     "id": "ethereal",
@@ -172,7 +172,7 @@ export const multiples = {
                     "id": "murderlust",
                     "name": "Murderlust",
                     "effect": "Spend 1 blood tithe point and pick up to D3 Friendly units.  Each of those units can move D6\" (roll for each)",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.hero,
                 },
                 ,
@@ -180,7 +180,7 @@ export const multiples = {
                     "id": "headsMustRoll",
                     "name": "Heads Must Roll",
                     "effect": "Spend 3 blood tithe points and pick up to 3 friendly units.  Add 1 to the Rend characteristic of those unit's melee weapons until the start of your next turn.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.hero,
                 }
 
@@ -212,15 +212,15 @@ export const multiples = {
                 {
                     "id": "leyLines",
                     "name": "Ley Lines",
-                    "effect": "Each of these can be used once per turn, at tne end of any turn. Heal (1) each friendly unit that is within 3\" of any terrain features.  In Addition, Pick a friendly unit from the battlefield and set it up again so that each model in the unit is within 3\" of any terrain features and more than 6\" from all enemy units. ",
-                    "once": onces.none,
-                    "phase": phases.passive,
+                    "effect": "Heal (1) each friendly unit that is within 3\" of any terrain features.  In Addition, Pick a friendly unit from the battlefield and set it up again so that each model in the unit is within 3\" of any terrain features and more than 6\" from all enemy units. ",
+                    "once": onces.turn,
+                    "phase": phases.end,
                 },
                 {
                     "id": "strikeAndFade",
                     "name": "Strike and Fade",
                     "effect": "Pick a friendly unit that used a FIGHT ability this turn and is within 3\" of any terrain features, then roll a dice.  On a 2+, remove that unit from the battlefield and set it up again so that each model in the unit is within 3\" of any terrain features and more than 6\" from all enemy units.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.end,
                 }
 
@@ -228,18 +228,38 @@ export const multiples = {
         },
         {
             "faction": factions.ogorMawTribesTyrantsBellow,
-                "abilities": [
-                    {
-                        "id": "bellowingArrival",
-                        "name": "Bellowing Arrival",
-                        "effect": "Set up this unit anywhere on the battlefield, within 1\" of a battfield edge and more than 6\" from all enemy Units.",
-                        "once": onces.none,
-                        "phase": phases.movement,               
+            "abilities": [
+                {
+                    "id": "bellowingArrival",
+                    "name": "Bellowing Arrival",
+                    "effect": "Set up this unit anywhere on the battlefield, within 1\" of a battfield edge and more than 6\" from all enemy Units.",
+                    "once": onces.none,
+                    "phase": phases.movement,
                 },
-                
-        
-                ]
-            },
+
+
+            ]
+        },
+        {
+            "faction": factions.soulblightGravelordsBloodCraveHunt,
+            "abilities": [
+                {
+                    "id": "swoopDown",
+                    "name": "Swoop Down",
+                    "effect": "Your Vargheists are not set up during the deployment phase.  Instead, from the third battle round onwards, it can set up this unit anywhere on the battlie more than 6\" from all enemy units during movement phase.  In addition, Each time a friendly Vampure unit users a FIGHT ability, after all of its attacks have been resolved, Heal(X) that vampire unit where X is the number of damage points allocated by those attacks.",
+                    "once": onces.none,
+                    "phase": phases.movement,
+                },
+                {
+                    "id": "theHunger",
+                    "name": "The Hunger",
+                    "effect": "Each time a friendly VAMPIRE unit uses a FIGHT ability, after all of its attacks have been resolved, HEAL (X) that VAMPIRE where X is the number of damage points allocated by those attacks.",
+                    "once": onces.none,
+                    "phase": phases.passive,
+                },
+
+            ]
+        }
 
 
     ]

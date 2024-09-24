@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { Ability, getAttacksForRound, Unit, Units } from "../units";
-import { BattleTrait, battleTraitSpecials, Enhancement, Faction, Factions, RegimentAbilitiy } from "@/app/factions";
+import { BattleTrait, battleTraitSpecials, Enhancement, Faction, Factions, onces, RegimentAbilitiy } from "@/app/factions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { getAbilityForRound, Phase, phases } from "../phase";
@@ -45,24 +45,41 @@ function getPhase(selectedPhase: number | null): Phase {
 }
 
 function isCombatPhase(selectedPhase: Phase | null): boolean {
-  return selectedPhase?.id === phases.combat || selectedPhase?.id === phases.shooting || selectedPhase?.id === phases.anycombat;
+  return selectedPhase?.id === phases.combat || selectedPhase?.id === phases.shooting;
+}
+
+function showCombat(selectedPhase: Phase | null, item: any): boolean {
+   if ( isCombatPhase(selectedPhase) && (item.phase === phases.anycombat || item.phase === phases.combat || item.phase === phases.shooting))
+return true;
+    else
+    return false;
+}
+
+function showAbility(currentPhase: Phase | null, item: any): boolean {
+  //return true if 
+  //1.  the current round matches the item round
+  //2.  The passed item is passive
+  //3.  It is a combat round and it matches any of the combat tags
+  console.log(item.name, currentPhase?.name, item.phase.name)
+  return currentPhase?.id === item.phase || item.phase === phases.passive || item.phase == phases.any || showCombat(currentPhase, item)
 }
 
 // Helper function to determine if Battle Traits Should show for selected Phase
-function showBattleTrait(selectedPhase: number | null, selectedBattleTrait: BattleTrait): boolean {
-  return selectedBattleTrait?.phase === selectedPhase || selectedBattleTrait?.phase === phases.passive || selectedBattleTrait?.phase === phases.any;
-}
+// function showBattleTrait(selectedPhase: number | null, selectedBattleTrait: BattleTrait): boolean {
+//   return selectedBattleTrait?.phase === selectedPhase || selectedBattleTrait?.phase === phases.passive || selectedBattleTrait?.phase === phases.any;
+// }
 
-function showRegimentAbility(selectedPhase: number | null, selectedRegimentAbility: RegimentAbilitiy | null): boolean {
-  return selectedRegimentAbility?.phase === selectedPhase || selectedRegimentAbility?.phase === phases.passive || ((selectedPhase === phases.combat || selectedPhase === phases.shooting) && selectedRegimentAbility?.phase === phases.anycombat);
-}
+// function showRegimentAbility(selectedPhase: number | null, selectedRegimentAbility: RegimentAbilitiy | null): boolean {
+//   return selectedRegimentAbility?.phase === selectedPhase || selectedRegimentAbility?.phase === phases.passive || ((selectedPhase === phases.combat || selectedPhase === phases.shooting) && selectedRegimentAbility?.phase === phases.anycombat);
+// }
 
 function showEnhancement(selectedPhase: number | null, selectedEnhancement: Enhancement | null): boolean {
   return selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === phases.passive;
 }
 
-function showEnhancementOnCombatPhase(general: boolean | false, selectedEnhancement: Enhancement | null): boolean {
-  return general && (selectedEnhancement?.phase === phases.passive || selectedEnhancement?.phase === phases.combat || selectedEnhancement?.phase === phases.shooting)
+function showEnhancementOnCombatPhase(general: boolean | false, selectedPhase: Phase | null, selectedEnhancement: Enhancement | null): boolean {
+  return general && showAbility(selectedPhase, selectedEnhancement)
+  // return general && (selectedEnhancement?.phase === phases.passive || selectedEnhancement?.phase === phases.combat || selectedEnhancement?.phase === phases.shooting)
 }
 
 //Function to handle shuffling of the Battle Tactic Card Deck
@@ -182,24 +199,49 @@ export default function StartOfRoundPage() {
   }, []);
 
   const renderBattleTraitCard = (factionId: number, bt: BattleTrait, phase: Phase) => {
+    //show battle traits
     if (bt.special === battleTraitSpecials.table) {
       return <AbilityTable passedFaction={factionId} description={bt.effect} />
     } 
+    //show multiple battle traits
     else if (bt.special === battleTraitSpecials.multiple) {
+
       const factionAbilities = multiples.factions.find(f => f.faction === factionId)?.abilities || []
+
       return (
         <div className="space-y-4">
-          {renderAbilityCard(bt, phase)}
-          {factionAbilities.map((ability) => 
-            (phase.id === ability?.phase || ability?.phase === phases.passive) && (
-              <React.Fragment key={ability.id}>
+
+          <Card
+          key={bt?.id}
+          className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full mx-auto bg-white text-black cursor-pointer hover:shadow-md`}
+          >
+          <div className={`relative `}>
+            <CardHeader>
+              <CardTitle>{bt.name} </CardTitle>
+            </CardHeader>
+            <CardContent>
+            <p className="text-xs pb-2">{bt.effect}</p>
+            
+            
+            {factionAbilities.map((ability) => 
+            
+            // ((phase.id === ability?.phase || ability?.phase === phases.passive || showCombat(phase, ability)) && 
+            showAbility(phase, ability) &&
+            (
+              <React.Fragment key={ability?.id}>
                 {renderAbilityCard(ability, phase)}
               </React.Fragment>
             )
+          //)
           )}
+            </CardContent>
+          </div>
+          
+        </Card>
         </div>
       )
     }
+    //show the rest
     else {
       return renderAbilityCard(bt, phase)
     }
@@ -269,7 +311,7 @@ export default function StartOfRoundPage() {
 
                 <section className="w-full mx-auto pt-2">
                   {/* Display Enhancements for General*/}
-                  {selectedEnhancement && showEnhancementOnCombatPhase(unit.general, selectedEnhancement) && renderAbilityCard(selectedEnhancement, phase)}
+                  {selectedEnhancement && showEnhancementOnCombatPhase(unit.general, phase, selectedEnhancement) && renderAbilityCard(selectedEnhancement, phase)}
                 </section>
 
                 {/* Show Round abilities*/}
@@ -334,13 +376,13 @@ export default function StartOfRoundPage() {
       <div className="pb-2" key={item.id}>
         <Card
           key={item?.id}
-          className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full mx-auto
+          className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full mx-auto ${item?.once === onces.turn?'border-rose-600 border-4':''}
           ${isUsed ? 'bg-gray-300 dark:bg-gray-800' : 'bg-white text-black cursor-pointer hover:shadow-md'}`}
-          onClick={() => handleCardClick(item?.id || '', item?.once || false)}
+          onClick={() => handleCardClick(item?.id || '', item?.once===onces.battle || false)}
         >
           <div className={`relative ${isUsed ? 'opacity-50' : ''}`}>
             <CardHeader>
-              <CardTitle>{item.name} {item?.once ? "(Once Per Battle)" : ""} {item?.phase === phases.passive ? "(Passive)" : ""}</CardTitle>
+              <CardTitle>{item.name} {item?.once === onces.battle ? "(Once Per Battle)" : ""} {item?.phase === phases.passive ? "(Passive)" : ""} {item?.once === onces.turn ? "(Once per Turn)":""}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-500 dark:text-gray-400">{item?.effect}</p>
@@ -436,7 +478,8 @@ export default function StartOfRoundPage() {
                 /* {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && renderCard(faction?.id || 0, selectedBattleTrait, "Battle Trait", usedAbilities, handleCardClick)} 
                 {selectedBattleTrait?.special === battleTraitSpecials.counter && selectedPhase.id === phases.combat && (<BattleTacticsCounter selectedFaction={faction?.id || 0} />)}
                 */}
-                {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && (
+                {/* {selectedBattleTrait && showBattleTrait(selectedPhase.id, selectedBattleTrait) && ( */}
+                  {selectedBattleTrait && showAbility(selectedPhase, selectedBattleTrait) && (
                   <section className="w-full mx-auto">
                     <h2 className="text-xl font-semibold mb-4">Battle Traits</h2>
                     <div className="space-y-4">
@@ -446,7 +489,8 @@ export default function StartOfRoundPage() {
                 )}
 
                 {/* Regiment Abilities */}
-                {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && (
+                {/* {selectedRegimentAbility && showRegimentAbility(selectedPhase.id, selectedRegimentAbility) && ( */}
+                {selectedRegimentAbility && showAbility(selectedPhase, selectedRegimentAbility) && (
                   <section className="w-full mx-auto">
                     <h2 className="text-xl font-semibold mb-4">Regiment Ability</h2>
                     <div className="space-y-4">

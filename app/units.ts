@@ -7774,6 +7774,84 @@ export const Units = {
             }
 
         },
+        {
+
+            "id": "mournfangPack",
+            "name": "Mournfang Pack",
+            "move": "9",
+            "control": 2,
+            "health": 6,
+            "save": 4,
+            "ward": 0,
+            "hero": false,
+            "general": false,
+            "fly": false,
+            "keywords": ["Cavalry"],
+            "Passive": {
+                "attacks": [],
+                "abilities": [{
+                    "id": "linebreakers",
+                    "name": "Linebreakers",
+                    "effect": "Subtract 1 from wound rolls for shooting attacks that target this unit.",
+                    "once": false,
+                }]
+            },
+            "Start":
+            {
+                "attacks": [],
+                "abilities": []
+            },
+            "Hero": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Movement": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Shooting": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Charge": {
+                "attacks": [],
+                "abilities": []
+            },
+            "Combat":
+            {
+                "attacks": [
+                    {
+                        "id": "cullingClubAndHackers",
+                        "name": "Culling Clubs and Hackers",
+                        "range": 0,
+                        "attacks": "3",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": ""
+                    },
+                    {
+                        "id": "mournfangsTusks",
+                        "name": "Mournfang's Tusks",
+                        "range": 0,
+                        "attacks": "4",
+                        "hit": 4,
+                        "wound": 2,
+                        "rend": 1,
+                        "damage": "2",
+                        "ability": "companion"
+                    },
+                    
+                ],
+                "abilities": [],
+            },
+            "End": {
+                "attacks": [],
+                "abilities": []
+            }
+
+        },
         ]
     },
     {

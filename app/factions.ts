@@ -48,6 +48,7 @@ export const onces = Object.freeze({
     none: 0,
     battle: 1,
     turn: 2,
+    phase: 3,
 })
 
 export const factions = Object.freeze({
@@ -119,7 +120,7 @@ export const Factions = {
                     "name": "Hallowed Scrolls",
                     "effect": "Your general has Ward 5+",
                     "once": onces.none,
-                    "phase": phases.combat,
+                    "phase": phases.passive,
                 },
                 {
                     "id": "morrdaTalon",
@@ -133,7 +134,7 @@ export const Factions = {
                     "name": "Quicksilver Draught",
                     "effect": "Your general has Strike-First this phase",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "nullPendant",
@@ -202,7 +203,7 @@ export const Factions = {
                     "name": "Hawk of the Celestrial Skies",
                     "effect": "Unit the end of the phase, add 1 to hit rolls for attacks made by friendly units while they are wholly within 12\" of your general.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },],
             "units": ["Yndrastra (Hero)", "Knight Vexillor (1)", "Annihilators (3)", "Vanquishers (5)", "Vanquishers (5)", "Stormcast Chariot (1)"]
 
@@ -233,7 +234,7 @@ export const Factions = {
                     "name": "To Quick to Hit",
                     "effect": "No mortal damaged is inflicted on friendly units when they use Retreat.",
                     "once": onces.none,
-                    "phase": phases.movement
+                    "phase": phases.passive
                 }
             ],
             "enhancements": [
@@ -276,7 +277,7 @@ export const Factions = {
                     "id": "alwaysThreeCalowstepsAhead",
                     "name": "Always Three Calowsteps Ahead",
                     "effect": "Pick a friendly unit that is not in combat.  That untit can use Normal Move ability as if it were your movement phase. ",
-                    "once": onces.battle,
+                    "once": onces.phase,
                     "phase": phases.movement,
                     "special": battleTraitSpecials.none
                 }
@@ -287,7 +288,7 @@ export const Factions = {
                     "name": "Warpstone Laced Armor",
                     "effect": "Your Stormfields unit has a Ward (4+) this phase.",
                     "once": onces.battle,
-                    "phase": phases.combat
+                    "phase": phases.anycombat
                 },
                 {
                     "id": "endlessSwarmOfRats",
@@ -317,14 +318,14 @@ export const Factions = {
                     "name": "Cage of Warp Lightning",
                     "effect": "Pick a visible enemy unit within 12\" of your general and roll a dice.  On a 2+, the enemy unit has STRIKE-LAST this phase.  On a 1, inflict 1 mortal damage on your general.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "scurryAway",
                     "name": "Scurry Away",
                     "effect": "Roll a dice.  On a 3+, this unit can immediately use the Retreat ability as if it were your movement phase.  If it does so, no mortal damage is inflicted when it uses Retreat.",
                     "once": onces.none,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },],
             "units": ["Grey Seer (Hero)", "Stormfiends (3)", "Warp Ligtning Cannon (1)", "Clanrats (10)", "Clanrats (10)"]
 
@@ -347,9 +348,9 @@ export const Factions = {
                 {
                     "id": "theDeadBanner",
                     "name": "The Dead Banner",
-                    "effect": "Pick a friendly Chaos Warrior or Chaos Knight.  Immediately roll on the Eye of the Gods.",
-                    "once": onces.none,
-                    "phase": phases.passive
+                    "effect": "Start of first battle round.  Pick a friendly Chaos Warrior or Chaos Knight.  Immediately roll on the Eye of the Gods.",
+                    "once": onces.battle,
+                    "phase": phases.start
                 },
                 {
                     "id": "fierceConquerors",
@@ -441,7 +442,7 @@ export const Factions = {
                     "name": "Flask of Shademist",
                     "effect": "Unit the end of the phase, subtract 1 from hit rolls for attacks that target friendly units while they are wholly within 12\" of your general.",
                     "once": onces.battle,
-                    "phase": phases.passive,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "zealousOperator",
@@ -478,7 +479,7 @@ export const Factions = {
                     "id": "fyresteelThrowingAxe",
                     "name": "Fyresteel Throwing Axe",
                     "effect": "Pick any number of friendly units that are not in combat and are within 10\" of any enemy units.  For each of those units, pick a visible enemy unit with 10\" and roll a dice.  On 4+, inflict D3 mortal damage on that enemey unit.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.shooting
                 }
             ],
@@ -641,12 +642,12 @@ export const Factions = {
             "name": "Soulblight Gravelords - Bloodcrave Hunt",
             "battleTraits": [
                 {
-                    "id": "swoopDown",
-                    "name": "Swoop Down",
-                    "effect": "Your Vargheists are not set up during the deployment phase.  Instead, from the third battle round onwards, it can set up this unit anywhere on the battlie more than 6\" from all enemy units during movement phase.  In addition, Each time a friendly Vampure unit users a FIGHT ability, after all of its attacks have been resolved, Heal(X) that vampire unit where X is the number of damage points allocated by those attacks.",
+                    "id": "deathsDescent",
+                    "name": "Death's Descent",
+                    "effect": "Your Vargheists unit is not set up during the deployment phase.  Instead, from the third battle round onwards, it can use the Swoop Down Ability.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    "special": battleTraitSpecials.none
+                    "special": battleTraitSpecials.multiple
                 }
             ],
             "regimentAbilities": [
@@ -671,7 +672,7 @@ export const Factions = {
                     "name": "Grave Sand Shards",
                     "effect": "You declare Skeleton Legion abillity for a unit within 9\" of your general.Add 1 to each legion roll made for this unit.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "cloudOfBats",
@@ -704,7 +705,7 @@ export const Factions = {
                 {
                     "id": "infectiousHosts",
                     "name": "Infectious Hosts",
-                    "effect": "One of your Purgoyle Blightlords and one of your Plaguebearers are not set up during the deployment phase.  Instead from the third battle round onwards, you can use the following ability.",
+                    "effect": "One of your Purgoyle Blightlords and one of your Plaguebearers are not set up during the deployment phase.  Instead from the third battle round onwards, you can use the ability Daemonic Summoning.",
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple,
@@ -715,7 +716,7 @@ export const Factions = {
                     "id": "locusOfFecundity",
                     "name": "Locus of Fecundity",
                     "effect": "Pick a friendly unit.  Heal D3 to that unit.",
-                    "once": onces.battle,
+                    "once": onces.phase,
                     "phase": phases.hero
                 },
                 {
@@ -752,8 +753,8 @@ export const Factions = {
                     "id": "giftOfTheFerbileFrenzy",
                     "name": "Gift of the Ferbile Frenzy",
                     "effect": "Unit the end of the phase, add 1 to the Attacks characteristic of melee weapons used by friendly units while they are wholly within 7\" of your general.",
-                    "once": onces.none,
-                    "phase": phases.combat,
+                    "once": onces.battle,
+                    "phase": phases.anycombat,
                 },],
             "units": ["Spoilpox Scrivener (Hero)", "Pusgoyle Blightlord (1)", "Pusgoyle Blightlord (1)", "Putrid Blightkings (5)", "Putrid Blightkings (5)", "Plaguebears (5)", "Plaguebearers (5)"]
 
@@ -861,7 +862,7 @@ export const Factions = {
                     "name": "DaemonHeart",
                     "effect": "Pick an enemy unit within 1\" of your general.  Inflict an amount of mortal damage on that unit equal to the number of the current battle round.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "glimpseTheFuture",
@@ -875,7 +876,7 @@ export const Factions = {
                     "name": "Timeslip Pendant",
                     "effect": "Pick an enemy unit within 9\" of your general.  That unit has STRIKE-LAST this phase.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },],
             "units": ["Magister on Disc of Tzeentch (Hero)", "Flamers of Tzeentch (3)", "Screamers of Tzeentch (3)", "Tzaangors (5)", "Tzaangors (5)", "Kairic Acolytes (10)"]
 
@@ -936,7 +937,7 @@ export const Factions = {
                     "name": "Eye-Biter Ash",
                     "effect": "Pick an enemy unit in combat with your general and roll a dice.  On a 1-4 subtract 1 from hit rolls for attacks made by that unit for the rest of the phase.  On a 5+, subtract 1 from hit rolls for attacks made by this unit for the rest of the battle.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },],
             "units": ["Killaboss on Great Gnashtoof (Hero)", "Murknob with Belcha-banna (1)", "Man-skewer Boltboyz (3)", "Gutrippaz (5)", "Gutrippaz (5)", "Beast-skewer Killbow (1)"]
 
@@ -950,7 +951,7 @@ export const Factions = {
                     "name": "Beat of the Dark Jungles",
                     "effect": "Pick your general to use this ability if they are in combat.  Pick 1 of the following.  Gargantuan Jaws:  Pick an enemy unit in combat with your general and roll a dice.  If the roll exceeds that unit's Health, 1 model in that unit is slain. Roar:  Pick an enemy unit in combat with your general.  Subtract D6 from that unit's control score this turn.",
                     "once": onces.none,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                     "special": battleTraitSpecials.none
                 }
             ],
@@ -959,7 +960,7 @@ export const Factions = {
                     "id": "predatoryFighters",
                     "name": "Predatory Fighters",
                     "effect": "Roll a dice for each enemy unit in combat with any friendly units.  On a 3+, inflict mortal damage on the unit being rolled for.",
-                    "once": onces.battle,
+                    "once": onces.phase,
                     "phase": phases.end
                 },
                 {
@@ -1010,7 +1011,7 @@ export const Factions = {
                     "id": "shiningCompay",
                     "name": "Shinning Company",
                     "effect": "Once per phase.  A friendly unit targeted by an ATTACK ability and that has not made a pile-in move this turn.  Subtract 1 from hit rolls for the attacks that target that friendly unit.",
-                    "once": onces.none,
+                    "once": onces.phase,
                     "phase": phases.combat,
                     "special": battleTraitSpecials.none,
                 },
@@ -1018,7 +1019,7 @@ export const Factions = {
                     "id": "powerOfHysh",
                     "name": "Power of Hysh",
                     "effect": "Once per turn.  Pick a friednly unit.  Roll a dice.  On a 2+, until the start of your next turn, attacks made by that untit score a critical hit on unmodified hit rolls of 5+",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.hero,
                     "special": battleTraitSpecials.none,
                 },
@@ -1132,7 +1133,7 @@ export const Factions = {
                     "name": "Mind Flare",
                     "effect": "Pick an enemy unit in combat with your general.  Unit the end of the phase, attacks made by this unit only score hits on unmodified hit rolls of 6.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "deliciousMorsels",
@@ -1230,7 +1231,7 @@ export const Factions = {
                     "id": "earthShakingCharge",
                     "name": "Earth-shaking Charge",
                     "effect": "Pick a friendly unit that charged this phase to use this ability, then roll a dice for each enemy unit in combat with it.  On a 3+, that enemy unit has STRIKE-LAST this turn.",
-                    "once": onces.none,
+                    "once": onces.phase,
                     "phase": phases.charge,
                 }
             ],
@@ -1285,13 +1286,13 @@ export const Factions = {
                     "name": "Unparalleled Speed",
                     "effect": "Pick a friendly unit to use this ability.  That unit has STRIKE-FIRST this phae.",
                     "once": onces.battle,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "locusOfDiversion",
                     "name": "Locus Of Diversion",
                     "effect": "Pick a friendly unit to use this ability.  For the rest of the turn, that unit can use a RETREAT ability and still use a SHOOT ability and/or CHARGE abilities late in the turn.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.movement,
                 }
             ],
@@ -1301,13 +1302,13 @@ export const Factions = {
                     "name": "Sceptre of Domination",
                     "effect": "Roll a dice for each enemy unit in combt with your general.  On a 5+, the unit being rolled for has STRIKE-LAST this phase.",
                     "once": onces.none,
-                    "phase": phases.combat,
+                    "phase": phases.anycombat,
                 },
                 {
                     "id": "twistedMirror",
                     "name": "Twisted Mirror",
                     "effect": "Pick an enemy unit within 9\" of your general and roll a dice.  On a 4+, subtract 1 from save rolls for that unit untio the start of your next turn.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.shooting,
                 },
                 {
@@ -1346,7 +1347,7 @@ export const Factions = {
                     "id": "favouredOfKhorne",
                     "name": "Favoured of Khorne",
                     "effect": "Roll a dice.  On a 2+, you recieve 1 blood tithe point.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.start,
                 },
                 {
@@ -1377,7 +1378,7 @@ export const Factions = {
                         "name": "Headhunter",
                         "effect": "Pick an enemy HERO in combat with your general.  Your general has STRIKE-FIRST this phase, but all attacks made by them this phase must target that enemy HERO.",
                        "once": onces.none,
-                       "phase": phases.combat,
+                       "phase": phases.anycombat,
                     },
                     {
                         "id": "unholyFlames",
@@ -1459,7 +1460,7 @@ export const Factions = {
             {
                     "id": "sylvanetBattleTrait",
                     "name": "Sylvaneth Battle Traits",
-                    "effect": "You can use the following abilities during the batle.",
+                    "effect": "Each of these can be used once per turn, at tne end of any turn. ",
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple
@@ -1470,14 +1471,14 @@ export const Factions = {
                     "id": "vengefulSpiritsOfTheLand",
                     "name": "Vengeful Spirits of the Land",
                     "effect": "Once per trun, end of any turn.  Pick an enemy unit that is contesting an objective and roll a dice.  On a 4+, inflict D3 mortal damage on that enemy unit.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.end
                 },
                 {
                 "id": "walkersOfTheHiddenPaths",
                     "name": "Walkers of the Hidden Paths",
                     "effect": "Pick a friendly unit that is within 3\" of any terrain features and not on combat.  Remove that unit from the battlefield and set it up again more that 6\" from all enemy units.  That unit cannot use MOVE abilities for the rest of the phase.",
-                    "once": onces.none,
+                    "once": onces.turn,
                     "phase": phases.movement
                 }
             ],
@@ -1507,7 +1508,7 @@ export const Factions = {
                         "id": "seedOfRebirth",
                         "name": "Seed of Rebirth",
                         "effect": "If your general would be destroyed, before removing them from play, roll a dice.  On a 3+, your generial is not destroyed and any remaining damage points inflicted on them have no effect.  Then Heal (1) your general.  This unit cannot use this ability again for the rest of the battle.",
-                        "once": onces.battle,
+                        "once": onces.none,
                         "phase": phases.passive,
                     },],
             "units": ["Branchwych (Hero)", "Treelord (1)", "Kurnoth Hunters (3)", "Tree-Revenants (5)"]
@@ -1531,7 +1532,7 @@ export const Factions = {
                     "id": "pulverisingGirth",
                     "name": "Pulverising Girth",
                     "effect": "Pick any number of friendly units that charged this phase.  For each of those units, pick an enemy unit in combat with it and roll a dice.  On a 4+ inflict 1 mortal damage on that enemy unit.",
-                    "once": onces.none,
+                    "once": onces.phase,
                     "phase": phases.charge,
                 },
                 {
