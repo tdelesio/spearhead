@@ -102,7 +102,10 @@ export default function StartOfRoundPage() {
 
   const params = useSearchParams();
   const passedFaction = params.get('faction') || '0';
+  const passedUseCards = params.get('usecards') || true;
   const selectedFaction = parseInt(passedFaction);
+  const usecards = (passedUseCards === 'true')
+
   const faction = Factions.factions.find(faction => faction.id === selectedFaction);
 
   const initialBattleTrait = params.get('battleTraits');
@@ -508,6 +511,7 @@ export default function StartOfRoundPage() {
                 {renderPhaseCard(selectedPhase)}
 
                 {/* Cards */}
+                { usecards && (
                 <section className="w-full  mx-auto">
                   <h2 className="text-xl font-semibold mb-2">Battle Tactic Cards</h2>
                   <div>
@@ -518,6 +522,7 @@ export default function StartOfRoundPage() {
                     ))}
                   </div>
                 </section>
+                )}
               </div>
 
             </CarouselItem>

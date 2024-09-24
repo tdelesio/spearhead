@@ -28,29 +28,15 @@ import {
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { convertEnumToString } from './phase'
+import { Checkbox } from "@/components/ui/checkbox"
 
-// const profileFormSchema = z.object({
-//   faction: z.string().optional(),
-//   battleTraits: z.string().optional(),
-//   regimentAbilities: z.string().optional(),
-//   enhancements: z.string().optional(),
-// }).refine((data) => {
-//   return data.faction || data.battleTraits || data.regimentAbilities || data.enhancements;
-// }, {
-//   message: "At least one selection is required",
-//   path: ["battleTraits"], // This will show the error on the battleTraits field, but you can change it if needed
-// });
+
 
 const profileFormSchema = z.object({
-  // faction: z.string({required_error: "Please select a faction.",}),
-  // faction: z.string().optional(),
-  // battleTraits: z.string({required_error: "Please select a battle trait.",}),
-  // battleTraits: z.string().optional(),
   battleTraits: z.string({required_error: "Please select a battle trait.",}),
   regimentAbilities: z.string({required_error: "Please select a regiment ability.",}),
-  // regimentAbilities: z.string().optional(),
   enhancements: z.string({required_error: "Please select an enhancement.",}),
-  //enhancements: z.string().optional(),
+  useSpearheadCards: z.boolean().default(true),
 })
 
 
@@ -70,6 +56,9 @@ export default function SelectFactionTacticsForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     mode: "onChange",
+    defaultValues: {
+      useSpearheadCards: true,
+    },
   })
 
   const faction = Factions.factions.find(faction => faction.id === selectedFaction)
@@ -87,21 +76,17 @@ export default function SelectFactionTacticsForm() {
   const selectedRegimentAbility = regimentAbilities.find(ability => ability.id === selectedRegimentAbilityId)
   const selectedEnhancement = enhancements.find(enhancement => enhancement.id === selectedEnhancementId)
 
-  // const onSubmit = async (data: ProfileFormValues) => {
-  //   console.log("onSubmit called", data)
-  //   setIsSubmitting(true)
-  //   // Simulating an API call
-  //   await new Promise(resolve => setTimeout(resolve, 1000))
-  //   setIsSubmitting(false)
-  //   console.log("Form submitted successfully")
-  // }
   
   const onSubmit = async (data: ProfileFormValues) => {
     setIsSubmitting(true)
     try {
-      
-      await navigateToStart(selectedFaction ?? '', data.battleTraits ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
-      // await navigateToStart(selectedFaction ?? '', selectedBattleTrait.id ?? '', data.regimentAbilities ?? '', data.enhancements ?? '')
+      await navigateToStart(
+        selectedFaction ?? '', 
+        data.battleTraits ?? '', 
+        data.regimentAbilities ?? '', 
+        data.enhancements ?? '',
+        data.useSpearheadCards ? 'true' : 'false'
+      )
     } catch (error) {
       console.error("Navigation error:", error)
     } finally {
@@ -229,6 +214,37 @@ export default function SelectFactionTacticsForm() {
               )}
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader> 
+              <CardTitle>Spearhead Battle Tactic Cards</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <FormField
+                control={form.control}
+                name="useSpearheadCards"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel>
+                        Use Spearhead Battle Tactic Cards?
+                      </FormLabel>
+                      <FormDescription>
+                        Enable this option to use Spearhead Battle Tactic Cards in your game.
+                      </FormDescription>
+                    </div>
+                  </FormItem>
+                )}
+              />
+            </CardContent>
+          </Card>
+
 
           <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Setting Tactics..." : "Set Tactics"}
