@@ -471,7 +471,7 @@ export const Factions = {
                 {
                     "id": "magicTunnels",
                     "name": "Magic Tunnels",
-                    "effect": "Pick 2 friendly units, remove them from the battlefield and set them up again anywhere on the battfield more than 6\" from all enemy units.",
+                    "effect": "Start of first battle round.  Pick 2 friendly units, remove them from the battlefield and set them up again anywhere on the battfield more than 6\" from all enemy units.",
                     "once": onces.battle,
                     "phase": phases.start
                 },

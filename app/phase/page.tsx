@@ -49,10 +49,8 @@ function isCombatPhase(selectedPhase: Phase | null): boolean {
 }
 
 function showCombat(selectedPhase: Phase | null, item: any): boolean {
-   if ( isCombatPhase(selectedPhase) && (item.phase === phases.anycombat || item.phase === phases.combat || item.phase === phases.shooting))
-return true;
-    else
-    return false;
+  //return true if phase is combat and selected phase is combat or anycombat or phase is shooting and selected phase is shooting or anycombat
+  return (selectedPhase?.id === phases.combat && (item.phase === phases.anycombat || item.phase === phases.combat)) ||  (selectedPhase?.id === phases.shooting && (item.phase === phases.anycombat || item.phase === phases.shooting))
 }
 
 function showAbility(currentPhase: Phase | null, item: any): boolean {
@@ -60,7 +58,7 @@ function showAbility(currentPhase: Phase | null, item: any): boolean {
   //1.  the current round matches the item round
   //2.  The passed item is passive
   //3.  It is a combat round and it matches any of the combat tags
-  console.log(item.name, currentPhase?.name, item.phase.name)
+  // console.log(item.name, currentPhase?.name, item.phase.name)
   return currentPhase?.id === item.phase || item.phase === phases.passive || item.phase == phases.any || showCombat(currentPhase, item)
 }
 
@@ -73,8 +71,8 @@ function showAbility(currentPhase: Phase | null, item: any): boolean {
 //   return selectedRegimentAbility?.phase === selectedPhase || selectedRegimentAbility?.phase === phases.passive || ((selectedPhase === phases.combat || selectedPhase === phases.shooting) && selectedRegimentAbility?.phase === phases.anycombat);
 // }
 
-function showEnhancement(selectedPhase: number | null, selectedEnhancement: Enhancement | null): boolean {
-  return selectedEnhancement?.phase === selectedPhase || selectedEnhancement?.phase === phases.passive;
+function showEnhancement(currentPhase: Phase | null, selectedEnhancement: Enhancement | null): boolean {
+  return  !isCombatPhase(currentPhase) && (selectedEnhancement?.phase === currentPhase?.id || selectedEnhancement?.phase === phases.passive);
 }
 
 function showEnhancementOnCombatPhase(general: boolean | false, selectedPhase: Phase | null, selectedEnhancement: Enhancement | null): boolean {
@@ -259,8 +257,6 @@ export default function StartOfRoundPage() {
 
 
     return (
-
-
       <section className="w-full  mx-auto">
         <h2 className="text-xl font-semibold mb-4">{phase.name}</h2>
         <div className="space-y-4"></div>
@@ -376,13 +372,13 @@ export default function StartOfRoundPage() {
       <div className="pb-2" key={item.id}>
         <Card
           key={item?.id}
-          className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full mx-auto ${item?.once === onces.turn?'border-rose-600 border-4':''}
+          className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full mx-auto ${item?.once === onces.turn || item?.once === onces.phase?'border-rose-600 border-4':''}
           ${isUsed ? 'bg-gray-300 dark:bg-gray-800' : 'bg-white text-black cursor-pointer hover:shadow-md'}`}
           onClick={() => handleCardClick(item?.id || '', item?.once===onces.battle || false)}
         >
           <div className={`relative ${isUsed ? 'opacity-50' : ''}`}>
             <CardHeader>
-              <CardTitle>{item.name} {item?.once === onces.battle ? "(Once Per Battle)" : ""} {item?.phase === phases.passive ? "(Passive)" : ""} {item?.once === onces.turn ? "(Once per Turn)":""}</CardTitle>
+              <CardTitle>{item.name} {item?.once === onces.battle ? "(Once Per Battle)" : ""} {item?.phase === phases.passive ? "(Passive)" : ""} {item?.once === onces.turn ? "(Once per Turn)":""}  {item?.once === onces.phase ? "(Once per Phase)":""}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-500 dark:text-gray-400">{item?.effect}</p>
@@ -500,7 +496,7 @@ export default function StartOfRoundPage() {
                 )}
 
                 {/* Enhancements */}
-                {selectedEnhancement && showEnhancement(selectedPhase.id, selectedEnhancement) && (
+                {selectedEnhancement && showEnhancement(selectedPhase, selectedEnhancement) && (
                   <section className="w-full mx-auto">
                     <h2 className="text-xl font-semibold mb-4">Enhancements</h2>
                     <div className="space-y-4">
