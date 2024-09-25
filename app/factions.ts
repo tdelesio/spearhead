@@ -1,10 +1,12 @@
 import { phases } from "./phase";
 
 
+export interface Factions {
+    "factions": Faction[];
+}
 
-
-export type Faction = {
-    id: string;
+export interface Faction {
+    id: number;
     name: string;
     battleTraits: BattleTrait[];
     regimentAbilities: RegimentAbilitiy[];
@@ -12,24 +14,31 @@ export type Faction = {
     units: string[];
 }
 
-export type BattleTrait = {
+export interface BattleTrait  {
     id: string;
     name: string;
     effect: string;
     once: number;
     phase: number;
     special: number;
+    dialog?: Dialog | undefined;
 }
 
-export type RegimentAbilitiy = {
+export interface Dialog  {
+    id: string;
+    name: string;
+    effect: string;
+}
+export interface RegimentAbilitiy {
     id: string;
     name: string;
     effect: string;
     once: number;
     phase: number;
+    tags?: string[]; 
 }
 
-export type Enhancement = {
+export interface Enhancement {
     id: string;
     name: string;
     effect: string;
@@ -42,6 +51,7 @@ export const battleTraitSpecials = Object.freeze({
     table: 1,
     counter: 2,
     multiple: 3,
+    dialog: 4,
 });
 
 export const onces = Object.freeze({
@@ -95,6 +105,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.any,
                     "special": battleTraitSpecials.multiple,
+                    
                 }
 
             ],
@@ -104,14 +115,16 @@ export const Factions = {
                     "name": "Strike Where Needed",
                     "effect": "The unit using the retreat ability.  No mortal damange is inflicted when they use Retreat.  In addition, the unit can still use Charge this turn even though it used a retreat ability.",
                     "once": onces.battle,
-                    "phase": phases.movement
+                    "phase": phases.movement,
+                    "tags": []
                 },
                 {
                     "id": "blazeOfGlory",
                     "name": "Blaze of Glory",
                     "effect": "Pick a friendly unit that is in combat, each time a model is slain, make a vengance roll of D6.  On 4+ inflict 1 mortal damage",
                     "once": onces.battle,
-                    "phase": phases.anycombat
+                    "phase": phases.anycombat,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -157,7 +170,9 @@ export const Factions = {
                     "effect": "Yndrastra and your Annihilators are not setup during the deployment phase.  Instead, from the third battle round onward, they can use the following ability.  Setup this unit anywhere on the battlefield more than 6\" from all enemy units.",
                     "once": onces.none,
                     "phase": phases.movement,
-                    "special": battleTraitSpecials.none
+                    "special": battleTraitSpecials.none,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -166,14 +181,16 @@ export const Factions = {
                     "name": "Drive Them Back",
                     "effect": "Pick any number of friendly units that are borh contesting an objective and in combat.  Each of those units can make a pile-in move.  For each unit that did so, pick an enemy unit within 1\" of it and roll a dice.  On a 4+, inflict 1 mortal damage on the that enemy unit.",
                     "once": onces.none,
-                    "phase": phases.end
+                    "phase": phases.end,
+                    "tags": []
                 },
                 {
                     "id": "defendToTheLast",
                     "name": "Defend to the Last",
                     "effect": "Friendly units have a Ward(6+) while they are contesting an objective you control.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -218,7 +235,9 @@ export const Factions = {
                     "effect": "The Lurking Vermintide is completed during the deployment phase.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    "special": battleTraitSpecials.multiple
+                    "special": battleTraitSpecials.multiple,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -227,14 +246,16 @@ export const Factions = {
                     "name": "Warpstone Laced Bullets",
                     "effect": "Pick a ranged weapon on a friendly unit.  The weapon has Crit (Mortal) this phase.",
                     "once": onces.battle,
-                    "phase": phases.shooting
+                    "phase": phases.shooting,
+                    "tags": []
                 },
                 {
                     "id": "toQuickToHit",
                     "name": "To Quick to Hit",
                     "effect": "No mortal damaged is inflicted on friendly units when they use Retreat.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -279,7 +300,9 @@ export const Factions = {
                     "effect": "Pick a friendly unit that is not in combat.  That untit can use Normal Move ability as if it were your movement phase. ",
                     "once": onces.phase,
                     "phase": phases.movement,
-                    "special": battleTraitSpecials.none
+                    "special": battleTraitSpecials.none,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -288,14 +311,16 @@ export const Factions = {
                     "name": "Warpstone Laced Armor",
                     "effect": "Your Stormfields unit has a Ward (4+) this phase.",
                     "once": onces.battle,
-                    "phase": phases.anycombat
+                    "phase": phases.anycombat,
+                    "tags": []
                 },
                 {
                     "id": "endlessSwarmOfRats",
                     "name": "Endless Swarm of Rats",
                     "effect": "When a friendly Clanrats unit uses it Seething Swarm abililty, you can return D6 slain models to that unit instead of D3.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -342,6 +367,8 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.table,
+                    
+                    
                 },
             ],
             "regimentAbilities": [
@@ -350,14 +377,16 @@ export const Factions = {
                     "name": "The Dead Banner",
                     "effect": "Start of first battle round.  Pick a friendly Chaos Warrior or Chaos Knight.  Immediately roll on the Eye of the Gods.",
                     "once": onces.battle,
-                    "phase": phases.start
+                    "phase": phases.start,
+                    "tags": []
                 },
                 {
                     "id": "fierceConquerors",
                     "name": "Fierce Conquerors",
                     "effect": "Add 3 to the control scores of friendly Chaos Warriors units.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -404,6 +433,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.table,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -412,14 +442,16 @@ export const Factions = {
                     "name": "Murderous Epiphany",
                     "effect": "All friendly units gain the Blood Rites passive abiliity they would have gained at the start of the net battle round(they keep this ability for the rest of the battle, but they do not gain it for a second time at the start of the next battle round).",
                     "once": onces.battle,
-                    "phase": phases.hero
+                    "phase": phases.hero,
+                    "tags": []
                 },
                 {
                     "id": "blessingOfKhaine",
                     "name": "Blessing of Khaine",
                     "effect": "Pick a friendly unit wholly within 12\" of your general.  You cannot pick your general.Add 1 to ward rolls for the unit this phase (only once per round).",
                     "once": onces.none,
-                    "phase": phases.anycombat
+                    "phase": phases.anycombat,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -465,6 +497,8 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.table,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -473,14 +507,16 @@ export const Factions = {
                     "name": "Magic Tunnels",
                     "effect": "Start of first battle round.  Pick 2 friendly units, remove them from the battlefield and set them up again anywhere on the battfield more than 6\" from all enemy units.",
                     "once": onces.battle,
-                    "phase": phases.start
+                    "phase": phases.start,
+                    "tags": []
                 },
                 {
                     "id": "fyresteelThrowingAxe",
                     "name": "Fyresteel Throwing Axe",
                     "effect": "Pick any number of friendly units that are not in combat and are within 10\" of any enemy units.  For each of those units, pick a visible enemy unit with 10\" and roll a dice.  On 4+, inflict D3 mortal damage on that enemey unit.",
                     "once": onces.turn,
-                    "phase": phases.shooting
+                    "phase": phases.shooting,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -525,7 +561,9 @@ export const Factions = {
                     "effect": "You can use the following abilities.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    "special": battleTraitSpecials.multiple
+                    "special": battleTraitSpecials.multiple,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -534,14 +572,16 @@ export const Factions = {
                     "name": "Death Stalkers",
                     "effect": "Pick an enemry unit on the battlefield.  Add 1 to the Rend characteric of melee weapons used for attacks that target this unit..",
                     "once": onces.none,
-                    "phase": phases.start
+                    "phase": phases.start,
+                    "tags": []
                 },
                 {
                     "id": "chorusOfTerror",
                     "name": "Chorus of Terror",
                     "effect": "Subtract 1 from hit rolls for combat attacks that target a friendly unit that charged in the same turn.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -587,6 +627,8 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.table,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -595,14 +637,16 @@ export const Factions = {
                     "name": "The Lunatic Hordes",
                     "effect": "Pick a friendly Moonclan Stabbas unit.  You can return up to D3 slain models to the unit this turn.",
                     "once": onces.none,
-                    "phase": phases.hero
+                    "phase": phases.hero,
+                    "tags": []
                 },
                 {
                     "id": "theHandOfGork",
                     "name": "The Hand of Gork",
                     "effect": "Pick a friendly unit that is not in combat.  Remove that unit from the battlefield and set it up again more than 9\" from all enemy units.",
                     "once": onces.battle,
-                    "phase": phases.movement
+                    "phase": phases.movement,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -647,7 +691,9 @@ export const Factions = {
                     "effect": "Your Vargheists unit is not set up during the deployment phase.  Instead, from the third battle round onwards, it can use the Swoop Down Ability.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    "special": battleTraitSpecials.multiple
+                    "special": battleTraitSpecials.multiple,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -656,14 +702,16 @@ export const Factions = {
                     "name": "Endless Legions",
                     "effect": "Pick a friendly Deathrattle Skeletons unit.  You can set up a replacement unit with D6+4 models anywhere on the battlefield more than 6\" from all enemy units.",
                     "once": onces.battle,
-                    "phase": phases.movement
+                    "phase": phases.movement,
+                    "tags": []
                 },
                 {
                     "id": "ruinousChargers",
                     "name": "Ruinous Chargers",
                     "effect": "Pick your Blood Knights unit to use this ability if they charged this turn.  Inflick D3 mortal damage on each enemy unit it passed accross during the CHARGE abililty.",
                     "once": onces.none,
-                    "phase": phases.charge
+                    "phase": phases.charge,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -709,6 +757,8 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple,
+                    
+                    
                 }
             ],
             "regimentAbilities": [
@@ -717,14 +767,16 @@ export const Factions = {
                     "name": "Locus of Fecundity",
                     "effect": "Pick a friendly unit.  Heal D3 to that unit.",
                     "once": onces.phase,
-                    "phase": phases.hero
+                    "phase": phases.hero,
+                    "tags": []
                 },
                 {
                     "id": "infestedWithWonders",
                     "name": "Infested with Wonders",
                     "effect": "Eash time an friendly model is slain, before it is removed from the battlefield, you can pick a enemy model within 1\" of it and roll a dice.  On a 4+, inflict 1 mortal damage on that unit.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": []
                 }
             ],
             "enhancements": [
@@ -769,7 +821,8 @@ export const Factions = {
                     "effect": "You declared a non-charge move ability for the Arkanaut Frigate.  Pick a friendly INFANTRY unit that is wholly within the combat range of the Arkanaut Frigate and not in combat to be transported.  Remove the INFANTRY unit from the battlefield.  Then when the Arkanaut Frigate is ends its move, set up the infantry unit n the battlefield again, wholly within combat range of the Arknaunt Frigate and not in combat.  A unit cannot use the Charge ability if it was transported in the same turn.",
                     "once": onces.none,
                     "phase": phases.movement,
-                    "special": battleTraitSpecials.none
+                    "special": battleTraitSpecials.none,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -778,7 +831,8 @@ export const Factions = {
                     "name": "Assault Boats",
                     "effect": "Pick a friendly unit that was transported this turn to use this ability.  That unit can still use CHARGE Abilities later in the turn.",
                     "once": onces.battle,
-                    "phase": phases.movement
+                    "phase": phases.movement,
+                    "tags": []
                 },
                 {
                     "id": "disengage",
@@ -786,6 +840,7 @@ export const Factions = {
                     "effect": "Pick a friendly Arkanaut Frigate to use this ability.  If that unit uses a RETREAT ability this phase, no mortal damage is inflicted on it and it can still use SHOOT abilities later in this turn.",
                     "once": onces.battle,
                     "phase": phases.movement,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -830,7 +885,8 @@ export const Factions = {
                     "effect": "Roll 9 dice and put them to one side.  These are your destiny dice.  During the battle, instead of rolling the dice for 1 of the rolls from the list opposite, you can pick one of your destiny dice and use it as the roll.  Once a destiny dice has been used, it is discarded.  If you want to replace a roll that uses more than one D6, you must use the same number of Destiny Dice.  (2 dice to replace 2D6 casting roll).  The following can be replaced with destiny dice:  Casting Rolls, Run Rolls, Charge Rolls, Hitt Rolls, Wound Rolls, Save Rolls (You must still modify the save by the Rend)",
                     "once": onces.none,
                     "phase": phases.passive,
-                    "special": battleTraitSpecials.none
+                    "special": battleTraitSpecials.none,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -839,7 +895,8 @@ export const Factions = {
                     "name": "Transient Forms",
                     "effect": "Rll a dice each time a friend Kairic Acolytes model is slain in a combat phase.  On a 4+, you can return 1 slain model to the friendly Tzaangors unit within 9\" of the slaim model.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": []
                 },
                 {
                     "id": "eternalConflagration",
@@ -847,6 +904,7 @@ export const Factions = {
                     "effect": "Add 1 to the Rend charactesistic of ranged weapons used by friendly Flamers of Tzeentch units.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -891,7 +949,8 @@ export const Factions = {
                     "effect": "Pivk your general to use this ability, then pick another friendly unit wholly within 12\" of them to be the target.  You general and the garget has STRIKE-FIRST this phase",
                     "once": onces.battle,
                     "phase": phases.combat,
-                    "special": battleTraitSpecials.none
+                    "special": battleTraitSpecials.none,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -900,14 +959,16 @@ export const Factions = {
                     "name": "Noisy Racket",
                     "effect": "subtract 1 from wound rolls for attacks made by enemy units in the first battle round.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": [],
                 },
                 {
                     "id": "coveredInMud",
                     "name": "Covered In Mud",
                     "effect": "In the first Battle round.  Pick a friendly unit to use this ability.  In this battle, that unit is not visible to enemy models that are more than 12\" away from it.",
                     "once": onces.battle,
-                    "phase": phases.start
+                    "phase": phases.start,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -952,7 +1013,8 @@ export const Factions = {
                     "effect": "Pick your general to use this ability if they are in combat.  Pick 1 of the following.  Gargantuan Jaws:  Pick an enemy unit in combat with your general and roll a dice.  If the roll exceeds that unit's Health, 1 model in that unit is slain. Roar:  Pick an enemy unit in combat with your general.  Subtract D6 from that unit's control score this turn.",
                     "once": onces.none,
                     "phase": phases.anycombat,
-                    "special": battleTraitSpecials.none
+                    "special": battleTraitSpecials.none,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -961,14 +1023,16 @@ export const Factions = {
                     "name": "Predatory Fighters",
                     "effect": "Roll a dice for each enemy unit in combat with any friendly units.  On a 3+, inflict mortal damage on the unit being rolled for.",
                     "once": onces.phase,
-                    "phase": phases.end
+                    "phase": phases.end,
+                    "tags": []
                 },
                 {
                     "id": "templeCityGuardians",
                     "name": "Templa City Guardians",
                     "effect": "Friendly units have Ward (6+) while they are wholly within friendly territory.",
                     "once": onces.none,
-                    "phase": phases.passive
+                    "phase": phases.passive,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1014,6 +1078,7 @@ export const Factions = {
                     "once": onces.phase,
                     "phase": phases.combat,
                     "special": battleTraitSpecials.none,
+                    
                 },
                 {
                     "id": "powerOfHysh",
@@ -1042,6 +1107,7 @@ export const Factions = {
                     "effect": "Add 1 to casting rolls for your general",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 },
                 {
                     "id": "heightenedReflexes",
@@ -1049,6 +1115,7 @@ export const Factions = {
                     "effect": "Add 1 to save rolls for friendly units that use a FIGHT ability immediately after another friendly unit because of the 'Lightning Reactins' ability, until the end of the phase.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1094,6 +1161,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.table,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -1103,6 +1171,7 @@ export const Factions = {
                     "effect": "Add 1 to the Rend characteristic of melee weapons used by friendly Namarti Thralls units that charged in the same turn.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 },
                 {
                     "id": "etherseaPredator",
@@ -1110,6 +1179,7 @@ export const Factions = {
                     "effect": "Pick a friendly Cavalry unit that used a FIGHT ability this turn.  Heal (D3) that unit.",
                     "once": onces.none,
                     "phase": phases.end,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1156,6 +1226,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -1165,6 +1236,7 @@ export const Factions = {
                     "effect": "Add 1 to run rolls and charge rolls for friendly units.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 },
                 {
                     "id": "defendersOfTheRealm",
@@ -1172,6 +1244,7 @@ export const Factions = {
                     "effect": "Add 1 to save rolls for friendly units that are contesting an objective you control.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1217,6 +1290,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -1226,6 +1300,7 @@ export const Factions = {
                     "effect": "Each time an enemy model is slain by a friendly unit's Stuff'Em in Me Bag ability, Heal (D3) that uit.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 },
                 {
                     "id": "earthShakingCharge",
@@ -1233,6 +1308,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit that charged this phase to use this ability, then roll a dice for each enemy unit in combat with it.  On a 3+, that enemy unit has STRIKE-LAST this turn.",
                     "once": onces.phase,
                     "phase": phases.charge,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1278,6 +1354,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.table,
+                    
                 }
             ],
             "regimentAbilities": [
@@ -1287,6 +1364,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit to use this ability.  That unit has STRIKE-FIRST this phae.",
                     "once": onces.battle,
                     "phase": phases.anycombat,
+                    "tags": [],
                 },
                 {
                     "id": "locusOfDiversion",
@@ -1294,6 +1372,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit to use this ability.  For the rest of the turn, that unit can use a RETREAT ability and still use a SHOOT ability and/or CHARGE abilities late in the turn.",
                     "once": onces.turn,
                     "phase": phases.movement,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1340,6 +1419,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple,
+                    
             }
             ],
             "regimentAbilities": [
@@ -1349,6 +1429,7 @@ export const Factions = {
                     "effect": "Roll a dice.  On a 2+, you recieve 1 blood tithe point.",
                     "once": onces.turn,
                     "phase": phases.start,
+                    "tags": [],
                 },
                 {
                 "id": "bloodwokenRunies",
@@ -1356,6 +1437,7 @@ export const Factions = {
                     "effect": "Friendly unit have Ward (5+) if they have used a FIGHT ability in the same phase.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1401,6 +1483,12 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple,
+                    "dialog": {
+                    
+                            "id": "ossiarchCommand",
+                            "name": "Ossiarch Commands",
+                            "effect": "At the start of the battle round, you recieve 2 Oassiarch command points.  Each Ossirach Command costs 1 Ossiarch command point to use.  The same unit cannot use more than one Ossiarch Command in the same plase.  At the end of the battle round, all remaining Ossiarch command points are lost.",
+                    }
             }
             ],
             "regimentAbilities": [
@@ -1410,7 +1498,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit to use this ability.  Unit the end of the phase, add 1 to ward rolls for that unit.",
                     "once": onces.battle,
                     "phase": phases.combat,
-                    "tag": "ossiarchCommand"
+                    "tags": ["ossiarchCommand"],
                 },
                 {
                 "id": "reformRanks",
@@ -1418,7 +1506,7 @@ export const Factions = {
                     "effect": "Pick a friendly Mortek Guard unit in combat to use this ability.  That unit can use a RETREAT ability this phase without any mortal damage being inflicted on it.",
                     "once": onces.battle,
                     "phase": phases.movement,
-                    "tag": "ossiarchCommand"
+                    "tags": ["ossiarchCommand"],
                 }
             ],
             "enhancements": [
@@ -1463,7 +1551,8 @@ export const Factions = {
                     "effect": "Each of these can be used once per turn, at tne end of any turn. ",
                     "once": onces.none,
                     "phase": phases.passive,
-                    "special": battleTraitSpecials.multiple
+                    "special": battleTraitSpecials.multiple,
+                    
             }
             ],
             "regimentAbilities": [
@@ -1472,14 +1561,16 @@ export const Factions = {
                     "name": "Vengeful Spirits of the Land",
                     "effect": "Once per trun, end of any turn.  Pick an enemy unit that is contesting an objective and roll a dice.  On a 4+, inflict D3 mortal damage on that enemy unit.",
                     "once": onces.turn,
-                    "phase": phases.end
+                    "phase": phases.end,
+                    "tags": [],
                 },
                 {
                 "id": "walkersOfTheHiddenPaths",
                     "name": "Walkers of the Hidden Paths",
                     "effect": "Pick a friendly unit that is within 3\" of any terrain features and not on combat.  Remove that unit from the battlefield and set it up again more that 6\" from all enemy units.  That unit cannot use MOVE abilities for the rest of the phase.",
                     "once": onces.turn,
-                    "phase": phases.movement
+                    "phase": phases.movement,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1525,6 +1616,7 @@ export const Factions = {
                     "once": onces.none,
                     "phase": phases.passive,
                     "special": battleTraitSpecials.multiple,
+                    
             }
             ],
             "regimentAbilities": [
@@ -1534,6 +1626,7 @@ export const Factions = {
                     "effect": "Pick any number of friendly units that charged this phase.  For each of those units, pick an enemy unit in combat with it and roll a dice.  On a 4+ inflict 1 mortal damage on that enemy unit.",
                     "once": onces.phase,
                     "phase": phases.charge,
+                    "tags": [],
                 },
                 {
                 "id": "bredForToughness",
@@ -1541,6 +1634,7 @@ export const Factions = {
                     "effect": "Add 1 to health characterstic of your Ironblaster and your Mournfang Pack unit.",
                     "once": onces.none,
                     "phase": phases.passive,
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1586,6 +1680,7 @@ export const Factions = {
                     "once": onces.battle,
                     "phase": phases.start,
                     "special": battleTraitSpecials.none,
+                    
             }
             ],
             "regimentAbilities": [
@@ -1595,6 +1690,7 @@ export const Factions = {
                     "effect": "Use this ability before any CHARGE abilities are used this phase.  Friendly CAVALRY units that charge this phase have STRIKE-FIRST this turn.",
                     "once": onces.battle,
                     "phase": phases.charge,
+                    "tags": [],
                 },
                 {
                 "id": "ironweldDiscipline",
@@ -1602,6 +1698,7 @@ export const Factions = {
                     "effect": "Pick your Ironweld Great Cannon to use this ability.  It can use the SHOOT ability as if it were your shooting phase.",
                     "once": onces.battle,
                     "phase": phases.shooting,
+                    "tags": [],
                 }
             ],
             "enhancements": [

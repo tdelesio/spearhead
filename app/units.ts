@@ -1,12 +1,12 @@
 import { factions } from "./factions";
 import { phases } from "./phase";
 
-export type FactionUnits = {
+export interface FactionUnits {
     id: string;
     units: Unit[];
 }
 
-export type Unit = {
+export interface Unit  {
     id: string;
     name: string;
     move: string;
@@ -54,6 +54,7 @@ export type Unit = {
 
 }
 
+
 export function getAttacksForRound(unit: Unit, phase: number): Attack[] {
     switch (phase) {
         case phases.shooting:
@@ -65,14 +66,15 @@ export function getAttacksForRound(unit: Unit, phase: number): Attack[] {
     }
 }
 
-export type Ability = {
+export interface Ability {
     id: string;
     name: string;
     effect: string;
     once: boolean;
+    tags?: string[]; 
 }
 
-export type Attack = {
+export interface Attack  {
     id: string;
     name: string;
     range: number;
@@ -6865,7 +6867,7 @@ export const Units = {
                     "name": "Reknit Construct",
                     "effect": "Pick a friendly unit wholly within 12\" of this unit and that is not in combat to be the target.  Heal (D3) the target.  If the target until is not damage, you can instead return a number of slain models to it that have combined health characteristic of D3 or less.",
                     "once": false,
-                    "tag": "ossiarchCommand"
+                    "tags": ["ossiarchCommand"]
                 }],
             },
             "End": {
@@ -6903,7 +6905,7 @@ export const Units = {
                     "name": "Nadirite Assault",
                     "effect": "Until the end of the phase, this unit's melee weapon have Crit (2 Hits)",
                     "once": false,
-                    "tag": "ossiarchCommand"
+                    "tags": ["ossiarchCommand"],
                 }]
             },
             "Movement": {
@@ -6983,7 +6985,7 @@ export const Units = {
                         "name": "Deathrider Wedge",
                         "effect": "The following effect apply this phase.  Models i this unit can pass across enemy INFANTRY models as if this unit had FLY.  After this unit has charged, you can pick an enemy unit that it passed across and roll a dice.  On a 2+, inflict D3 mortal damage on that enemy unit.",
                         "once": false,
-                        "tag": "ossiarchCommand"
+                        "tags": ["ossiarchCommand"]
                     }
                 ]
             },

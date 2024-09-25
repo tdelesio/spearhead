@@ -196,13 +196,6 @@ export const multiples = {
                     "once": onces.battle,
                     "phase": phases.movement,
                 },
-                {
-                    "id": "ossiarchCommands",
-                    "name": "Ossiarch Commands",
-                    "effect": "At the start of the battle round, you recieve 2 Oassiarch command points.  Each Ossirach Command costs 1 Ossiarch command point to use.  The same unit cannot use more than one Ossiarch Command in the same plase.  At the end of the battle round, all remaining Ossiarch command points are lost.",
-                    "once": onces.none,
-                    "phase": phases.passive,
-                }
 
             ]
         },

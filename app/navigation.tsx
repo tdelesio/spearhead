@@ -4,6 +4,19 @@ import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { Phase } from './phase'
 
+  //Link to return to home page
+  export function Home() {
+    return (
+      <Link className="text-white"
+        href={{
+          pathname: '/',
+
+        }}
+      >
+        Home
+      </Link>
+    )
+  }
 
 export default function LeftNav() {
   const pathname = usePathname()

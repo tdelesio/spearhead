@@ -21,6 +21,8 @@ export const phases = Object.freeze({
 
 });
 
+export type Phases = 'Passive' | 'Start' | 'Hero' | 'Movement' | 'Shooting' | 'Charge' | 'Combat' | 'End';
+
 export const Phase = {
     "phases": [
         {

@@ -50,7 +50,7 @@ export default function HomePage() {
               description: "Bugs/Faction Requests/Feature Requests",
             },
             {
-              href: "https://patreon.com/Agesofsigmar",
+              href: "https://account.venmo.com/u/Tim-Delesio",
               title: "Thank Me",
               description: "Like what you see? Buy me a coffee.",
             },
