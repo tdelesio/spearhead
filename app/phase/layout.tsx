@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import LeftNav from "../left-nav";
 import { ReactNode, Suspense } from "react";
 import { Analytics } from "@vercel/analytics/react";
 
