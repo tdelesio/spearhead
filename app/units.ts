@@ -1,4 +1,4 @@
-import { factions } from "./factions";
+import { factions, onces } from "./factions";
 import { phases } from "./phase";
 
 export interface FactionUnits {
@@ -70,8 +70,9 @@ export interface Ability {
     id: string;
     name: string;
     effect: string;
-    once: boolean;
+    once: number;
     tags?: string[]; 
+    phase?: number;
 }
 
 export interface Attack  {
@@ -119,7 +120,7 @@ export const Units = {
                             "id": "PlanTheAttack",
                             "name": "Plan the Attack",
                             "effect": "Pick an objective you do not control.  For the rest of the turn, add 1 to hit rolls for combat attacks made by friendly units that target enemy units contesting that objective.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Movement": {
@@ -132,7 +133,7 @@ export const Units = {
                             "id": "DeliverJudgement",
                             "name": "Deliver Judgement",
                             "effect": "Pick a friendly wholly within 12\".  The target can use 2 Fight abilites this phase.  After the first is used, the target has Strike-Last",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Charge": {
@@ -169,7 +170,7 @@ export const Units = {
                             "id": "DeliverJudgement",
                             "name": "Deliver Judgement",
                             "effect": "Pick a friendly wholly within 12\".  The target can use 2 Fight abilites this phase.  After the first is used, the target has Strike-Last",
-                            "once": true,
+                            "once": onces.battle,
                         }],
                     },
                     "End": {
@@ -197,7 +198,7 @@ export const Units = {
                             "id": "SenseUnholySorcery",
                             "name": "Sense Unholy Sorcery",
                             "effect": "This unit's Gryph-crow is a token. This unit has Ward (5+) while its Gryph-crow is on the battlefield. If you make an unmodied ward roll of 1 for this unit, remove its Gryph-crow from the battlefield.  Click this ability if you roll a 1 to remove ward.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Start":
@@ -211,7 +212,7 @@ export const Units = {
                             "id": "CleansingFires",
                             "name": "Cleansing Fires",
                             "effect": "Pick a visible enemy unit within 12\" and make a chanting roll of D6.  On a 3+, roll a dice for each model in the target unut.  For each 5+ inflict 1 mortal damage on target unit.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Movement": {
@@ -279,7 +280,7 @@ export const Units = {
                             "id": "Skirmishers",
                             "name": "Skirmishers",
                             "effect": "The unit has a coherency range of 2\"",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -297,7 +298,7 @@ export const Units = {
                             "id": "callForReinforcement",
                             "name": "Call for Reinforcements",
                             "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Shooting": {
@@ -323,7 +324,7 @@ export const Units = {
                                 "id": "HearaldsOfRighteousness",
                                 "name": "Hearalds Of Righteousness",
                                 "effect": "When you make a charge roll for this unit, roll 1 additional dice.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -369,7 +370,7 @@ export const Units = {
                             "id": "StalwartDefenders",
                             "name": "Stalwart Defenders",
                             "effect": "Add 3 to this unit's control score while it contests an objective wholly within friendly territor",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -387,7 +388,7 @@ export const Units = {
                             "id": "callForReinforcement",
                             "name": "Call for Reinforcements",
                             "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Shooting": {
@@ -432,7 +433,7 @@ export const Units = {
                             "id": "StalwartDefenders",
                             "name": "Stalwart Defenders",
                             "effect": "Add 3 to this unit's control score while it contests an objective wholly within friendly territor",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     }
 
@@ -464,7 +465,7 @@ export const Units = {
                             "id": "corneredRat",
                             "name": "Cornered Rat",
                             "effect": "When this unit is damaged, add 3 to the Attacks characteristic of its Warpforged Halbred.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -562,13 +563,13 @@ export const Units = {
                             "id": "willOfTheHornedRat",
                             "name": "Will Of The Horned Rat",
                             "effect": "Pick a friendly unit wholly within 13\" then roll a dice.  On a 3+, add the roll to the targets control score until the start of your next turn.",
-                            "once": false,
+                            "once": onces.none,
                         },
                         {
                             "id": "wither",
                             "name": "Wither",
                             "effect": "Pick a visable enemy unit within 13\" of this unit to be the target, then making a casting rolling 2D6.  On a 6+, inflict D3 mortal damage on the target.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Movement": {
@@ -655,7 +656,7 @@ export const Units = {
                                 "id": "more-moreWarpEnergy",
                                 "name": "More More Warp Energy",
                                 "effect": "When delcaring shoot and it has not used move ability this turn.  Roll a dice.  On a 2+, set the Damage characteristic of the Warplock Musket to 3 this phase.  On a 1, inflict D3 mortal damage to this unit.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -718,7 +719,7 @@ export const Units = {
                             "id": "callForReinforcement",
                             "name": "Call for Reinforcements",
                             "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Shooting": {
@@ -752,7 +753,7 @@ export const Units = {
                             "id": "seetingSwarm",
                             "name": "Seeting Swarm",
                             "effect": "You can return D3 slain models to this unit.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     }
 
@@ -826,7 +827,7 @@ export const Units = {
                             "id": "unleashedWarpFury",
                             "name": "Unleashed Warp Fury",
                             "effect": "Inflict D3 mortal damage on this uniit.  Then add 1 to the attacks characteristic of its melee weapons this phase.",
-                            "once": true,
+                            "once": onces.battle,
                         }],
                     },
                     "End": {
@@ -870,13 +871,13 @@ export const Units = {
                         "id": "willOfTheHornedRat",
                         "name": "Will Of The Horned Rat",
                         "effect": "Pick a friendly unit wholly within 13\" then roll a dice.  On a 3+, add the roll to the targets control score until the start of your next turn.",
-                        "once": false,
+                        "once": onces.none,
                     },
                     {
                         "id": "wither",
                         "name": "Wither",
                         "effect": "Pick a visable enemy unit within 13\" of this unit to be the target, then making a casting rolling 2D6.  On a 6+, inflict D3 mortal damage on the target.",
-                        "once": false,
+                        "once": onces.none,
                     }]
                 },
                 "Movement": {
@@ -933,7 +934,7 @@ export const Units = {
                         "id": "shockGauntlets",
                         "name": "Shock Gauntlets",
                         "effect": "Each time an attack with this unit's Shock Gauntlets score a critical hit, that attack scores D6 hits instead of 1 (make a wounds roll for each).",
-                        "once": false,
+                        "once": onces.none,
                     }]
                 },
                 "Start":
@@ -1033,7 +1034,7 @@ export const Units = {
                         "id": "warpLightningBlaster",
                         "name": "Warp Lightning Blaster",
                         "effect": "Each attack made with this weapon in a single phase must target the same enemy unit.  Each hit inflicts 1 mortal damage on the target and the attack sequence ends.",
-                        "once": false,
+                        "once": onces.none,
                     }]
                 },
                 "Start":
@@ -1123,7 +1124,7 @@ export const Units = {
                         "id": "callForReinforcement",
                         "name": "Call for Reinforcements",
                         "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                        "once": true,
+                        "once": onces.battle,
                     }]
                 },
                 "Shooting": {
@@ -1157,7 +1158,7 @@ export const Units = {
                         "id": "seethingSwarm",
                         "name": "Seething Swarm",
                         "effect": "You can return D3 slain models to this unit.",
-                        "once": false,
+                        "once": onces.none,
                     }]
                 }
 
@@ -1195,7 +1196,7 @@ export const Units = {
                             "id": "favouredOfThePantheon",
                             "name": "Favoured Of The Pantheon",
                             "effect": "RoLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Movement": {
@@ -1229,7 +1230,7 @@ export const Units = {
                             "id": "ironWilledChampion",
                             "name": "Iron Willed Champion",
                             "effect": "Pick a friendly unit wholly within 12\" and roll a dice.  On a 2+, add 1 to the hit rolls for attacks made by this unit this phase.",
-                            "once": false,
+                            "once": onces.none,
                         }],
                     },
                     "End": {
@@ -1278,7 +1279,7 @@ export const Units = {
                             "id": "swiftDeath",
                             "name": "Swift Death",
                             "effect": "If this unit charged this phase, pick an enemy unit within 1\" to be the target and roll the dice.  On a 2+, inflict D3 mortal damage on the target.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Combat":
@@ -1345,7 +1346,7 @@ export const Units = {
                             "id": "bringersOfDesolation",
                             "name": "Bringers Of Desolation",
                             "effect": "Add 1 to wound rolls for combat attacks made by this unit that target an enemy unit that is contesting an objective you do not conotrl.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -1411,7 +1412,7 @@ export const Units = {
                             "id": "impalingCharge",
                             "name": "Impaling Charge",
                             "effect": "If this unit charged this phase, add 1 to the Rend characteristic of this unit's melee weapons this phase.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -1437,7 +1438,7 @@ export const Units = {
                             "id": "impalingCharge",
                             "name": "Impaling Charge",
                             "effect": "If this unit charged this phase, add 1 to the Rend characteristic of this unit's Cursed Lance this phase.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Combat":
@@ -1470,7 +1471,7 @@ export const Units = {
                             "id": "impalingCharge",
                             "name": "Impaling Charge",
                             "effect": "If this unit charged this phase, add 1 to the Rend characteristic of this unit's melee weapons this phase.",
-                            "once": false,
+                            "once": onces.none,
                         }],
                     },
                     "End": {
@@ -1503,7 +1504,7 @@ export const Units = {
                             "id": "allOutSlaughter",
                             "name": "All Out Slaughter",
                             "effect": "Pick a friendly unit wholly within 12\".  Until the start of your next turn, add 1 to hit rolls for combat attacks made by this target.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -1517,7 +1518,7 @@ export const Units = {
                             "id": "allOutSlaughter",
                             "name": "All Out Slaughter",
                             "effect": "Pick a friendly unit wholly within 12\".  Until the start of your next turn, add 1 to hit rolls for combat attacks made by this target.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Movement": {
@@ -1568,7 +1569,7 @@ export const Units = {
                             "id": "turnedToCrystal",
                             "name": "Turned To Crystal",
                             "effect": "Pick an Enemy unit with 1\" of this unit to target and roll a dice.  On a 2+ inflict 1 mortal damage on the target.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     }
 
@@ -1592,7 +1593,7 @@ export const Units = {
                             "id": "heartSeekers",
                             "name": "Heart Seekers",
                             "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Start":
@@ -1627,7 +1628,7 @@ export const Units = {
                                 "id": "heartSeekers",
                                 "name": "Heart Seekers",
                                 "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -1687,7 +1688,7 @@ export const Units = {
                             "id": "doomfireBolt",
                             "name": "Doomfire",
                             "effect": "Pick a visibile enemy with 12\" of this unit to be the target and make a casting roll of 2D6.  On a 6+ inflict D3 mortal damage on the target.",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Movement": {
@@ -1696,7 +1697,7 @@ export const Units = {
                             "id": "callForReinforcement",
                             "name": "Call for Reinforcements",
                             "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Shooting": {
@@ -1774,7 +1775,7 @@ export const Units = {
                                 "id": "frenziedFervour",
                                 "name": "Frenzied Fervour",
                                 "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -1793,7 +1794,7 @@ export const Units = {
                             "id": "callForReinforcement",
                             "name": "Call for Reinforcements",
                             "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Shooting": {
@@ -1807,7 +1808,7 @@ export const Units = {
                                 "id": "frenziedFervour",
                                 "name": "Frenzied Fervour",
                                 "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -1830,7 +1831,7 @@ export const Units = {
                             "id": "frenziedFervour",
                             "name": "Frenzied Fervour",
                             "effect": "Add 1 to Rend characteristic of this unit's melee weapon if they charged in the same turn.",
-                            "once": false,
+                            "once": onces.none,
                         }],
                     },
                     "End": {
@@ -1865,7 +1866,7 @@ export const Units = {
                                 "id": "iconOfGrimnir",
                                 "name": "Icon of Grimnir",
                                 "effect": "Add 1 to save rolls for friendly units while they are wholly within 12\" of this unit.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -1880,7 +1881,7 @@ export const Units = {
                             "id": "plantTheIcon",
                             "name": "Plant The Icon",
                             "effect": "For the rest of the turn, friednly units have ward 5+ while they are within 12\" of this unit.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Movement": {
@@ -1938,7 +1939,7 @@ export const Units = {
                                 "id": "dutyUntoDeath",
                                 "name": "Duty Unto Death",
                                 "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -1953,7 +1954,7 @@ export const Units = {
                             "id": "",
                             "name": "",
                             "effect": "",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Movement": {
@@ -1988,7 +1989,7 @@ export const Units = {
                                 "id": "dutyUntoDeath",
                                 "name": "Duty Unto Death",
                                 "effect": "While your general is wholly within this unit's combat range, both this unit and your general have ward 5+",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ],
                     },
@@ -2018,7 +2019,7 @@ export const Units = {
                                 "id": "whirlwhindOfDestruction",
                                 "name": "Whirlwind Of Destruction",
                                 "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -2033,7 +2034,7 @@ export const Units = {
                             "id": "",
                             "name": "",
                             "effect": "",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Movement": {
@@ -2051,7 +2052,7 @@ export const Units = {
                                 "id": "whirlwhindOfDestruction",
                                 "name": "Whirlwind Of Destruction",
                                 "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ]
                     },
@@ -2075,7 +2076,7 @@ export const Units = {
                                 "id": "whirlwhindOfDestruction",
                                 "name": "Whirlwind Of Destruction",
                                 "effect": "Add 1 to the attack of this unit's melee weapoons if it charged in the same turn.",
-                                "once": false,
+                                "once": onces.none,
                             }
                         ],
                     },
@@ -2118,7 +2119,7 @@ export const Units = {
                             "id": "discorporate",
                             "name": "Discorporate",
                             "effect": "Pick a friendly unit wholly within 9\" of this unit to be the target.  Unit the start of the next turn, the target has Ward 5+",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Movement": {
@@ -2153,7 +2154,7 @@ export const Units = {
                             "id": "discorporate",
                             "name": "Discorporate",
                             "effect": "Pick a friendly unit wholly within 9\" of this unit to be the target.  Unit the start of the next turn, the target has Ward 5+",
-                            "once": false,
+                            "once": onces.none,
                         }],
                     },
                     "End": {
@@ -2181,7 +2182,7 @@ export const Units = {
                             "id": "drawnToWar",
                             "name": "Drawn To War",
                             "effect": "Your general has Ward (4+) while they are within 1\" of this unit",
-                            "once": false,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -2247,7 +2248,7 @@ export const Units = {
                             "id": "reapedLikeCorn",
                             "name": "Reaped Like Corn",
                             "effect": "Combat attacks made by this unit score ciritcal hits on unmodified hit rolls of 5+ if the target unit has 5 or more models.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Start": {
@@ -2291,7 +2292,7 @@ export const Units = {
                             "id": "reapedLikeCorn",
                             "name": "Reaped Like Corn",
                             "effect": "Combat attacks made by this unit score ciritcal hits on unmodified hit rolls of 5+ if the target unit has 5 or more models.",
-                            "once": true,
+                            "once": onces.battle,
                         }],
                     },
                     "End": {
@@ -2328,7 +2329,7 @@ export const Units = {
                             "id": "chillingHorde",
                             "name": "Chilling Horde",
                             "effect": "Add 1 to wound rolls for combat attacks made by this unit if it charged in the same turn.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Movement": {
@@ -2337,7 +2338,7 @@ export const Units = {
                             "id": "callForReinforcement",
                             "name": "Call for Reinforcements",
                             "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                            "once": true,
+                            "once": onces.battle,
                         }]
                     },
                     "Shooting": {
@@ -2351,7 +2352,7 @@ export const Units = {
                                 "id": "chillingHorde",
                                 "name": "Chilling Horde",
                                 "effect": "Add 1 to wound rolls for combat attacks made by this unit if it charged in the same turn.",
-                                "once": true,
+                                "once": onces.battle,
                             }
                         ]
                     },
@@ -2375,7 +2376,7 @@ export const Units = {
                             "id": "chillingHorde",
                             "name": "Chilling Horde",
                             "effect": "Add 1 to wound rolls for combat attacks made by this unit if it charged in the same turn.",
-                            "once": true,
+                            "once": onces.battle,
                         }],
                     },
                     "End": {
@@ -2417,7 +2418,7 @@ export const Units = {
                     "id": "ImDaBoss",
                     "name": "I'm Da Boss",
                     "effect": "Pick a friendly Moonclan Stabbas unit wholly within 12\" of this unit.  Pick either Beckon the Loonic Horders:  If the target unit is not in combat, you can return D6 slain models to it.  OR  Stab Em Good: Add 1 to hit rolls for attacks made by this unit until the end of the phase.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -2487,7 +2488,7 @@ export const Units = {
                     "id": "boingBoingBoing",
                     "name": "Boing Boing Boing",
                     "effect": "Pick an enemy unit that any models in this unit passed across across this phase to be the target, then roll a dice for each model in that unit.  For each 4+, inflict 1 mortal damage on that unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Shooting": {
@@ -2556,7 +2557,7 @@ export const Units = {
                     "id": "regeneration",
                     "name": "Regeneration",
                     "effect": "Heal D3 to this unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Hero": {
@@ -2641,7 +2642,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -2650,7 +2651,7 @@ export const Units = {
                     "id": "netters",
                     "name": "Netters",
                     "effect": "Pick an enemry infantry unit in combat with this unit. to get the target.  Roll a dice, on 2+, subtract 1 from hit rolls for attack modifiers made by the target this phase.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Charge": {
@@ -2676,7 +2677,7 @@ export const Units = {
                     "id": "netters",
                     "name": "Netters",
                     "effect": "Pick an enemry infantry unit in combat with this unit. to get the target.  Roll a dice, on 2+, subtract 1 from hit rolls for attack modifiers made by the target this phase.",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -2735,7 +2736,7 @@ export const Units = {
                     "id": "champioinOfSigmar",
                     "name": "Champioin of Sigmar",
                     "effect": "This unit has ward (5+) this phase.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Charge": {
@@ -2773,7 +2774,7 @@ export const Units = {
                     "id": "champioinOfSigmar",
                     "name": "Champioin of Sigmar",
                     "effect": "This unit has ward (5+) this phase.",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -2801,7 +2802,7 @@ export const Units = {
                     "id": "lightningStrikes",
                     "name": "Lightning Strikes",
                     "effect": "Add 1 to the Damage chararacterstic of this unit's Celestrial Greatswords for the attacks that target an enemy unit that has 5 or more models.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -2877,7 +2878,7 @@ export const Units = {
                     "id": "bannerOfTheReforged",
                     "name": "Banner of the Reforged",
                     "effect": "Pick a friendly unit wholly within 12\" of this unit to be the target.  Heal (D3) the target, add 3 to that unit's control score until the start of your next turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -2956,7 +2957,7 @@ export const Units = {
                     "id": "forceOfTheFallingStar",
                     "name": "Force of the Falling Star",
                     "effect": "If this unit charged this phae and the unmodified charge roll was 8+, pick an enemy unit within 1\" of it to be the target.  The target has STRIKE-LAST this turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Combat":
@@ -2978,7 +2979,7 @@ export const Units = {
                     "id": "",
                     "name": "",
                     "effect": "",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -3037,7 +3038,7 @@ export const Units = {
                     "id": "azyrUnleashed",
                     "name": "Azyr Unleashed",
                     "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target and roll a dice.  On a 2+, inflict D3 mortal wounds on that unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Combat":
@@ -3107,7 +3108,7 @@ export const Units = {
                     "id": "vileTransference",
                     "name": "Vile Transference",
                     "effect": "Pick a visbile enemy unit within 6\" of thisunit to be the target, then make a casting roll of 2D6.  On a 6+, roll a number of dice equal to the target's health.  For each 5+, inflict 1 mortal data on the target and Heal(1) this unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -3164,7 +3165,7 @@ export const Units = {
                     "id": "riderOfRuin",
                     "name": "Rider of Ruin",
                     "effect": "Models in this unit can pass across enemy infantry models as if this unit had FLY.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -3241,7 +3242,7 @@ export const Units = {
                     "id": "theScrentOfGore",
                     "name": "The Scrent of Gore",
                     "effect": "Add 1 to wound rolls for attacks made by this unit that target a damaged unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -3345,7 +3346,7 @@ export const Units = {
                     "id": "skeletonLegion",
                     "name": "Skeleton Legion",
                     "effect": "For each slain model from this unit, make a legion roll of D6.  For each 5+, return 1 slain model to this unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -3387,7 +3388,7 @@ export const Units = {
                     "id": "keepCountingImWatchingYou",
                     "name": "Keep Counting, I'm Watching You",
                     "effect": "Pick a friendly Plaguebearer unit wholly within 14\" of this unit to be the target.  Pick 1 of the following.  The effect lasts unti the start of your next turn.  Tally of Blows:  Add 1 to the Attack characteristric of the target unit's melee weapon.  Recorded Stamina:  Add 1 to save rolls for the target unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -3488,7 +3489,7 @@ export const Units = {
                     "id": "wrackAndRuin",
                     "name": "Wrack and Ruin",
                     "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target and roll a dice.  On a 2+, inflict D3 mortal damage on the target.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Combat":
@@ -3586,7 +3587,7 @@ export const Units = {
                     "id": "relentlessAttackers",
                     "name": "Relentless Attackers",
                     "effect": "Pick an enemy INFANTRY unit in combat with this unit to be the target and roll a dice for each model in this unit that is within the target unit's combat range.  For each roll that exceends the target's Health characteristic, inflict 1 mortal damage on the target.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             }
 
@@ -3610,7 +3611,7 @@ export const Units = {
                     "id": "cloudOfFlies",
                     "name": "Cloud of Flies",
                     "effect": "Subtract 1 from hit rolls for shooting attacks that target this unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -3691,7 +3692,7 @@ export const Units = {
                     "id": "alwaysTakeWhatYouAreOwed",
                     "name": "Always Take What You Are Owed",
                     "effect": "Pick a friendly Arkanaut Company unit wholly within 12\" of this unit to be the target.  Add D6 to the target's control score until the start of your next turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -3858,7 +3859,7 @@ export const Units = {
                     "id": "timedCharge",
                     "name": "Timed Charge",
                     "effect": "Pick an enemy unit in combat with this unit to be the target, then roll a dice.  On a 2+, inflict 1 mortal damage on the target and this unit can immediately use the RETREAT ability without any mortal damage being inflicted on it.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             }
 
@@ -3882,7 +3883,7 @@ export const Units = {
                     "id": "glorySeekers",
                     "name": "Glory Seekers",
                     "effect": "Add 1 to hit rolls for attacks made by this unit that target this unit contesting an objective.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -4015,7 +4016,7 @@ export const Units = {
                     "id": "battleDamaged",
                     "name": "Battle Damaged",
                     "effect": "While this unit has 10 or more damage points, the attack characteristic of its Heavy Skyhook is 1.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -4033,7 +4034,7 @@ export const Units = {
                     "id": "bombRacks",
                     "name": "Bomb Racks",
                     "effect": "Pick an enemy unit that this unit passed across this phase to be the target, then roll a dice.  On a 2+, inflict D3 mortal damage on the target.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -4134,7 +4135,7 @@ export const Units = {
                     "id": "boltOfChange",
                     "name": "Bolt of Change",
                     "effect": "Pick a visible enemy unit within 18\" of this unit to be the target, then make a casting roll of 2D6.  On a 6+, inflict D3 mortal damage on the target.  If any models are slain by this ability, you can pick a friendly Tazzangors unit wholly within 18\" of this unit and return 1 slain model to the Tazaangors unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -4241,7 +4242,7 @@ export const Units = {
                     "id": "gestaltSorcery",
                     "name": "Gestalt Sorcery",
                     "effect": "Make a ccasting roll of 2D6.  On a 6+, add 1 to the Rend Characteristic of this unit's Sorcerous Bolts this phase.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Charge": {
@@ -4304,7 +4305,7 @@ export const Units = {
                     "id": "slashingFins",
                     "name": "Slashing Fins",
                     "effect": "Pick an enemy unit that any models in this unit passed across this phase to be the target, then roll a dice for each model unit that did so.  For each 4+, inflict 1 mortal damage on the target.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Shooting": {
@@ -4358,7 +4359,7 @@ export const Units = {
                     "id": "longPlannedStrike",
                     "name": "Long Planned Strike",
                     "effect": "While this unit is wholly within enemy territory, its melee weapons have a Crit (2 Hits)",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -4425,7 +4426,7 @@ export const Units = {
                     "id": "capriciousWyrdFlame",
                     "name": "Capricious WyrdFlame",
                     "effect": "Add 1 to hit rolls for attacks made by this unit if the target unit has 5 or more models",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -4516,7 +4517,7 @@ export const Units = {
                     "id": "allPartOfDaPlan",
                     "name": "All Part of Da Plan",
                     "effect": "Pick a friendly unit wholly within 9\" of this unit be the target.  You cannot pick this unit.  Add 3 to the target's control score until the start of your next turn.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Movement": {
@@ -4584,7 +4585,7 @@ export const Units = {
                     "id": "skewered",
                     "name": "Skewered",
                     "effect": "The damage characteristic of this unit's Beast-skewer Bolts is 6 instead of D6 if the target is a MONSTER.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -4677,7 +4678,7 @@ export const Units = {
                     "id": "breathOfTheMireDrakes",
                     "name": "Breath of the Mire-Drakes",
                     "effect": "Roll a dice of each enemy unit in combat with this unit.  On a 1, nothing happens.  On a 2-5, inflict 1 mortal damage on that enemy unit.  On a 6, inflict D3 mortal damage on that unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Charge": {
@@ -4704,7 +4705,7 @@ export const Units = {
                     "id": "breathOfTheMireDrakes",
                     "name": "Breath of the Mire-Drakes",
                     "effect": "Roll a dice of each enemy unit in combat with this unit.  On a 1, nothing happens.  On a 2-5, inflict 1 mortal damage on that enemy unit.  On a 6, inflict D3 mortal damage on that unit.",
-                    "once": false,
+                    "once": onces.none,
                 }],
             },
             "End": {
@@ -4749,7 +4750,7 @@ export const Units = {
                     "id": "scareTaktikz",
                     "name": "Scare Taktikz",
                     "effect": "Roll a dice.  On a 3+, subtract 1 from hit rolls for atacks that target this unit this phase.  This ability has no effect on attacks made by HEROS.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Charge": {
@@ -4776,7 +4777,7 @@ export const Units = {
                     "id": "scareTaktikz",
                     "name": "Scare Taktikz",
                     "effect": "Roll a dice.  On a 3+, subtract 1 from hit rolls for atacks that target this unit this phase.  This ability has no effect on attacks made by HEROS.",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -4804,7 +4805,7 @@ export const Units = {
                     "id": "pickemOff",
                     "name": "Pick'em Off",
                     "effect": "Add 1 to hit rolls for this unit's shooting attacks if has not used a moved ability this turn.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -4822,7 +4823,7 @@ export const Units = {
                     "id": "pickemOff",
                     "name": "Pick'em Off",
                     "effect": "Add 1 to hit rolls for this unit's shooting attacks if has not used a moved ability this turn.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -4843,7 +4844,7 @@ export const Units = {
                     "id": "pickemOff",
                     "name": "Pick'em Off",
                     "effect": "Add 1 to hit rolls for this unit's shooting attacks if has not used a moved ability this turn.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Charge": {
@@ -4870,7 +4871,7 @@ export const Units = {
                     "id": "scareTaktikz",
                     "name": "Scare Taktikz",
                     "effect": "Roll a dice.  On a 3+, subtract 1 from hit rolls for atacks that target this unit this phase.  This ability has no effect on attacks made by HEROS.",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -4913,7 +4914,7 @@ export const Units = {
                     "id": "ancientWarlord",
                     "name": "Ancient Warlord",
                     "effect": "Pick a friendly unit wholly within 12\" of this unit to be the target.  You cannot pick this unit.  Unit the start of your next turn, add 1 to the charge rolls for that target.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -4981,7 +4982,7 @@ export const Units = {
                     "id": "battleDamaged",
                     "name": "Battle Damaged",
                     "effect": "While this unit has 10 or more damage points, the Attack Characteristic of its Carnosaur's Massive Jaws is 1.",
-                    "once": false,
+                    "once": onces.none,
                 }],
             },
             "End": {
@@ -5010,7 +5011,7 @@ export const Units = {
                     "id": "orderedCohorts",
                     "name": "Ordered Cohorts",
                     "effect": "Add 1 to save rolls for this unit while it is contesting an objective you control.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -5077,7 +5078,7 @@ export const Units = {
                     "id": "brutalBlows",
                     "name": "Brutal Blows",
                     "effect": "This unit's melee weapon have Crit (2 Hits) if the target unit has 5 or more models.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -5159,7 +5160,7 @@ export const Units = {
                     "id": "darknessOfTheSoul",
                     "name": "Darkness of the Soul",
                     "effect": "Pick an enemy unit within 12\" of this unit to be the target then roll a dice.  On a 3+, subtract D6 from the contrl score of the target unit this turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -5217,13 +5218,13 @@ export const Units = {
                     "id": "swordmasters",
                     "name": "Swordmasters",
                     "effect": "Each time this unit uses a FIGHT ability, you must pick either the Perfect Strike or Flurry of Blows weapon characteristic for all the attacks it makes with its Sunmetal Greatblade.  In adition, Do not use the attack sequence for an attack made with Perfect Strile.  Instead, roll a dice.  On a 2+, inflict 1 mortal damage on the target unit.",
-                    "once": false,
+                    "once": onces.none,
                 },
                 {
                     "id": "guardians",
                     "name": "Guardians",
                     "effect": "While your general is wholly within this unit's combat range, both this unit and your general has Ward (5+).",
-                    "once": false,
+                    "once": onces.none,
                 }
             ]
             },
@@ -5314,7 +5315,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -5336,7 +5337,7 @@ export const Units = {
                         "id": "loftedShots",
                         "name": "Lofted Shots",
                         "effect": "Unit the end of the phase, add 6\" to the Range characteristic of this unit's Aurain Bows but subtract 1 from hit rolls for this unit's shooting attacks.",
-                        "once": false,
+                        "once": onces.none,
                     }
                 ]
             },
@@ -5399,7 +5400,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -5430,7 +5431,7 @@ export const Units = {
                         "id": "moonfireFlasks",
                         "name": "Moonfire Flasks",
                         "effect": "Pick an enemy unit in combat with this unit and that charged this turn to be the target, then roll a dice.  On a 2+, inflict D3 mortal damage on that target.",
-                        "once": true,
+                        "once": onces.battle,
                     }
                 ],
             },
@@ -5473,7 +5474,7 @@ export const Units = {
                     "id": "ritualOfTheCreepingMist",
                     "name": "Ritual of the Creeping Mist",
                     "effect": "Pick a visible friendly unit wholly within 12\" of this unit to be the target, then roll a dice.  On a 4+, unit the start of your next turn, the target unit cannot by targeted by shooting attacks unless the attacking model is within its combat range.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -5574,7 +5575,7 @@ export const Units = {
                     "id": "biovoltaicBlast",
                     "name": "Biovoltaic Blast",
                     "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target, then roll a number of dice equal to the number of models in this unit.  For each 4-5, inflict 1 mortal damage on the target.  For each 6+, inflict D3 mortal damage on the target.  Add 1 to each roll if there are more models in the target unit than this unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Combat":
@@ -5630,7 +5631,7 @@ export const Units = {
                     "id": "bloodthirstyPredators",
                     "name": "Blood Thirsty Predators",
                     "effect": "Add 1 to the Attacks characteristic of this unit's Allopex's Frocious Bite if it is within 6\" of any damaged enemy units or if it is within 6\" of any enemy units that have had any models slain in the same turn.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -5720,7 +5721,7 @@ export const Units = {
                         "id": "sweepingBlows",
                         "name": "Sweeping Blows",
                         "effect": "Add 1 to the Damage characteristic of this units Lanmari for attacks that target an enemy MONSTER.",
-                        "once": false,
+                        "once": onces.none,
                     }
                 ]
             },
@@ -5740,7 +5741,7 @@ export const Units = {
                         "id": "callForReinforcement",
                         "name": "Call for Reinforcements",
                         "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                        "once": true,
+                        "once": onces.battle,
                     }
                 ]
             },
@@ -5809,7 +5810,7 @@ export const Units = {
                     "id": "derangedTransformation",
                     "name": "Deranged Transformation",
                     "effect": "Pick a visible friendly unit wholly within 18\" of this unit to be the target, then make a casting roll of 2D6.  On a 6+, until the start of your next turn, add 2\" to the target's move characteristic and add 1 to wound rolls for its attacks.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -5866,7 +5867,7 @@ export const Units = {
                     "id": "royalBodyguard",
                     "name": "Royal Bodyguard",
                     "effect": "Add 1 ward rolls for friendly HEROs that are wholly within this unit's combat range.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -5884,7 +5885,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -5937,7 +5938,7 @@ export const Units = {
                     "id": "predatorsPounce",
                     "name": "Predator's Pounce",
                     "effect": "This unit can use CHARGE abilities even if it used a RETREAT ability in the same turn.  On addition, no mortal damage is inflicted on this unit when it uses RETREAT abilities.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -6067,7 +6068,7 @@ export const Units = {
                     "id": "victoryFeast",
                     "name": "Victory Feast",
                     "effect": "If any models where slain by this unit this turn, Heal (d6) this unit and this unit can immediately use the RETREAT ability without any mortal damage being inflicted on it.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             }
 
@@ -6096,7 +6097,7 @@ export const Units = {
                     "id": "timber",
                     "name": "Timber",
                     "effect": "If this model is slain, before removing it from the battlefield. the players must roll off.  The winner picks a point on the battfield up to 3\" from this model.  Inflict D3 mortal damage on each enemy unit within 2\" of that point.  This model is then removed from the battlefield.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -6114,7 +6115,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -6176,7 +6177,7 @@ export const Units = {
                     "id": "stuffEmInMeBag",
                     "name": "Stuff'em in Me Bag",
                     "effect": "Pick an enemy unit in combat with this unit to be the target, then roll a dice.  If the roll is at least double the target unit's Health characteristic, 1 model in that unit is slain.",
-                    "once": false,
+                    "once": onces.none,
                 }],
             },
             "End": {
@@ -6218,7 +6219,7 @@ export const Units = {
                     "id": "visionOfDamnation",
                     "name": "Vision of Damnation",
                     "effect": "Make a casting roll of 2D6.  On a 6+, roll 6 dice.  For each 4+, you recieve 1 depravity point.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -6276,7 +6277,7 @@ export const Units = {
                     "id": "unrivalledVelocity",
                     "name": "Unrivaled Veloctiy",
                     "effect": "You can re-roll charge rolls for this unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -6371,7 +6372,7 @@ export const Units = {
                     "id": "slaughterAtAnyCost",
                     "name": "Slaughter at any Cost",
                     "effect": "This unit can use this ability if any damage points were allocated to it this turn.  This unit can use the Normal Move ability as if it were your movement phase.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Charge": {
@@ -6431,7 +6432,7 @@ export const Units = {
                     "id": "lightfootedKillers",
                     "name": "Light-footed Killers",
                     "effect": "This unit can use SHOOT abilities even if it used a RUN ability in the same turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -6449,7 +6450,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -6490,7 +6491,7 @@ export const Units = {
                     "id": "",
                     "name": "",
                     "effect": "",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -6532,13 +6533,13 @@ export const Units = {
                     "id": "bloodBoil",
                     "name": "Blood Boil",
                     "effect": "Pick a visible enemy unit within 16\" of this unit to be the target then make a chanting roll of D6.  On a 4+, inflict D3 mortal damage on the target.",
-                    "once": false,
+                    "once": onces.none,
                 },
                 {
                     "id": "bloodSacrifice",
                     "name": "Blood Sacrifice",
                     "effect": "Pick a friendly unit within this unit's combat range to be the target.  Roll a dice.  On a 2+, inflict D3 mortal damage on the target and you gain 1 blood tithe point.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -6616,7 +6617,7 @@ export const Units = {
                     "id": "brassStampede",
                     "name": "Brass Stampede",
                     "effect": "If this unit charged this phase, pick an enemy unit within 1\" of it to be the target, then roll a dice.  On a 2+, inflict 1 mortal damage ont he target.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Combat":
@@ -6672,7 +6673,7 @@ export const Units = {
                     "id": "noRespite",
                     "name": "No Respite",
                     "effect": "Each time a model in this unit is slain, you can pick an enemy unit in combat with this unit and roll a dice.  On a 4+, inflict 1 mortal damage on that enemy unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -6751,7 +6752,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -6782,7 +6783,7 @@ export const Units = {
                     "id": "",
                     "name": "",
                     "effect": "",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -6792,7 +6793,7 @@ export const Units = {
                         "id": "frenziedDevotion",
                         "name": "Frenzied Devotion",
                         "effect": "If this unit is within 8\" of your general, you can return D3 slain models to this unit.",
-                        "once": false,
+                        "once": onces.none,
                     }
                 ]
             }
@@ -6831,7 +6832,7 @@ export const Units = {
                     "id": "drainVitality",
                     "name": "Drain Vitality",
                     "effect": "Pick a visible enemy unit within 18\" of this to be the target, then make a casting roll of 2D6.  On a 6+, subtract 1 from hit rolls for attacks made by the target unit until the start of your next turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -6866,7 +6867,7 @@ export const Units = {
                     "id": "reknitConstruct",
                     "name": "Reknit Construct",
                     "effect": "Pick a friendly unit wholly within 12\" of this unit and that is not in combat to be the target.  Heal (D3) the target.  If the target until is not damage, you can instead return a number of slain models to it that have combined health characteristic of D3 or less.",
-                    "once": false,
+                    "once": onces.none,
                     "tags": ["ossiarchCommand"]
                 }],
             },
@@ -6904,7 +6905,7 @@ export const Units = {
                     "id": "nadiriteAssault",
                     "name": "Nadirite Assault",
                     "effect": "Until the end of the phase, this unit's melee weapon have Crit (2 Hits)",
-                    "once": false,
+                    "once": onces.none,
                     "tags": ["ossiarchCommand"],
                 }]
             },
@@ -6984,7 +6985,7 @@ export const Units = {
                         "id": "deathriderWedge",
                         "name": "Deathrider Wedge",
                         "effect": "The following effect apply this phase.  Models i this unit can pass across enemy INFANTRY models as if this unit had FLY.  After this unit has charged, you can pick an enemy unit that it passed across and roll a dice.  On a 2+, inflict D3 mortal damage on that enemy unit.",
-                        "once": false,
+                        "once": onces.none,
                         "tags": ["ossiarchCommand"]
                     }
                 ]
@@ -7051,7 +7052,7 @@ export const Units = {
                     "id": "boneHarvest",
                     "name": "Bone Harvest",
                     "effect": "Each time an enemy model in combat with this unit is slain, thus unit gains 1 bone-tithe point.  It can never have more than 6 bone-tithe points.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -7144,7 +7145,7 @@ export const Units = {
                     "id": "verdurousHarmony",
                     "name": "Verduerous Harmony",
                     "effect": "Pick a visible friendly unit wholly within 18\" of this unit to be the target, then make a casting roll of 2D6.  On a 7+, you can return 1 slain model to the target unit.  If you picked a Tree-Revenants unit, you can return D3 slain models instead of 1.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -7202,7 +7203,7 @@ export const Units = {
                     "id": "battleDamaged",
                     "name": "Battle Damaged",
                     "effect": "While this unit has 10 or more damage points, the Attacks characteristic of its Massive Impaling Talons is 1.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -7278,7 +7279,7 @@ export const Units = {
                         "id": "groundshaker",
                         "name": "Groundshaker",
                         "effect": "Pick an enemy unit in combat with this unit to be the target, then roll a dice.  On a 4+, the target has STRIKE-LAST this phase.",
-                        "once": false,
+                        "once": onces.none,
                     }],
             },
             "End": {
@@ -7306,7 +7307,7 @@ export const Units = {
                     "id": "envoysOfTheEverQueen",
                     "name": "Envoys of the Ever Queen",
                     "effect": "While this unit is contesting an objective, friendly units contesting that objective have Ward (6+).",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -7396,7 +7397,7 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Shooting": {
@@ -7405,7 +7406,7 @@ export const Units = {
                     "id": "martialMemories",
                     "name": "Martial Memories",
                     "effect": "Pick 1 of the following effects to aply to this unit this phase.  Memories of War:  Add 1 to hit rolls for attacks made by this unit.  Memories of Peace: Add 1 to save rolls for this unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Charge": {
@@ -7432,7 +7433,7 @@ export const Units = {
                     "id": "martialMemories",
                     "name": "Martial Memories",
                     "effect": "Pick 1 of the following effects to aply to this unit this phase.  Memories of War:  Add 1 to hit rolls for attacks made by this unit.  Memories of Peace: Add 1 to save rolls for this unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }],
             },
             "End": {
@@ -7474,7 +7475,7 @@ export const Units = {
                     "id": "bullyOfTheFirstDegree",
                     "name": "Bully of the First Degree",
                     "effect": "Pick a friendly unit wholly within 12\" of this unit to be the target.  You cannot pick this unit.  Add 3 to the control score of the target until the start of your next turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -7563,7 +7564,7 @@ export const Units = {
                     "id": "rhinoxCharge",
                     "name": "Rhinox Charge",
                     "effect": "The damage of this unit's Rhinox Sharp Horns is 3 if it charged in the same turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -7651,7 +7652,7 @@ export const Units = {
                     "id": "firingFromTheBelly",
                     "name": "Firing from the Belly",
                     "effect": "Add 1 to hit rolls for this unit's shooting attacks if it has not used a MOVE ability this turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -7728,7 +7729,7 @@ export const Units = {
                     "id": "drivenByHunger",
                     "name": "Driven by Hunger",
                     "effect": "Add 1 to charge rolls for this unit.",
-                    "once": true,
+                    "once": onces.battle,
                 }]
             },
             "Start":
@@ -7795,7 +7796,7 @@ export const Units = {
                     "id": "linebreakers",
                     "name": "Linebreakers",
                     "effect": "Subtract 1 from wound rolls for shooting attacks that target this unit.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":
@@ -7887,7 +7888,7 @@ export const Units = {
                     "id": "decisiveCommander",
                     "name": "Decisive Commander",
                     "effect": "Pick a friendly Freeguild Steelhelms unit wholly within 12\" of this unit to be the target and roll a dice.  On a 2+, pick 1:  On Your Feet:  If the target unit is not in combat, you can return D3 slain models to it.  Yeild No Quarter:  Add 3 to the target unit's control score until the start of your next turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Movement": {
@@ -7989,13 +7990,13 @@ export const Units = {
                     "id": "callForReinforcement",
                     "name": "Call for Reinforcements",
                     "effect": "Set up an idenitcal replacement unit on the battlefield, wholly within friendly territory, wholly winith 6\" of the battlefield edge and not in combat.  Each Reinforcement unit can only be replaced once.",
-                    "once": true,
+                    "once": onces.battle,
                 },
                 {
                     "id": "consecrateTheLand",
                     "name": "Consecrate the Land",
                     "effect": "If this unit is contesting an objective you control that is not contested by any enemy models, roll a dice.  On a 3+, that objective is considered by you to be consencrated.  Friendly units have Ward (6+) while they are contesting a consecrated objective.  If you opponent gains control of the consecreated objective, it is no long consecreated.",
-                    "once": false,
+                    "once": onces.none,
                 }
             ]
             },
@@ -8070,7 +8071,7 @@ export const Units = {
                     "id": "devastatingCharge",
                     "name": "Devastating Charge",
                     "effect": "If this unit charged this phase, pick an enemy unit in combat with it to be the target and roll a dice.  On a 2+, inflict D3 mortal damage on the target.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Combat":
@@ -8126,7 +8127,7 @@ export const Units = {
                     "id": "shotAndSteel",
                     "name": "Shot and Steel",
                     "effect": "Each time this unit uses a SHOOT ability, choose either the Cannonball or Grapeshot weapon characteristic for all the attacks it makes with its Great Cannon.  The Cannonball can only be choosen if this unit has no used a MOVE ability this turn.",
-                    "once": false,
+                    "once": onces.none,
                 }]
             },
             "Start":

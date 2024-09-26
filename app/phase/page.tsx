@@ -159,6 +159,16 @@ export default function StartOfRoundPage() {
     }
   }
 
+  const [selectedAbilities, setSelectedAbilities] = useState<Ability[]>([]);
+
+  const handleAbilitiesSubmit = (submittedAbilities: Ability[]) => {
+    setSelectedAbilities(submittedAbilities);
+  };
+
+  // const handleAbilitiesSubmit = (selectedAbilities: Ability[]) => {
+  //   // console.log('Selected abilities:', selectedAbilities);
+  //   // Do something with the selected abilities
+  // };
   /*********************************/
 
   //Logiic initially shufftle and draw cards to 3.  Also checks to make sure it only happens once.
@@ -509,7 +519,20 @@ export default function StartOfRoundPage() {
                   </section>
                 )}
 
-                {renderPhaseCard(selectedPhase)}
+                
+
+                {selectedAbilities.length > 0 && (
+                  <section className="w-full mx-auto">
+                    <h2 className="text-xl font-semibold mb-4">Selected Abilities</h2>
+                    <div className="space-y-4">
+                    {selectedAbilities.map(ability => ability.phase === selectedPhase.id ? renderAbilityCard(ability, false): null)}
+                    </div>
+                  </section>
+
+              
+              )}
+
+              {renderPhaseCard(selectedPhase)}
 
                 {/* Cards */}
                 {usecards && (
@@ -530,7 +553,10 @@ export default function StartOfRoundPage() {
   selectedPhase={selectedPhase}
   selectedBattleTrait={selectedBattleTrait}
   selectedRegimentAbility={selectedRegimentAbility}
+  onSubmit={handleAbilitiesSubmit}
 />
+
+
               
             </CarouselItem>
           ))}

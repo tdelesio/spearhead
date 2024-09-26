@@ -1,124 +1,117 @@
 "use client"
 
-import { BattleTrait, RegimentAbilitiy } from "@/app/factions";
-import { getAbilityForRound, Phase, phases } from "@/app/phase";
+import { BattleTrait, onces, RegimentAbilitiy } from "@/app/factions";
+import { convertEnumToString, convertStringToEnum, getAbilityForRound, Phase, phases } from "@/app/phase";
 import { Ability, Unit, Units } from "@/app/units";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DialogFooter, DialogHeader } from "@/components/ui/dialog";
 import { Dialog, DialogContent, DialogDescription, DialogPortal, DialogTitle } from "@radix-ui/react-dialog";
-import React, { useEffect, useState, useCallback, useMemo  } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 
 interface DialogCommandAbilitiesProps {
   selectedFactionId: number;
   selectedPhase: Phase;
   selectedBattleTrait: BattleTrait;
   selectedRegimentAbility: RegimentAbilitiy;
+  onSubmit: (selectedAbilities: Ability[]) => void;
 }
 
+export default function DialogCommandAbilities({
+  selectedFactionId,
+  selectedPhase,
+  selectedBattleTrait,
+  selectedRegimentAbility,
+  onSubmit
+}: DialogCommandAbilitiesProps) {
+  const [selectedAbilities, setSelectedAbilities] = useState<Ability[]>([]);
+  const [factionDialog, setShowFactionDialog] = useState(true);
 
+  const factionUnits = useMemo(() => Units.factions.find(faction => faction.id === selectedFactionId), [selectedFactionId]);
 
+  const buildCommandAbilities = useCallback((regimentAbilities: any, factionUnits: any): Ability[] => {
+    const commandAbilities: Ability[] = [];
+    if (regimentAbilities.tags) {
+      commandAbilities.push(regimentAbilities);
+    }
 
-
-
-
-
-  export default function DialogCommandAbilities({
-    selectedFactionId,
-    selectedPhase,
-    selectedBattleTrait,
-    selectedRegimentAbility
-  }: DialogCommandAbilitiesProps) {
-
-    const [commandAbilities, setCommandAbilities] = useState<Ability[]>([]);
-    const [usedAbilities, setUsedAbilities] = useState<Set<string>>(new Set())
-    const [factionDialog, setShowFactionDialog] = useState(true)
-
-    const factionUnits = useMemo(() => Units.factions.find(faction => faction.id === selectedFactionId), [selectedFactionId]);
-    useEffect(() => {
-      if (factionUnits && selectedRegimentAbility) {
-        const abilities = buildCommandAbilities(selectedRegimentAbility, factionUnits);
-        setCommandAbilities(abilities);
-      }
-    }, [selectedRegimentAbility, factionUnits]);
-
-    const handleAbilityClick = useCallback((abilityId: string) => {
-      setUsedAbilities(prev => {
-        const newSet = new Set(prev);
-        if (newSet.has(abilityId)) {
-          newSet.delete(abilityId);
-        } else {
-          newSet.add(abilityId);
-        }
-        return newSet;
+    Phase.phases.forEach(phase => {
+      factionUnits?.units?.forEach((unit: any) => {
+        getAbilityForRound(unit as Unit, phase.id).forEach(ability => {
+          if (ability.tags) {
+            const abilityWithPhase = {
+              ...ability,
+              phase: phase.id
+            };
+            commandAbilities.push(abilityWithPhase);
+          }
+        });
       });
-    }, []);
+    });
 
-    const renderAbilityCard = useCallback((item: Ability, skipCommands: boolean = true) => {
-      const isUsed = usedAbilities.has(item?.id || '');
-  
-      if (item.tags && skipCommands) {
-        return null;
+    return commandAbilities;
+  }, []);
+
+  const commandAbilities = useMemo(() => {
+    if (factionUnits && selectedRegimentAbility) {
+      return buildCommandAbilities(selectedRegimentAbility, factionUnits);
+    }
+    return [];
+  }, [selectedRegimentAbility, factionUnits, buildCommandAbilities]);
+
+  const handleAbilityClick = useCallback((ability: Ability) => {
+    setSelectedAbilities(prev => {
+      const isSelected = prev.some(a => a.id === ability.id);
+      if (isSelected) {
+        return prev.filter(a => a.id !== ability.id);
+      } else if (prev.length < 2) {
+        return [...prev, ability];
       }
-  
-      return (
-        <div className="pb-2" key={item.id}>
-          <Card
-            className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full mx-auto
-              ${isUsed ? 'bg-gray-300 dark:bg-gray-800' : 'bg-white text-black cursor-pointer hover:shadow-md'}`}
-            onClick={() => handleAbilityClick(item?.id || '')}
-          >
-            <div className={`relative ${isUsed ? 'opacity-50' : ''}`}>
-              <CardHeader>
-                <CardTitle>{item.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-sm text-gray-500 dark:text-gray-400">{item?.effect}</div>
-              </CardContent>
-            </div>
-            {isUsed && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-4xl font-bold text-gray-500 dark:text-gray-400 opacity-75 rotate-[-20deg]">
-                  USED
-                </span>
-              </div>
-            )}
-          </Card>
-        </div>
-      );
-    }, [usedAbilities, handleAbilityClick]);
+      return prev;
+    });
+  }, []);
 
-      
+  const handleSubmit = useCallback(() => {
+    onSubmit(selectedAbilities);
+    setShowFactionDialog(false);
+  }, [selectedAbilities, onSubmit]);
 
-      function buildCommandAbilities(regimentAbilities:any, factionUnits:any):Ability[] {
-        if (regimentAbilities.tags)
-        {
-          commandAbilities.push(regimentAbilities);
-        }
-    
-        Phase.phases.map(selectedPhase => ( 
-          factionUnits?.units?.map((unit:any) => (
-              getAbilityForRound(unit as Unit, selectedPhase.id).map(ability => {
-                if (ability.tags) {
-                   commandAbilities.push(ability);
-                 }
-                }
-            )
-          ))
-        ))
-        return commandAbilities;
-    }
+  const renderAbilityCard = useCallback((item: Ability) => {
+    const isSelected = selectedAbilities.some(a => a.id === item.id);
 
-    if (selectedPhase.id !== phases.start || !selectedBattleTrait || !selectedBattleTrait.dialog || commandAbilities.length === 0) {
-      return null;
-    }
-
-    console.log("dialog");
-    // if (selectedPhase.id === phases.start && selectedBattleTrait && selectedBattleTrait.dialog )//&& buildCommandAbilities(selectedRegimentAbility, factionUnits))
     return (
+      <div className="pb-2" key={item.id}>
+        <Card
+          className={`relative overflow-hidden transition-all duration-300 ease-in-out w-full mx-auto
+            ${isSelected ? 'bg-blue-200 dark:bg-blue-800' : 'bg-white text-black cursor-pointer hover:shadow-md'}`}
+          onClick={() => handleAbilityClick(item)}
+        >
+          <div className={`relative ${isSelected ? 'opacity-100' : ''}`}>
+            <CardHeader>
+              <CardTitle>{item.name} {item?.once === onces.battle ? "(Once Per Battle)" : ""} <span className="flex items-center space-x-2">Phase: {convertEnumToString(item.phase || 0)}</span></CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-sm text-gray-500 dark:text-gray-400">{item?.effect} </div>
+            </CardContent>
+          </div>
+          {isSelected && (
+            <div className="absolute top-2 right-2">
+              <span className="text-xl font-bold text-blue-500 dark:text-blue-300">
+                ✓
+              </span>
+            </div>
+          )}
+        </Card>
+      </div>
+    );
+  }, [selectedAbilities, handleAbilityClick]);
 
+  if (selectedPhase.id !== phases.start || !selectedBattleTrait || !selectedBattleTrait.dialog || commandAbilities.length === 0) {
+    return null;
+  }
 
-<Dialog open={factionDialog} onOpenChange={setShowFactionDialog}>
+  return (
+    <Dialog open={factionDialog} onOpenChange={setShowFactionDialog}>
       <DialogPortal>
         <DialogContent className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
@@ -127,25 +120,20 @@ interface DialogCommandAbilitiesProps {
               <DialogDescription>{selectedBattleTrait.dialog.effect}</DialogDescription>
             </DialogHeader>
             <div className="mt-4">
-
-
-            
-          { commandAbilities.map(ability =>
-
-            renderAbilityCard(ability, false)
-            )}
-
-      </div>
+              {commandAbilities.map(ability => renderAbilityCard(ability))}
+            </div>
             <DialogFooter className="mt-6">
-              <Button onClick={() => setShowFactionDialog(false)}>Close</Button>
+              {/* <Button onClick={() => setShowFactionDialog(false)}>Close</Button> */}
+              <Button 
+                onClick={handleSubmit} 
+                disabled={selectedAbilities.length !== 2}
+              >
+                Submit
+              </Button>
             </DialogFooter>
           </div>
         </DialogContent>
       </DialogPortal>
     </Dialog>
   )
-// else return (
-//  null
-// );
 }
-
