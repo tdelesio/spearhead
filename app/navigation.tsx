@@ -7,13 +7,13 @@ import { Phase } from './phase'
   //Link to return to home page
   export function Home() {
     return (
-      <Link className="text-white"
+      <Link className="text-black"
         href={{
           pathname: '/',
 
         }}
       >
-        Home
+        Start Over
       </Link>
     )
   }

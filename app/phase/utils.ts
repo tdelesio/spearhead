@@ -6,7 +6,7 @@ export function showAbility(currentPhase: Phase | null, item: any): boolean {
     //1.  the current round matches the item round
     //2.  The passed item is passive
     //3.  It is a combat round and it matches any of the combat tags
-    // console.log(item.name, currentPhase?.name, item.phase.name)
+    // console.log(item.name, currentPhase?.id, item.phase, item)
     return currentPhase?.id === item.phase || item.phase === phases.passive || item.phase == phases.any || showCombat(currentPhase, item)
 }
 
