@@ -129,8 +129,8 @@ export default function SelectFactionTacticsForm() {
                 The defender sets up their terrain features, followed by the attacker. Each terrain feature must be set up:
                 <ul className="list-disc pl-6 mt-2 space-y-2">
                   <li>Wholly within friendly territory</li>
-                  <li>More than 6" from all other terrain features</li>
-                  <li>More than 3" from both long battlefield edges and enemy territory</li>
+                  <li>More than 6&quot; from all other terrain features</li>
+                  <li>More than 3&quot; from both long battlefield edges and enemy territory</li>
                   <li>Not on top of the objectives (either wholly or partially)</li>
                 </ul>
               </li>
@@ -138,7 +138,7 @@ export default function SelectFactionTacticsForm() {
                 The attacker sets up all units in their army first, followed by the defender. Each unit must be set up:
                 <ul className="list-disc pl-6 mt-2 space-y-2">
                   <li>Wholly within enemy territory</li>
-                  <li>More than 6" from enemy territory</li>
+                  <li>More than 6&quot; from enemy territory</li>
                 </ul>
               </li>
             </ol>

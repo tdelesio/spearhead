@@ -2,7 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
 import Link from "next/link"
 
-const Donations = ({ isOpen, onOpenChange }) => {
+interface DonationsProps {
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+const Donations: React.FC<DonationsProps> = ({ isOpen, onOpenChange }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent>
