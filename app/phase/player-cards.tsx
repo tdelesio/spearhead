@@ -70,11 +70,11 @@ export const PlayerCards: React.FC<CardsProps> = ({ usecards, onRedrawReady, onO
             <AccordionContent>
               <Card className="w-full mx-auto cursor-pointer overflow-hidden" onClick={onClick}>
                 <CardHeader>
-                  <h3 className="text-lg font-semibold">Player Battle Tactic Objectives</h3>
+                  <h3 className="text-lg font-semibold">{card.name}</h3>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {card.battleTacticObjective}
-                  <Separator className="my-4" />
+                  <Separator className="my-4 border-2" />
                   <h3 className="text-lg font-semibold">{card.command.name}</h3>
                   <span className="font-medium">Declare:</span> {card.command.usedBy}
                   <Separator />
@@ -92,15 +92,23 @@ export const PlayerCards: React.FC<CardsProps> = ({ usecards, onRedrawReady, onO
 
   return (
     <section className="w-full mx-auto">
-      <h2 className="text-xl font-semibold mb-2">Battle Tactic Cards</h2>
-      <div>
-        {hand.map((card, index) => (
-          <React.Fragment key={card.id}>
-            {renderBattleTacticDeckCard(card, () => handleCardClick(index))}
-          </React.Fragment>
-        ))}
-      </div>
-    </section>
+    <Accordion type="single" collapsible defaultValue="battle-tactic-cards">
+      <AccordionItem value="battle-tactic-cards">
+        <AccordionTrigger>
+          <h2 className="text-xl font-semibold">Player Battle Tactic Cards</h2>
+        </AccordionTrigger>
+        <AccordionContent>
+          <div className="space-y-4 pt-4">
+            {hand.map((card, index) => (
+              <React.Fragment key={card.id}>
+                {renderBattleTacticDeckCard(card, () => handleCardClick(index))}
+              </React.Fragment>
+            ))}
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </section>
   );
 };
 

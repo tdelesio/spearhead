@@ -1588,7 +1588,7 @@ export const Units = {
                             "id": "heartSeekers",
                             "name": "Heart Seekers",
                             "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
-                            "once": onces.battle,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -1619,12 +1619,7 @@ export const Units = {
                             }
                         ],
                         "abilities": [
-                            {
-                                "id": "heartSeekers",
-                                "name": "Heart Seekers",
-                                "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
-                                "once": onces.none,
-                            }
+                            
                         ]
                     },
                     "Charge": {

@@ -73,12 +73,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        <h3>Overview</h3>
-        <p>I built this app to help with running War Hammer AoS Spearhead games.  I found it difficult to manage abilities.  Some of them are one time use, others can be applied only during specific rounds and they are located on the Battle Traits, Regiment Abilities, and Enhancements as well as on Battle Tome cards.  All of this is hard to keep track of and most of the time I miss abilities that I could have used.  The idea of this app is to manage yourself and the faction you are playing with (not the game itself).  The phases are broken down just like the game expects.  You can either swipe to the next phase or click the arrow button on the navigation at the top.  If you click home, it resets all your choices and lets you start over.  I added a Victory Point track that appears on the End stage to help you keep track of that.  The Next Round button will go back to start and advnace the next round.  Eventually I will be adding logic to help with some abilites.</p>
-        <h3>Getting Started and Cards</h3>
-        <p>Start by selecting your Alliance and Faction.  There is also an option to deal (virtually) the Battle Tactic cards from Spearhead.  It functions as the actual deck and will provide you with 3 cards.  If you use them (either the command or the scoring), just click on them and it will be removed from your hand.  At the end of the round, your hand will be refilled back up to 3 cards.</p>
-        <h3>Abilities</h3>
-        <p>Abilities have been filtered to only show up during the phase that you can use it.  So for instance, if a Regiment Ability can only be used during HERO phase, it will not show up until that phase.  Passive abilties are always there.  The one time use cards are marked as such.  You can click on them if you would like the app to remember they were used.  The ability will be greyed out and marked as used.  I manually transcribed all the abilties and I probably made mistakes every where from spelling errors to marking things incorrectly.  If you find something, let me know and I will fix it.</p>
+        
         
       </main>
 

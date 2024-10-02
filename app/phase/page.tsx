@@ -21,6 +21,9 @@ import Donations from "./donation";
 import PlayerCards from "./player-cards";
 import { Phase, phases } from "../phase";
 import { Dialog, DialogContent, DialogOverlay } from "@radix-ui/react-dialog";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@radix-ui/react-accordion";
+import { DialogFooter } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 
 
@@ -77,6 +80,7 @@ export default function StartOfRoundPage() {
 
   //Button to draw cards to 3 when on the start phase.  
   const [redrawCards, setRedrawCards] = useState<(() => void) | null>(null);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   const handleRedrawReady = useCallback((redrawFunction: () => void) => {
     setRedrawCards(() => redrawFunction);
@@ -102,6 +106,20 @@ export default function StartOfRoundPage() {
       setShowDonateModal(true)
     }
   }
+
+  const handleNextRound = () => {
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmNextRound = (confirm: boolean) => {
+    setShowConfirmDialog(false);
+    if (confirm) {
+      handleRoundIncrement();
+      if (redrawCards) {
+        redrawCards();
+      }
+    }
+  };
 
   const [selectedAbilities, setSelectedAbilities] = useState<Ability[]>([]);
 
@@ -137,16 +155,16 @@ export default function StartOfRoundPage() {
     <div className=" mx-auto ">
       {/* Cards */}
       <PlayerCards
-                usecards={usecards}
-                onRedrawReady={handleRedrawReady}
-                onOpenDialog={handleOpenDialog}
-              />
+        usecards={usecards}
+        onRedrawReady={handleRedrawReady}
+        onOpenDialog={handleOpenDialog}
+      />
       <Carousel className="w-full relative">
 
 
 
         <CarouselContent>
-          
+
 
 
           {Phase.phases.map(selectedPhase => (
@@ -172,18 +190,15 @@ export default function StartOfRoundPage() {
               {/* Next Round Button and VP counter that should only be shwon on End Phase */}
               {selectedPhase.id === phases.end && (
 
-                <div>
-                  <VictoryPointTracker />
-                  <div className="flex justify-center items-center w-full mt-4">
-                    <CarouselFirst
-                      onClick={() => {
-                        handleRoundIncrement()
-                        nextRoundClick()
-                      }}
-                      className="cursor-pointer hover:bg-gray-200"
-                    />
-                  </div>
-                </div>
+<div>
+<VictoryPointTracker />
+<div className="flex justify-center items-center w-full mt-4">
+  <CarouselFirst
+    onClick={handleNextRound}
+    className="cursor-pointer hover:bg-gray-200"
+  />
+</div>
+</div>
               )}
 
               <div className="flex space-x-2" />
@@ -196,11 +211,19 @@ export default function StartOfRoundPage() {
                 {/* Battle Traits */}
                 {selectedBattleTrait && showAbility(selectedPhase, selectedBattleTrait) && (
                   <section className="w-full mx-auto">
-                    <h2 className="text-xl font-semibold mb-4">Battle Traits</h2>
-                    <div className="space-y-4">
-                      {renderBattleTraitCard(faction?.id || 0, selectedBattleTrait, selectedPhase, renderAbilityCardWrapper)}
-                    </div>
-                  </section>
+                  <Accordion type="single" collapsible defaultValue="battle-traits">
+                    <AccordionItem value="battle-traits">
+                      <AccordionTrigger>
+                        <h2 className="text-xl font-semibold">Battle Traits <span className="text-xs">(Click to colapse/expand)</span></h2>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-4 pt-4">
+                          {renderBattleTraitCard(faction?.id || 0, selectedBattleTrait, selectedPhase, renderAbilityCardWrapper)}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </section>
                 )}
 
                 {/* Regiment Abilities */}
@@ -238,7 +261,7 @@ export default function StartOfRoundPage() {
 
                 {renderPhaseCard(selectedPhase, selectedFactionId, renderUnitCardWrapper)}
 
-                
+
 
               </div>
 
@@ -259,18 +282,33 @@ export default function StartOfRoundPage() {
         </CarouselContent>
       </Carousel>
 
-      <section className="w-full  mx-auto">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-xl font-semibold text-gray-500"><Home /></h1>
+      <section className="w-full mx-auto flex justify-center items-center">
+        <div className="flex justify-center items-center mb-4">
+          <h1 className="text-xl font-semibold text-gray-500">
+            <Home />
+          </h1>
         </div>
       </section>
 
       <Dialog open={dialogContent !== null} onOpenChange={() => setDialogContent(null)}>
-  <DialogOverlay className="bg-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-  <DialogContent className="fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-white p-6 shadow-lg sm:rounded-lg md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] text-gray-900">
-    {dialogContent}
-  </DialogContent>
-</Dialog>
+        <DialogOverlay className="bg-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogContent className="fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-white p-6 shadow-lg sm:rounded-lg md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] text-gray-900">
+          {dialogContent}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showConfirmDialog} onOpenChange={() => setShowConfirmDialog(false)}>
+        <DialogOverlay className="bg-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogContent className="fixed z-50 grid w-full max-w-lg scale-100 gap-4 border bg-white p-6 shadow-lg sm:rounded-lg md:w-full top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] text-gray-900">
+          <h2 className="text-lg font-semibold">Seizing the Initative</h2>
+          <p>If the player who went second in the previous battle round wins the priority roll and chooses to go first, it is called seizing the initative.  When a player seizes the initative, they do not draw any battle tactic cards for that battle round unles they are the underdog and the difference in victory points between the two players is 5 or greater.</p>
+          <p>Do want to redraw cards back up to 3?</p>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => handleConfirmNextRound(false)}>No</Button>
+            <Button onClick={() => handleConfirmNextRound(true)}>Yes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 
