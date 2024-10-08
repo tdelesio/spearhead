@@ -1195,7 +1195,7 @@ export const Units = {
                         "abilities": [{
                             "id": "favouredOfThePantheon",
                             "name": "Favoured Of The Pantheon",
-                            "effect": "RoLL a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
+                            "effect": "Roll a dice.  On a 4+, you can roll on the Eye of the Gods table for this unti.",
                             "once": onces.none,
                         }]
                     },
@@ -1345,7 +1345,7 @@ export const Units = {
                         "abilities": [{
                             "id": "bringersOfDesolation",
                             "name": "Bringers Of Desolation",
-                            "effect": "Add 1 to wound rolls for combat attacks made by this unit that target an enemy unit that is contesting an objective you do not conotrl.",
+                            "effect": "Add 1 to wound rolls for combat attacks made by this unit that target an enemy unit that is contesting an objective you do not control.",
                             "once": onces.none,
                         }]
                     },
@@ -1381,7 +1381,7 @@ export const Units = {
                                 "hit": 3,
                                 "wound": 3,
                                 "rend": 1,
-                                "damage": "3",
+                                "damage": "1",
                                 "ability": ""
                             }
                         ],
@@ -1408,12 +1408,7 @@ export const Units = {
                     "fly": false,
                     "Passive": {
                         "attacks": [],
-                        "abilities": [{
-                            "id": "impalingCharge",
-                            "name": "Impaling Charge",
-                            "effect": "If this unit charged this phase, add 1 to the Rend characteristic of this unit's melee weapons this phase.",
-                            "once": onces.none,
-                        }]
+                        "abilities": []
                     },
                     "Start":
                     {
@@ -1593,7 +1588,7 @@ export const Units = {
                             "id": "heartSeekers",
                             "name": "Heart Seekers",
                             "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
-                            "once": onces.battle,
+                            "once": onces.none,
                         }]
                     },
                     "Start":
@@ -1624,12 +1619,7 @@ export const Units = {
                             }
                         ],
                         "abilities": [
-                            {
-                                "id": "heartSeekers",
-                                "name": "Heart Seekers",
-                                "effect": "Shooting attacks made by this unit score critical hit rolls on 5+ if this unit do not use a move this same turn.",
-                                "once": onces.none,
-                            }
+                            
                         ]
                     },
                     "Charge": {

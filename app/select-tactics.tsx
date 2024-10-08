@@ -25,6 +25,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { convertEnumToString } from './phase'
@@ -97,7 +103,51 @@ export default function SelectFactionTacticsForm() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <h1 className="text-2xl font-bold mb-4">Select Battle Options for {faction?.name}</h1>
+      <h1 className="text-2xl font-bold mb-4 pt-4">{faction?.name}</h1>
+
+      <Accordion type="single" collapsible defaultValue="pre-battle-sequence">
+      <AccordionItem value="pre-battle-sequence">
+        <AccordionTrigger className="text-3xl font-bold text-gray-800">
+          Pre-Battle Sequence
+        </AccordionTrigger>
+        <AccordionContent>
+          <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md">
+            <ol className="list-decimal pl-6 space-y-4">
+              <li className="text-gray-700">
+                <span className="font-semibold">Roll off.</span> The winner chooses who the attacker and who the defender is.
+              </li>
+              <li className="text-gray-700">
+                The attackers picks their regiment abilities and their enhancements. Then the defender does the same.
+              </li>
+              <li className="text-gray-700">
+                The defender chooses which side of the realm battlefield the players will fight on: Aqshy or Ghyran.
+              </li>
+              <li className="text-gray-700">
+                The defender picks 1 of the deployment maps (split horizontally or diagonal) and chooses which territory belongs to which player.
+              </li>
+              <li className="text-gray-700">
+                The defender sets up their terrain features, followed by the attacker. Each terrain feature must be set up:
+                <ul className="list-disc pl-6 mt-2 space-y-2">
+                  <li>Wholly within friendly territory</li>
+                  <li>More than 6&quot; from all other terrain features</li>
+                  <li>More than 3&quot; from both long battlefield edges and enemy territory</li>
+                  <li>Not on top of the objectives (either wholly or partially)</li>
+                </ul>
+              </li>
+              <li className="text-gray-700">
+                The attacker sets up all units in their army first, followed by the defender. Each unit must be set up:
+                <ul className="list-disc pl-6 mt-2 space-y-2">
+                  <li>Wholly within enemy territory</li>
+                  <li>More than 6&quot; from enemy territory</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+
+      
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -112,7 +162,6 @@ export default function SelectFactionTacticsForm() {
                 name="battleTraits"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Battle Traits</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
@@ -149,7 +198,6 @@ export default function SelectFactionTacticsForm() {
                 name="regimentAbilities"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Regiment Abilities</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
@@ -187,7 +235,6 @@ export default function SelectFactionTacticsForm() {
                 name="enhancements"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Enhancements</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                       <FormControl>
                         <SelectTrigger>
