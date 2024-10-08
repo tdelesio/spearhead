@@ -1719,7 +1719,7 @@ export const Factions = {
                     {
                         "id": "brazierOfHolyFlame",
                         "name": "Brazier of Holy Flame",
-                        "effect": "Pick a friendly Freeguild Steelhems unit within your general's combat range.",
+                        "effect": "Pick a friendly Freeguild Steelhelms unit within your general’s combat range. Effect: You can return up to d3 models to that unit.",
                        "once": onces.none,
                        "phase": phases.end,
                     },
