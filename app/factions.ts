@@ -378,7 +378,7 @@ export const Factions = {
                     "effect": "Start of first battle round.  Pick a friendly Chaos Warrior or Chaos Knight.  Immediately roll on the Eye of the Gods.",
                     "once": onces.battle,
                     "phase": phases.start,
-                    
+                    "tags": []
                 },
                 {
                     "id": "fierceConquerors",
@@ -386,7 +386,7 @@ export const Factions = {
                     "effect": "Add 3 to the control scores of friendly Chaos Warriors units.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -840,7 +840,7 @@ export const Factions = {
                     "effect": "Pick a friendly Arkanaut Frigate to use this ability.  If that unit uses a RETREAT ability this phase, no mortal damage is inflicted on it and it can still use SHOOT abilities later in this turn.",
                     "once": onces.battle,
                     "phase": phases.movement,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -904,7 +904,7 @@ export const Factions = {
                     "effect": "Add 1 to the Rend charactesistic of ranged weapons used by friendly Flamers of Tzeentch units.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -960,7 +960,7 @@ export const Factions = {
                     "effect": "subtract 1 from wound rolls for attacks made by enemy units in the first battle round.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 },
                 {
                     "id": "coveredInMud",
@@ -968,7 +968,7 @@ export const Factions = {
                     "effect": "In the first Battle round.  Pick a friendly unit to use this ability.  In this battle, that unit is not visible to enemy models that are more than 12\" away from it.",
                     "once": onces.battle,
                     "phase": phases.start,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1032,7 +1032,7 @@ export const Factions = {
                     "effect": "Friendly units have Ward (6+) while they are wholly within friendly territory.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1107,7 +1107,7 @@ export const Factions = {
                     "effect": "Add 1 to casting rolls for your general",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 },
                 {
                     "id": "heightenedReflexes",
@@ -1115,7 +1115,7 @@ export const Factions = {
                     "effect": "Add 1 to save rolls for friendly units that use a FIGHT ability immediately after another friendly unit because of the 'Lightning Reactins' ability, until the end of the phase.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1171,7 +1171,7 @@ export const Factions = {
                     "effect": "Add 1 to the Rend characteristic of melee weapons used by friendly Namarti Thralls units that charged in the same turn.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 },
                 {
                     "id": "etherseaPredator",
@@ -1179,7 +1179,7 @@ export const Factions = {
                     "effect": "Pick a friendly Cavalry unit that used a FIGHT ability this turn.  Heal (D3) that unit.",
                     "once": onces.none,
                     "phase": phases.end,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1236,7 +1236,7 @@ export const Factions = {
                     "effect": "Add 1 to run rolls and charge rolls for friendly units.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 },
                 {
                     "id": "defendersOfTheRealm",
@@ -1244,7 +1244,7 @@ export const Factions = {
                     "effect": "Add 1 to save rolls for friendly units that are contesting an objective you control.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1300,7 +1300,7 @@ export const Factions = {
                     "effect": "Each time an enemy model is slain by a friendly unit's Stuff'Em in Me Bag ability, Heal (D3) that uit.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 },
                 {
                     "id": "earthShakingCharge",
@@ -1308,7 +1308,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit that charged this phase to use this ability, then roll a dice for each enemy unit in combat with it.  On a 3+, that enemy unit has STRIKE-LAST this turn.",
                     "once": onces.phase,
                     "phase": phases.charge,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1364,7 +1364,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit to use this ability.  That unit has STRIKE-FIRST this phae.",
                     "once": onces.battle,
                     "phase": phases.anycombat,
-                    
+                    "tags": [],
                 },
                 {
                     "id": "locusOfDiversion",
@@ -1372,7 +1372,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit to use this ability.  For the rest of the turn, that unit can use a RETREAT ability and still use a SHOOT ability and/or CHARGE abilities late in the turn.",
                     "once": onces.turn,
                     "phase": phases.movement,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1429,7 +1429,7 @@ export const Factions = {
                     "effect": "Roll a dice.  On a 2+, you recieve 1 blood tithe point.",
                     "once": onces.turn,
                     "phase": phases.start,
-                    
+                    "tags": [],
                 },
                 {
                 "id": "bloodwokenRunies",
@@ -1437,7 +1437,7 @@ export const Factions = {
                     "effect": "Friendly unit have Ward (5+) if they have used a FIGHT ability in the same phase.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1562,7 +1562,7 @@ export const Factions = {
                     "effect": "Once per trun, end of any turn.  Pick an enemy unit that is contesting an objective and roll a dice.  On a 4+, inflict D3 mortal damage on that enemy unit.",
                     "once": onces.turn,
                     "phase": phases.end,
-                    
+                    "tags": [],
                 },
                 {
                 "id": "walkersOfTheHiddenPaths",
@@ -1570,7 +1570,7 @@ export const Factions = {
                     "effect": "Pick a friendly unit that is within 3\" of any terrain features and not on combat.  Remove that unit from the battlefield and set it up again more that 6\" from all enemy units.  That unit cannot use MOVE abilities for the rest of the phase.",
                     "once": onces.turn,
                     "phase": phases.movement,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1626,7 +1626,7 @@ export const Factions = {
                     "effect": "Pick any number of friendly units that charged this phase.  For each of those units, pick an enemy unit in combat with it and roll a dice.  On a 4+ inflict 1 mortal damage on that enemy unit.",
                     "once": onces.phase,
                     "phase": phases.charge,
-                    
+                    "tags": [],
                 },
                 {
                 "id": "bredForToughness",
@@ -1634,7 +1634,7 @@ export const Factions = {
                     "effect": "Add 1 to health characterstic of your Ironblaster and your Mournfang Pack unit.",
                     "once": onces.none,
                     "phase": phases.passive,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1690,7 +1690,7 @@ export const Factions = {
                     "effect": "Use this ability before any CHARGE abilities are used this phase.  Friendly CAVALRY units that charge this phase have STRIKE-FIRST this turn.",
                     "once": onces.battle,
                     "phase": phases.charge,
-                    
+                    "tags": [],
                 },
                 {
                 "id": "ironweldDiscipline",
@@ -1698,7 +1698,7 @@ export const Factions = {
                     "effect": "Pick your Ironweld Great Cannon to use this ability.  It can use the SHOOT ability as if it were your shooting phase.",
                     "once": onces.battle,
                     "phase": phases.shooting,
-                    
+                    "tags": [],
                 }
             ],
             "enhancements": [
@@ -1735,4 +1735,5 @@ export const Factions = {
         }, 
     ]
 };
+
 
