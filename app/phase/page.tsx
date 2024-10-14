@@ -190,15 +190,15 @@ export default function StartOfRoundPage() {
               {/* Next Round Button and VP counter that should only be shwon on End Phase */}
               {selectedPhase.id === phases.end && (
 
-<div>
-<VictoryPointTracker />
-<div className="flex justify-center items-center w-full mt-4">
-  <CarouselFirst
-    onClick={handleNextRound}
-    className="cursor-pointer hover:bg-gray-200"
-  />
-</div>
-</div>
+                <div>
+                  <VictoryPointTracker />
+                  <div className="flex justify-center items-center w-full mt-4">
+                    <CarouselFirst
+                      onClick={handleNextRound}
+                      className="cursor-pointer hover:bg-gray-200"
+                    />
+                  </div>
+                </div>
               )}
 
               <div className="flex space-x-2" />
@@ -211,19 +211,19 @@ export default function StartOfRoundPage() {
                 {/* Battle Traits */}
                 {selectedBattleTrait && showAbility(selectedPhase, selectedBattleTrait) && (
                   <section className="w-full mx-auto">
-                  <Accordion type="single" collapsible defaultValue="battle-traits">
-                    <AccordionItem value="battle-traits">
-                      <AccordionTrigger>
-                        <h2 className="text-xl font-semibold">Battle Traits <span className="text-xs">(Click to colapse/expand)</span></h2>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <div className="space-y-4 pt-4">
-                          {renderBattleTraitCard(faction?.id || 0, selectedBattleTrait, selectedPhase, renderAbilityCardWrapper)}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </section>
+                    <Accordion type="single" collapsible defaultValue="battle-traits">
+                      <AccordionItem value="battle-traits">
+                        <AccordionTrigger>
+                          <h2 className="text-xl font-semibold">Battle Traits <span className="text-xs">(Click to colapse/expand)</span></h2>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="space-y-4 pt-4">
+                            {renderBattleTraitCard(faction?.id || 0, selectedBattleTrait, selectedPhase, renderAbilityCardWrapper)}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </section>
                 )}
 
                 {/* Regiment Abilities */}
@@ -231,7 +231,7 @@ export default function StartOfRoundPage() {
                   <section className="w-full mx-auto">
                     <h2 className="text-xl font-semibold mb-4">Regiment Ability</h2>
                     <div className="space-y-4">
-                      {renderAbilityCardWrapper(selectedRegimentAbility)}
+                      {renderAbilityCardWrapper(selectedRegimentAbility, false)}
                     </div>
                   </section>
                 )}

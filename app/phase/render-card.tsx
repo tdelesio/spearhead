@@ -61,7 +61,8 @@ export const renderBattleTraitCard = (factionId: number, bt: BattleTrait, phase:
 
 export const renderAbilityCard = (item: any, usedAbilities: Set<string>, handleAbilityClick: (id: string, once: boolean) => void, skipCommands: boolean = true) => {
   const isUsed = usedAbilities.has(item?.id || '')
-  if (item.tags && skipCommands) {
+
+  if (item.tags && item.tags.length >0 && skipCommands) {
 
     return (null);
   }
